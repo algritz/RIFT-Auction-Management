@@ -1,1 +1,114 @@
 DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 10:44:58 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses"[0m
+SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"
+Completed 500 Internal Server Error in 220ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"):
+  app/controllers/listing_statuses_controller.rb:5:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (41.0ms)
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 10:45:03 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses"
+SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"
+Completed 500 Internal Server Error in 5ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"):
+  app/controllers/listing_statuses_controller.rb:5:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.0ms)
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 10:45:03 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses"[0m
+SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"
+Completed 500 Internal Server Error in 50ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: listing_statuses: SELECT "listing_statuses".* FROM "listing_statuses"):
+  app/controllers/listing_statuses_controller.rb:5:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (7.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateListingStatuses (20110711141012)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110711141012')
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("listing_statuses")
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 10:46:03 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses"
+Rendered listing_statuses/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 29ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 10:47:28 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses"[0m
+Rendered listing_statuses/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 28ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (8.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110711141012')[0m

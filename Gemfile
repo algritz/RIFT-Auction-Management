@@ -11,6 +11,10 @@ group :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'annotate'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
