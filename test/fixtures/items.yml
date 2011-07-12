@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  vendor_selling_price: 1
+  vendor_buying_price: 1
+  source_id: 1
+
+two:
+  description: MyString
+  vendor_selling_price: 1
+  vendor_buying_price: 1
+  source_id: 1

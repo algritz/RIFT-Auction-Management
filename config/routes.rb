@@ -1,4 +1,6 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :items
+
   resources :competitor_styles
 
   resources :sources
