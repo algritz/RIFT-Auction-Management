@@ -8,11 +8,16 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 
 group :test do
+  gem 'spork', '~> 0.9.0.rc'
   gem 'rspec-rails'
+  gem 'watchr'
 end
 
 group :development do
+  gem 'spork', '~> 0.9.0.rc'
   gem 'annotate'
+  gem 'rspec-rails'
+  gem 'watchr'
 end
 
 # Use unicorn as the web server

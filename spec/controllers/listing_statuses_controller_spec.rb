@@ -37,7 +37,7 @@ describe ListingStatusesController do
       valid_ListingStatus = ListingStatus.create!(@attr)
       lambda do
         valid_ListingStatus.description = "sample ListingStatus 2!"
-        post :update, :id => valid_ListingStatus
+        put :update, :id => valid_ListingStatus
       end.should change(valid_ListingStatus, :description)
     end
   end

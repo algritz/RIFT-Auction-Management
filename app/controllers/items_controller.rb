@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.all
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   # GET /items/new.xml
   def new
     @item = Item.new
-
+    @source = Source.find(:params[:source_id], :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
@@ -35,13 +35,15 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
+    @source = Source.find(:all, :select => 'id, description', :order => 'description')
   end
 
   # POST /items
   # POST /items.xml
   def create
     @item = Item.new(params[:item])
-
+    @source = Source.find(:all, :select => 'id, description', :order => 'description')
+    p @source
     respond_to do |format|
       if @item.save
         format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
@@ -57,7 +59,7 @@ class ItemsController < ApplicationController
   # PUT /items/1.xml
   def update
     @item = Item.find(params[:id])
-
+    @source = Source.find(params[:source_id], :select => 'id, description', :order => 'description')
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }

@@ -37,7 +37,7 @@ describe CompetitorStylesController do
       valid_CompetitorStyle = CompetitorStyle.create!(@attr)
       lambda do
         valid_CompetitorStyle.description = "sample CompetitorStyle 2!"
-        post :update, :id => valid_CompetitorStyle
+        put :update, :id => valid_CompetitorStyle
       end.should change(valid_CompetitorStyle, :description)
     end
   end

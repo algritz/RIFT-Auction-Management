@@ -11,3 +11,17 @@ two:
   vendor_selling_price: 1
   vendor_buying_price: 1
   source_id: 1
+
+# == Schema Information
+#
+# Table name: items
+#
+#  id                   :integer         not null, primary key
+#  description          :string(255)
+#  vendor_selling_price :integer
+#  vendor_buying_price  :integer
+#  source_id            :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+

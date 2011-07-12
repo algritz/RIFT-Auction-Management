@@ -37,7 +37,7 @@ describe SourcesController do
       valid_source = Source.create!(@attr)
       lambda do
         valid_source.description = "sample source 2!"
-        post :update, :id => valid_source
+        put :update, :id => valid_source
       end.should change(valid_source, :description)
     end
   end

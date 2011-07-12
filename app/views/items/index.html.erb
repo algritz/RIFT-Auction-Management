@@ -2,13 +2,13 @@
 
 <table>
   <tr>
-    <th>Description</th>
-    <th>Vendor selling price</th>
-    <th>Vendor buying price</th>
-    <th>Source</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Description</th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Vendor selling price</th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Vendor buying price</th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Source</th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
+    <th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
   </tr>
 
 <% @items.each do |item| %>
@@ -16,7 +16,7 @@
     <td><%= item.description %></td>
     <td><%= item.vendor_selling_price %></td>
     <td><%= item.vendor_buying_price %></td>
-    <td><%= item.source_id %></td>
+    <td><%= getSourceDescription(item.source_id) %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
