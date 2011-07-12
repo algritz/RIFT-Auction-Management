@@ -10,10 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712101000) do
+ActiveRecord::Schema.define(:version => 20110712190031) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "crafted_items", :force => true do |t|
+    t.integer  "crafted_item_generated_id"
+    t.integer  "crafted_item_stacksize"
+    t.integer  "component_item_id"
+    t.integer  "component_item_quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

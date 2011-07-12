@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Crafted item generated:</b>
+  <%= getItemDescription(@crafted_item.crafted_item_generated_id) %>
+</p>
+
+<p>
+  <b>Crafted item stacksize:</b>
+  <%= @crafted_item.crafted_item_stacksize %>
+</p>
+
+<p>
+  <b>Component item:</b>
+  <%= getItemDescription(@crafted_item.component_item_id) %>
+</p>
+
+<p>
+  <b>Component item quantity:</b>
+  <%= @crafted_item.component_item_quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_crafted_item_path(@crafted_item) %> |
+<%= link_to 'Back', crafted_items_path %>

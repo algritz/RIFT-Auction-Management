@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   attr_accessible :description, :vendor_selling_price, :vendor_buying_price, :source_id
-  before_create validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
+  validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
 end
 
 # == Schema Information

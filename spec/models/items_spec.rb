@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 describe Item do
 
   before(:each) do

@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @source = Source.find(:all, :select => 'id, description', :order => 'description')
-    p @source
     respond_to do |format|
       if @item.save
         format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
@@ -59,7 +58,7 @@ class ItemsController < ApplicationController
   # PUT /items/1.xml
   def update
     @item = Item.find(params[:id])
-    @source = Source.find(params[:source_id], :select => 'id, description', :order => 'description')
+    @source = Source.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }

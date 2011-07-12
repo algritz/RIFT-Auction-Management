@@ -1,0 +1,33 @@
+<%= form_for(@crafted_item) do |f| %>
+  <% if @crafted_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crafted_item.errors.count, "error") %> prohibited this crafted_item from being saved:</h2>
+
+      <ul>
+      <% @crafted_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :crafted_item_generated_id %><br />
+    <%= f.select(:crafted_item_generated_id, options_from_collection_for_select(@item_ids, :id, :description, @crafted_item.crafted_item_generated_id))%>
+  </div>
+  <div class="field">
+    <%= f.label :crafted_item_stacksize %><br />
+    <%= f.text_field :crafted_item_stacksize %>
+  </div>
+  <div class="field">
+    <%= f.label :component_item_id %><br />
+    <%= f.select(:component_item_id, options_from_collection_for_select(@item_ids, :id, :description, @crafted_item.component_item_id))%>
+  </div>
+  <div class="field">
+    <%= f.label :component_item_quantity %><br />
+    <%= f.text_field :component_item_quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
