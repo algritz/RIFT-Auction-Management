@@ -13045,3 +13045,43 @@ WARNING: Can't mass-assign protected attributes: id
 Redirected to http://test.host/items
 Completed 302 Found in 3ms
   [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "items"
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 128ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "items" ("vendor_buying_price", "description", "updated_at", "vendor_selling_price", "created_at", "source_id") VALUES (1, 'sample Item', '2011-07-12 18:48:39.405572', 1, '2011-07-12 18:48:39.405572', 1)
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-12 18:48:39", updated_at: "2011-07-12 18:48:39">}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "items"
+  Processing by ItemsController#create as HTML
+  Parameters: {"items"=>""}
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources" ORDER BY description[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" IS NULL) LIMIT 1
+Completed 200 OK in 35ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "items" ("vendor_buying_price", "description", "updated_at", "vendor_selling_price", "created_at", "source_id") VALUES (1, 'sample Item', '2011-07-12 18:48:39.556587', 1, '2011-07-12 18:48:39.556587', 1)[0m
+  Processing by ItemsController#update as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item 2!", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-12 18:48:39", updated_at: "2011-07-12 18:48:39">}
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1
+Completed 404 Not Found in 2ms
+WARNING: Can't mass-assign protected attributes: id
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "items" ("vendor_buying_price", "description", "updated_at", "vendor_selling_price", "created_at", "source_id") VALUES (1, 'sample Item', '2011-07-12 18:48:39.578589', 1, '2011-07-12 18:48:39.578589', 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-12 18:48:39", updated_at: "2011-07-12 18:48:39">}
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = 1[0m
+Redirected to http://test.host/items
+Completed 302 Found in 2ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "items"
