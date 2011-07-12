@@ -112,3 +112,1249 @@ Completed 200 OK in 28ms (Views: 21.0ms | ActiveRecord: 0.0ms)
 [0m
   [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
   [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110711141012')[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/L" for 127.0.0.1 at Mon Jul 11 19:50:19 -0400 2011
+
+ActionController::RoutingError (No route matches "/L"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Li" for 127.0.0.1 at Mon Jul 11 19:50:23 -0400 2011
+
+ActionController::RoutingError (No route matches "/Li"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Lis" for 127.0.0.1 at Mon Jul 11 19:50:23 -0400 2011
+
+ActionController::RoutingError (No route matches "/Lis"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/List" for 127.0.0.1 at Mon Jul 11 19:50:24 -0400 2011
+
+ActionController::RoutingError (No route matches "/List"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Listin" for 127.0.0.1 at Mon Jul 11 19:50:24 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listin"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Listing" for 127.0.0.1 at Mon Jul 11 19:50:24 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listing"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/ListingS" for 127.0.0.1 at Mon Jul 11 19:50:25 -0400 2011
+
+ActionController::RoutingError (No route matches "/ListingS"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/ListingStat" for 127.0.0.1 at Mon Jul 11 19:50:26 -0400 2011
+
+ActionController::RoutingError (No route matches "/ListingStat"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/ListingStatus" for 127.0.0.1 at Mon Jul 11 19:50:26 -0400 2011
+
+ActionController::RoutingError (No route matches "/ListingStatus"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/ListingStatus/" for 127.0.0.1 at Mon Jul 11 19:50:26 -0400 2011
+
+ActionController::RoutingError (No route matches "/ListingStatus"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Listing_Status/" for 127.0.0.1 at Mon Jul 11 19:50:32 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listing_Status"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/Listing_status/" for 127.0.0.1 at Mon Jul 11 19:50:33 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listing_status"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Listing_statuse/" for 127.0.0.1 at Mon Jul 11 19:50:38 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listing_statuse"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Listing_statuses/" for 127.0.0.1 at Mon Jul 11 19:50:39 -0400 2011
+
+ActionController::RoutingError (No route matches "/Listing_statuses"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/Lsting_statuses/" for 127.0.0.1 at Mon Jul 11 19:50:44 -0400 2011
+
+ActionController::RoutingError (No route matches "/Lsting_statuses"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/sting_statuses/" for 127.0.0.1 at Mon Jul 11 19:50:45 -0400 2011
+
+ActionController::RoutingError (No route matches "/sting_statuses"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/lsting_statuses/" for 127.0.0.1 at Mon Jul 11 19:50:46 -0400 2011
+
+ActionController::RoutingError (No route matches "/lsting_statuses"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 19:50:47 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses"[0m
+Rendered listing_statuses/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 95ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses/new" for 127.0.0.1 at Mon Jul 11 19:50:57 -0400 2011
+  Processing by ListingStatusesController#new as HTML
+Rendered listing_statuses/_form.html.erb (13.0ms)
+Rendered listing_statuses/new.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 46ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses" for 127.0.0.1 at Mon Jul 11 19:51:01 -0400 2011
+  Processing by ListingStatusesController#create as HTML
+  Parameters: {"commit"=>"Create Listing status", "listing_status"=>{"description"=>""}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓"}
+Rendered listing_statuses/_form.html.erb (11.0ms)
+Rendered listing_statuses/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 56ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses" for 127.0.0.1 at Mon Jul 11 19:51:13 -0400 2011
+  Processing by ListingStatusesController#create as HTML
+  Parameters: {"commit"=>"Create Listing status", "listing_status"=>{"description"=>"asdsad3243242asdsa"}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "listing_statuses" ("updated_at", "created_at", "description") VALUES ('2011-07-11 23:51:13.939374', '2011-07-11 23:51:13.939374', 'asdsad3243242asdsa')[0m
+Redirected to http://127.0.0.1:3000/listing_statuses/1
+Completed 302 Found in 45ms
+
+
+Started GET "/listing_statuses/1" for 127.0.0.1 at Mon Jul 11 19:51:13 -0400 2011
+  Processing by ListingStatusesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1
+Rendered listing_statuses/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 34ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/listing_statuses/1/edit" for 127.0.0.1 at Mon Jul 11 19:51:18 -0400 2011
+  Processing by ListingStatusesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+Rendered listing_statuses/_form.html.erb (8.0ms)
+Rendered listing_statuses/edit.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 83ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses/1" for 127.0.0.1 at Mon Jul 11 19:51:24 -0400 2011
+  Processing by ListingStatusesController#update as HTML
+  Parameters: {"commit"=>"Update Listing status", "listing_status"=>{"description"=>"adsd2"}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1
+Rendered listing_statuses/_form.html.erb (6.0ms)
+Rendered listing_statuses/edit.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 48ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses/1" for 127.0.0.1 at Mon Jul 11 20:10:24 -0400 2011
+  Processing by ListingStatusesController#update as HTML
+  Parameters: {"commit"=>"Update Listing status", "listing_status"=>{"description"=>"Ongoing"}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  UPDATE "listing_statuses" SET "description" = 'Ongoing', "updated_at" = '2011-07-12 00:10:24.589188' WHERE "listing_statuses"."id" = 1
+Redirected to http://127.0.0.1:3000/listing_statuses/1
+Completed 302 Found in 20ms
+
+
+Started GET "/listing_statuses/1" for 127.0.0.1 at Mon Jul 11 20:10:24 -0400 2011
+  Processing by ListingStatusesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+Rendered listing_statuses/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 34ms (Views: 25.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:10:27 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses"
+Rendered listing_statuses/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 34ms (Views: 25.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses/new" for 127.0.0.1 at Mon Jul 11 20:10:29 -0400 2011
+  Processing by ListingStatusesController#new as HTML
+Rendered listing_statuses/_form.html.erb (5.0ms)
+Rendered listing_statuses/new.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 78ms (Views: 71.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:10:54 -0400 2011
+  Processing by ListingStatusesController#create as HTML
+  Parameters: {"commit"=>"Create Listing status", "listing_status"=>{"description"=>"Expired"}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓"}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "listing_statuses" ("updated_at", "description", "created_at") VALUES ('2011-07-12 00:10:54.069874', 'Expired', '2011-07-12 00:10:54.069874')[0m
+Redirected to http://127.0.0.1:3000/listing_statuses/2
+Completed 302 Found in 19ms
+
+
+Started GET "/listing_statuses/2" for 127.0.0.1 at Mon Jul 11 20:10:54 -0400 2011
+  Processing by ListingStatusesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 2 LIMIT 1
+Rendered listing_statuses/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 28ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:10:56 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses"[0m
+Rendered listing_statuses/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 33ms (Views: 24.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses/new" for 127.0.0.1 at Mon Jul 11 20:11:01 -0400 2011
+  Processing by ListingStatusesController#new as HTML
+Rendered listing_statuses/_form.html.erb (6.0ms)
+Rendered listing_statuses/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 37ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:11:10 -0400 2011
+  Processing by ListingStatusesController#create as HTML
+  Parameters: {"commit"=>"Create Listing status", "listing_status"=>{"description"=>"Sold"}, "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓"}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "listing_statuses" ("created_at", "description", "updated_at") VALUES ('2011-07-12 00:11:10.212797', 'Sold', '2011-07-12 00:11:10.212797')
+Redirected to http://127.0.0.1:3000/listing_statuses/3
+Completed 302 Found in 20ms
+
+
+Started GET "/listing_statuses/3" for 127.0.0.1 at Mon Jul 11 20:11:10 -0400 2011
+  Processing by ListingStatusesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 3 LIMIT 1[0m
+Rendered listing_statuses/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 31ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:11:11 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses"
+Rendered listing_statuses/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 34ms (Views: 25.0ms | ActiveRecord: 1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateListingStatuses (20110711141012)
+Migrating to CreateSources (20110712001445)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110712001445')
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("listing_statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("sources")[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (9.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712001445')[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110711141012')
+
+
+Started GET "/listing_statuse" for 127.0.0.1 at Mon Jul 11 20:27:12 -0400 2011
+
+ActionController::RoutingError (No route matches "/listing_statuse"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/li" for 127.0.0.1 at Mon Jul 11 20:27:13 -0400 2011
+
+ActionController::RoutingError (No route matches "/li"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/l" for 127.0.0.1 at Mon Jul 11 20:27:14 -0400 2011
+
+ActionController::RoutingError (No route matches "/l"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sour" for 127.0.0.1 at Mon Jul 11 20:27:15 -0400 2011
+
+ActionController::RoutingError (No route matches "/sour"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:27:15 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:27:50 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (5.0ms)
+Rendered sources/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 38ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:27:58 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Apothicary"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('Apothicary', '2011-07-12 00:27:58.998496', '2011-07-12 00:27:58.998496')[0m
+Redirected to http://127.0.0.1:3000/sources/1
+Completed 302 Found in 22ms
+
+
+Started GET "/sources/1" for 127.0.0.1 at Mon Jul 11 20:27:59 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 31ms (Views: 22.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:28:00 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 30ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:28:01 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 35ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:28:08 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Artifact"}}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("updated_at", "description", "created_at") VALUES ('2011-07-12 00:28:08.195022', 'Artifact', '2011-07-12 00:28:08.195022')
+Redirected to http://127.0.0.1:3000/sources/2
+Completed 302 Found in 20ms
+
+
+Started GET "/sources/2" for 127.0.0.1 at Mon Jul 11 20:28:08 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 2 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 29ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:28:11 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 73ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:28:13 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 36ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:28:15 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>""}}
+Rendered sources/_form.html.erb (8.0ms)
+Rendered sources/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 49ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:29:06 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Artificier"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "created_at", "updated_at") VALUES ('Artificier', '2011-07-12 00:29:06.767372', '2011-07-12 00:29:06.767372')[0m
+Redirected to http://127.0.0.1:3000/sources/3
+Completed 302 Found in 20ms
+
+
+Started GET "/sources/3" for 127.0.0.1 at Mon Jul 11 20:29:06 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 3 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 31ms (Views: 23.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:29:08 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 36ms (Views: 29.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:29:20 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 35ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:29:29 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Butchering"}}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("description", "created_at", "updated_at") VALUES ('Butchering', '2011-07-12 00:29:29.362665', '2011-07-12 00:29:29.362665')
+Redirected to http://127.0.0.1:3000/sources/4
+Completed 302 Found in 67ms
+
+
+Started GET "/sources/4" for 127.0.0.1 at Mon Jul 11 20:29:29 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 31ms (Views: 22.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:29:31 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 35ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:29:44 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 36ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:29:51 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Armorsmith"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("updated_at", "created_at", "description") VALUES ('2011-07-12 00:29:51.785947', '2011-07-12 00:29:51.785947', 'Armorsmith')[0m
+Redirected to http://127.0.0.1:3000/sources/5
+Completed 302 Found in 68ms
+
+
+Started GET "/sources/5" for 127.0.0.1 at Mon Jul 11 20:29:51 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 34ms (Views: 24.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:29:52 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 36ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:30:12 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (7.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 38ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:30:15 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Mining"}}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('Mining', '2011-07-12 00:30:15.944329', '2011-07-12 00:30:15.944329')
+Redirected to http://127.0.0.1:3000/sources/6
+Completed 302 Found in 21ms
+
+
+Started GET "/sources/6" for 127.0.0.1 at Mon Jul 11 20:30:15 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 29ms (Views: 21.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:30:16 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 40ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:30:17 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 35ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:30:23 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Foraging"}}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('Foraging', '2011-07-12 00:30:24.009790', '2011-07-12 00:30:24.009790')[0m
+Redirected to http://127.0.0.1:3000/sources/7
+Completed 302 Found in 51ms
+
+
+Started GET "/sources/7" for 127.0.0.1 at Mon Jul 11 20:30:24 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:30:25 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 48ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:30:30 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (5.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 77ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:30:35 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Outfitting"}}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("updated_at", "description", "created_at") VALUES ('2011-07-12 00:30:35.115426', 'Outfitting', '2011-07-12 00:30:35.115426')
+Redirected to http://127.0.0.1:3000/sources/8
+Completed 302 Found in 19ms
+
+
+Started GET "/sources/8" for 127.0.0.1 at Mon Jul 11 20:30:35 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:30:38 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 47ms (Views: 38.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:30:40 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 36ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:30:44 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Runecrafting"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("created_at", "description", "updated_at") VALUES ('2011-07-12 00:30:44.256949', 'Runecrafting', '2011-07-12 00:30:44.256949')[0m
+Redirected to http://127.0.0.1:3000/sources/9
+Completed 302 Found in 20ms
+
+
+Started GET "/sources/9" for 127.0.0.1 at Mon Jul 11 20:30:44 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 9 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:30:48 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 41ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:30:49 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 39ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:30:53 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Weaponsmith"}}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('Weaponsmith', '2011-07-12 00:30:53.516478', '2011-07-12 00:30:53.516478')
+Redirected to http://127.0.0.1:3000/sources/10
+Completed 302 Found in 21ms
+
+
+Started GET "/sources/10" for 127.0.0.1 at Mon Jul 11 20:30:53 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 10 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:30:59 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 87ms (Views: 35.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:31:00 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 35ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:31:05 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Vendor"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "created_at", "updated_at") VALUES ('Vendor', '2011-07-12 00:31:05.139143', '2011-07-12 00:31:05.139143')[0m
+Redirected to http://127.0.0.1:3000/sources/11
+Completed 302 Found in 21ms
+
+
+Started GET "/sources/11" for 127.0.0.1 at Mon Jul 11 20:31:05 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 11 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 34ms (Views: 25.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:31:06 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 41ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:31:10 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:31:12 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Drop"}}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("updated_at", "created_at", "description") VALUES ('2011-07-12 00:31:12.940589', '2011-07-12 00:31:12.940589', 'Drop')
+Redirected to http://127.0.0.1:3000/sources/12
+Completed 302 Found in 20ms
+
+
+Started GET "/sources/12" for 127.0.0.1 at Mon Jul 11 20:31:12 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 12 LIMIT 1
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 32ms (Views: 22.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:32:02 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 44ms (Views: 35.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/new" for 127.0.0.1 at Mon Jul 11 20:32:04 -0400 2011
+  Processing by SourcesController#new as HTML
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 37ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sources" for 127.0.0.1 at Mon Jul 11 20:32:06 -0400 2011
+  Processing by SourcesController#create as HTML
+  Parameters: {"commit"=>"Create Source", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "source"=>{"description"=>"Drop"}}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'Drop') LIMIT 1
+Rendered sources/_form.html.erb (6.0ms)
+Rendered sources/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 64ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:32:10 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources"[0m
+Rendered sources/index.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 46ms (Views: 38.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:42:35 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources"
+Rendered sources/index.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 49ms (Views: 39.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/l" for 127.0.0.1 at Mon Jul 11 20:42:48 -0400 2011
+
+ActionController::RoutingError (No route matches "/l"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (53.0ms)
+
+
+Started GET "/listing_statuses/" for 127.0.0.1 at Mon Jul 11 20:42:50 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT description FROM "listing_statuses" ORDER BY description[0m
+Rendered listing_statuses/index.html.erb within layouts/application (70.0ms)
+Completed 500 Internal Server Error in 97ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :id=>#<ListingStatus description: "Expired">, :controller=>"listing_statuses"}):
+    11: <% @listing_statuses.each do |listing_status| %>
+    12:   <tr>
+    13:     <td><%= listing_status.description %></td>
+    14:     <td><%= link_to 'Show', listing_status %></td>
+    15:     <td><%= link_to 'Edit', edit_listing_status_path(listing_status) %></td>
+    16:     <td><%= link_to 'Destroy', listing_status, :confirm => 'Are you sure?', :method => :delete %></td>
+    17:   </tr>
+  app/views/listing_statuses/index.html.erb:14:in `_app_views_listing_statuses_index_html_erb__679206672_130065036_0'
+  app/views/listing_statuses/index.html.erb:11:in `each'
+  app/views/listing_statuses/index.html.erb:11:in `_app_views_listing_statuses_index_html_erb__679206672_130065036_0'
+  app/controllers/listing_statuses_controller.rb:7:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (64.0ms)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:42:59 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT description FROM "listing_statuses" ORDER BY description
+Rendered listing_statuses/index.html.erb within layouts/application (10.0ms)
+Completed 500 Internal Server Error in 41ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :id=>#<ListingStatus description: "Expired">, :controller=>"listing_statuses"}):
+    11: <% @listing_statuses.each do |listing_status| %>
+    12:   <tr>
+    13:     <td><%= listing_status.description %></td>
+    14:     <td><%= link_to 'Show', listing_status %></td>
+    15:     <td><%= link_to 'Edit', edit_listing_status_path(listing_status) %></td>
+    16:     <td><%= link_to 'Destroy', listing_status, :confirm => 'Are you sure?', :method => :delete %></td>
+    17:   </tr>
+  app/views/listing_statuses/index.html.erb:14:in `_app_views_listing_statuses_index_html_erb__679206672_129517080_0'
+  app/views/listing_statuses/index.html.erb:11:in `each'
+  app/views/listing_statuses/index.html.erb:11:in `_app_views_listing_statuses_index_html_erb__679206672_129517080_0'
+  app/controllers/listing_statuses_controller.rb:7:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.0ms)
+
+
+Started GET "/listing_statuses" for 127.0.0.1 at Mon Jul 11 20:43:48 -0400 2011
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered listing_statuses/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 45ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/s" for 127.0.0.1 at Mon Jul 11 20:44:29 -0400 2011
+
+ActionController::RoutingError (No route matches "/s"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:44:31 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources" ORDER BY description
+Rendered sources/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 45ms (Views: 36.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:45:09 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources" ORDER BY description[0m
+Rendered sources/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 45ms (Views: 37.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources/1" for 127.0.0.1 at Mon Jul 11 20:46:01 -0400 2011
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered sources/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 33ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sources" for 127.0.0.1 at Mon Jul 11 20:50:55 -0400 2011
+  Processing by SourcesController#index as HTML
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources" ORDER BY description
+Rendered sources/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 44ms (Views: 35.0ms | ActiveRecord: 1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateListingStatuses (20110711141012)
+Migrating to CreateSources (20110712001445)
+Migrating to CreateCompetitorStyles (20110712005534)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "competitor_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110712005534')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("competitor_styles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("listing_statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sources")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE "competitor_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712005534')[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110711141012')
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712001445')[0m
+
+
+Started GET "/c" for 127.0.0.1 at Mon Jul 11 20:57:46 -0400 2011
+
+ActionController::RoutingError (No route matches "/c"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/com" for 127.0.0.1 at Mon Jul 11 20:57:47 -0400 2011
+
+ActionController::RoutingError (No route matches "/com"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/compe" for 127.0.0.1 at Mon Jul 11 20:57:48 -0400 2011
+
+ActionController::RoutingError (No route matches "/compe"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/compet" for 127.0.0.1 at Mon Jul 11 20:57:48 -0400 2011
+
+ActionController::RoutingError (No route matches "/compet"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competi" for 127.0.0.1 at Mon Jul 11 20:57:49 -0400 2011
+
+ActionController::RoutingError (No route matches "/competi"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competito" for 127.0.0.1 at Mon Jul 11 20:57:50 -0400 2011
+
+ActionController::RoutingError (No route matches "/competito"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor" for 127.0.0.1 at Mon Jul 11 20:57:50 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitor"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_" for 127.0.0.1 at Mon Jul 11 20:57:51 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitor_"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_s" for 127.0.0.1 at Mon Jul 11 20:57:51 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitor_s"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_st" for 127.0.0.1 at Mon Jul 11 20:57:51 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitor_st"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/competitor_sty" for 127.0.0.1 at Mon Jul 11 20:57:52 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitor_sty"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Mon Jul 11 20:57:52 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 27ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitor_styles/new" for 127.0.0.1 at Mon Jul 11 22:04:57 -0400 2011
+  Processing by CompetitorStylesController#new as HTML
+Rendered competitor_styles/_form.html.erb (8.0ms)
+Rendered competitor_styles/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 44ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:04 -0400 2011
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"commit"=>"Create Competitor style", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "competitor_style"=>{"description"=>"Flooder"}}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'Flooder') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitor_styles" ("description", "created_at", "updated_at") VALUES ('Flooder', '2011-07-12 02:05:04.409691', '2011-07-12 02:05:04.409691')
+Redirected to http://127.0.0.1:3000/competitor_styles/1
+Completed 302 Found in 27ms
+
+
+Started GET "/competitor_styles/1" for 127.0.0.1 at Mon Jul 11 22:05:04 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+Rendered competitor_styles/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 38ms (Views: 26.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:06 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 37ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitor_styles/new" for 127.0.0.1 at Mon Jul 11 22:05:08 -0400 2011
+  Processing by CompetitorStylesController#new as HTML
+Rendered competitor_styles/_form.html.erb (8.0ms)
+Rendered competitor_styles/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 45ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:16 -0400 2011
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"commit"=>"Create Competitor style", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "competitor_style"=>{"description"=>"Deep Undercutter"}}
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'Deep Undercutter') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "competitor_styles" ("description", "created_at", "updated_at") VALUES ('Deep Undercutter', '2011-07-12 02:05:16.432378', '2011-07-12 02:05:16.432378')
+Redirected to http://127.0.0.1:3000/competitor_styles/2
+Completed 302 Found in 29ms
+
+
+Started GET "/competitor_styles/2" for 127.0.0.1 at Mon Jul 11 22:05:16 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 2 LIMIT 1
+Rendered competitor_styles/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 38ms (Views: 25.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:18 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 41ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitor_styles/new" for 127.0.0.1 at Mon Jul 11 22:05:20 -0400 2011
+  Processing by CompetitorStylesController#new as HTML
+Rendered competitor_styles/_form.html.erb (8.0ms)
+Rendered competitor_styles/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 45ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:29 -0400 2011
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"commit"=>"Create Competitor style", "authenticity_token"=>"a1anpeH5UsMKdcZ26LFyFWQqu19dB8GCqWYafXjlFEs=", "utf8"=>"✓", "competitor_style"=>{"description"=>"1 Silver Undercutter"}}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = '1 Silver Undercutter') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('1 Silver Undercutter', '2011-07-12 02:05:29.271113', '2011-07-12 02:05:29.271113')
+Redirected to http://127.0.0.1:3000/competitor_styles/3
+Completed 302 Found in 71ms
+
+
+Started GET "/competitor_styles/3" for 127.0.0.1 at Mon Jul 11 22:05:29 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1
+Rendered competitor_styles/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 33ms (Views: 22.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Mon Jul 11 22:05:31 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 41ms (Views: 31.0ms | ActiveRecord: 1.0ms)

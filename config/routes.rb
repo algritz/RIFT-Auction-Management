@@ -1,4 +1,8 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :competitor_styles
+
+  resources :sources
+
   resources :listing_statuses
 
   # The priority is based upon order of creation:
