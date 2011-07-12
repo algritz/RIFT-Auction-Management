@@ -1,0 +1,2 @@
+module CompetitorStylesHelper
+end
