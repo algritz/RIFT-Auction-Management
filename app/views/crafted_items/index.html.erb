@@ -1,27 +1,33 @@
 <h1>Listing crafted_items</h1>
 
 <table>
-  <tr>
-    <th>Crafted item generated</th>
-    <th>Crafted item stacksize</th>
-    <th>Component item</th>
-    <th>Component item quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Crafted item generated</th>
+		<th>Crafted item stacksize</th>
+		<th>Component item</th>
+		<th>Component item quantity</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-<% @crafted_items.each do |crafted_item| %>
-  <tr>
-    <td><%= getItemDescription(crafted_item.crafted_item_generated_id) %></td>
-    <td><%= crafted_item.crafted_item_stacksize %></td>
-    <td><%= getItemDescription(crafted_item.component_item_id) %></td>
-    <td><%= crafted_item.component_item_quantity %></td>
-    <td><%= link_to 'Show', crafted_item %></td>
-    <td><%= link_to 'Edit', edit_crafted_item_path(crafted_item) %></td>
-    <td><%= link_to 'Destroy', crafted_item, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% @crafted_items.each do |crafted_item|
+		isNewRow(crafted_item.crafted_item_generated_id)	
+	%>
+	<tr bgcolor="<%= @lastRowColor %>">
+		<td><%=
+ 		if @isNewRow then
+        	getItemDescription(crafted_item.crafted_item_generated_id)
+      	end
+		%></td>
+		<td><%= if @isNewRow then crafted_item.crafted_item_stacksize end %></td>
+		<td><%= getItemDescription(crafted_item.component_item_id) %></td>
+		<td><%= crafted_item.component_item_quantity %></td>
+		<td><%= link_to 'Show', crafted_item %></td>
+		<td><%= link_to 'Edit', edit_crafted_item_path(crafted_item) %></td>
+		<td><%= link_to 'Destroy', crafted_item, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

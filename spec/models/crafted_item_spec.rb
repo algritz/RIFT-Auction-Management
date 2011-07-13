@@ -5,7 +5,7 @@ describe CraftedItem do
   before(:each) do
     @attr = { :crafted_item_generated_id => 1,
       :crafted_item_stacksize => 1,
-      :component_item_id => 1,
+      :component_item_id => 2,
       :component_item_quantity => 1}
   end
 
@@ -24,6 +24,13 @@ describe CraftedItem do
     invalid_Item = CraftedItem.new(@attr)
     invalid_Item.should_not be_valid
   end
+  
+  it "should not create a new Item if it is self-contained" do
+    invalid_Item = CraftedItem.new(@attr)
+    invalid_Item.component_item_id = 1
+    invalid_Item.should_not be_valid
+  end
+  
 end
 
 # == Schema Information

@@ -19,6 +19,10 @@
   <b>Source:</b>
   <%= getSourceDescription(@item.source_id) %>
 </p>
+<p>
+  <b>Is crafted:</b>
+  <%= @item.is_crafted %>
+</p>
 
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

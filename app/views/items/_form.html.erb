@@ -33,6 +33,11 @@
 	<br />
 	<%= f.select(:source_id, options_from_collection_for_select(@source, :id, :description, @item.source_id))%>
 </div>
+<div class="field">
+	<%= f.label :is_crafted %>
+	<br />
+	<%= f.check_box :is_crafted %>
+</div>
 <div class="actions">
 	<%= f.submit %>
 </div>

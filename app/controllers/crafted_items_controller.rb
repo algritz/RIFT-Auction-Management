@@ -25,6 +25,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items/new.xml
   def new
     @crafted_item = CraftedItem.new
+    @craft_item_ids = Item.where("isCrafted='t'", :select => 'id, description', :order => 'description')
     @item_ids = Item.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # new.html.erb

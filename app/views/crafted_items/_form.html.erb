@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :crafted_item_generated_id %><br />
-    <%= f.select(:crafted_item_generated_id, options_from_collection_for_select(@item_ids, :id, :description, @crafted_item.crafted_item_generated_id))%>
+    <%= f.select(:crafted_item_generated_id, options_from_collection_for_select(@craft_item_ids, :id, :description, @crafted_item.crafted_item_generated_id))%>
   </div>
   <div class="field">
     <%= f.label :crafted_item_stacksize %><br />

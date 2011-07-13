@@ -1,4 +1,6 @@
 class CraftedItem < ActiveRecord::Base
+  include ActiveModel::Validations
+
   attr_accessible :crafted_item_generated_id, :crafted_item_stacksize, :component_item_id, :component_item_quantity
   validates :crafted_item_generated_id, :presence => true
   validates :crafted_item_stacksize, :presence => true
@@ -6,7 +8,17 @@ class CraftedItem < ActiveRecord::Base
   validates :component_item_quantity, :presence => true
   validates_numericality_of :crafted_item_generated_id, :crafted_item_stacksize, :component_item_id, :component_item_quantity
   validates_uniqueness_of :component_item_id, :scope => :crafted_item_generated_id, :message => 'is already used for that pattern.'
+
+  #validates_uniqueness_of :crafted_item_generated_id, :scope => [:crafted_item_generated_id], :message => 'Item cannot be self-contained'
+
   has_many :items
+
+  validates_each :component_item_id do |model, attr, value|
+    if value == model.crafted_item_generated_id
+      model.errors.add(attr, "Item cannot be a self-composed.")
+    end
+  end
+
 end
 
 # == Schema Information

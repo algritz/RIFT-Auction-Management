@@ -14737,3 +14737,1455 @@ Completed 302 Found in 2ms
   [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
   [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_generated_id", "component_item_id", "component_item_quantity", "created_at", "crafted_item_stacksize", "updated_at") VALUES (1, 1, 1, '2011-07-12 20:27:16.083795', 1, '2011-07-12 20:27:16.083795')[0m
   [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mCraftedItem Load (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items"[0m
+Completed 500 Internal Server Error in 125ms
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 63ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 24ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1004
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1009
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#index as HTML
+Completed 500 Internal Server Error in 93ms
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 61ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 26ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1004
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1009
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Completed 500 Internal Server Error in 93ms
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 58ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 22ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1004
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1009
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed 500 Internal Server Error in 172ms
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1004
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1009
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed 500 Internal Server Error in 161ms
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1004
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 3.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1009
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 155ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 2.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 17ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_quantity", "created_at", "crafted_item_stacksize", "updated_at", "component_item_id", "crafted_item_generated_id") VALUES (1, '2011-07-13 02:55:49.074772', 1, '2011-07-13 02:55:49.074772', 1, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_quantity", "created_at", "crafted_item_stacksize", "updated_at", "component_item_id", "crafted_item_generated_id") VALUES (1, '2011-07-13 02:55:49.105775', 1, '2011-07-13 02:55:49.105775', 1, 1)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("created_at", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_id", "component_item_quantity", "updated_at") VALUES ('2011-07-13 02:59:57.199582', 1, 1, 2, 1, '2011-07-13 02:59:57.199582')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("created_at", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_id", "component_item_quantity", "updated_at") VALUES ('2011-07-13 02:59:57.229585', 1, 1, 2, 1, '2011-07-13 02:59:57.229585')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "component_item_quantity", "crafted_item_stacksize", "crafted_item_generated_id", "updated_at", "created_at") VALUES (2, 1, 1, 1, '2011-07-13 03:04:51.087968', '2011-07-13 03:04:51.087968')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "component_item_quantity", "crafted_item_stacksize", "crafted_item_generated_id", "updated_at", "created_at") VALUES (2, 1, 1, 1, '2011-07-13 03:04:51.126971', '2011-07-13 03:04:51.126971')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "crafted_item_generated_id", "created_at", "component_item_id", "updated_at", "component_item_quantity") VALUES (1, 1, '2011-07-13 03:06:50.542912', 2, '2011-07-13 03:06:50.542912', 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "crafted_item_generated_id", "created_at", "component_item_id", "updated_at", "component_item_quantity") VALUES (1, 1, '2011-07-13 03:06:50.571915', 2, '2011-07-13 03:06:50.571915', 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("created_at", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_quantity", "component_item_id", "updated_at") VALUES ('2011-07-13 03:09:34.079509', 1, 1, 1, 2, '2011-07-13 03:09:34.079509')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("created_at", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_quantity", "component_item_id", "updated_at") VALUES ('2011-07-13 03:09:34.105506', 1, 1, 1, 2, '2011-07-13 03:09:34.105506')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (4.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "created_at", "component_item_quantity", "updated_at", "crafted_item_generated_id", "crafted_item_stacksize") VALUES (2, '2011-07-13 12:11:37.573194', 1, '2011-07-13 12:11:37.573194', 1, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "created_at", "component_item_quantity", "updated_at", "crafted_item_generated_id", "crafted_item_stacksize") VALUES (2, '2011-07-13 12:11:37.616199', 1, '2011-07-13 12:11:37.616199', 1, 1)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_generated_id", "created_at", "component_item_quantity", "crafted_item_stacksize", "updated_at", "component_item_id") VALUES (1, '2011-07-13 12:11:52.189656', 1, 1, '2011-07-13 12:11:52.189656', 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_generated_id", "created_at", "component_item_quantity", "crafted_item_stacksize", "updated_at", "component_item_id") VALUES (1, '2011-07-13 12:11:52.214658', 1, 1, '2011-07-13 12:11:52.214658', 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "component_item_quantity", "crafted_item_generated_id", "updated_at", "crafted_item_stacksize", "created_at") VALUES (2, 1, 1, '2011-07-13 12:14:31.755611', 1, '2011-07-13 12:14:31.755611')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "component_item_quantity", "crafted_item_generated_id", "updated_at", "crafted_item_stacksize", "created_at") VALUES (2, 1, 1, '2011-07-13 12:14:31.780613', 1, '2011-07-13 12:14:31.780613')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id", "created_at", "updated_at") VALUES (1, 1, 2, 1, '2011-07-13 12:15:28.995334', '2011-07-13 12:15:28.995334')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id", "created_at", "updated_at") VALUES (1, 1, 2, 1, '2011-07-13 12:15:29.020337', '2011-07-13 12:15:29.020337')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_quantity", "created_at", "crafted_item_generated_id", "component_item_id", "updated_at") VALUES (1, 1, '2011-07-13 12:39:51.669573', 1, 2, '2011-07-13 12:39:51.669573')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_quantity", "created_at", "crafted_item_generated_id", "component_item_id", "updated_at") VALUES (1, 1, '2011-07-13 12:39:51.705577', 1, 2, '2011-07-13 12:39:51.705577')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mCraftedItem Load (1.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items"[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."crafted_item_generated_id" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "crafted_item_generated_id", "updated_at", "created_at", "crafted_item_stacksize", "component_item_quantity") VALUES (2, 1, '2011-07-13 13:01:38.488242', '2011-07-13 13:01:38.488242', 1, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "crafted_item_generated_id", "updated_at", "created_at", "crafted_item_stacksize", "component_item_quantity") VALUES (2, 1, '2011-07-13 13:01:38.515244', '2011-07-13 13:01:38.515244', 1, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."crafted_item_generated_id" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_id", "crafted_item_generated_id", "component_item_quantity", "updated_at", "created_at") VALUES (1, 2, 1, 1, '2011-07-13 13:02:55.733966', '2011-07-13 13:02:55.733966')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_id", "crafted_item_generated_id", "component_item_quantity", "updated_at", "created_at") VALUES (1, 2, 1, 1, '2011-07-13 13:02:55.759968', '2011-07-13 13:02:55.759968')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."crafted_item_generated_id" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_generated_id", "crafted_item_stacksize", "component_item_id", "component_item_quantity", "updated_at", "created_at") VALUES (1, 1, 2, 1, '2011-07-13 13:03:10.968489', '2011-07-13 13:03:10.968489')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_generated_id", "crafted_item_stacksize", "component_item_id", "component_item_quantity", "updated_at", "created_at") VALUES (1, 1, 2, 1, '2011-07-13 13:03:10.994491', '2011-07-13 13:03:10.994491')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."crafted_item_generated_id" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_generated_id", "component_item_quantity", "updated_at", "created_at", "crafted_item_stacksize", "component_item_id") VALUES (1, 1, '2011-07-13 13:03:33.409733', '2011-07-13 13:03:33.409733', 1, 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_generated_id", "component_item_quantity", "updated_at", "created_at", "crafted_item_stacksize", "component_item_id") VALUES (1, 1, '2011-07-13 13:03:33.436735', '2011-07-13 13:03:33.436735', 1, 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."crafted_item_generated_id" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "crafted_items" ("updated_at", "created_at", "component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 13:05:37.828173', '2011-07-13 13:05:37.828173', 1, 1, 2, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) AND ("crafted_items".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("updated_at", "created_at", "component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 13:05:37.856176', '2011-07-13 13:05:37.856176', 1, 1, 2, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."crafted_item_generated_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "created_at", "crafted_item_generated_id", "crafted_item_stacksize", "updated_at", "component_item_quantity") VALUES (2, '2011-07-13 13:08:01.952584', 1, 1, '2011-07-13 13:08:01.952584', 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "created_at", "crafted_item_generated_id", "crafted_item_stacksize", "updated_at", "component_item_quantity") VALUES (2, '2011-07-13 13:08:01.977587', 1, 1, '2011-07-13 13:08:01.977587', 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_id", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_quantity", "updated_at", "created_at") VALUES (2, 1, 1, 1, '2011-07-13 13:08:25.118901', '2011-07-13 13:08:25.118901')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_id", "crafted_item_generated_id", "crafted_item_stacksize", "component_item_quantity", "updated_at", "created_at") VALUES (2, 1, 1, 1, '2011-07-13 13:08:25.146904', '2011-07-13 13:08:25.146904')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("updated_at", "created_at", "component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 13:55:45.767937', '2011-07-13 13:55:45.767937', 1, 1, 2, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("updated_at", "created_at", "component_item_quantity", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 13:55:45.794940', '2011-07-13 13:55:45.794940', 1, 1, 2, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_quantity", "crafted_item_generated_id", "created_at", "component_item_id", "updated_at") VALUES (1, 1, 1, '2011-07-13 13:57:47.371096', 2, '2011-07-13 13:57:47.371096')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (7.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_quantity", "crafted_item_generated_id", "created_at", "component_item_id", "updated_at") VALUES (1, 1, 1, '2011-07-13 13:57:47.439103', 2, '2011-07-13 13:57:47.439103')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("component_item_quantity", "crafted_item_stacksize", "updated_at", "crafted_item_generated_id", "component_item_id", "created_at") VALUES (1, 1, '2011-07-13 14:06:27.955150', 3, 2, '2011-07-13 14:06:27.955150')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "crafted_items" ("component_item_quantity", "crafted_item_stacksize", "updated_at", "crafted_item_generated_id", "component_item_id", "created_at") VALUES (1, 1, '2011-07-13 14:06:27.989153', 3, 2, '2011-07-13 14:06:27.989153')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 3 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("created_at", "crafted_item_stacksize", "crafted_item_generated_id", "component_item_id", "component_item_quantity", "updated_at") VALUES ('2011-07-13 14:07:07.953149', 1, 1, 2, 1, '2011-07-13 14:07:07.953149')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("created_at", "crafted_item_stacksize", "crafted_item_generated_id", "component_item_id", "component_item_quantity", "updated_at") VALUES ('2011-07-13 14:07:07.988152', 1, 1, 2, 1, '2011-07-13 14:07:07.988152')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("updated_at", "component_item_quantity", "created_at", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 14:07:41.663520', 1, '2011-07-13 14:07:41.663520', 1, 2, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("updated_at", "component_item_quantity", "created_at", "crafted_item_stacksize", "component_item_id", "crafted_item_generated_id") VALUES ('2011-07-13 14:07:41.704524', 1, '2011-07-13 14:07:41.704524', 1, 2, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (6.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_id", "component_item_quantity", "created_at", "crafted_item_generated_id", "updated_at") VALUES (1, 2, 1, '2011-07-13 14:07:51.137467', 1, '2011-07-13 14:07:51.137467')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "component_item_id", "component_item_quantity", "created_at", "crafted_item_generated_id", "updated_at") VALUES (1, 2, 1, '2011-07-13 14:07:51.169470', 1, '2011-07-13 14:07:51.169470')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 500 Internal Server Error in 173ms
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 160ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 10ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 18ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 500 Internal Server Error in 164ms
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 5ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 168ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 161ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 5ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 0ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 162ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 157ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 2.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 195ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+Completed 200 OK in 161ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 157ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms

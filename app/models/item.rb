@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :vendor_selling_price, :vendor_buying_price, :source_id
+  attr_accessible :description, :vendor_selling_price, :vendor_buying_price, :source_id, :isCrafted
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
 end
 
