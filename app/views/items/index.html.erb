@@ -14,8 +14,8 @@
 <% @items.each do |item| %>
   <tr>
     <td><%= item.description %></td>
-    <td><%= item.vendor_selling_price %></td>
-    <td><%= item.vendor_buying_price %></td>
+    <td><%= formatPrice(item.vendor_selling_price) %></td>
+    <td><%= formatPrice(item.vendor_buying_price) %></td>
     <td><%= getSourceDescription(item.source_id) %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>

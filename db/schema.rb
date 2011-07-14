@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110714022422) do
+ActiveRecord::Schema.define(:version => 20110714152346) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string   "description"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110714022422) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_crafted"
+    t.integer  "undercut_price"
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
@@ -57,11 +58,11 @@ ActiveRecord::Schema.define(:version => 20110714022422) do
     t.integer  "item_id"
     t.integer  "stacksize"
     t.integer  "price"
-    t.integer  "undercut_price"
     t.integer  "deposit_cost"
     t.integer  "listing_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_undercut_price"
   end
 
   create_table "sources", :force => true do |t|

@@ -2,7 +2,7 @@
 
 <p>
   <b>Item:</b>
-  <%= @sales_listing.item_id %>
+  <%= getItemDescription(@sales_listing.item_id) %>
 </p>
 
 <p>
@@ -12,12 +12,12 @@
 
 <p>
   <b>Price:</b>
-  <%= @sales_listing.price %>
+    <%= formatPrice(@sales_listing.price) %>
 </p>
 
 <p>
-  <b>Undercut price:</b>
-  <%= @sales_listing.undercut_price %>
+  <b>Is Undercut price:</b>
+  <%= @sales_listing.is_undercut_price %>
 </p>
 
 <p>
@@ -27,7 +27,7 @@
 
 <p>
   <b>Listing status:</b>
-  <%= @sales_listing.listing_status_id %>
+  <%= getListingStatusDescription(@sales_listing.listing_status_id) %>
 </p>
 
 

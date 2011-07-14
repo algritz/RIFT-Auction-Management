@@ -3,6 +3,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings.xml
   def index
     @sales_listings = SalesListing.all
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,8 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1.xml
   def show
     @sales_listing = SalesListing.find(params[:id])
-
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @sales_listing }
@@ -25,7 +27,8 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/new.xml
   def new
     @sales_listing = SalesListing.new
-
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
@@ -35,13 +38,16 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1/edit
   def edit
     @sales_listing = SalesListing.find(params[:id])
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
   end
 
   # POST /sales_listings
   # POST /sales_listings.xml
   def create
     @sales_listing = SalesListing.new(params[:sales_listing])
-
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    
     respond_to do |format|
       if @sales_listing.save
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully created.') }
@@ -57,7 +63,8 @@ class SalesListingsController < ApplicationController
   # PUT /sales_listings/1.xml
   def update
     @sales_listing = SalesListing.find(params[:id])
-
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
@@ -80,4 +87,5 @@ class SalesListingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

@@ -33080,3 +33080,914 @@ Started GET "/sales_listings" for 127.0.0.1 at Wed Jul 13 22:45:12 -0400 2011
   Processing by SalesListingsController#index as HTML
   [1m[35mSalesListing Load (1.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings"
 Completed 200 OK in 27ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 155ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 0ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 123ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 149ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 140ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 27ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 163ms (Views: 19.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 146ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 131ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("deposit_cost", "created_at", "stacksize", "updated_at", "undercut_price", "item_id", "listing_status_id", "price") VALUES (1, '2011-07-14 15:22:46.947219', 1, '2011-07-14 15:22:46.947219', 1, 1, 1, 1)
+WARNING: Can't mass-assign protected attributes: undercut_price
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("item_id", "deposit_cost", "listing_status_id", "created_at", "price", "stacksize", "updated_at", "undercut_price") VALUES (1, 1, 1, '2011-07-14 15:31:07.915311', 1, 1, '2011-07-14 15:31:07.915311', NULL)
+WARNING: Can't mass-assign protected attributes: undercut_price
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("undercut_price", "created_at", "deposit_cost", "listing_status_id", "price", "updated_at", "stacksize", "item_id") VALUES (NULL, '2011-07-14 17:26:00.687543', 1, 1, 1, '2011-07-14 17:26:00.687543', 1, 1)
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 150ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"competitor"=>{"these"=>"params"}}
+Redirected to http://test.host/competitors/1005
+Completed 302 Found in 4ms
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"competitor"=>{}}
+Redirected to http://test.host/competitors/1006
+Completed 302 Found in 3ms
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"competitor"=>{"these"=>"params"}}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"competitor"=>{}}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"competitor"=>{"these"=>"params"}, "id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/competitors/1010
+Completed 302 Found in 4ms
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/competitors/1011
+Completed 302 Found in 3ms
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/competitors
+Completed 302 Found in 1ms
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/competitors
+Completed 302 Found in 2ms
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 1.0ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:23.636836', '2011-07-14 17:28:23.636836')
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>#<CompetitorStyle id: 1, description: "sample style", created_at: "2011-07-14 17:28:23", updated_at: "2011-07-14 17:28:23">}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 2.0ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "competitor_styles"
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"competitor_style"=>{"description"=>"sample style"}}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:23.692842', '2011-07-14 17:28:23.692842')
+Redirected to http://test.host/competitor_styles/1
+Completed 302 Found in 6ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "competitor_styles"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:23.711844', '2011-07-14 17:28:23.711844')[0m
+  Processing by CompetitorStylesController#update as HTML
+  Parameters: {"id"=>#<CompetitorStyle id: 1, description: "sample CompetitorStyle 2!", created_at: "2011-07-14 17:28:23", updated_at: "2011-07-14 17:28:23">}
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') AND ("competitor_styles".id <> 1) LIMIT 1[0m
+Redirected to http://test.host/competitor_styles/1
+Completed 302 Found in 3ms
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:23.735846', '2011-07-14 17:28:23.735846')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "competitor_styles"
+  Processing by CompetitorStylesController#destroy as HTML
+  Parameters: {"id"=>#<CompetitorStyle id: 1, description: "sample style", created_at: "2011-07-14 17:28:23", updated_at: "2011-07-14 17:28:23">}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "competitor_styles" WHERE "competitor_styles"."id" = 1
+Redirected to http://test.host/competitor_styles
+Completed 302 Found in 3ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "competitor_styles"[0m
+  Processing by CraftedItemsController#index as HTML
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 3.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1020
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1021
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1025
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1026
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms
+  Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+WARNING: Can't mass-assign protected attributes: id
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "items" ("source_id", "description", "is_undercut_price", "vendor_buying_price", "vendor_selling_price", "updated_at", "is_crafted", "created_at") VALUES (1, 'sample Item', NULL, 1, 1, '2011-07-14 17:28:24.266899', NULL, '2011-07-14 17:28:24.266899')
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24", is_crafted: nil, is_undercut_price: nil>}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 2.0ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "items"
+  Processing by ItemsController#create as HTML
+  Parameters: {"items"=>""}
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources" ORDER BY description[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" IS NULL) LIMIT 1
+Completed 200 OK in 45ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "items" ("source_id", "description", "is_undercut_price", "vendor_buying_price", "vendor_selling_price", "updated_at", "is_crafted", "created_at") VALUES (1, 'sample Item', NULL, 1, 1, '2011-07-14 17:28:24.389912', NULL, '2011-07-14 17:28:24.389912')[0m
+  Processing by ItemsController#update as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item 2!", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24", is_crafted: nil, is_undercut_price: nil>}
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources" ORDER BY description[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') AND ("items".id <> 1) LIMIT 1
+Redirected to http://test.host/items/1
+Completed 302 Found in 5ms
+WARNING: Can't mass-assign protected attributes: id
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "items" ("source_id", "description", "is_undercut_price", "vendor_buying_price", "vendor_selling_price", "updated_at", "is_crafted", "created_at") VALUES (1, 'sample Item', NULL, 1, 1, '2011-07-14 17:28:24.417915', NULL, '2011-07-14 17:28:24.417915')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>#<Item id: 1, description: "sample Item", vendor_selling_price: 1, vendor_buying_price: 1, source_id: 1, created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24", is_crafted: nil, is_undercut_price: nil>}
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = 1[0m
+Redirected to http://test.host/items
+Completed 302 Found in 2ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "items"
+  Processing by ListingStatusesController#index as HTML
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 24.0ms | ActiveRecord: 6.0ms)
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:24.489922', '2011-07-14 17:28:24.489922')[0m
+  Processing by ListingStatusesController#show as HTML
+  Parameters: {"id"=>#<ListingStatus id: 1, description: "sample status", created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24">}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 3.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "listing_statuses"[0m
+  Processing by ListingStatusesController#create as HTML
+  Parameters: {"listing_status"=>{"description"=>"sample status"}}
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:24.537927', '2011-07-14 17:28:24.537927')[0m
+Redirected to http://test.host/listing_statuses/1
+Completed 302 Found in 6ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "listing_statuses"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:24.560929', '2011-07-14 17:28:24.560929')
+  Processing by ListingStatusesController#update as HTML
+  Parameters: {"id"=>#<ListingStatus id: 1, description: "sample ListingStatus 2!", created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24">}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') AND ("listing_statuses".id <> 1) LIMIT 1
+Redirected to http://test.host/listing_statuses/1
+Completed 302 Found in 4ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:24.587932', '2011-07-14 17:28:24.587932')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "listing_statuses"[0m
+  Processing by ListingStatusesController#destroy as HTML
+  Parameters: {"id"=>#<ListingStatus id: 1, description: "sample status", created_at: "2011-07-14 17:28:24", updated_at: "2011-07-14 17:28:24">}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "listing_statuses" WHERE "listing_statuses"."id" = 1[0m
+Redirected to http://test.host/listing_statuses
+Completed 302 Found in 2ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "listing_statuses"
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 7.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 27ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1036
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1037
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1041
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1042
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SourcesController#index as HTML
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.089982', '2011-07-14 17:28:25.089982')[0m
+  Processing by SourcesController#show as HTML
+  Parameters: {"id"=>#<Source id: 1, description: "sample source", created_at: "2011-07-14 17:28:25", updated_at: "2011-07-14 17:28:25">}
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 2.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sources"[0m
+  Processing by SourcesController#create as HTML
+  Parameters: {"source"=>{"description"=>"sample source"}}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.133986', '2011-07-14 17:28:25.133986')[0m
+Redirected to http://test.host/sources/1
+Completed 302 Found in 6ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "sources"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.151988', '2011-07-14 17:28:25.151988')
+  Processing by SourcesController#update as HTML
+  Parameters: {"id"=>#<Source id: 1, description: "sample source 2!", created_at: "2011-07-14 17:28:25", updated_at: "2011-07-14 17:28:25">}
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') AND ("sources".id <> 1) LIMIT 1
+Redirected to http://test.host/sources/1
+Completed 302 Found in 4ms
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1[0m
+  [1m[35mAREL (3.0ms)[0m  INSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.175990', '2011-07-14 17:28:25.175990')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sources"[0m
+  Processing by SourcesController#destroy as HTML
+  Parameters: {"id"=>#<Source id: 1, description: "sample source", created_at: "2011-07-14 17:28:25", updated_at: "2011-07-14 17:28:25">}
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "sources" WHERE "sources"."id" = 1[0m
+Redirected to http://test.host/sources
+Completed 302 Found in 3ms
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "sources"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'sample competitor') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("competitor_style_id", "name", "created_at", "source_id", "updated_at") VALUES (NULL, 'sample competitor', '2011-07-14 17:28:25.228996', NULL, '2011-07-14 17:28:25.228996')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'sample competitor') AND ("competitors".id <> 1) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'a') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'sample competitor') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitors" ("competitor_style_id", "name", "created_at", "source_id", "updated_at") VALUES (NULL, 'sample competitor', '2011-07-14 17:28:25.270000', NULL, '2011-07-14 17:28:25.270000')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'sample competitor') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" IS NULL AND ("competitors"."name" = 'sample competitor') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("competitor_style_id", "name", "created_at", "source_id", "updated_at") VALUES (NULL, 'sample competitor', '2011-07-14 17:28:25.287001', NULL, '2011-07-14 17:28:25.287001')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 5 AND ("competitors"."name" = 'sample competitor') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:25.320005', '2011-07-14 17:28:25.320005')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') AND ("competitor_styles".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'a') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitor_styles" ("description", "updated_at", "created_at") VALUES ('sample style', '2011-07-14 17:28:25.415014', '2011-07-14 17:28:25.415014')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'sample style') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" IS NULL AND ("crafted_items"."component_item_id" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "crafted_items" ("crafted_item_stacksize", "created_at", "crafted_item_generated_id", "updated_at", "component_item_id", "component_item_quantity") VALUES (1, '2011-07-14 17:28:25.461019', 1, '2011-07-14 17:28:25.461019', 2, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) AND ("crafted_items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "crafted_items" ("crafted_item_stacksize", "created_at", "crafted_item_generated_id", "updated_at", "component_item_id", "component_item_quantity") VALUES (1, '2011-07-14 17:28:25.478021', 1, '2011-07-14 17:28:25.478021', 2, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 2) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE "crafted_items"."crafted_item_generated_id" = 1 AND ("crafted_items"."component_item_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" IS NULL) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "items" ("source_id", "description", "is_undercut_price", "vendor_buying_price", "vendor_selling_price", "updated_at", "is_crafted", "created_at") VALUES (NULL, 'sample Item', NULL, NULL, NULL, '2011-07-14 17:28:25.521025', NULL, '2011-07-14 17:28:25.521025')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') AND ("items".id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'a') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "items" WHERE ("items"."description" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "items" ("source_id", "description", "is_undercut_price", "vendor_buying_price", "vendor_selling_price", "updated_at", "is_crafted", "created_at") VALUES (NULL, 'sample Item', NULL, NULL, NULL, '2011-07-14 17:28:25.560029', NULL, '2011-07-14 17:28:25.560029')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "items" WHERE ("items"."description" = 'sample Item') LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:25.591032', '2011-07-14 17:28:25.591032')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') AND ("listing_statuses".id <> 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'a') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "listing_statuses" ("description", "updated_at", "created_at") VALUES ('sample status', '2011-07-14 17:28:25.630036', '2011-07-14 17:28:25.630036')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "listing_statuses" WHERE ("listing_statuses"."description" = 'sample status') LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: undercut_price
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("created_at", "deposit_cost", "undercut_price", "price", "updated_at", "listing_status_id", "item_id", "stacksize") VALUES ('2011-07-14 17:28:25.672040', 1, NULL, 1, '2011-07-14 17:28:25.672040', 1, 1, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.707043', '2011-07-14 17:28:25.707043')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') AND ("sources".id <> 1) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" = 'a') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "sources" WHERE ("sources"."description" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sources" ("description", "updated_at", "created_at") VALUES ('sample source', '2011-07-14 17:28:25.751048', '2011-07-14 17:28:25.751048')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "sources" WHERE ("sources"."description" = 'sample source') LIMIT 1[0m
+
+
+Started GET "/competitors" for 127.0.0.1 at Thu Jul 14 13:28:25 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 30.0ms)
+
+
+Started GET "/crafted_items" for 127.0.0.1 at Thu Jul 14 13:28:25 -0400 2011
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mCraftedItem Load (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items"[0m
+Completed 200 OK in 85ms (Views: 73.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sales_listings" for 127.0.0.1 at Thu Jul 14 13:28:25 -0400 2011
+  Processing by SalesListingsController#index as HTML
+  [1m[35mSalesListing Load (1.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings"
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Completed 200 OK in 37ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 148ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 4ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#index as HTML
+Rendered crafted_items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#show as HTML
+  Parameters: {"id"=>"37"}
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 122ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Redirected to http://test.host/crafted_items/1005
+Completed 302 Found in 5ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Redirected to http://test.host/crafted_items/1006
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{"these"=>"params"}}
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description FROM "items" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#create as HTML
+  Parameters: {"crafted_item"=>{}}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description FROM "items" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"37", "crafted_item"=>{"these"=>"params"}}
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1010
+Completed 302 Found in 2ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items/1011
+Completed 302 Found in 3ms
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 1ms
+  Processing by CraftedItemsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/crafted_items
+Completed 302 Found in 2ms

@@ -5,9 +5,11 @@
     <th>Item</th>
     <th>Stacksize</th>
     <th>Price</th>
-    <th>Undercut price</th>
+    <th>Is Undercut price</th>
     <th>Deposit cost</th>
     <th>Listing status</th>
+    <th>Crafting Cost</th>
+    <th>Profit</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,12 +17,14 @@
 
 <% @sales_listings.each do |sales_listing| %>
   <tr>
-    <td><%= sales_listing.item_id %></td>
+    <td><%= getItemDescription(sales_listing.item_id) %></td>
     <td><%= sales_listing.stacksize %></td>
-    <td><%= sales_listing.price %></td>
-    <td><%= sales_listing.undercut_price %></td>
-    <td><%= sales_listing.deposit_cost %></td>
-    <td><%= sales_listing.listing_status_id %></td>
+    <td><%= formatPrice(sales_listing.price) %></td>
+    <td><%= sales_listing.is_undercut_price %></td>
+    <td><%= formatPrice(sales_listing.deposit_cost) %></td>
+    <td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
+    <td><%= calculateCraftingCost(sales_listing.item_id) %></td>
+    <td><%= calculateProfit(sales_listing.id) %></td>
     <td><%= link_to 'Show', sales_listing %></td>
     <td><%= link_to 'Edit', edit_sales_listing_path(sales_listing) %></td>
     <td><%= link_to 'Destroy', sales_listing, :confirm => 'Are you sure?', :method => :delete %></td>

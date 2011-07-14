@@ -1,41 +1,51 @@
 <%= form_for(@sales_listing) do |f| %>
-  <% if @sales_listing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sales_listing.errors.count, "error") %> prohibited this sales_listing from being saved:</h2>
+<% if @sales_listing.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@sales_listing.errors.count, "error") %> prohibited this sales_listing from being saved:</h2>
 
-      <ul>
-      <% @sales_listing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @sales_listing.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :item_id %><br />
-    <%= f.text_field :item_id %>
-  </div>
-  <div class="field">
-    <%= f.label :stacksize %><br />
-    <%= f.text_field :stacksize %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :undercut_price %><br />
-    <%= f.text_field :undercut_price %>
-  </div>
-  <div class="field">
-    <%= f.label :deposit_cost %><br />
-    <%= f.text_field :deposit_cost %>
-  </div>
-  <div class="field">
-    <%= f.label :listing_status_id %><br />
-    <%= f.text_field :listing_status_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+	<%= f.label :item_id %>
+	<br />
+	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id)) %>
+</div>
+<div class="field">
+	<%= f.label :stacksize %>
+	<br />
+	<%= f.text_field :stacksize, :value => 1 %>
+</div>
+<div class="field">
+	<%= f.label :price %>
+	<br />
+	<%= f.text_field :price %>
+	(<%= formatPrice(@sales_listing.price) %>)
+</div>
+<div class="field">
+	<%= f.label :is_undercut_price %>
+	<br />
+	<%= f.check_box :is_undercut_price %>
+</div>
+<div class="field">
+	<%= f.label :deposit_cost %>
+	<br />
+	<%= f.text_field :deposit_cost %>
+	(<%= formatPrice(@sales_listing.deposit_cost) %>)
+</div>
+<div class="field">
+	<%= f.label :listing_status_id %>
+	<br />
+	<%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, @sales_listing.listing_status_id)) %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>
