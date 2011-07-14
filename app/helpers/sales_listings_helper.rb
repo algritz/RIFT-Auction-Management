@@ -1,0 +1,2 @@
+module SalesListingsHelper
+end

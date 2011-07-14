@@ -11616,3 +11616,188 @@ Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 22:12:45 -0400 2011
   [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
 Rendered competitors/index.html.erb within layouts/application (19.0ms)
 Completed 200 OK in 68ms (Views: 40.0ms | ActiveRecord: 4.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateListingStatuses (20110711141012)
+Migrating to CreateSources (20110712001445)
+Migrating to CreateCompetitorStyles (20110712005534)
+Migrating to CreateItems (20110712101000)
+Migrating to CreateCraftedItems (20110712190031)
+Migrating to AddItemIsCraftableToItem (20110713141249)
+Migrating to RenameIsCraftedToIsCrafted (20110713145555)
+Migrating to CreateCompetitors (20110714002355)
+Migrating to CreateSalesListings (20110714022422)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "sales_listings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer, "stacksize" integer, "price" integer, "undercut_price" integer, "deposit_cost" integer, "listing_status_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110714022422')
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("competitor_styles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("competitors")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("crafted_items")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_items_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("listing_statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sales_listings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("sources")[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "competitor_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "competitors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "competitor_style_id" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE "crafted_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crafted_item_generated_id" integer, "crafted_item_stacksize" integer, "component_item_id" integer, "component_item_quantity" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "vendor_selling_price" integer, "vendor_buying_price" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime, "is_crafted" boolean) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE INDEX "index_items_on_id" ON "items" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "sales_listings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer, "stacksize" integer, "price" integer, "undercut_price" integer, "deposit_cost" integer, "listing_status_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (107.0ms)[0m  CREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (114.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (115.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (17.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110714022422')[0m
+  [1m[35mSQL (18.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110711141012')
+  [1m[36mSQL (107.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712001445')[0m
+  [1m[35mSQL (15.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712005534')
+  [1m[36mSQL (373.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712101000')[0m
+  [1m[35mSQL (16.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712190031')
+  [1m[36mSQL (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110713141249')[0m
+  [1m[35mSQL (9.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713145555')
+  [1m[36mSQL (9.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110714002355')[0m
+
+
+Started GET "/sales" for 127.0.0.1 at Wed Jul 13 22:27:00 -0400 2011
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+RuntimeError (route set not finalized):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.0ms)
+
+
+Started GET "/sales_" for 127.0.0.1 at Wed Jul 13 22:27:08 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sales_l" for 127.0.0.1 at Wed Jul 13 22:27:08 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_l"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sales_lis" for 127.0.0.1 at Wed Jul 13 22:27:08 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_lis"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sales_listing" for 127.0.0.1 at Wed Jul 13 22:27:08 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_listing"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sales_listing/" for 127.0.0.1 at Wed Jul 13 22:27:09 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_listing"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sales_listing/" for 127.0.0.1 at Wed Jul 13 22:27:09 -0400 2011
+
+ActionController::RoutingError (No route matches "/sales_listing"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/sa" for 127.0.0.1 at Wed Jul 13 22:27:09 -0400 2011
+
+ActionController::RoutingError (No route matches "/sa"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/sales_listings/" for 127.0.0.1 at Wed Jul 13 22:27:14 -0400 2011
+  Processing by SalesListingsController#index as HTML
+  [1m[36mSalesListing Load (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings"[0m
+Rendered sales_listings/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 148ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sales_listings/" for 127.0.0.1 at Wed Jul 13 22:27:15 -0400 2011
+  Processing by SalesListingsController#index as HTML
+  [1m[35mSalesListing Load (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings"
+Rendered sales_listings/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 24ms (Views: 18.0ms | ActiveRecord: 0.0ms)

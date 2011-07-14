@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe CompetitorsController do
   describe "routing" do
-
+    
     it "recognizes and generates #index" do
       { :get => "/competitors" }.should route_to(:controller => "competitors", :action => "index")
     end

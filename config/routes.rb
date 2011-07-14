@@ -1,4 +1,6 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :sales_listings
+
   resources :competitors
 
   resources :crafted_items

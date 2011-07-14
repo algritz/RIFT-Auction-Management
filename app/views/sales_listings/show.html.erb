@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @sales_listing.item_id %>
+</p>
+
+<p>
+  <b>Stacksize:</b>
+  <%= @sales_listing.stacksize %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @sales_listing.price %>
+</p>
+
+<p>
+  <b>Undercut price:</b>
+  <%= @sales_listing.undercut_price %>
+</p>
+
+<p>
+  <b>Deposit cost:</b>
+  <%= @sales_listing.deposit_cost %>
+</p>
+
+<p>
+  <b>Listing status:</b>
+  <%= @sales_listing.listing_status_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_sales_listing_path(@sales_listing) %> |
+<%= link_to 'Back', sales_listings_path %>
