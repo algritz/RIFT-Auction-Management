@@ -9599,3 +9599,2020 @@ Migrating to AddIndexToItem (20110713194951)
   [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
   [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
   [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_items_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateListingStatuses (20110711141012)
+Migrating to CreateSources (20110712001445)
+Migrating to CreateCompetitorStyles (20110712005534)
+Migrating to CreateItems (20110712101000)
+Migrating to CreateCraftedItems (20110712190031)
+Migrating to AddItemIsCraftableToItem (20110713141249)
+Migrating to RenameIsCraftedToIsCrafted (20110713145555)
+Migrating to Competitor (20110714002002)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110714002002')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("competitor_styles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("crafted_items")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_items_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("listing_statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sources")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (26.0ms)[0m  CREATE TABLE "competitor_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (9.0ms)[0m  CREATE TABLE "crafted_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crafted_item_generated_id" integer, "crafted_item_stacksize" integer, "component_item_id" integer, "component_item_quantity" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "vendor_selling_price" integer, "vendor_buying_price" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime, "is_crafted" boolean) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (11.0ms)[0m  CREATE INDEX "index_items_on_id" ON "items" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (9.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (9.0ms)[0m  CREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (9.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (70.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110714002002')[0m
+  [1m[35mSQL (8.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110711141012')
+  [1m[36mSQL (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712001445')[0m
+  [1m[35mSQL (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712005534')
+  [1m[36mSQL (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712101000')[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712190031')
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110713141249')[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713145555')
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to Competitor (20110714002002)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110714002002'[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("competitor_styles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("crafted_items")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_items_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("listing_statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sources")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateListingStatuses (20110711141012)
+Migrating to CreateSources (20110712001445)
+Migrating to CreateCompetitorStyles (20110712005534)
+Migrating to CreateItems (20110712101000)
+Migrating to CreateCraftedItems (20110712190031)
+Migrating to AddItemIsCraftableToItem (20110713141249)
+Migrating to RenameIsCraftedToIsCrafted (20110713145555)
+Migrating to CreateCompetitors (20110714002355)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "competitors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "competitor_style_id" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110714002355')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("competitor_styles")
+  [1m[36mSQL (1.0ms)[0m  [1mPRAGMA index_list("competitors")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("crafted_items")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_items_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("listing_statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sources")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE "competitor_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE "competitors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "competitor_style_id" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "crafted_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crafted_item_generated_id" integer, "crafted_item_stacksize" integer, "component_item_id" integer, "component_item_quantity" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "vendor_selling_price" integer, "vendor_buying_price" integer, "source_id" integer, "created_at" datetime, "updated_at" datetime, "is_crafted" boolean) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE INDEX "index_items_on_id" ON "items" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "listing_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (12.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (7.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (9.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110714002355')[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110711141012')
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712001445')[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712005534')
+  [1m[36mSQL (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110712101000')[0m
+  [1m[35mSQL (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110712190031')
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110713141249')[0m
+  [1m[35mSQL (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713145555')
+
+
+Started GET "/competi" for 127.0.0.1 at Wed Jul 13 20:26:25 -0400 2011
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+ActionController::RoutingError (No route matches "/competi"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:26:31 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+Rendered competitors/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 166ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/crafted_items/" for 127.0.0.1 at Wed Jul 13 20:26:32 -0400 2011
+  Processing by CraftedItemsController#index as HTML
+  [1m[35mCraftedItem Load (2.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 9 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+Rendered crafted_items/index.html.erb within layouts/application (142.0ms)
+Completed 200 OK in 396ms (Views: 168.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:26:35 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+Rendered competitors/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 29ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:36:11 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+Rendered competitors/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:36:12 -0400 2011
+  Processing by CompetitorsController#new as HTML
+Rendered competitors/_form.html.erb (16.0ms)
+Rendered competitors/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 52ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:37:32 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+Completed 500 Internal Server Error in 10ms
+
+NameError (uninitialized constant CompetitorsController::CompetitorStyles):
+  app/controllers/competitors_controller.rb:6:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:37:41 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+Rendered competitors/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 72ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:37:43 -0400 2011
+  Processing by CompetitorsController#new as HTML
+Rendered competitors/_form.html.erb (14.0ms)
+Rendered competitors/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 63ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:37:45 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+Rendered competitors/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 157ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:38:49 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 72ms (Views: 27.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:39:05 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (13.0ms)
+Rendered competitors/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 118ms (Views: 67.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:42:05 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (44.0ms)
+Rendered competitors/new.html.erb within layouts/application (50.0ms)
+Completed 500 Internal Server Error in 91ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2)):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :competitor_style %><br />
+    20:     <%= f.select :competitor_style_id %>
+    21:     <%= f.select(:competitor_style_id, options_from_collection_for_select(@competitor_styles, :id, :description, @competitor.competitor_style_id))%>
+    22:   </div>
+    23:   <div class="field">
+  app/views/competitors/_form.html.erb:20:in `select'
+  app/views/competitors/_form.html.erb:20:in `_app_views_competitors__form_html_erb__528104746_76727760_541558'
+  app/views/competitors/_form.html.erb:1:in `_app_views_competitors__form_html_erb__528104746_76727760_541558'
+  app/views/competitors/new.html.erb:3:in `_app_views_competitors_new_html_erb__669413420_76733628_0'
+  app/controllers/competitors_controller.rb:31:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (18.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (37.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:42:16 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (14.0ms)
+Rendered competitors/new.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 112ms (Views: 40.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/crafted_items/" for 127.0.0.1 at Wed Jul 13 20:42:56 -0400 2011
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mCraftedItem Load (1.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items"[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 9 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+Rendered crafted_items/index.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 61ms (Views: 49.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/com" for 127.0.0.1 at Wed Jul 13 20:42:59 -0400 2011
+
+ActionController::RoutingError (No route matches "/com"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:43:01 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 103ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors_" for 127.0.0.1 at Wed Jul 13 20:43:02 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_s" for 127.0.0.1 at Wed Jul 13 20:43:02 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_s"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_st" for 127.0.0.1 at Wed Jul 13 20:43:03 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_st"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_sty" for 127.0.0.1 at Wed Jul 13 20:43:04 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_sty"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_styl" for 127.0.0.1 at Wed Jul 13 20:43:04 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_styl"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_style" for 127.0.0.1 at Wed Jul 13 20:43:04 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_style"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_styles" for 127.0.0.1 at Wed Jul 13 20:43:05 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_styles"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitors_styles/" for 127.0.0.1 at Wed Jul 13 20:43:06 -0400 2011
+
+ActionController::RoutingError (No route matches "/competitors_styles"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_styles/" for 127.0.0.1 at Wed Jul 13 20:43:09 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 42ms (Views: 33.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles/new" for 127.0.0.1 at Wed Jul 13 20:43:13 -0400 2011
+  Processing by CompetitorStylesController#new as HTML
+Rendered competitor_styles/_form.html.erb (8.0ms)
+Rendered competitor_styles/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 48ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:43:28 -0400 2011
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"commit"=>"Create Competitor style", "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓", "competitor_style"=>{"description"=>"Flooder / Deep undercutter"}}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'Flooder / Deep undercutter') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitor_styles" ("created_at", "updated_at", "description") VALUES ('2011-07-14 00:43:28.559895', '2011-07-14 00:43:28.559895', 'Flooder / Deep undercutter')
+Redirected to http://127.0.0.1:3000/competitor_styles/4
+Completed 302 Found in 129ms
+
+
+Started GET "/competitor_styles/4" for 127.0.0.1 at Wed Jul 13 20:43:28 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+Rendered competitor_styles/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 37ms (Views: 26.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:43:30 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 37ms (Views: 28.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles/new" for 127.0.0.1 at Wed Jul 13 20:43:41 -0400 2011
+  Processing by CompetitorStylesController#new as HTML
+Rendered competitor_styles/_form.html.erb (5.0ms)
+Rendered competitor_styles/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:43:58 -0400 2011
+  Processing by CompetitorStylesController#create as HTML
+  Parameters: {"commit"=>"Create Competitor style", "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓", "competitor_style"=>{"description"=>"1 Silver Undercutter / Flooder"}}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = '1 Silver Undercutter / Flooder') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitor_styles" ("updated_at", "description", "created_at") VALUES ('2011-07-14 00:43:58.106849', '1 Silver Undercutter / Flooder', '2011-07-14 00:43:58.106849')
+Redirected to http://127.0.0.1:3000/competitor_styles/5
+Completed 302 Found in 346ms
+
+
+Started GET "/competitor_styles/5" for 127.0.0.1 at Wed Jul 13 20:43:58 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 5 LIMIT 1[0m
+Rendered competitor_styles/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 30ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:43:59 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 35ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles/5/edit" for 127.0.0.1 at Wed Jul 13 20:44:13 -0400 2011
+  Processing by CompetitorStylesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 5 LIMIT 1[0m
+Rendered competitor_styles/_form.html.erb (6.0ms)
+Rendered competitor_styles/edit.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitor_styles/5" for 127.0.0.1 at Wed Jul 13 20:44:21 -0400 2011
+  Processing by CompetitorStylesController#update as HTML
+  Parameters: {"commit"=>"Update Competitor style", "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓", "id"=>"5", "competitor_style"=>{"description"=>"Flooder / 1 Silver Undercutter"}}
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 5 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitor_styles" WHERE ("competitor_styles"."description" = 'Flooder / 1 Silver Undercutter') AND ("competitor_styles".id <> 5) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  UPDATE "competitor_styles" SET "updated_at" = '2011-07-14 00:44:21.459184', "description" = 'Flooder / 1 Silver Undercutter' WHERE "competitor_styles"."id" = 5
+Redirected to http://127.0.0.1:3000/competitor_styles/5
+Completed 302 Found in 177ms
+
+
+Started GET "/competitor_styles/5" for 127.0.0.1 at Wed Jul 13 20:44:21 -0400 2011
+  Processing by CompetitorStylesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 5 LIMIT 1[0m
+Rendered competitor_styles/show.html.erb within layouts/application (53.0ms)
+Completed 200 OK in 79ms (Views: 71.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:44:23 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 36ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:44:45 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (11.0ms)
+Rendered competitors/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 53ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:45:56 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 112ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 20:46:07 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Wishun", "competitor_style_id"=>"4", "source_id"=>"8"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 8 AND ("competitors"."name" = 'Wishun') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitors" ("competitor_style_id", "created_at", "source_id", "name", "updated_at") VALUES (4, '2011-07-14 00:46:07.728810', 8, 'Wishun', '2011-07-14 00:46:07.728810')
+Redirected to http://127.0.0.1:3000/competitors/1
+Completed 302 Found in 38ms
+
+
+Started GET "/competitors/1" for 127.0.0.1 at Wed Jul 13 20:46:07 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1[0m
+Rendered competitors/show.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 39ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/1" for 127.0.0.1 at Wed Jul 13 20:46:25 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (2.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 128ms (Views: 33.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitor_styles/1/edit" for 127.0.0.1 at Wed Jul 13 20:48:15 -0400 2011
+  Processing by CompetitorStylesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+Rendered competitor_styles/_form.html.erb (6.0ms)
+Rendered competitor_styles/edit.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 36ms (Views: 28.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 20:48:20 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 35ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 20:48:22 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1[0m
+Rendered competitors/_form.html.erb (52.0ms)
+Rendered competitors/edit.html.erb within layouts/application (56.0ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :competitor_style %><br />
+    20:     <%= f.select(:competitor_style_id, options_from_collection_for_select(@competitor_styles, :id, :description, @competitor.competitor_style_id))%>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :source_id %><br />
+  app/views/competitors/_form.html.erb:20:in `_app_views_competitors__form_html_erb__528104746_76139880_541558'
+  app/views/competitors/_form.html.erb:1:in `_app_views_competitors__form_html_erb__528104746_76139880_541558'
+  app/views/competitors/edit.html.erb:3:in `_app_views_competitors_edit_html_erb___129186205_76153992_0'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 20:48:44 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (19.0ms)
+Rendered competitors/edit.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 79ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:48:52 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 158ms (Views: 73.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:48:54 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (19.0ms)
+Rendered competitors/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 91ms (Views: 49.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 20:49:02 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Wishun", "competitor_style_id"=>"4", "source_id"=>"8"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 8 AND ("competitors"."name" = 'Wishun') LIMIT 1
+Rendered competitors/_form.html.erb (8.0ms)
+Rendered competitors/new.html.erb within layouts/application (13.0ms)
+Completed 500 Internal Server Error in 54ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :competitor_style %><br />
+    20:     <%= f.select(:competitor_style_id, options_from_collection_for_select(@competitor_styles, :id, :description, @competitor.competitor_style_id))%>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :source_id %><br />
+  app/views/competitors/_form.html.erb:20:in `_app_views_competitors__form_html_erb__528104746_76346460_541558'
+  app/views/competitors/_form.html.erb:1:in `_app_views_competitors__form_html_erb__528104746_76346460_541558'
+  app/views/competitors/new.html.erb:3:in `_app_views_competitors_new_html_erb__669413420_76354740_0'
+  app/controllers/competitors_controller.rb:56:in `create'
+  app/controllers/competitors_controller.rb:51:in `create'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (9.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:49:53 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 107ms (Views: 29.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:49:54 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/new.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 70ms (Views: 43.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:05 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Wishun", "competitor_style_id"=>"4", "source_id"=>"5"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 5 AND ("competitors"."name" = 'Wishun') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("source_id", "name", "updated_at", "created_at", "competitor_style_id") VALUES (5, 'Wishun', '2011-07-14 00:50:05.427366', '2011-07-14 00:50:05.427366', 4)[0m
+Redirected to http://127.0.0.1:3000/competitors/2
+Completed 302 Found in 29ms
+
+
+Started GET "/competitors/2" for 127.0.0.1 at Wed Jul 13 20:50:05 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 2 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 103ms (Views: 75.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:07 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 57ms (Views: 28.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/2/edit" for 127.0.0.1 at Wed Jul 13 20:50:09 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 2 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (19.0ms)
+Rendered competitors/edit.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 72ms (Views: 45.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 20:50:11 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/edit.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 73ms (Views: 45.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:15 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 57ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors/1" for 127.0.0.1 at Wed Jul 13 20:50:16 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 54ms (Views: 26.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 20:50:19 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (19.0ms)
+Rendered competitors/edit.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 72ms (Views: 44.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:23 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 46ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 20:50:24 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (14.0ms)
+Rendered competitors/new.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 56ms (Views: 36.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:31 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Wishun", "competitor_style_id"=>"4", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Wishun') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("name", "source_id", "updated_at", "created_at", "competitor_style_id") VALUES ('Wishun', 1, '2011-07-14 00:50:31.654366', '2011-07-14 00:50:31.654366', 4)[0m
+Redirected to http://127.0.0.1:3000/competitors/3
+Completed 302 Found in 22ms
+
+
+Started GET "/competitors/3" for 127.0.0.1 at Wed Jul 13 20:50:31 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 3 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 99ms (Views: 24.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors/3/edit" for 127.0.0.1 at Wed Jul 13 20:50:33 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 3 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (14.0ms)
+Rendered competitors/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 58ms (Views: 37.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:35 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 46ms (Views: 25.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/competitors/3" for 127.0.0.1 at Wed Jul 13 20:50:39 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"3"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 3 LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  DELETE FROM "competitors" WHERE "competitors"."id" = 3
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 19ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:50:39 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 94ms (Views: 24.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:52:27 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 84ms
+
+ActionView::Template::Error (undefined method `getCompetitorStyleDescription' for #<#<Class:0x92accd8>:0x92abad8>):
+    13: <% @competitors.each do |competitor| %>
+    14:   <tr>
+    15:     <td><%= competitor.name %></td>
+    16:     <td><%= getCompetitorStyleDescription(competitor.competitor_style_id) %></td>
+    17:     <td><%= getSourceDescription(competitor.source_id) %></td>
+    18:     <td><%= link_to 'Show', competitor %></td>
+    19:     <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
+  app/views/competitors/index.html.erb:16:in `_app_views_competitors_index_html_erb___617252938_76893396_0'
+  app/views/competitors/index.html.erb:13:in `each'
+  app/views/competitors/index.html.erb:13:in `_app_views_competitors_index_html_erb___617252938_76893396_0'
+  app/controllers/competitors_controller.rb:8:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (78.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:52:38 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 68ms (Views: 39.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:53:44 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 113ms (Views: 42.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:54:22 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 70ms (Views: 43.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:54:42 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 72ms (Views: 43.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:55:07 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 77ms (Views: 46.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/items/" for 127.0.0.1 at Wed Jul 13 20:55:12 -0400 2011
+  Processing by ItemsController#index as HTML
+  [1m[35mItem Load (2.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+Rendered items/index.html.erb within layouts/application (61.0ms)
+Completed 200 OK in 98ms (Views: 77.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/items/" for 127.0.0.1 at Wed Jul 13 20:55:37 -0400 2011
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+Rendered items/index.html.erb within layouts/application (60.0ms)
+Completed 200 OK in 90ms (Views: 79.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:55:48 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 73ms (Views: 44.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:56:24 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 114ms (Views: 84.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:56:51 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 74ms (Views: 43.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:57:17 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 58ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:59:32 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/index.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 50ms
+
+ActionView::Template::Error (undefined method `crafted_item_generated_id' for #<Competitor:0x92289f0>):
+    11:   </tr>
+    12: 
+    13: <<% @competitors.each do |competitor|
+    14: 		isNewRow(competitor.crafted_item_generated_id)	
+    15: 	%>
+    16: 	<tr bgcolor="<%= @lastRowColor %>">
+    17: 		<td><%=
+  app/views/competitors/index.html.erb:14:in `_app_views_competitors_index_html_erb___617252938_76435608_0'
+  app/views/competitors/index.html.erb:13:in `each'
+  app/views/competitors/index.html.erb:13:in `_app_views_competitors_index_html_erb___617252938_76435608_0'
+  app/controllers/competitors_controller.rb:8:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (18.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (77.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 20:59:43 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/index.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 57ms
+
+ActionView::Template::Error (undefined method `name' for #<Array:0x938ebd8>):
+    16: 	<tr bgcolor="<%= @lastRowColor %>">
+    17: 		<td><%=
+    18:  		if @isNewRow then
+    19:         	@competitors.name
+    20:       	end
+    21: 		%></td>
+    22:   <tr>
+  app/views/competitors/index.html.erb:19:in `_app_views_competitors_index_html_erb___617252938_77214924_0'
+  app/views/competitors/index.html.erb:13:in `each'
+  app/views/competitors/index.html.erb:13:in `_app_views_competitors_index_html_erb___617252938_77214924_0'
+  app/controllers/competitors_controller.rb:8:in `index'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (19.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (38.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:00:25 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 73ms (Views: 42.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:00:37 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 80ms (Views: 49.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:01:25 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 73ms (Views: 41.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:01:32 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/new.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 71ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:01:37 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Roberto", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Roberto') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitors" ("updated_at", "source_id", "created_at", "name", "competitor_style_id") VALUES ('2011-07-14 01:01:38.029366', 1, '2011-07-14 01:01:38.029366', 'Roberto', 1)
+Redirected to http://127.0.0.1:3000/competitors/4
+Completed 302 Found in 31ms
+
+
+Started GET "/competitors/4" for 127.0.0.1 at Wed Jul 13 21:01:38 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 4 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/show.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 108ms (Views: 78.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:01:40 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 78ms (Views: 48.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:01:43 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/new.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 70ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:01:51 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"3", "source_id"=>"7"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 7 AND ("competitors"."name" = 'Armando') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitors" ("updated_at", "source_id", "name", "competitor_style_id", "created_at") VALUES ('2011-07-14 01:01:51.204366', 7, 'Armando', 3, '2011-07-14 01:01:51.204366')
+Redirected to http://127.0.0.1:3000/competitors/5
+Completed 302 Found in 29ms
+
+
+Started GET "/competitors/5" for 127.0.0.1 at Wed Jul 13 21:01:51 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 66ms (Views: 28.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:01:52 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 90ms (Views: 58.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:02:19 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 81ms (Views: 53.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:02:32 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 90ms (Views: 57.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:02:46 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 113ms (Views: 41.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:03:25 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (17.0ms)
+Rendered competitors/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 64ms (Views: 43.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:03:28 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("updated_at", "source_id", "competitor_style_id", "created_at", "name") VALUES ('2011-07-14 01:03:28.092527', 1, 1, '2011-07-14 01:03:28.092527', 'Armando')[0m
+Redirected to http://127.0.0.1:3000/competitors/6
+Completed 302 Found in 23ms
+
+
+Started GET "/competitors/6" for 127.0.0.1 at Wed Jul 13 21:03:28 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 6 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 48ms (Views: 24.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:03:29 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 60ms (Views: 37.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:03:32 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (13.0ms)
+Rendered competitors/new.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 56ms (Views: 36.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:03:36 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1
+Rendered competitors/_form.html.erb (6.0ms)
+Rendered competitors/new.html.erb within layouts/application (10.0ms)
+Completed 500 Internal Server Error in 39ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :competitor_style %><br />
+    20:     <%= f.select(:competitor_style_id, options_from_collection_for_select(@competitor_styles, :id, :description, @competitor.competitor_style_id))%>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :source_id %><br />
+  app/views/competitors/_form.html.erb:20:in `_app_views_competitors__form_html_erb__528104746_77337444_541558'
+  app/views/competitors/_form.html.erb:1:in `_app_views_competitors__form_html_erb__528104746_77337444_541558'
+  app/views/competitors/new.html.erb:3:in `_app_views_competitors_new_html_erb__669413420_77344848_0'
+  app/controllers/competitors_controller.rb:56:in `create'
+  app/controllers/competitors_controller.rb:51:in `create'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:03:40 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"2"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 2 AND ("competitors"."name" = 'Armando') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "competitors" ("name", "created_at", "updated_at", "competitor_style_id", "source_id") VALUES ('Armando', '2011-07-14 01:03:40.937095', '2011-07-14 01:03:40.937095', 1, 2)
+Redirected to http://127.0.0.1:3000/competitors/7
+Completed 302 Found in 30ms
+
+
+Started GET "/competitors/7" for 127.0.0.1 at Wed Jul 13 21:03:40 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 7 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/show.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 72ms (Views: 36.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:03:42 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 2 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 165ms (Views: 74.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:04:06 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (22.0ms)
+Rendered competitors/new.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 84ms (Views: 49.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:04:09 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1[0m
+Rendered competitors/_form.html.erb (16.0ms)
+Rendered competitors/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 77ms (Views: 43.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:09 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1
+Rendered competitors/_form.html.erb (17.0ms)
+Rendered competitors/new.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 97ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:32 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1[0m
+Rendered competitors/_form.html.erb (20.0ms)
+Rendered competitors/new.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 99ms (Views: 52.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:50 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 2 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 93ms (Views: 60.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/competitors/7" for 127.0.0.1 at Wed Jul 13 21:05:55 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"7"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 7 LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  DELETE FROM "competitors" WHERE "competitors"."id" = 7
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 28ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:55 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 146ms (Views: 59.0ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/competitors/6" for 127.0.0.1 at Wed Jul 13 21:05:57 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"6"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 6 LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mDELETE FROM "competitors" WHERE "competitors"."id" = 6[0m
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 29ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:57 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 3 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 7 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 91ms (Views: 58.0ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/competitors/5" for 127.0.0.1 at Wed Jul 13 21:05:59 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"5"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 5 LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  DELETE FROM "competitors" WHERE "competitors"."id" = 5
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 28ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:05:59 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 139ms (Views: 52.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/competitors/4" for 127.0.0.1 at Wed Jul 13 21:06:02 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"4"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 4 LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "competitors" WHERE "competitors"."id" = 4[0m
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 25ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:06:02 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 77ms (Views: 47.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/items/" for 127.0.0.1 at Wed Jul 13 21:06:10 -0400 2011
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+Rendered items/index.html.erb within layouts/application (111.0ms)
+Completed 200 OK in 138ms (Views: 126.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 21:07:54 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (14.0ms)
+Rendered competitors/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 58ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/crafted_items/" for 127.0.0.1 at Wed Jul 13 21:18:46 -0400 2011
+  Processing by CraftedItemsController#index as HTML
+  [1m[36mCraftedItem Load (1.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items"[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 9 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+Rendered crafted_items/index.html.erb within layouts/application (100.0ms)
+Completed 200 OK in 141ms (Views: 118.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/cp," for 127.0.0.1 at Wed Jul 13 21:18:48 -0400 2011
+
+ActionController::RoutingError (No route matches "/cp,"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/c" for 127.0.0.1 at Wed Jul 13 21:18:49 -0400 2011
+
+ActionController::RoutingError (No route matches "/c"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/com" for 127.0.0.1 at Wed Jul 13 21:18:49 -0400 2011
+
+ActionController::RoutingError (No route matches "/com"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 21:18:51 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 42ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles/" for 127.0.0.1 at Wed Jul 13 21:18:51 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 54ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitor_styles/1/edit" for 127.0.0.1 at Wed Jul 13 21:20:53 -0400 2011
+  Processing by CompetitorStylesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1[0m
+Rendered competitor_styles/_form.html.erb (7.0ms)
+Rendered competitor_styles/edit.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 43ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 21:20:57 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles"
+Rendered competitor_styles/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 43ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 21:21:01 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (18.0ms)
+Rendered competitors/edit.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 76ms (Views: 47.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:25:33 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 68ms (Views: 39.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 21:25:34 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (21.0ms)
+Rendered competitors/edit.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 84ms (Views: 50.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/2/edit" for 127.0.0.1 at Wed Jul 13 21:25:41 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (21.0ms)
+Rendered competitors/edit.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 83ms (Views: 50.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles" for 127.0.0.1 at Wed Jul 13 21:45:33 -0400 2011
+  Processing by CompetitorStylesController#index as HTML
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles"[0m
+Rendered competitor_styles/index.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 97ms (Views: 85.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitor_styles/1/edit" for 127.0.0.1 at Wed Jul 13 21:45:34 -0400 2011
+  Processing by CompetitorStylesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+Rendered competitor_styles/_form.html.erb (9.0ms)
+Rendered competitor_styles/edit.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 50ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:45:40 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 75ms (Views: 43.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/1/edit" for 127.0.0.1 at Wed Jul 13 21:45:41 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 1 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (45.0ms)
+Rendered competitors/edit.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 84ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:46:03 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 75ms (Views: 43.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors/new" for 127.0.0.1 at Wed Jul 13 21:46:05 -0400 2011
+  Processing by CompetitorsController#new as HTML
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (21.0ms)
+Rendered competitors/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 77ms (Views: 47.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/competitors" for 127.0.0.1 at Wed Jul 13 21:46:16 -0400 2011
+  Processing by CompetitorsController#create as HTML
+  Parameters: {"commit"=>"Create Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"1", "source_id"=>"1"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓"}
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 1 AND ("competitors"."name" = 'Armando') LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "competitors" ("updated_at", "name", "created_at", "source_id", "competitor_style_id") VALUES ('2011-07-14 01:46:16.341250', 'Armando', '2011-07-14 01:46:16.341250', 1, 1)[0m
+Redirected to http://127.0.0.1:3000/competitors/8
+Completed 302 Found in 38ms
+
+
+Started GET "/competitors/8" for 127.0.0.1 at Wed Jul 13 21:46:16 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 52ms (Views: 24.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:46:20 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 1 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 1 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 59ms (Views: 33.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 21:46:22 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (36.0ms)
+Rendered competitors/edit.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 67ms (Views: 58.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/competitors/8" for 127.0.0.1 at Wed Jul 13 21:46:25 -0400 2011
+  Processing by CompetitorsController#update as HTML
+  Parameters: {"commit"=>"Update Competitor", "competitor"=>{"name"=>"Armando", "competitor_style_id"=>"4", "source_id"=>"9"}, "authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "utf8"=>"✓", "id"=>"8"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "competitors" WHERE "competitors"."source_id" = 9 AND ("competitors"."name" = 'Armando') AND ("competitors".id <> 8) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "competitors" SET "updated_at" = '2011-07-14 01:46:25.974214', "competitor_style_id" = 4, "source_id" = 9 WHERE "competitors"."id" = 8[0m
+Redirected to http://127.0.0.1:3000/competitors/8
+Completed 302 Found in 25ms
+
+
+Started GET "/competitors/8" for 127.0.0.1 at Wed Jul 13 21:46:25 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 45ms (Views: 22.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:46:27 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 9 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 56ms (Views: 34.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 21:47:08 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (82.0ms)
+Rendered competitors/edit.html.erb within layouts/application (91.0ms)
+Completed 200 OK in 115ms (Views: 106.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 21:47:10 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (48.0ms)
+Rendered competitors/edit.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 90ms (Views: 76.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 21:49:33 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (247.0ms)
+Rendered competitors/edit.html.erb within layouts/application (331.0ms)
+Completed 200 OK in 650ms (Views: 563.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 21:49:38 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (3.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 9 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 293ms (Views: 130.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/competitors/8" for 127.0.0.1 at Wed Jul 13 21:49:40 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 83ms (Views: 38.0ms | ActiveRecord: 1.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 21:58:10 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mCompetitor Load (0.0ms)[0m  SELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT id, description FROM "sources"
+Rendered competitors/_form.html.erb (26.0ms)
+Rendered competitors/edit.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 269ms (Views: 69.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/8" for 127.0.0.1 at Wed Jul 13 22:03:39 -0400 2011
+  Processing by CompetitorsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 55ms (Views: 25.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 22:03:40 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 9 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 83ms (Views: 52.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/competitors/8/edit" for 127.0.0.1 at Wed Jul 13 22:03:42 -0400 2011
+  Processing by CompetitorsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+Rendered competitors/_form.html.erb (22.0ms)
+Rendered competitors/edit.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 78ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 22:03:44 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[35mCompetitor Load (1.0ms)[0m  SELECT "competitors".* FROM "competitors"
+  [1m[36mCompetitorStyle Load (0.0ms)[0m  [1mSELECT id, description FROM "competitor_styles"[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT id, description FROM "sources"
+  [1m[36mCompetitorStyle Load (1.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (1.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1[0m
+  [1m[35mSource Load (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 9 LIMIT 1
+Rendered competitors/index.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 126ms (Views: 92.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/competitors/8" for 127.0.0.1 at Wed Jul 13 22:12:45 -0400 2011
+  Processing by CompetitorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HJJrSpPdRv86FFbXblTMYsxuuDNZdtTMQ+0yldNygqw=", "id"=>"8"}
+  [1m[36mCompetitor Load (0.0ms)[0m  [1mSELECT "competitors".* FROM "competitors" WHERE "competitors"."id" = 8 LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  DELETE FROM "competitors" WHERE "competitors"."id" = 8
+Redirected to http://127.0.0.1:3000/competitors
+Completed 302 Found in 24ms
+
+
+Started GET "/competitors" for 127.0.0.1 at Wed Jul 13 22:12:45 -0400 2011
+  Processing by CompetitorsController#index as HTML
+  [1m[36mCompetitor Load (1.0ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  [1m[35mCompetitorStyle Load (1.0ms)[0m  SELECT id, description FROM "competitor_styles"
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT id, description FROM "sources"[0m
+  [1m[35mCompetitorStyle Load (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "competitor_styles".* FROM "competitor_styles" WHERE "competitor_styles"."id" = 4 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 5 LIMIT 1[0m
+Rendered competitors/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 68ms (Views: 40.0ms | ActiveRecord: 4.0ms)

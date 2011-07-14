@@ -10,10 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110713145555) do
+ActiveRecord::Schema.define(:version => 20110714002355) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competitors", :force => true do |t|
+    t.string   "name"
+    t.integer  "competitor_style_id"
+    t.integer  "source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

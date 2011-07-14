@@ -1,0 +1,33 @@
+<h1>Listing competitors</h1>
+
+<table>
+  <tr>
+    <th align="left">Name</th>
+    <th align="left">Competitor style</th>
+    <th align="left">Source</th>
+    <th align="left"></th>
+    <th align="left"></th>
+    <th align="left"></th>
+  </tr>
+
+<% @competitors.each do |competitor|
+		isNewRow(competitor.name)	
+	%>
+	<tr bgcolor="<%= @lastRowColor %>" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">
+		<td><%=
+ 		if @isNewRow then
+        	competitor.name
+      	end
+		%></td>
+    <td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"><%= getCompetitorStyleDescription(competitor.competitor_style_id) %></td>
+    <td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"><%= getSourceDescription(competitor.source_id) %></td>
+    <td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"><%= link_to 'Show', competitor %></td>
+    <td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
+    <td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"><%= link_to 'Destroy', competitor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Competitor', new_competitor_path %>

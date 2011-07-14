@@ -11,6 +11,7 @@ group :test do
   gem 'spork', '~> 0.9.0.rc'
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'webrat'
 end
 
 group :development do
@@ -18,6 +19,7 @@ group :development do
   gem 'annotate'
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'webrat'
 end
 
 # Use unicorn as the web server

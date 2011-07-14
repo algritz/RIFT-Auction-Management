@@ -6,13 +6,17 @@ module ApplicationHelper
   def getItemDescription (id)
     Item.find(id).description
   end
+  
+   def getCompetitorStyleDescription (id)
+    CompetitorStyle.find(id).description
+  end
 
   def isNewRow(someID)
     if @lastIDRow != someID then
       @lastIDRow = someID
       @isNewRow = true
       if @lastRowColor == "#ffffff" or @lastRowColor == nil then
-        @lastRowColor = "#f1f1f1"
+        @lastRowColor = "#e3e3e3"
       else
         @lastRowColor = "#ffffff"
       end

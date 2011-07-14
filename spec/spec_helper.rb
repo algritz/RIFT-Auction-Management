@@ -41,6 +41,12 @@ Spork.each_run do
 
 end
 
+
+# Webrat configuration
+Webrat.configure do |config|
+config.mode = :rails
+end
+
 # --- Instructions ---
 # Sort the contents of this file into a Spork.prefork and a Spork.each_run
 # block.
