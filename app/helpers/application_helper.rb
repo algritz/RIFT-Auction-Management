@@ -63,9 +63,13 @@ module ApplicationHelper
         crafting_materials = CraftedItem.find(:all, :conditions => "crafted_item_generated_id = #{id}")
         cost = 0
         crafting_materials.each do |materials|
-          materials_required = materials.component_item_id
-          material_cost = calculateBuyingCost(materials_required) * materials.component_item_quantity
-          cost += material_cost
+          material_cost = calculateCraftingCost(materials.component_item_id)
+          total_material_cost = (material_cost * materials.component_item_quantity)
+          if (material_cost.to_s != "no pattern defined yet for a sub-component") then
+          cost += total_material_cost
+          else
+            return "no pattern defined yet for a sub-component"
+          end
         end
       return cost
       else
@@ -93,7 +97,7 @@ module ApplicationHelper
   def calculateProfit(id)
     price = SalesListing.find(id).price
     deposit_cost = SalesListing.find(id).deposit_cost
-    vendor_price = calculateBuyingCost(SalesListing.find(id).item_id)
+    buyingCost = calculateBuyingCost(SalesListing.find(id).item_id)
     if Item.find(SalesListing.find(id).item_id).is_crafted then
       if CraftedItem.where("crafted_item_generated_id = #{SalesListing.find(id).item_id}").exists? then
         crafting_materials = CraftedItem.find(:all, :conditions => "crafted_item_generated_id = #{SalesListing.find(id).item_id}")
@@ -104,18 +108,17 @@ module ApplicationHelper
           if (material_cost.to_s != "no pattern defined yet for a sub-component") then
           cost += total_material_cost
           else
-          #cost += 0
             return "no pattern defined yet for a sub-component"
           end
         end
-        p getItemDescription(Item.find(SalesListing.find(id).item_id)) + " cost = #{cost}"
-      profit = (price - (deposit_cost + vendor_price + cost))
-      return profit
+        profit = (price - (deposit_cost + cost))
+        return profit
       else
         return "no pattern defined yet"
       end
     else
-      return profit = (price - (deposit_cost + calculateBuyingCost(Item.find(SalesListing.find(id).item_id).id)))
+      profit = (price - (deposit_cost + buyingCost ))
+      return profit
     end
   end
 
