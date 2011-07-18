@@ -16,7 +16,7 @@
 <div class="field">
 	<%= f.label :item_id %>
 	<br />
-	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id)) %>
+	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, @sales_listing.item_id)}) %>	
 </div>
 <div class="field">
 	<%= f.label :stacksize %>

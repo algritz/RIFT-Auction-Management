@@ -29,22 +29,6 @@ module ApplicationHelper
     end
   end
 
-  def determineDefaultStacksize(f, id)
-    p "test"
-    if id != nil then
-      if Item.find(id).is_crafted then
-        #return CraftedItem.find(id).stacksize
-        f.text_field :stacksize, :value=> CraftedItem.find(id).stacksize
-        p"should change to #{CraftedItem.find(id).stacksize} "
-      else
-      #return 1
-        f.text_field :stacksize, :value=> 1
-      end
-    else
-    return 1
-    end
-  end
-
   def formatPrice(price)
     if price != nil then
       plat = price / 10000
@@ -121,5 +105,31 @@ module ApplicationHelper
       return profit
     end
   end
+
+
+  def determineDefaultStacksize(f, id)
+    
+    p "test #{id}"
+    if id != nil then
+      if Item.find(id).is_crafted then
+        #return CraftedItem.find(id).stacksize
+        f.text_field :stacksize, :value=> CraftedItem.find(id).stacksize
+        p"should change to #{CraftedItem.find(id).stacksize} "
+      else
+      #return 1
+        f.text_field :stacksize, :value=> 1
+      end
+    else
+    return 1
+    end
+    
+    respond_to do |format|
+      format.html { }
+      format.xml  { }
+      format.js
+    end
+    
+  end
+
 
 end

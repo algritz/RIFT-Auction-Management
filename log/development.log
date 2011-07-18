@@ -38147,3 +38147,1898 @@ Started GET "/sales_listings" for 127.0.0.1 at Mon Jul 18 09:32:08 -0400 2011
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
 Rendered sales_listings/index.html.erb within layouts/application (162.0ms)
 Completed 200 OK in 197ms (Views: 176.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/items/" for 127.0.0.1 at Mon Jul 18 14:25:56 -0400 2011
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+Rendered items/index.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 182ms (Views: 72.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/sa" for 127.0.0.1 at Mon Jul 18 14:26:03 -0400 2011
+
+ActionController::RoutingError (No route matches "/sa"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/items/" for 127.0.0.1 at Mon Jul 18 14:26:03 -0400 2011
+  Processing by ItemsController#index as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1
+  [1m[36mSource Load (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mSource Load (1.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sources".* FROM "sources" WHERE "sources"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sources".* FROM "sources" WHERE "sources"."id" = 8 LIMIT 1[0m
+Rendered items/index.html.erb within layouts/application (101.0ms)
+Completed 200 OK in 139ms (Views: 123.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sales_listings" for 127.0.0.1 at Mon Jul 18 14:26:03 -0400 2011
+  Processing by SalesListingsController#index as HTML
+  [1m[35mSalesListing Load (1.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings"
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mItem Load (2.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1[0m
+  [1m[35mCraftedItem Load (1.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mSalesListing Load (1.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mSalesListing Load (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 7) LIMIT 1[0m
+  [1m[35mCraftedItem Load (1.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 7)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1
+  [1m[36mCraftedItem Load (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mSalesListing Load (1.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 7) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mSalesListing Load (1.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+Rendered sales_listings/index.html.erb within layouts/application (801.1ms)
+Completed 200 OK in 920ms (Views: 815.1ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:26:12 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (133.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (150.0ms)
+Completed 200 OK in 233ms (Views: 175.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:28:17 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+ERROR: compiling _app_views_sales_listings__form_html_erb___267011074_76327668_541750 RAISED compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tSYMBEG
+...on, @sales_listing.item_id). :onchange => "javascript:'Alert...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => "javascript:'Alert("hello")'" ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+                              ^
+Function body:           def _app_views_sales_listings__form_html_erb___267011074_76327668_541750(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "sales_listings/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@sales_listing) do |f| @output_buffer.safe_concat('
+'); if @sales_listing.errors.any? 
+@output_buffer.safe_concat('<div id="error_explanation">
+	<h2>');@output_buffer.append= ( pluralize(@sales_listing.errors.count, "error") );@output_buffer.safe_concat(' prohibited this sales_listing from being saved:</h2>
+
+	<ul>
+');@output_buffer.append_if_string= 		 @sales_listing.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('		<li>
+			');@output_buffer.append= ( msg );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</li>
+');		 end 
+@output_buffer.safe_concat('	</ul>
+</div>
+'); end 
+@output_buffer.safe_concat('
+<div class="field">
+	');@output_buffer.append= ( f.label :item_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id). :onchange => "javascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :stacksize );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :stacksize, :value => 1 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.price) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.check_box :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.deposit_cost) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :listing_status_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, @sales_listing.listing_status_id)) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="actions">
+	');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:55:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76335132_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/controllers/sales_listings_controller.rb:32:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__634864473__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered sales_listings/_form.html.erb (22.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (27.0ms)
+Completed 500 Internal Server Error in 72ms
+
+ActionView::Template::Error (compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tSYMBEG
+...on, @sales_listing.item_id). :onchange => "javascript:'Alert...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => "javascript:'Alert("hello")'" ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+                              ^):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id). :onchange => "javascript:'Alert("hello")'" ) %>
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/views/sales_listings/_form.html.erb:55:in `compile'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76335132_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (25.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (46.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:28:27 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+ERROR: compiling _app_views_sales_listings__form_html_erb___267011074_75209736_541750 RAISED compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => "javascript:'Alert("hello")'" ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+                              ^
+Function body:           def _app_views_sales_listings__form_html_erb___267011074_75209736_541750(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "sales_listings/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@sales_listing) do |f| @output_buffer.safe_concat('
+'); if @sales_listing.errors.any? 
+@output_buffer.safe_concat('<div id="error_explanation">
+	<h2>');@output_buffer.append= ( pluralize(@sales_listing.errors.count, "error") );@output_buffer.safe_concat(' prohibited this sales_listing from being saved:</h2>
+
+	<ul>
+');@output_buffer.append_if_string= 		 @sales_listing.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('		<li>
+			');@output_buffer.append= ( msg );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</li>
+');		 end 
+@output_buffer.safe_concat('	</ul>
+</div>
+'); end 
+@output_buffer.safe_concat('
+<div class="field">
+	');@output_buffer.append= ( f.label :item_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id), :onchange => "javascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :stacksize );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :stacksize, :value => 1 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.price) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.check_box :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.deposit_cost) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :listing_status_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, @sales_listing.listing_status_id)) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="actions">
+	');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:55:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75223596_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/controllers/sales_listings_controller.rb:32:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__634864473__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered sales_listings/_form.html.erb (5.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (9.0ms)
+Completed 500 Internal Server Error in 57ms
+
+ActionView::Template::Error (compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => "javascript:'Alert("hello")'" ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:'Alert("hello")'" ) );@output_buffer.safe_concat('
+                              ^):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id), :onchange => "javascript:'Alert("hello")'" ) %>
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/views/sales_listings/_form.html.erb:55:in `compile'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75223596_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (43.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:28:59 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+ERROR: compiling _app_views_sales_listings__form_html_erb___267011074_76117572_541750 RAISED compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => 'javascript:"Alert('hello')"' ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:"Alert('hello')"' ) );@output_buffer.safe_concat('
+                              ^
+Function body:           def _app_views_sales_listings__form_html_erb___267011074_76117572_541750(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "sales_listings/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@sales_listing) do |f| @output_buffer.safe_concat('
+'); if @sales_listing.errors.any? 
+@output_buffer.safe_concat('<div id="error_explanation">
+	<h2>');@output_buffer.append= ( pluralize(@sales_listing.errors.count, "error") );@output_buffer.safe_concat(' prohibited this sales_listing from being saved:</h2>
+
+	<ul>
+');@output_buffer.append_if_string= 		 @sales_listing.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('		<li>
+			');@output_buffer.append= ( msg );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</li>
+');		 end 
+@output_buffer.safe_concat('	</ul>
+</div>
+'); end 
+@output_buffer.safe_concat('
+<div class="field">
+	');@output_buffer.append= ( f.label :item_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id), :onchange => 'javascript:"Alert('hello')"' ) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :stacksize );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :stacksize, :value => 1 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.price) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.check_box :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.deposit_cost) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :listing_status_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, @sales_listing.listing_status_id)) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="actions">
+	');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:55:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76126860_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/controllers/sales_listings_controller.rb:32:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__634864473__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered sales_listings/_form.html.erb (4.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 52ms
+
+ActionView::Template::Error (compile error
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected tIDENTIFIER, expecting ')'
+...e => 'javascript:"Alert('hello')"' ) );@output_buffer.safe_c...
+                              ^
+D:/Users/dcloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:19: syntax error, unexpected ')', expecting kEND
+...vascript:"Alert('hello')"' ) );@output_buffer.safe_concat('
+                              ^):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id), :onchange => 'javascript:"Alert('hello')"' ) %>
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/views/sales_listings/_form.html.erb:55:in `compile'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76126860_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (26.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (40.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:31:03 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (27.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 137ms (Views: 54.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:34:51 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (26.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 80ms (Views: 51.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:35:34 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (39.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (62.0ms)
+Completed 500 Internal Server Error in 128ms
+
+ActionView::Template::Error (undefined method `determineDefaultStacksize' for #<#<Class:0x91eaf80>:0x91e9918>):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76491900_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76491900_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76497828_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (9.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (44.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:35:47 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (53.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (83.0ms)
+Completed 500 Internal Server Error in 185ms
+
+ActionView::Template::Error (undefined method `determineDefaultStacksize' for #<#<Class:0x90fdd10>:0x90fbb80>):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => self.determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76002072_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76002072_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76008072_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (9.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (56.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:36:23 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (74.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (225.0ms)
+Completed 500 Internal Server Error in 448ms
+
+ActionView::Template::Error (undefined method `determineDefaultStacksize' for #<#<Class:0x9049488>:0x90482d0>):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75634692_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75634692_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75643008_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (66.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:36:38 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (107.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (138.0ms)
+Completed 500 Internal Server Error in 248ms
+
+ActionView::Template::Error (undefined method `determineDefaultStacksize' for #<#<Class:0x9042588>:0x9041388>):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => self.determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75607656_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75607656_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75619800_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (61.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:36:59 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (19.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (25.0ms)
+Completed 500 Internal Server Error in 119ms
+
+ActionView::Template::Error (undefined method `determineDefaultStacksize' for #<SalesListing:0x932c5e0>):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => @sales_listing.determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76869672_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76869672_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76891068_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (17.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (35.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:37:32 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 'id' LIMIT 1
+Rendered sales_listings/_form.html.erb (45.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (50.0ms)
+Completed 500 Internal Server Error in 91ms
+
+ActionView::Template::Error (Couldn't find Item with ID=id):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :id)}  ) %>
+    20: 	
+    21: </div>
+    22: <div class="field">
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75670884_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75670884_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75677712_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (65.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (81.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:38:06 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (20.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 67ms (Views: 43.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 14:41:37 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (13090.0ms)
+Could not log "render_partial.action_view" event. NoMemoryError: failed to allocate memory
+Could not log "render_partial.action_view" event. NoMemoryError: failed to allocate memory
+Rendered sales_listings/_form.html.erb (14522.0ms)
+Could not log "render_partial.action_view" event. NoMemoryError: failed to allocate memory
+Rendered sales_listings/_form.html.erb (15160.0ms)
+Rendered sales_listings/_form.html.erb (15758.0ms)
+Rendered sales_listings/_form.html.erb (16375.0ms)
+Rendered sales_listings/_form.html.erb (17021.0ms)
+Rendered sales_listings/_form.html.erb (17619.0ms)
+Rendered sales_listings/_form.html.erb (18231.0ms)
+Rendered sales_listings/_form.html.erb (18794.0ms)
+Rendered sales_listings/_form.html.erb (19418.0ms)
+Rendered sales_listings/_form.html.erb (20055.0ms)
+Rendered sales_listings/_form.html.erb (20620.0ms)
+Rendered sales_listings/_form.html.erb (21198.0ms)
+Rendered sales_listings/_form.html.erb (21750.0ms)
+Rendered sales_listings/_form.html.erb (22271.0ms)
+Rendered sales_listings/_form.html.erb (22811.0ms)
+Rendered sales_listings/_form.html.erb (23430.0ms)
+Rendered sales_listings/_form.html.erb (23925.0ms)
+Rendered sales_listings/_form.html.erb (24443.0ms)
+Rendered sales_listings/_form.html.erb (25042.0ms)
+Rendered sales_listings/_form.html.erb (25492.0ms)
+Rendered sales_listings/_form.html.erb (25996.0ms)
+Rendered sales_listings/_form.html.erb (26526.0ms)
+Rendered sales_listings/_form.html.erb (27040.0ms)
+Rendered sales_listings/_form.html.erb (27492.0ms)
+Rendered sales_listings/_form.html.erb (28032.0ms)
+Rendered sales_listings/_form.html.erb (28506.0ms)
+Rendered sales_listings/_form.html.erb (28962.0ms)
+Rendered sales_listings/_form.html.erb (29384.0ms)
+Rendered sales_listings/_form.html.erb (29853.0ms)
+Rendered sales_listings/_form.html.erb (30249.0ms)
+Rendered sales_listings/_form.html.erb (30678.0ms)
+Rendered sales_listings/_form.html.erb (31089.0ms)
+Rendered sales_listings/_form.html.erb (31551.0ms)
+Rendered sales_listings/_form.html.erb (31964.0ms)
+Rendered sales_listings/_form.html.erb (32394.0ms)
+Rendered sales_listings/_form.html.erb (32786.0ms)
+Rendered sales_listings/_form.html.erb (33187.0ms)
+Rendered sales_listings/_form.html.erb (33558.0ms)
+Rendered sales_listings/_form.html.erb (33885.0ms)
+Rendered sales_listings/_form.html.erb (34276.0ms)
+Rendered sales_listings/_form.html.erb (34678.0ms)
+Rendered sales_listings/_form.html.erb (34989.0ms)
+Rendered sales_listings/_form.html.erb (35368.0ms)
+Rendered sales_listings/_form.html.erb (35674.0ms)
+Rendered sales_listings/_form.html.erb (36032.0ms)
+Rendered sales_listings/_form.html.erb (36334.0ms)
+Rendered sales_listings/_form.html.erb (36658.0ms)
+Rendered sales_listings/_form.html.erb (36935.0ms)
+Rendered sales_listings/_form.html.erb (37293.0ms)
+Rendered sales_listings/_form.html.erb (37572.0ms)
+Rendered sales_listings/_form.html.erb (37850.0ms)
+Rendered sales_listings/_form.html.erb (38131.0ms)
+Rendered sales_listings/_form.html.erb (38403.0ms)
+Rendered sales_listings/_form.html.erb (38680.0ms)
+Rendered sales_listings/_form.html.erb (38952.0ms)
+Rendered sales_listings/_form.html.erb (39176.0ms)
+Rendered sales_listings/_form.html.erb (39454.0ms)
+Rendered sales_listings/_form.html.erb (39739.0ms)
+Rendered sales_listings/_form.html.erb (40002.0ms)
+Rendered sales_listings/_form.html.erb (40206.0ms)
+Rendered sales_listings/_form.html.erb (40481.0ms)
+Rendered sales_listings/_form.html.erb (40712.0ms)
+Rendered sales_listings/_form.html.erb (40975.0ms)
+Rendered sales_listings/_form.html.erb (41165.0ms)
+Rendered sales_listings/_form.html.erb (41427.0ms)
+Rendered sales_listings/_form.html.erb (41616.0ms)
+Rendered sales_listings/_form.html.erb (41819.0ms)
+Rendered sales_listings/_form.html.erb (42025.0ms)
+Rendered sales_listings/_form.html.erb (42263.0ms)
+Rendered sales_listings/_form.html.erb (42457.0ms)
+Rendered sales_listings/_form.html.erb (42656.0ms)
+Rendered sales_listings/_form.html.erb (42834.0ms)
+Rendered sales_listings/_form.html.erb (43011.0ms)
+Rendered sales_listings/_form.html.erb (43195.0ms)
+Rendered sales_listings/_form.html.erb (43375.0ms)
+Rendered sales_listings/_form.html.erb (43591.0ms)
+Rendered sales_listings/_form.html.erb (43786.0ms)
+Rendered sales_listings/_form.html.erb (43964.0ms)
+Rendered sales_listings/_form.html.erb (44084.0ms)
+Rendered sales_listings/_form.html.erb (44265.0ms)
+Rendered sales_listings/_form.html.erb (44443.0ms)
+Rendered sales_listings/_form.html.erb (44615.0ms)
+Rendered sales_listings/_form.html.erb (44743.0ms)
+Rendered sales_listings/_form.html.erb (44928.0ms)
+Rendered sales_listings/_form.html.erb (45037.0ms)
+Rendered sales_listings/_form.html.erb (45204.0ms)
+Rendered sales_listings/_form.html.erb (45313.0ms)
+Rendered sales_listings/_form.html.erb (45490.0ms)
+Rendered sales_listings/_form.html.erb (45594.0ms)
+Rendered sales_listings/_form.html.erb (45761.0ms)
+Rendered sales_listings/_form.html.erb (45875.0ms)
+Rendered sales_listings/_form.html.erb (45983.0ms)
+Rendered sales_listings/_form.html.erb (46138.0ms)
+Rendered sales_listings/_form.html.erb (46236.0ms)
+Rendered sales_listings/_form.html.erb (46338.0ms)
+Rendered sales_listings/_form.html.erb (46437.0ms)
+Rendered sales_listings/_form.html.erb (46534.0ms)
+Rendered sales_listings/_form.html.erb (46630.0ms)
+Rendered sales_listings/_form.html.erb (46781.0ms)
+Rendered sales_listings/_form.html.erb (46878.0ms)
+Rendered sales_listings/_form.html.erb (46964.0ms)
+Rendered sales_listings/_form.html.erb (47049.0ms)
+Rendered sales_listings/_form.html.erb (47135.0ms)
+Rendered sales_listings/_form.html.erb (47222.0ms)
+Rendered sales_listings/_form.html.erb (47259.0ms)
+Rendered sales_listings/_form.html.erb (47339.0ms)
+Rendered sales_listings/_form.html.erb (47429.0ms)
+Rendered sales_listings/_form.html.erb (47524.0ms)
+Rendered sales_listings/_form.html.erb (47615.0ms)
+Rendered sales_listings/_form.html.erb (47713.0ms)
+Rendered sales_listings/_form.html.erb (47748.0ms)
+Rendered sales_listings/_form.html.erb (47825.0ms)
+Rendered sales_listings/_form.html.erb (47906.0ms)
+Rendered sales_listings/_form.html.erb (47935.0ms)
+Rendered sales_listings/_form.html.erb (48009.0ms)
+Rendered sales_listings/_form.html.erb (48082.0ms)
+Rendered sales_listings/_form.html.erb (48109.0ms)
+Rendered sales_listings/_form.html.erb (48180.0ms)
+Rendered sales_listings/_form.html.erb (48205.0ms)
+Rendered sales_listings/_form.html.erb (48275.0ms)
+Rendered sales_listings/_form.html.erb (48299.0ms)
+Rendered sales_listings/_form.html.erb (48366.0ms)
+Rendered sales_listings/_form.html.erb (48390.0ms)
+Rendered sales_listings/_form.html.erb (48462.0ms)
+Rendered sales_listings/_form.html.erb (48484.0ms)
+Rendered sales_listings/_form.html.erb (48553.0ms)
+Rendered sales_listings/_form.html.erb (48575.0ms)
+Rendered sales_listings/_form.html.erb (48596.0ms)
+Rendered sales_listings/_form.html.erb (48663.0ms)
+Rendered sales_listings/_form.html.erb (48682.0ms)
+Rendered sales_listings/_form.html.erb (48702.0ms)
+Rendered sales_listings/_form.html.erb (48775.0ms)
+Rendered sales_listings/_form.html.erb (48797.0ms)
+Rendered sales_listings/_form.html.erb (48817.0ms)
+Rendered sales_listings/_form.html.erb (48905.0ms)
+Rendered sales_listings/_form.html.erb (48923.0ms)
+Rendered sales_listings/_form.html.erb (48941.0ms)
+Rendered sales_listings/_form.html.erb (48955.0ms)
+Rendered sales_listings/_form.html.erb (49012.0ms)
+Rendered sales_listings/_form.html.erb (49026.0ms)
+Rendered sales_listings/_form.html.erb (49041.0ms)
+Rendered sales_listings/_form.html.erb (49054.0ms)
+Rendered sales_listings/_form.html.erb (49067.0ms)
+Rendered sales_listings/_form.html.erb (49079.0ms)
+Rendered sales_listings/_form.html.erb (49091.0ms)
+Rendered sales_listings/_form.html.erb (49146.0ms)
+Rendered sales_listings/_form.html.erb (49157.0ms)
+Rendered sales_listings/_form.html.erb (49168.0ms)
+Rendered sales_listings/_form.html.erb (49178.0ms)
+Rendered sales_listings/_form.html.erb (49188.0ms)
+Rendered sales_listings/_form.html.erb (49199.0ms)
+Rendered sales_listings/_form.html.erb (49209.0ms)
+Rendered sales_listings/_form.html.erb (49218.0ms)
+Rendered sales_listings/_form.html.erb (49228.0ms)
+Rendered sales_listings/_form.html.erb (49238.0ms)
+Rendered sales_listings/_form.html.erb (49247.0ms)
+Rendered sales_listings/_form.html.erb (49257.0ms)
+Rendered sales_listings/_form.html.erb (49265.0ms)
+Rendered sales_listings/_form.html.erb (49274.0ms)
+Rendered sales_listings/_form.html.erb (49293.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (49299.0ms)
+Completed 500 Internal Server Error in 49394ms
+
+ActionView::Template::Error (failed to allocate memory):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, @sales_listing.item_id)}) %>	
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76034028_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76034028_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76037124_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76037124_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75102780_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75102780_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75118308_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75118308_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75126972_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75126972_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75134832_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75134832_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75145968_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75145968_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75154032_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75154032_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75163512_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75163512_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75113916_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75113916_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75179712_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75179712_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75189888_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75189888_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75195360_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75195360_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75203868_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75203868_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75218880_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75218880_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75233400_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75233400_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75245292_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75245292_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75253044_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75253044_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75264312_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75264312_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75284004_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75284004_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75301224_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75301224_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75309984_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75309984_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75337572_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75337572_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75357096_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75357096_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75358776_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75358776_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75372036_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75372036_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75403212_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75403212_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75403404_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75403404_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75413220_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75413220_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75439356_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75439356_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75453312_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75453312_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75468600_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75468600_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75484824_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75484824_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75511608_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75511608_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75528528_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75528528_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75538092_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75538092_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75586392_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75586392_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75608256_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75608256_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75608340_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75608340_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75616764_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75616764_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75652788_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75652788_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75653004_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75653004_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75680964_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75680964_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75416496_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75416496_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75697596_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75697596_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75729768_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75729768_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75737088_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75737088_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75483636_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75483636_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75755652_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75755652_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75769956_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75769956_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75791712_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75791712_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75801012_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75801012_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75591864_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75591864_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75598716_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75598716_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75837732_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75837732_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75842124_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75842124_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75880932_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75880932_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75665484_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75665484_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75896196_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75896196_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75696384_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75696384_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75947016_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75947016_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75721128_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75721128_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75968784_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75968784_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75744600_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75744600_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75992112_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75992112_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76002840_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76002840_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76002852_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76002852_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75800568_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75800568_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75818796_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75818796_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75834264_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75834264_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76090788_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76090788_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76093236_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76093236_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76106484_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76106484_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76129656_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76129656_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75897144_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75897144_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75927516_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75927516_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75937452_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75937452_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76179072_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76179072_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76185840_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76185840_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75971820_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75971820_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75979512_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75979512_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76190400_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76190400_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76005300_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76005300_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76191804_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76191804_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76047588_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76047588_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76193148_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76193148_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76064460_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76064460_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76194144_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76194144_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76089852_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76089852_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76092108_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76092108_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76196472_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76196472_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76107696_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76107696_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76133676_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76133676_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76153668_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76153668_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76158744_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76158744_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77172828_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77172828_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77183196_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77183196_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76174776_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76174776_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76183692_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76183692_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76192512_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76192512_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76201320_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76201320_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76210584_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76210584_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76207824_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76207824_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77275908_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77275908_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76709508_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76709508_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76320768_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76320768_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76321152_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76321152_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76300764_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76300764_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76258488_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76258488_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76414488_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76414488_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76414260_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76414260_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76402728_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76402728_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77277300_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77277300_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76528092_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76528092_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76361604_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76361604_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76601040_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76601040_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76506684_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76506684_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77280156_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77280156_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76605540_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76605540_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77280828_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77280828_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76709448_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76709448_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77281176_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77281176_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76602312_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76602312_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76942992_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76942992_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76605996_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76605996_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76829508_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76829508_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77282628_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77282628_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76715664_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76715664_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76953684_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76953684_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77282736_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77282736_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76706052_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76706052_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76834368_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76834368_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77133804_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77133804_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76642668_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76642668_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76789464_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76789464_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76932768_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76932768_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77124600_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77124600_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76616244_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76616244_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76704876_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76704876_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76796844_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76796844_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76893468_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76893468_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77042736_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77042736_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77163468_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77163468_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76831164_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76831164_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76228140_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76228140_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76275444_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76275444_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76322916_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76322916_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76367844_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76367844_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76453392_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76453392_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76524192_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76524192_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76587156_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76587156_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76634676_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76634676_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76691712_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76691712_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76746384_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76746384_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76792728_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76792728_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76830612_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76830612_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76907952_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76907952_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76995360_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76995360_541750'
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_77282064_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_77282064_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76158108_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (47.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (55.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/sales_listings/" for 127.0.0.1 at Mon Jul 18 15:17:19 -0400 2011
+  Processing by SalesListingsController#index as HTML
+  [1m[36mSalesListing Load (1.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings"[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1[0m
+  [1m[35mCraftedItem Load (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mSalesListing Load (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mSalesListing Load (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 7) LIMIT 1[0m
+  [1m[35mCraftedItem Load (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 7)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1
+  [1m[36mCraftedItem Load (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mSalesListing Load (1.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 7) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 6)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "listing_statuses".* FROM "listing_statuses" WHERE "listing_statuses"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mSalesListing Load (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "crafted_items" WHERE (crafted_item_generated_id = 5) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sales_listings".* FROM "sales_listings" WHERE "sales_listings"."id" = 9 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "crafted_items".* FROM "crafted_items" WHERE (crafted_item_generated_id = 5)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+Rendered sales_listings/index.html.erb within layouts/application (236.0ms)
+Completed 200 OK in 406ms (Views: 252.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:17:30 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (48.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 164ms (Views: 78.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:18:07 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (28.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 85ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:18:22 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 86ms (Views: 56.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:19:05 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1
+Rendered sales_listings/_form.html.erb (125.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (131.0ms)
+Completed 500 Internal Server Error in 176ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :item_id)}) %>	
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/helpers/application_helper.rb:114:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75045900_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75045900_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75055800_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (16.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (36.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:48:30 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (19.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 83ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :item_id)}) %>	
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/helpers/application_helper.rb:114:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_75195828_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_75195828_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_75204900_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (17.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (36.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:55:36 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1
+Rendered sales_listings/_form.html.erb (18.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (24.0ms)
+Completed 500 Internal Server Error in 114ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    16: <div class="field">
+    17: 	<%= f.label :item_id %>
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, {:onchange => determineDefaultStacksize(f, :item_id)}) %>	
+    20: </div>
+    21: <div class="field">
+    22: 	<%= f.label :stacksize %>
+  app/helpers/application_helper.rb:114:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:19:in `_app_views_sales_listings__form_html_erb___267011074_76461780_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___267011074_76461780_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___483173972_76480044_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (29.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Mon Jul 18 15:55:51 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (27.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 80ms (Views: 52.0ms | ActiveRecord: 1.0ms)
