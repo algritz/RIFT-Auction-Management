@@ -17,12 +17,10 @@
 	<%= f.label :item_id %>
 	<br />
 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
-	{:onchange => remote_function(
-		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+	{:onchange => remote_function( Stacksize(f, @sales_listing.item_id), 
 		:url => new_sales_listing_path(@sales_listing.item_id),
 		#:with => @sales_listing,
-		:method=>:get)}) %>
-	
+		:method=>:get)}) %>		
 </div>
 <div class="field">
 	<%= f.label :stacksize %>

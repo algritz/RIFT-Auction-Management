@@ -88,6 +88,4 @@ class SalesListingsController < ApplicationController
     end
   end
 
- 
-
 end
