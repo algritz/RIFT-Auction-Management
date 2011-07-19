@@ -20,6 +20,7 @@
 	{:onchange => remote_function(
 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
 		:url => new_sales_listing_path(@sales_listing.item_id),
+		#:with => @sales_listing,
 		:method=>:get)}) %>
 	
 </div>

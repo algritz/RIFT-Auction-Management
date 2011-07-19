@@ -44000,3 +44000,1199 @@ Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRb
 Rendered sales_listings/_form.html.erb (74.0ms)
 Rendered sales_listings/new.html.erb within layouts/application (85.0ms)
 Completed 200 OK in 133ms (Views: 102.0ms | ActiveRecord: 1.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 05:59:43 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (39.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 216ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:00:56 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (175.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (198.0ms)
+Completed 500 Internal Server Error in 302ms
+
+ActionView::Template::Error (undefined method `<<' for #<ActionView::Helpers::FormBuilder:0x8eb1b90>):
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+    25: 	
+    26: </div>
+    27: <div class="field">
+  app/views/sales_listings/_form.html.erb:24:in `_app_views_sales_listings__form_html_erb___536479033_74902044_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74902044_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74907960_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (44.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:03:57 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (16.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 67ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+  app/helpers/application_helper.rb:111:in `object'
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74373372_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74373372_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74379312_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (16.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (30.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:04:29 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (12.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (17.0ms)
+Completed 500 Internal Server Error in 55ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+  app/helpers/application_helper.rb:111:in `object'
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75063048_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75063048_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75086616_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:04:42 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (60.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (65.0ms)
+Completed 500 Internal Server Error in 118ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+  app/views/sales_listings/_form.html.erb:21:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_73879020_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_73879020_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_73884912_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (28.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:04:53 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (42.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (67.0ms)
+Completed 500 Internal Server Error in 129ms
+
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x8e44f18>:0x8e43ad8>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize, 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74578500_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74578500_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74585196_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (40.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:05:12 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (35.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (96.0ms)
+Completed 500 Internal Server Error in 146ms
+
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x8de0d78>:0x8ddf7b8>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize, 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74366460_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74366460_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74377656_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (32.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:05:51 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+DEPRECATION WARNING: form was removed from Rails and is now available as a plugin. Please install it with `rails plugin install git://github.com/rails/dynamic_form.git`. (called from determineDefaultStacksize at C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/helpers/application_helper.rb:111)
+Rendered sales_listings/_form.html.erb (13.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 58ms
+
+ActionView::Template::Error (undefined method `object' for #<String:0x8d63f00>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize, 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74316612_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74316612_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74328564_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:06:10 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (12.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 56ms
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize, 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/views/sales_listings/_form.html.erb:21:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74886168_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74886168_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74894604_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:06:23 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (12.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (17.0ms)
+Completed 500 Internal Server Error in 94ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:111:in `object'
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75923052_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75923052_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75928968_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:06:42 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (13.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 56ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:111:in `object'
+  app/helpers/application_helper.rb:111:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74627856_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74627856_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74646528_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:07:22 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 75711684 LIMIT 1
+Rendered sales_listings/_form.html.erb (19.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (23.0ms)
+Completed 500 Internal Server Error in 132ms
+
+ActionView::Template::Error (Couldn't find Item with ID=75711684):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75696276_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75696276_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75702612_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:07:44 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 74480208 LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (17.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (22.0ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (Couldn't find Item with ID=74480208):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74469444_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74469444_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74477424_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (16.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:07:47 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 75427968 LIMIT 1
+Rendered sales_listings/_form.html.erb (17.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (Couldn't find Item with ID=75427968):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75414696_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75414696_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75425652_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:08:03 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 74307060 LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (16.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (20.0ms)
+Completed 500 Internal Server Error in 58ms
+
+ActionView::Template::Error (Couldn't find Item with ID=74307060):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74291208_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74291208_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74301888_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (55.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (67.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:08:04 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 75296172 LIMIT 1
+Rendered sales_listings/_form.html.erb (15.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (22.0ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (Couldn't find Item with ID=75296172):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75288000_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75288000_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75293892_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:08:04 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 74093940 LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (18.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (23.0ms)
+Completed 500 Internal Server Error in 71ms
+
+ActionView::Template::Error (Couldn't find Item with ID=74093940):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_74072952_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_74072952_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_74087844_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (73.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:09:30 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (14.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/views/sales_listings/_form.html.erb:21:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75126900_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75126900_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75132828_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (29.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:09:47 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 73932564 LIMIT 1
+Rendered sales_listings/_form.html.erb (60.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (64.0ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (Couldn't find Item with ID=73932564):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_73921644_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_73921644_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_73929324_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:10:30 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 77442276 LIMIT 1
+Rendered sales_listings/_form.html.erb (34.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (38.0ms)
+Completed 500 Internal Server Error in 199ms
+
+ActionView::Template::Error (Couldn't find Item with ID=77442276):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_77431308_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_77431308_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_77439996_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:11:15 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+ERROR: compiling _app_views_sales_listings__form_html_erb___536479033_76172904_541750 RAISED compile error
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:23: syntax error, unexpected ','
+		:with => ,
+		          ^
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:24: syntax error, unexpected '}', expecting kEND
+		:method=>:get)}) );@output_buffer.safe_concat('
+		               ^
+Function body:           def _app_views_sales_listings__form_html_erb___536479033_76172904_541750(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "sales_listings/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@sales_listing) do |f| @output_buffer.safe_concat('
+'); if @sales_listing.errors.any? 
+@output_buffer.safe_concat('<div id="error_explanation">
+	<h2>');@output_buffer.append= ( pluralize(@sales_listing.errors.count, "error") );@output_buffer.safe_concat(' prohibited this sales_listing from being saved:</h2>
+
+	<ul>
+');@output_buffer.append_if_string= 		 @sales_listing.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('		<li>
+			');@output_buffer.append= ( msg );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</li>
+');		 end 
+@output_buffer.safe_concat('	</ul>
+</div>
+'); end 
+@output_buffer.safe_concat('
+<div class="field">
+	');@output_buffer.append= ( f.label :item_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+	{:onchange => remote_function(
+		:update => determineDefaultStacksize(f, :item_id), 
+		:url => new_sales_listing_path(@sales_listing.item_id),
+		:with => ,
+		:method=>:get)}) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :stacksize );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :stacksize, :value => 1 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.price) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.check_box :is_undercut_price );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.text_field :deposit_cost );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	(');@output_buffer.append= ( formatPrice(@sales_listing.deposit_cost) );@output_buffer.safe_concat(')
+</div>
+<div class="field">
+	');@output_buffer.append= ( f.label :listing_status_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<br />
+	');@output_buffer.append= ( f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, @sales_listing.listing_status_id)) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+<div class="actions">
+	');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:61:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76178796_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/controllers/sales_listings_controller.rb:32:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__634864473__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered sales_listings/_form.html.erb (2.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 47ms
+
+ActionView::Template::Error (compile error
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:23: syntax error, unexpected ','
+		:with => ,
+		          ^
+C:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/sales_listings/_form.html.erb:24: syntax error, unexpected '}', expecting kEND
+		:method=>:get)}) );@output_buffer.safe_concat('
+		               ^):
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, :item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => ,
+    24: 		:method=>:get)}) %>
+    25: 	
+    26: </div>
+  app/views/sales_listings/_form.html.erb:61:in `compile'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76178796_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (21.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (32.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:11:26 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Rendered sales_listings/_form.html.erb (12.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (16.0ms)
+Completed 500 Internal Server Error in 53ms
+
+ActionView::Template::Error (wrong number of arguments (2 for 1)):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, :item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/views/sales_listings/_form.html.erb:21:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_77030100_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_77030100_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_77036004_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (21.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:11:40 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (37.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (41.0ms)
+Completed 500 Internal Server Error in 79ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, :item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75931776_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75931776_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75937680_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (41.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (64.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:12:14 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1
+Rendered sales_listings/_form.html.erb (16.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, :item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:113:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_76774584_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_76774584_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76784604_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:12:30 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 'item_id' LIMIT 1[0m
+Rendered sales_listings/_form.html.erb (61.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (65.0ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (Couldn't find Item with ID=item_id):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, :item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:114:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75535272_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75535272_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75541212_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:13:05 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (31.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (50.0ms)
+Completed 500 Internal Server Error in 102ms
+
+ActionView::Template::Error (undefined method `f' for #<#<Class:0x91b88f8>:0x91b76f8>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, f(:item_id)), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_76387128_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_76387128_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76393836_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:13:53 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (29.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 75ms (Views: 51.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:14:01 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (31.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 85ms (Views: 56.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:14:11 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 85ms (Views: 54.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:15:43 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 82ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:16:31 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (87.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (113.0ms)
+Completed 500 Internal Server Error in 189ms
+
+ActionView::Template::Error (undefined local variable or method `element' for #<#<Class:0x91005f0>:0x90fe808>):
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => 'sales_listing[item_id]='+element.value,
+    24: 		:method=>:get)}) %>
+    25: 	
+    26: </div>
+  app/views/sales_listings/_form.html.erb:23:in `_app_views_sales_listings__form_html_erb___536479033_76010004_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_76010004_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76016388_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (9.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (44.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:16:49 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (29.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 125ms (Views: 54.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:16:50 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 86ms (Views: 56.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:17:06 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (31.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 89ms (Views: 58.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:17:48 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (88.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (113.0ms)
+Completed 500 Internal Server Error in 182ms
+
+ActionView::Template::Error (undefined method `sales_listing' for #<ActionView::Helpers::FormBuilder:0x90aa8c8>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:method=>:get)}) %>
+    24: 	
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_75980316_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75980316_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75987156_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (41.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:18:50 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (43.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (69.0ms)
+Completed 500 Internal Server Error in 181ms
+
+ActionView::Template::Error (undefined method `sales_listing' for #<ActionView::Helpers::FormBuilder:0x93043e0>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => sales_listing[item_id],
+    24: 		:method=>:get)}) %>
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_77200632_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_77200632_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_77209704_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (78.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:19:02 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (40.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (64.0ms)
+Completed 500 Internal Server Error in 126ms
+
+ActionView::Template::Error (undefined method `sales_listing' for #<ActionView::Helpers::FormBuilder:0x9205de8>):
+    18: 	<br />
+    19: 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
+    20: 	{:onchange => remote_function(
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => "sales_listing[item_id]",
+    24: 		:method=>:get)}) %>
+  app/helpers/application_helper.rb:112:in `determineDefaultStacksize'
+  app/views/sales_listings/_form.html.erb:21:in `_app_views_sales_listings__form_html_erb___536479033_76636236_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_76636236_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76642128_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:19:14 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 90ms (Views: 58.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:19:50 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (30.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 86ms (Views: 55.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:23:16 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (31.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 132ms (Views: 57.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:23:44 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (42.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (111.0ms)
+Completed 500 Internal Server Error in 177ms
+
+ActionView::Template::Error (undefined method `<<' for #<ActionView::Helpers::FormBuilder:0x9134c88>):
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => f,
+    24: 		:method=>:get)}) %>
+    25: 	
+    26: </div>
+    27: <div class="field">
+  app/views/sales_listings/_form.html.erb:24:in `_app_views_sales_listings__form_html_erb___536479033_76227900_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_76227900_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_76233828_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (45.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:24:03 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (58.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (63.0ms)
+Completed 500 Internal Server Error in 108ms
+
+ActionView::Template::Error (undefined method `<<' for #<SalesListing:0x90ae150>):
+    21: 		:update => determineDefaultStacksize(f, @sales_listing.item_id), 
+    22: 		:url => new_sales_listing_path(@sales_listing.item_id),
+    23: 		:with => @sales_listing,
+    24: 		:method=>:get)}) %>
+    25: 	
+    26: </div>
+    27: <div class="field">
+  app/views/sales_listings/_form.html.erb:24:in `_app_views_sales_listings__form_html_erb___536479033_75644220_541750'
+  app/views/sales_listings/_form.html.erb:1:in `_app_views_sales_listings__form_html_erb___536479033_75644220_541750'
+  app/views/sales_listings/new.html.erb:3:in `_app_views_sales_listings_new_html_erb___887445615_75650160_0'
+  app/controllers/sales_listings_controller.rb:32:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (17.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (33.0ms)
+
+
+Started GET "/sales_listings/new" for 127.0.0.1 at Tue Jul 19 06:26:08 -0400 2011
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (34.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 99ms (Views: 66.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:26:10 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (29.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 85ms (Views: 54.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:26:12 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (32.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 90ms (Views: 60.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sales_listings/new?authenticity_token=SWk9HCBK1g1lu3VpwIclKit%2FRbmyJiTpQuRRq9IRm1E%3D" for 127.0.0.1 at Tue Jul 19 06:26:24 -0400 2011
+  Processing by SalesListingsController#new as JS
+  Parameters: {"authenticity_token"=>"SWk9HCBK1g1lu3VpwIclKit/RbmyJiTpQuRRq9IRm1E="}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Rendered sales_listings/_form.html.erb (33.0ms)
+Rendered sales_listings/new.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 138ms (Views: 61.0ms | ActiveRecord: 0.0ms)

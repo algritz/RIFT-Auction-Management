@@ -109,7 +109,7 @@ module ApplicationHelper
    def determineDefaultStacksize(f, id)
 
     p params
-    if id != nil then
+        if id != nil then
       if Item.find(id).is_crafted then
         #return CraftedItem.find(id).stacksize
         f.text_field :stacksize, :value=> CraftedItem.find(id).stacksize
