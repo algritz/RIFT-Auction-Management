@@ -8,7 +8,7 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }
-    end
+     end
   end
 
   # GET /sales_listings/1
@@ -52,6 +52,7 @@ class SalesListingsController < ApplicationController
       if @sales_listing.save
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
+      format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
@@ -87,5 +88,4 @@ class SalesListingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
 end

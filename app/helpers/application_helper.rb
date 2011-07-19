@@ -95,34 +95,15 @@ module ApplicationHelper
             return "no pattern defined yet for a sub-component"
           end
         end
-        profit = (price - (deposit_cost + cost))
-        return profit
+      profit = (price - (deposit_cost + cost))
+      return profit
       else
         return "no pattern defined yet"
       end
     else
-      profit = (price - (deposit_cost + buyingCost ))
-      return profit
+    profit = (price - (deposit_cost + buyingCost ))
+    return profit
     end
-  end
-  
-   def determineDefaultStacksize(f, id)
-
-    p params
-    
-        if id != nil then
-      if Item.find(id).is_crafted then
-        #return CraftedItem.find(id).stacksize
-        f.text_field :stacksize, :value=> CraftedItem.find(id).stacksize
-        p"should change to #{CraftedItem.find(id).stacksize} "
-      else
-      #return 1
-        f.text_field :stacksize, :value=> 1
-      end
-    else
-    return 1
-    end
-
   end
 
 end
