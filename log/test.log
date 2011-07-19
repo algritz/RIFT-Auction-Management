@@ -34243,3 +34243,741 @@ Completed 302 Found in 1ms
   Parameters: {"id"=>"1"}
 Redirected to http://test.host/sales_listings
 Completed 302 Found in 2ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 192ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 38ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 22ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 2.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 0ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 111ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 26ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 2.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 113ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 117ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 26ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 21ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 5ms
+WARNING: Can't mass-assign protected attributes: undercut_price
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("item_id", "undercut_price", "price", "stacksize", "listing_status_id", "deposit_cost", "updated_at", "created_at") VALUES (1, NULL, 1, 1, 1, 1, '2011-07-19 01:56:01.272295', '2011-07-19 01:56:01.272295')
+WARNING: Can't mass-assign protected attributes: undercut_price
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "sales_listings" ("price", "undercut_price", "listing_status_id", "stacksize", "created_at", "deposit_cost", "item_id", "updated_at") VALUES (1, NULL, 1, 1, '2011-07-19 01:56:57.663520', 1, 1, '2011-07-19 01:56:57.663520')
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 106ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 9ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 109ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 21ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 2.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 141ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 29ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 30ms (Views: 26.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 28ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 2ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 128ms (Views: 25.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 37ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 31ms (Views: 24.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 28ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 9ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 28ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 8ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 2.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 109ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 26ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 7ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 109ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 26ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 5ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (1.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 2.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 3ms
+  Processing by SalesListingsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description[0m
+Rendered sales_listings/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 112ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#show as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 24ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#new as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#edit as HTML
+  Parameters: {"id"=>"37"}
+  [1m[35mItem Load (1.0ms)[0m  SELECT id, description, vendor_selling_price, vendor_buying_price, source_id FROM "items" ORDER BY description
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1005
+Completed 302 Found in 6ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1006
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#create as HTML
+  Parameters: {"sales_listing"=>{}}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"37", "sales_listing"=>{"these"=>"params"}}
+  [1m[35mListingStatus Load (1.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Redirected to http://test.host/sales_listings/1010
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Redirected to http://test.host/sales_listings/1011
+Completed 302 Found in 4ms
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mListingStatus Load (0.0ms)[0m  [1mSELECT id, description FROM "listing_statuses" ORDER BY description[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mListingStatus Load (0.0ms)[0m  SELECT id, description FROM "listing_statuses" ORDER BY description
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 1ms
+  Processing by SalesListingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sales_listings
+Completed 302 Found in 4ms

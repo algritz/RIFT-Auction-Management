@@ -105,11 +105,10 @@ module ApplicationHelper
       return profit
     end
   end
+  
+   def determineDefaultStacksize(f, id)
 
-
-  def determineDefaultStacksize(f, id)
-    
-    p "test #{id}"
+    p params
     if id != nil then
       if Item.find(id).is_crafted then
         #return CraftedItem.find(id).stacksize
@@ -122,14 +121,7 @@ module ApplicationHelper
     else
     return 1
     end
-    
-    respond_to do |format|
-      format.html { }
-      format.xml  { }
-      format.js
-    end
-    
-  end
 
+  end
 
 end
