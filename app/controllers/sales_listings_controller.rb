@@ -8,7 +8,7 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }
-     end
+    end
   end
 
   # GET /sales_listings/1
@@ -29,9 +29,11 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.new
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
+      format.js
     end
   end
 

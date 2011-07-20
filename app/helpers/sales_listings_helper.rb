@@ -1,6 +1,6 @@
 module SalesListingsHelper
-  def determineDefaultStacksize (f)
-    p params
-    f+".options[this.selectedIndex].value"
+  def determineDefaultStacksize
+    p "crap!!!!!!"
+    #page.select('form').each { |f| f.reset }
   end
 end
