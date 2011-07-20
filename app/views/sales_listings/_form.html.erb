@@ -1,4 +1,4 @@
-<%= form_for(@sales_listing) do |f| %>
+<%= form_for(@sales_listing, :remote => true) do |f| %>
 <% if @sales_listing.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@sales_listing.errors.count, "error") %> prohibited this sales_listing from being saved:</h2>
@@ -16,11 +16,8 @@
 <div class="field">
 	<%= f.label :item_id %>
 	<br />
-	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{}, 
-	{#:onchange => remote_function(:action => self.determineDefaultStacksize(f),
-		:onchange => "Alert(this.value)",
-		:method=>:get)}) %>		
-</div>
+	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @sales_listing.item_id),{},
+    {:onchange => remote_function(:method=>:get)}) %>
 <div class="field">
 	<%= f.label :stacksize %>
 	<br />
@@ -30,7 +27,10 @@
 	<%= f.label :price %>
 	<br />
 	<%= f.text_field :price %>
-	(<%= formatPrice(@sales_listing.price) %>)
+	<%= if (@sales_listing.price != nil) then
+	"(#{formatPrice(@sales_listing.price)})"
+	end
+	%>
 </div>
 <div class="field">
 	<%= f.label :is_undercut_price %>
@@ -41,7 +41,10 @@
 	<%= f.label :deposit_cost %>
 	<br />
 	<%= f.text_field :deposit_cost %>
-	(<%= formatPrice(@sales_listing.deposit_cost) %>)
+	<%= if (@sales_listing.deposit_cost!= nil) then
+	"(#{formatPrice(@sales_listing.deposit_cost)})"
+	end
+	%>
 </div>
 <div class="field">
 	<%= f.label :listing_status_id %>

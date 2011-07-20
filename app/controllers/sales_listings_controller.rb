@@ -8,7 +8,7 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }
-     end
+    end
   end
 
   # GET /sales_listings/1
@@ -32,6 +32,7 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
+      format.js {p params}
     end
   end
 
@@ -56,6 +57,7 @@ class SalesListingsController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      format.js
       end
     end
   end
@@ -88,4 +90,12 @@ class SalesListingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def method_name
+    @message= params[:msg]
+    render :update do|page|
+      page.replace_html 'show_message', @message
+    end
+  end
+
 end
