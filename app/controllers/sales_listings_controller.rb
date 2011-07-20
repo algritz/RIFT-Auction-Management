@@ -90,12 +90,4 @@ class SalesListingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-  def method_name
-    @message= params[:msg]
-    render :update do|page|
-      page.replace_html 'show_message', @message
-    end
-  end
-
 end
