@@ -23,7 +23,9 @@
   <b>Is crafted:</b>
   <%= @item.is_crafted %>
 </p>
-
-
+<p>
+  <b>Is to be listed:</b>
+  <%= @item.to_list %>
+</p>
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

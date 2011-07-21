@@ -2,7 +2,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
-    @sales_listings = SalesListing.all
+    @sales_listings = SalesListing.find(:all, :order => "item_id, listing_status_id")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
 
     respond_to do |format|

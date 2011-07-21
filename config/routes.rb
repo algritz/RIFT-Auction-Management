@@ -12,7 +12,8 @@ RIFTAuctionManagement::Application.routes.draw do
   resources :sources
 
   resources :listing_statuses
-
+  #match ':controller(/:action(/:id(.:format)))'
+  get 'page/items_to_list' 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
