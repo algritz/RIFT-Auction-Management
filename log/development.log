@@ -6781,3 +6781,839 @@ Started GET "/page/items_to_list/" for 127.0.0.1 at Wed Jul 20 22:34:31 -0400 20
   [1m[35mSQL (1.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
 Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
 Completed 200 OK in 57ms (Views: 21.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:06:56 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 64ms (Views: 21.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:07:51 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 57ms (Views: 21.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:08:14 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 65ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:09:06 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 102ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:09:27 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 57ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:10:30 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 99ms (Views: 19.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:10:47 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 54ms (Views: 20.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:10:59 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 89ms (Views: 18.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:11:53 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 59ms (Views: 23.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:12:17 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 113ms (Views: 28.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:14:11 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 62ms
+
+ActionView::Template::Error (undefined local variable or method `getItemDetails' for #<#<Class:0x95f55f0>:0x95f3ad8>):
+    1: <%=
+    2:  getItemDetails
+    3: %>
+  app/views/page/items_to_list.html.erb:2:in `_app_views_page_items_to_list_html_erb___641508775_78615024_0'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (38.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:14:24 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 63ms
+
+ActionView::Template::Error (undefined local variable or method `getItemDetails' for #<#<Class:0x96a8b28>:0x96a6e90>):
+    1: <%=
+    2:  getItemDetails
+    3: %>
+  app/views/page/items_to_list.html.erb:2:in `_app_views_page_items_to_list_html_erb___641508775_78982428_0'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (70.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:14:39 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 61ms
+
+ActionView::Template::Error (undefined local variable or method `items_to_list' for #<#<Class:0x970d6b8>:0x970c4e8>):
+    1: <%=
+    2:  items_to_list
+    3: %>
+  app/views/page/items_to_list.html.erb:2:in `_app_views_page_items_to_list_html_erb___641508775_79190184_0'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:14:58 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+Rendered page/items_to_list.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 101ms
+
+ActionView::Template::Error (undefined local variable or method `items_to_list' for #<#<Class:0x97fd970>:0x97fbd50>):
+    1: <%
+    2:  items_to_list
+    3: %>
+  app/views/page/items_to_list.html.erb:2:in `_app_views_page_items_to_list_html_erb___641508775_79680540_0'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:15:42 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 55ms (Views: 22.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:15:51 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 61ms (Views: 25.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:16:29 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 46ms (Views: 21.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:17:54 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+Completed 500 Internal Server Error in 34ms
+
+NoMethodError (undefined method `getItemDescription' for #<PageController:0x97ab698>):
+  app/controllers/page_controller.rb:13:in `items_to_list'
+  app/controllers/page_controller.rb:12:in `each'
+  app/controllers/page_controller.rb:12:in `items_to_list'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:18:27 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 50ms (Views: 22.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:19:53 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 59ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:21:00 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 58ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:21:33 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 46ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:21:35 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 61ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:22:12 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+ERROR: compiling _app_views_page_items_to_list_html_erb___641508775_79238004_0 RAISED compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:5: syntax error, unexpected '<', expecting kEND
+	<br />
+	 ^
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:5: unterminated string meets end of file
+Function body:           def _app_views_page_items_to_list_html_erb___641508775_79238004_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "page/items_to_list";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Items to craft</h1>
+');@output_buffer.append= (
+ @out_of_stock_list_desc.each do |item|
+	"#{item}"
+	<br />
+  end
+
+);@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:5:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1029374205__process_action__638093178__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered page/items_to_list.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 44ms
+
+ActionView::Template::Error (compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:5: syntax error, unexpected '<', expecting kEND
+	<br />
+	 ^
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:5: unterminated string meets end of file):
+    2: <%=
+    3:  @out_of_stock_list_desc.each do |item|
+    4: 	"#{item}"
+    5: 	<br />
+    6:   end
+    7: 
+    8: %>
+  app/views/page/items_to_list.html.erb:5:in `compile'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:22:22 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 56ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:23:03 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 65ms (Views: 24.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:23:31 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+ERROR: compiling _app_views_page_items_to_list_html_erb___641508775_78405864_0 RAISED compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:4: odd number list for Hash
+	{item}
+	      ^
+Function body:           def _app_views_page_items_to_list_html_erb___641508775_78405864_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "page/items_to_list";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Items to craft</h1>
+');@output_buffer.append= (
+ @out_of_stock_list_desc.each do |item|
+	{item}
+	"<br />"
+  end
+
+);@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:12:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1029374205__process_action__638093178__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered page/items_to_list.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 56ms
+
+ActionView::Template::Error (compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:4: odd number list for Hash
+	{item}
+	      ^):
+    1: <h1>Items to craft</h1>
+    2: <%=
+    3:  @out_of_stock_list_desc.each do |item|
+    4: 	{item}
+    5: 	"<br />"
+    6:   end
+    7: 
+  app/views/page/items_to_list.html.erb:12:in `compile'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:23:41 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 104ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:23:56 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 57ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:24:24 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 69ms (Views: 21.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:24:56 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 50ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:26:26 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+ERROR: compiling _app_views_page_items_to_list_html_erb___641508775_79349172_0 RAISED compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:18: syntax error, unexpected kENSURE, expecting kEND
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:20: syntax error, unexpected $end, expecting kEND
+Function body:           def _app_views_page_items_to_list_html_erb___641508775_79349172_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "page/items_to_list";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Items to craft</h1>
+<table>
+
+	');@output_buffer.append= 
+	p @out_of_stock_list_desc
+	@out_of_stock_list_desc.each do |item|
+	@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	<tr>
+		<td>');
+
+ p item
+@output_buffer.safe_concat('</td>
+	</tr>
+	end
+
+	%>
+</table>');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:20:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1029374205__process_action__638093178__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.9/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered page/items_to_list.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 54ms
+
+ActionView::Template::Error (compile error
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:18: syntax error, unexpected kENSURE, expecting kEND
+c:/Users/David Cloutier/workspace/RIFT-Auction-Management/app/views/page/items_to_list.html.erb:20: syntax error, unexpected $end, expecting kEND):
+    15: 
+    16: 	%>
+    17: </table>
+  app/views/page/items_to_list.html.erb:20:in `compile'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:26:42 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (0.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 63ms (Views: 24.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:26:51 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 122ms (Views: 25.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:27:13 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT id FROM "items" WHERE (to_list = 't')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+Rendered page/items_to_list.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 55ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/page/items_to_list/" for 127.0.0.1 at Thu Jul 21 06:27:27 -0400 2011
+  Processing by PageController#items_to_list as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT id FROM "items" WHERE (to_list = 't')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(7) FROM "sales_listings" WHERE (item_id = 7 and listing_status_id <> 3)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(12) FROM "sales_listings" WHERE (item_id = 12 and listing_status_id <> 3)[0m
+  [1m[35mItem Load (0.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mItem Load (0.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+Rendered page/items_to_list.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 61ms (Views: 24.0ms | ActiveRecord: 1.0ms)
