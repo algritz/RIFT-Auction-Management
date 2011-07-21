@@ -1,5 +1,5 @@
 class PageController < ApplicationController
-  def items_to_list
+  def items_to_craft
     item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id")
     @out_of_stock_list = []
     item_ids.each do |ids|

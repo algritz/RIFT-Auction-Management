@@ -1,6 +1,4 @@
 RIFTAuctionManagement::Application.routes.draw do
-  resources :sales_listings
-
   resources :competitors
 
   resources :crafted_items
@@ -12,15 +10,21 @@ RIFTAuctionManagement::Application.routes.draw do
   resources :sources
 
   resources :listing_statuses
-  #match ':controller(/:action(/:id(.:format)))'
-  get 'page/items_to_list'
+  
+  resources :sales_listings
+  
+  get 'page/items_to_craft'
+  
+   
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
+  
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
@@ -63,11 +67,11 @@ RIFTAuctionManagement::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "SalesListings#index"
 
-  # See how all your routes lay out with "rake routes"
+# See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+# This is a legacy wild controller route that's not recommended for RESTful applications.
+# Note: This route will make all actions in every controller accessible via GET requests.
+# match ':controller(/:action(/:id(.:format)))'
 end

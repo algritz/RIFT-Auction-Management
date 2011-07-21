@@ -32,7 +32,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/new.xml
   def new
     @sales_listing = SalesListing.new
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description')
     @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # new.html.erb
@@ -83,7 +83,8 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-
+  
+  
   # DELETE /sales_listings/1
   # DELETE /sales_listings/1.xml
   def destroy
@@ -93,6 +94,21 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(sales_listings_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def sold
+    p params
+    @sales_listing = SalesListing.find(params[:id])
+    @sales_listing.listing_status_id = 3
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing])
+        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
