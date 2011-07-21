@@ -15,6 +15,10 @@ module ApplicationHelper
     ListingStatus.find(id).description
   end
 
+  def getSourceDescriptionForItemsToCraft (id)
+    Source.find(Item.find(id).source_id).description
+  end
+
   def isNewRow(someID)
     if @lastIDRow != someID then
       @lastIDRow = someID

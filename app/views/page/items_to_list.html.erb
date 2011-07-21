@@ -1,18 +1,2 @@
-<h1>Items to craft</h1>
-<table>
-
-	<%=
-	p @out_of_stock_list_desc
-	@out_of_stock_list_desc.each do |item|
-	%>
-	<tr>
-		<td>Item : <%
-
- item
-%></td>
-	</tr>
-	<%
-	end
-
-	%>
-</table>
+<h1>Items to list</h1>
+<%= raw(generate_data) %>

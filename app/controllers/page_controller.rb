@@ -8,14 +8,15 @@ class PageController < ApplicationController
       @out_of_stock_list << ids.id
       end
     end
-    @out_of_stock_list_desc = []
-    @out_of_stock_list.each do |item_list|
-      @out_of_stock_list_desc << getItemDescription(item_list)
-    end
   end
 
-  def getItemDescription (id)
-    Item.find(id).description
+  #def getItemDescription (id)
+  #  Item.find(id).description
+  #end
+  
+  def getSourceDescriptionForItemsToCraft (id)
+    p id
+    Source.find(Item.find(id).source_id).description
   end
 
 end

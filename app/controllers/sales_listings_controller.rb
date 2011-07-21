@@ -2,9 +2,14 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
-    @sales_listings = SalesListing.find(:all, :order => "item_id, listing_status_id")
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
 
+    if params[:status] != nil then
+      @sales_listings = SalesListing.find(:all, :order => "listing_status_id, item_id", :conditions => "listing_status_id = #{params[:status]}")
+    else
+      @sales_listings = SalesListing.find(:all, :order => "listing_status_id, item_id")
+    end
+
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }

@@ -10,4 +10,5 @@ class SalesListing < ActiveRecord::Base
   validates_numericality_of :listing_status_id
   validates :price, :presence => true
   validates_numericality_of :price 
+
 end
