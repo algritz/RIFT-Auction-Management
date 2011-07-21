@@ -91,11 +91,4 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def method_name
-    @message= params[:msg]
-    render :update do|page|
-      page.replace_html 'show_message', @message
-    end
-  end
-
 end
