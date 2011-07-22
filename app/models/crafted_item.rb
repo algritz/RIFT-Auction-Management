@@ -9,7 +9,8 @@ class CraftedItem < ActiveRecord::Base
   validates_numericality_of :crafted_item_generated_id, :crafted_item_stacksize, :component_item_id, :component_item_quantity
   validates_uniqueness_of :component_item_id, :scope => :crafted_item_generated_id, :message => 'is already used for that pattern.'
 
-  #validates_uniqueness_of :crafted_item_generated_id, :scope => [:crafted_item_generated_id], :message => 'Item cannot be self-contained'
+  cattr_reader :per_page
+  @@per_page = 50
 
   has_many :items
 

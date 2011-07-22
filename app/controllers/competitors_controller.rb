@@ -2,7 +2,7 @@ class CompetitorsController < ApplicationController
   # GET /competitors
   # GET /competitors.xml
   def index
-    @competitors = Competitor.find(:all, :select => 'distinct id, name, competitor_style_id, source_id', :order => 'name, source_id')
+    @competitors = Competitor.paginate(:page => params[:page] , :select => 'distinct id, name, competitor_style_id, source_id', :order => 'name, source_id')
     @competitor_styles = CompetitorStyle.find(:all, :select => 'id, description')
     @sources_name = Source.find(:all, :select => 'id, description')
     respond_to do |format|

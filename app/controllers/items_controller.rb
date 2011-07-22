@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @items = Item.paginate(:page => params[:page], :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'source_id, description')
 
     respond_to do |format|
       format.html # index.html.erb

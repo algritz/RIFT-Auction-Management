@@ -9,6 +9,9 @@ class SalesListing < ActiveRecord::Base
   validates :listing_status_id, :presence => true
   validates_numericality_of :listing_status_id
   validates :price, :presence => true
-  validates_numericality_of :price 
+  validates_numericality_of :price
+
+  cattr_reader :per_page
+  @@per_page = 100
 
 end
