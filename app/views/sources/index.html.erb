@@ -8,8 +8,10 @@
     <th></th>
   </tr>
 
-<% @sources.each do |source| %>
-  <tr>
+<% @sources.each do |source|
+	isNewRow(source.id)
+	%>
+	<tr bgcolor="<%= @lastRowColor %>">
     <td><%= source.description %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
