@@ -35,8 +35,11 @@
 </p>
 <p>
 	<b>Last sales price:</b>
-	<%= lastSalesPrice(@item.id)%>
+	<%= formatPrice(lastSalesPrice(@item.id))%>
 </p>
-
+<p>
+	<b>Last 5 listings :</b>
+	<%= lastFiveListings(@item.id)%>
+</p>
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

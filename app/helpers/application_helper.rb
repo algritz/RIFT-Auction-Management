@@ -122,15 +122,26 @@ module ApplicationHelper
     expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
     sql_str_expired = "listing_status_id = #{expired.id} and item_id = #{id} "
     last_expired_date = SalesListing.find(:all, :conditions => "#{sql_str_expired}").last
-    sql_str = "listing_status_id = #{sold.id} and updated_at <= '#{last_expired_date.updated_at}' and item_id = #{id}"
-    sold = SalesListing.find(:all, :conditions => sql_str).last
-    if sold != nil then
-    sql_str_sold = sold.id
-    #p sql_str_sold
-    #price = SalesListing.find(sql_str_sold)
-    #p price
-    #return price.to_i
+    if last_expired_date != nil then
+      sql_str = "listing_status_id = #{sold.id} and updated_at <= '#{last_expired_date.updated_at}' and item_id = #{id}"
+      sold = SalesListing.find(:all, :conditions => sql_str).last
+      if sold != nil then
+        sql_str_sold = sold.id
+        price = SalesListing.find(sql_str_sold).price
+      return price
+      end
     end
+  end
+
+  def lastFiveListings(id)
+    sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+    # should get last sale date in order tolimit records, since "limit" doesn't work on '.count' relations
+    lastFiveListings = SalesListing.count(:all, :conditions => "item_id = #{id}", :group => 'listing_status_id', :order => 'updated_at desc')
+    lastFiveListings_per_status = []
+    lastFiveListings.each do |status, value|
+      lastFiveListings_per_status << "#{getListingStatusDescription(status)} : #{value} " 
+    end
+    return lastFiveListings_per_status
   end
 
 end
