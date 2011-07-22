@@ -1,21 +1,23 @@
 <h1>Listing listing_statuses</h1>
 
 <table>
-  <tr>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Description</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-<% @listing_statuses.each do |listing_status| %>
-  <tr>
-    <td><%= listing_status.description %></td>
-    <td><%= link_to 'Show', listing_status %></td>
-    <td><%= link_to 'Edit', edit_listing_status_path(listing_status) %></td>
-    <td><%= link_to 'Destroy', listing_status, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% @listing_statuses.each do |listing_status|
+	isNewRow(listing_status.id)
+	%>
+	<tr bgcolor="<%= @lastRowColor %>">
+		<td><%= listing_status.description %></td>
+		<td><%= link_to 'Show', listing_status %></td>
+		<td><%= link_to 'Edit', edit_listing_status_path(listing_status) %></td>
+		<td><%= link_to 'Destroy', listing_status, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

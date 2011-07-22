@@ -1,31 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Description:</b>
-  <%= @item.description %>
+<p id="notice">
+	<%= notice %>
 </p>
 
 <p>
-  <b>Vendor selling price:</b>
-  <%= @item.vendor_selling_price %>
+	<b>Description:</b>
+	<%= @item.description %>
 </p>
 
 <p>
-  <b>Vendor buying price:</b>
-  <%= @item.vendor_buying_price %>
+	<b>Vendor selling price:</b>
+	<%= @item.vendor_selling_price %>
 </p>
 
 <p>
-  <b>Source:</b>
-  <%= getSourceDescription(@item.source_id) %>
+	<b>Vendor buying price:</b>
+	<%= @item.vendor_buying_price %>
+</p>
+
+<p>
+	<b>Source:</b>
+	<%= getSourceDescription(@item.source_id) %>
 </p>
 <p>
-  <b>Is crafted:</b>
-  <%= @item.is_crafted %>
+	<b>Is crafted:</b>
+	<%= @item.is_crafted %>
 </p>
 <p>
-  <b>Is to be listed:</b>
-  <%= @item.to_list %>
+	<b>Is to be listed:</b>
+	<%= @item.to_list %>
 </p>
+<p>
+	<b>Average sales price:</b>
+	<%= formatPrice(averageSalesPrice(@item.id))%>
+</p>
+<p>
+	<b>Last sales price:</b>
+	<%= lastSalesPrice(@item.id)%>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

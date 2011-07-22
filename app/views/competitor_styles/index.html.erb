@@ -1,21 +1,23 @@
 <h1>Listing competitor_styles</h1>
 
 <table>
-  <tr>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Description</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-<% @competitor_styles.each do |competitor_style| %>
-  <tr>
-    <td><%= competitor_style.description %></td>
-    <td><%= link_to 'Show', competitor_style %></td>
-    <td><%= link_to 'Edit', edit_competitor_style_path(competitor_style) %></td>
-    <td><%= link_to 'Destroy', competitor_style, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% @competitor_styles.each do |competitor_style|
+	isNewRow(competitor_style.id)
+	%>
+	<tr bgcolor="<%= @lastRowColor %>">
+		<td><%= competitor_style.description %></td>
+		<td><%= link_to 'Show', competitor_style %></td>
+		<td><%= link_to 'Edit', edit_competitor_style_path(competitor_style) %></td>
+		<td><%= link_to 'Destroy', competitor_style, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

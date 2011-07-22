@@ -110,4 +110,27 @@ module ApplicationHelper
     end
   end
 
+  def averageSalesPrice(id)
+    sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+    sql_str = "listing_status_id = #{sold.id} and item_id = #{id}"
+    price = SalesListing.average(:price, :conditions => sql_str)
+    return price.to_i
+  end
+
+  def lastSalesPrice(id)
+    sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+    expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+    sql_str_expired = "listing_status_id = #{expired.id} and item_id = #{id} "
+    last_expired_date = SalesListing.find(:all, :conditions => "#{sql_str_expired}").last
+    sql_str = "listing_status_id = #{sold.id} and updated_at <= '#{last_expired_date.updated_at}' and item_id = #{id}"
+    sold = SalesListing.find(:all, :conditions => sql_str).last
+    if sold != nil then
+    sql_str_sold = sold.id
+    #p sql_str_sold
+    #price = SalesListing.find(sql_str_sold)
+    #p price
+    #return price.to_i
+    end
+  end
+
 end

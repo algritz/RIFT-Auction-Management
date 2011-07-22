@@ -8,7 +8,7 @@ class SalesListingsController < ApplicationController
     else
       @sales_listings = SalesListing.find(:all, :order => "listing_status_id, item_id")
     end
-
+    @status_list = ListingStatus.find(:all, :select => 'id, description')    
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     respond_to do |format|
       format.html # index.html.erb

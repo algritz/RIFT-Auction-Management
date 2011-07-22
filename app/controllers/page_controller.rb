@@ -10,12 +10,7 @@ class PageController < ApplicationController
     end
   end
 
-  #def getItemDescription (id)
-  #  Item.find(id).description
-  #end
-  
   def getSourceDescriptionForItemsToCraft (id)
-    p id
     Source.find(Item.find(id).source_id).description
   end
 
