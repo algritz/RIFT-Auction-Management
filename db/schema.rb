@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20110721011543) do
 
   create_table "crafted_items", :force => true do |t|
     t.integer  "crafted_item_generated_id"
-    t.integer  "crafted_item_stacksize"
+    t.integer  "crafted_item_stacksize",    :default => 0
     t.integer  "component_item_id"
     t.integer  "component_item_quantity"
     t.datetime "created_at"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(:version => 20110721011543) do
     t.boolean  "is_crafted"
     t.boolean  "to_list"
   end
-
-  add_index "items", ["id"], :name => "index_items_on_id"
 
   create_table "listing_statuses", :force => true do |t|
     t.string   "description"
