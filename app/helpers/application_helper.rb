@@ -135,11 +135,10 @@ module ApplicationHelper
     # should get last sale date in order to limit records, since "limit" doesn't work on '.count' relations
     sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
     last_sold = SalesListing.find(:all, :conditions => sql_str, :order => "updated_at desc").first
-    p last_sold
     if last_sold != nil then
-      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'f'", :group => 'listing_status_id', :order => 'updated_at desc')
+      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'f'", :group => 'listing_status_id')
     else
-      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and is_undercut_price = 'f'", :group => 'listing_status_id', :order => 'updated_at desc')
+      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and is_undercut_price = 'f'", :group => 'listing_status_id')
     end
     lastListings_per_status = []
     lastListings.each do |status, value|
