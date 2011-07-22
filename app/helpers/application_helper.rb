@@ -112,36 +112,40 @@ module ApplicationHelper
 
   def averageSalesPrice(id)
     sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-    sql_str = "listing_status_id = #{sold.id} and item_id = #{id}"
+    sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
     price = SalesListing.average(:price, :conditions => sql_str)
     return price.to_i
   end
 
   def lastSalesPrice(id)
     sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-    expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
-    sql_str_expired = "listing_status_id = #{expired.id} and item_id = #{id} "
-    last_expired_date = SalesListing.find(:all, :conditions => "#{sql_str_expired}").last
-    if last_expired_date != nil then
-      sql_str = "listing_status_id = #{sold.id} and updated_at <= '#{last_expired_date.updated_at}' and item_id = #{id}"
-      sold = SalesListing.find(:all, :conditions => sql_str).last
-      if sold != nil then
-        sql_str_sold = sold.id
-        price = SalesListing.find(sql_str_sold).price
-      return price
-      end
+
+    sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
+    sold = SalesListing.find(:all, :conditions => sql_str).last
+    if sold != nil then
+      sql_str_sold = sold.id
+      price = SalesListing.find(sql_str_sold).price
+    return price
     end
+
   end
 
-  def lastFiveListings(id)
+  def lastListings(id)
     sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-    # should get last sale date in order tolimit records, since "limit" doesn't work on '.count' relations
-    lastFiveListings = SalesListing.count(:all, :conditions => "item_id = #{id}", :group => 'listing_status_id', :order => 'updated_at desc')
-    lastFiveListings_per_status = []
-    lastFiveListings.each do |status, value|
-      lastFiveListings_per_status << "#{getListingStatusDescription(status)} : #{value} " 
+    # should get last sale date in order to limit records, since "limit" doesn't work on '.count' relations
+    sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
+    last_sold = SalesListing.find(:all, :conditions => sql_str, :order => "updated_at desc").first
+    p last_sold
+    if last_sold != nil then
+      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'f'", :group => 'listing_status_id', :order => 'updated_at desc')
+    else
+      lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and is_undercut_price = 'f'", :group => 'listing_status_id', :order => 'updated_at desc')
     end
-    return lastFiveListings_per_status
+    lastListings_per_status = []
+    lastListings.each do |status, value|
+      lastListings_per_status << "#{getListingStatusDescription(status)} : #{value} <br />"
+    end
+    return lastListings_per_status
   end
 
 end

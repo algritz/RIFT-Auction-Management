@@ -38,8 +38,9 @@
 	<%= formatPrice(lastSalesPrice(@item.id))%>
 </p>
 <p>
-	<b>Last 5 listings :</b>
-	<%= lastFiveListings(@item.id)%>
+	<b>Last listings :</b><p style='padding-left:20px;padding-top:-20px;'>
+	<%= raw(lastListings(@item.id))%>
+	</p>
 </p>
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
