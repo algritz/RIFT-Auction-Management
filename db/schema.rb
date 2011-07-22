@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20110721011543) do
     t.boolean  "to_list"
   end
 
+  add_index "items", ["id"], :name => "index_items_on_id"
+
   create_table "listing_statuses", :force => true do |t|
     t.string   "description"
     t.datetime "created_at"
