@@ -1,2 +1,4 @@
 var form = $('new_sales_listing')
-var $item_id = Form.Element.getValue(form['sales_listing_item_id'])
+var item_id = Form.Element.getValue(form['sales_listing_item_id'])
+var loc = Form.Element.getValue(form['sales_listing_item_id'])
+window.location.href="<%=new_sales_listing_path+"?item_id="%>"+loc
