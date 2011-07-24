@@ -34,6 +34,11 @@
 	<%= f.select(:source_id, options_from_collection_for_select(@source, :id, :description, @item.source_id))%>
 </div>
 <div class="field">
+	<%= f.label :item_level %>
+	<br />
+	<%= f.text_field :item_level %>
+</div>
+<div class="field">
 	<%= f.label :is_crafted %>
 	<br />
 	<%= f.check_box :is_crafted %>

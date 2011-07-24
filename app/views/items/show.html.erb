@@ -9,17 +9,21 @@
 
 <p>
 	<b>Vendor selling price:</b>
-	<%= @item.vendor_selling_price %>
+	<%= formatPrice(@item.vendor_selling_price) %>
 </p>
 
 <p>
 	<b>Vendor buying price:</b>
-	<%= @item.vendor_buying_price %>
+	<%= formatPrice(@item.vendor_buying_price) %>
 </p>
 
 <p>
 	<b>Source:</b>
 	<%= getSourceDescription(@item.source_id) %>
+</p>
+<p>
+	<b>Item level:</b>
+	<%= @item.item_level %>
 </p>
 <p>
 	<b>Is crafted:</b>

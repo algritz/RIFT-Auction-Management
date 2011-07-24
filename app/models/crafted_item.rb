@@ -10,7 +10,7 @@ class CraftedItem < ActiveRecord::Base
   validates_uniqueness_of :component_item_id, :scope => :crafted_item_generated_id, :message => 'is already used for that pattern.'
 
   cattr_reader :per_page
-  @@per_page = 50
+  @@per_page = 30
 
   has_many :items
 
