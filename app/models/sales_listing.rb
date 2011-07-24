@@ -12,6 +12,6 @@ class SalesListing < ActiveRecord::Base
   validates_numericality_of :price
 
   cattr_reader :per_page
-  @@per_page = 25
+  @@per_page = 20
 
 end

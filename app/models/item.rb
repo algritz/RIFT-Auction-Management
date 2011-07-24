@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
   validates_numericality_of :item_level
   cattr_reader :per_page
-  @@per_page = 25
+  @@per_page = 20
 
 end
 
