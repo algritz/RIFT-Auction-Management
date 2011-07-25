@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :crafted_item_stacksize %><br />
-    <%= f.text_field :crafted_item_stacksize %>
+    <%= f.text_field :crafted_item_stacksize, :value => getDefaultItemStacksize %>
   </div>
   <div class="field">
     <%= f.label :component_item_id %><br />
