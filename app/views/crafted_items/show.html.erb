@@ -22,4 +22,5 @@
 
 
 <%= link_to 'Edit', edit_crafted_item_path(@crafted_item) %> |
-<%= link_to 'Back', crafted_items_path %>
+<%= link_to 'Back', crafted_items_path %> |
+<%= link_to 'Add New Component', new_crafted_item_path+"?item_id=#{@crafted_item.crafted_item_generated_id}" %>
