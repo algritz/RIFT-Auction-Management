@@ -34,14 +34,16 @@ module ApplicationHelper
   end
 
   def formatPrice(price)
-    if price != nil then
-      plat = price / 10000
-      goldRemaining = price % 10000
-      gold = goldRemaining / 100
-      silver = goldRemaining % 100
-      return "#{plat}p #{gold}g #{silver}s"
-    else
-      return ""
+    if price.to_i > 0 then
+      if price != nil then
+        plat = price / 10000
+        goldRemaining = price % 10000
+        gold = goldRemaining / 100
+        silver = goldRemaining % 100
+        return "#{plat}p #{gold}g #{silver}s"
+      else
+        return ""
+      end
     end
   end
 
