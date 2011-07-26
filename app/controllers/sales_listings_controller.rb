@@ -8,7 +8,7 @@ class SalesListingsController < ApplicationController
     else
       @sales_listings = SalesListing.paginate(:page => params[:page], :order => "listing_status_id, item_id")
     end
-    @status_list = ListingStatus.find(:all, :select => 'id, description')    
+    @status_list = ListingStatus.find(:all, :select => 'id, description')
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     respond_to do |format|
       format.html # index.html.erb
@@ -72,9 +72,25 @@ class SalesListingsController < ApplicationController
   def update
     @sales_listing = SalesListing.find(params[:id])
     @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description')
+    @expired_listing = ListingStatus.find(:all, :select => 'id', :conditions => 'description = "Expired"')
+    @inventory_listing = ListingStatus.find(:all, :select => 'id', :conditions => 'description = "In Inventory"')
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
+        params[:sales_listing].each do |key, value|
+          if key == "listing_status_id" then
+            if value.to_i ==  @expired_listing.first.id then
+              if @sales_listing.relisted_status == false then
+                @sales_relisting = SalesListing.new(params[:sales_listing])
+                @sales_relisting.listing_status_id = @inventory_listing.first.id
+                @sales_listing.relisted_status = true
+              @sales_listing.save
+              @sales_relisting.save
+              end
+            end
+          end
+
+        end
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else

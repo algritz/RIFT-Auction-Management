@@ -10,64 +10,67 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110724022844) do
+ActiveRecord::Schema.define(:version => 20110726182641) do
 
   create_table "competitor_styles", :force => true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "competitors", :force => true do |t|
-    t.string   "name"
-    t.integer  "competitor_style_id"
-    t.integer  "source_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.integer   "competitor_style_id"
+    t.integer   "source_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "crafted_items", :force => true do |t|
-    t.integer  "crafted_item_generated_id"
-    t.integer  "crafted_item_stacksize",    :default => 0
-    t.integer  "component_item_id"
-    t.integer  "component_item_quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "crafted_item_generated_id"
+    t.integer   "crafted_item_stacksize"
+    t.integer   "component_item_id"
+    t.integer   "component_item_quantity"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "items", :force => true do |t|
-    t.string   "description"
-    t.integer  "vendor_selling_price"
-    t.integer  "vendor_buying_price"
-    t.integer  "source_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_crafted"
-    t.boolean  "to_list"
-    t.integer  "item_level"
+    t.string    "description"
+    t.integer   "vendor_selling_price"
+    t.integer   "vendor_buying_price"
+    t.integer   "source_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_crafted"
+    t.boolean   "to_list"
+    t.integer   "item_level"
   end
 
+  add_index "items", ["id"], :name => "index_items_on_id"
+
   create_table "listing_statuses", :force => true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "sales_listings", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "stacksize"
-    t.integer  "price"
-    t.integer  "deposit_cost"
-    t.integer  "listing_status_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_undercut_price"
+    t.integer   "item_id"
+    t.integer   "stacksize"
+    t.integer   "price"
+    t.integer   "deposit_cost"
+    t.integer   "listing_status_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_undercut_price"
+    t.boolean   "relisted_status",   :default => false
   end
 
   create_table "sources", :force => true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end
