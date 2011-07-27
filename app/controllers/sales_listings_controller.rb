@@ -72,8 +72,8 @@ class SalesListingsController < ApplicationController
   def update
     @sales_listing = SalesListing.find(params[:id])
     @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
-    @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => 'description = "Expired"')
-    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => 'description = "In Inventory"')
+    @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Expired'")
+    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'In Inventory'")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
