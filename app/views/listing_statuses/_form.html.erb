@@ -1,21 +1,29 @@
 <%= form_for(@listing_status) do |f| %>
-  <% if @listing_status.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@listing_status.errors.count, "error") %> prohibited this listing_status from being saved:</h2>
+<% if @listing_status.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@listing_status.errors.count, "error") %> prohibited this listing_status from being saved:</h2>
 
-      <ul>
-      <% @listing_status.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @listing_status.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+	<%= f.label :description %>
+	<br />
+	<%= f.text_field :description %>
+</div>
+<div class="field">
+	<%= f.label :position %>
+	<br />
+	<%= f.text_field :position %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>

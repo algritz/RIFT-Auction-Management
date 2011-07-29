@@ -4,6 +4,7 @@ class SalesListingsController < ApplicationController
   def index
 
     if params[:status] != nil then
+      #will need to find how to use a join in order to achieve sorting
       @sales_listings = SalesListing.paginate(:page => params[:page], :order => "listing_status_id, item_id", :conditions => "listing_status_id = #{params[:status]}")
     else
       @sales_listings = SalesListing.paginate(:page => params[:page], :order => "listing_status_id, item_id")
