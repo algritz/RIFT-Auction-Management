@@ -14,6 +14,7 @@ RIFTAuctionManagement::Application.routes.draw do
   resources :sales_listings
   
   get 'page/items_to_craft'
+  get 'page/items_to_list_from_bank'
   
    
   
