@@ -10,7 +10,7 @@ class SalesListing < ActiveRecord::Base
   validates_numericality_of :listing_status_id
   validates :price, :presence => true
   validates_numericality_of :price
-
+  
   cattr_reader :per_page
   @@per_page = 20
 
