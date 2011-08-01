@@ -11,6 +11,10 @@ class SalesListingsController < ApplicationController
     end
     @status_list = ListingStatus.find(:all, :select => 'id, description')
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    
+    if params[:search] != nil then
+      @search = SalesListing.search(params[:search])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }
@@ -81,7 +85,7 @@ class SalesListingsController < ApplicationController
         params[:sales_listing].each do |key, value|
           if key == "listing_status_id" then
             if value.to_i ==  @expired_listing.first.id then
-              if @sales_listing.relisted_status == false then
+              if @sales_listing.relisted_status != true then
                 @sales_relisting = SalesListing.new(params[:sales_listing])
               @sales_relisting.listing_status_id = @inventory_listing.first.id
               @sales_listing.relisted_status = true

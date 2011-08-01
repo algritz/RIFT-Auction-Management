@@ -1,4 +1,9 @@
 <h1>Listing sales_listings</h1>
+<%= form_for :search, @search, :html => {:method => :get} do |f| %>
+    <%= f.label :item_id %>
+    <%= f.text_field :item_id %><br />
+    <%= f.submit %>
+  <% end %>
 <div>
 	<p>
 		<%
