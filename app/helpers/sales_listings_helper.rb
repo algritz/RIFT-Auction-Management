@@ -26,7 +26,7 @@ module SalesListingsHelper
 
   def getDefaultStatus
     if params[:item_id] != nil then
-      listing_status = ListingStatus.find(:all, :conditions => "description = 'Ongoing'").first
+      listing_status = ListingStatus.find(:all, :conditions => "description = 'In Inventory'").first
     listing_status.id
     else
     @sales_listing.listing_status_id
