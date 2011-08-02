@@ -11,7 +11,12 @@ RIFTAuctionManagement::Application.routes.draw do
 
   resources :listing_statuses
   
-  resources :sales_listings
+  resources :sales_listings do
+    member do
+      get 'sold'
+      get 'expired'
+    end
+  end
   
   get 'page/items_to_craft'
   get 'page/items_to_list_from_bank'

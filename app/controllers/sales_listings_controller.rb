@@ -11,7 +11,7 @@ class SalesListingsController < ApplicationController
     end
     @status_list = ListingStatus.find(:all, :select => 'id, description')
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
-    
+
     if params[:search] != nil then
       @search = SalesListing.search(params[:search])
     end
@@ -118,13 +118,46 @@ class SalesListingsController < ApplicationController
   end
 
   def sold
-    p params
     @sales_listing = SalesListing.find(params[:id])
-    @sales_listing.listing_status_id = 3
+    @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Sold'")
+    @sales_listing.listing_status_id = @sold_listing.first.id
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def expired
+    @sales_listing = SalesListing.find(params[:id])
+    @expired_listing = ListingStatus.find(:all,
+    :select => 'id, description',
+    :conditions => "description = 'Expired'")
+    @inventory_listing = ListingStatus.find(:all,
+    :select => 'id, description',
+    :conditions => "description = 'In Inventory'")
+    if @sales_listing.relisted_status != true then
+      @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
+      :stacksize => @sales_listing.stacksize,
+      :deposit_cost => @sales_listing.deposit_cost,
+      :listing_status_id => @inventory_listing.first.id,
+      :price => @sales_listing.price,
+      :is_undercut_price => @sales_listing.is_undercut_price)
+    @sales_listing.listing_status_id = @expired_listing.first.id
+    @sales_listing.relisted_status = true
+    @sales_listing.save
+    @sales_relisting.save
+    end
+
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing])
+        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
