@@ -1,6 +1,6 @@
 class PageController < ApplicationController
   def items_to_craft
-    item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id")
+    item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id, description, source_id", :order => "source_id, description")
     sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
     @out_of_stock_list = []
     item_ids.each do |ids|
@@ -9,6 +9,11 @@ class PageController < ApplicationController
       @out_of_stock_list << ids.id
       end
     end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @out_of_stock_list }
+    end
   end
 
   def getSourceDescriptionForItemsToCraft (id)
@@ -16,7 +21,7 @@ class PageController < ApplicationController
   end
 
   def items_to_list_from_bank
-    item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id")
+    item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id, description, source_id", :order => "source_id, description")
     ongoing = ListingStatus.find(:all, :conditions => "description ='Ongoing'").first
     in_bank = ListingStatus.find(:all, :conditions => "description ='In Bank'").first
     @sitting_in_bank = []
@@ -29,6 +34,10 @@ class PageController < ApplicationController
         @sitting_in_bank << ids.id
         end
       end
+    end
+     respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @sitting_in_bank }
     end
   end
 
