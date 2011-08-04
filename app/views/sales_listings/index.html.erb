@@ -1,9 +1,10 @@
 <h1>Listing sales_listings</h1>
 <%= form_for :search, @search, :html => {:method => :get} do |f| %>
-    <%= f.label :item_id %>
-    <%= f.text_field :item_id %><br />
-    <%= f.submit %>
-  <% end %>
+<%= f.label :Item_number %>
+<%= f.text_field :item_id_equals %>
+<br />
+<%= f.submit %>
+<% end %>
 <div>
 	<p>
 		<%
@@ -32,8 +33,9 @@
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"></th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"></th>
 	</tr>
-	
+	<% p @sales_listings %>
 	<% @sales_listings.each do |sales_listing|
+	
 	isNewRow(sales_listing.id)
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
@@ -45,8 +47,8 @@
 		<td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
 		<td align="right"><%= formatPrice(calculateCraftingCost(sales_listing.item_id)) %></td>
 		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"><%= formatPrice(calculateProfit(sales_listing.id)) %></td>
-		<td><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => 'Are you sure (Sold)?' %></td>
-		<td><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => 'Are you sure (Expired)?' %></td>
+		<td><% if !is_final?(sales_listing.listing_status_id) then %><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => 'Are you sure (Sold)?' %><% end %></td>
+		<td><% if !is_final?(sales_listing.listing_status_id) then %><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => 'Are you sure (Expired)?' %><% end %></td>
 		<td><%= link_to 'Show', sales_listing %></td>
 		<td><%= link_to 'Destroy', sales_listing, :confirm => 'Are you sure?', :method => :delete %></td>
 	</tr>

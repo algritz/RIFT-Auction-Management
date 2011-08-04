@@ -4,6 +4,7 @@
 	<tr>
 		<th>Description</th>
 		<th>Position</th>
+		<th>Is final</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -15,6 +16,7 @@
 	<tr bgcolor="<%= @lastRowColor %>">
 		<td><%= listing_status.description %></td>
 		<td><%= listing_status.position %></td>
+		<td><%= listing_status.is_final %></td>
 		<td><%= link_to 'Show', listing_status %></td>
 		<td><%= link_to 'Edit', edit_listing_status_path(listing_status) %></td>
 		<td><%= link_to 'Destroy', listing_status, :confirm => 'Are you sure?', :method => :delete %></td>

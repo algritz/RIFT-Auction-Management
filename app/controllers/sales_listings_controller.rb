@@ -5,15 +5,22 @@ class SalesListingsController < ApplicationController
 
     if params[:status] != nil then
       #will need to find how to use a join in order to achieve sorting
-      @sales_listings = SalesListing.paginate(:page => params[:page], :order => "listing_status_id, item_id", :conditions => "listing_status_id = #{params[:status]}")
+      @sales_listings = SalesListing.paginate(:page => params[:page],
+      :order => "listing_status_id, item_id",
+      :conditions => "listing_status_id = #{params[:status]}")
     else
-      @sales_listings = SalesListing.paginate(:page => params[:page], :order => "listing_status_id, item_id")
+      @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
+      :order => "position, item_id")
     end
-    @status_list = ListingStatus.find(:all, :select => 'id, description')
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @status_list = ListingStatus.find(:all,
+    :select => 'id, description')
+    @items = Item.find(:all,
+    :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
+    :order => 'description')
 
     if params[:search] != nil then
-      @search = SalesListing.search(params[:search])
+      @search = SalesListing.joins('left join items on sales_listings.item_id = items.id').search(params[:search])
+      @sales_listings = @search.paginate(:page => params[:page])
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +44,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/new.xml
   def new
     @sales_listing = SalesListing.new
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description')
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
     respond_to do |format|
       format.html # new.html.erb

@@ -1,5 +1,5 @@
 class ListingStatus < ActiveRecord::Base
-  attr_accessible :description, :position
+  attr_accessible :description, :position, :is_final
   litteral_string =  /\w\D\z/i
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>32},  :format => { :with => litteral_string }, :uniqueness => true  
   validates_numericality_of :position

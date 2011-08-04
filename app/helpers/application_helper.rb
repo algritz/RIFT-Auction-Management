@@ -125,14 +125,19 @@ module ApplicationHelper
 
   def lastSalesPrice(id)
     if id != nil then
-      sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-
-      sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sql_str = "listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_expired_str = "listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = 'f'"
       sold = SalesListing.find(:all, :conditions => sql_str).last
+      expired = SalesListing.find(:all, :conditions => sql_expired_str).last
       if sold != nil then
-        sql_str_sold = sold.id
-        price = SalesListing.find(sql_str_sold).price
-      return price
+        sold_id = sold.id
+        price = SalesListing.find(sold_id).price
+      else if expired != nil then
+        expired_id = expired.id
+        price = SalesListing.find(expired_id).price
+      end
       end
     end
   end
@@ -154,6 +159,10 @@ module ApplicationHelper
       end
     return lastListings_per_status
     end
+  end
+
+  def is_final?(status_id)
+    ListingStatus.find(status_id).is_final
   end
 
 end

@@ -2,7 +2,7 @@ class ListingStatusesController < ApplicationController
   # GET /listing_statuses
   # GET /listing_statuses.xml
   def index
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description, position', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => 'id, description, position, is_final', :order => 'description')
 
     respond_to do |format|
       format.html # index.html.erb
