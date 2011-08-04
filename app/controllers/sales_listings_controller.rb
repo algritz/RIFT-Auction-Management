@@ -171,5 +171,44 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-
+  
+  def crafted
+    @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
+    @sales_listing = SalesListing.create!(:item_id => params[:id], :deposit_cost => 0, :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
+    
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing])
+        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  ## -- start of private block -- ##
+  private
+  def lastSalesPrice(id)
+    if id != nil then
+      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sql_str = "listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_expired_str = "listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sold = SalesListing.find(:all, :conditions => sql_str).last
+      expired = SalesListing.find(:all, :conditions => sql_expired_str).last
+      if sold != nil then
+        sold_id = sold.id
+        price = SalesListing.find(sold_id).price
+      else if expired != nil then
+        expired_id = expired.id
+        price = SalesListing.find(expired_id).price
+      else
+        price = 0
+      end
+      end
+    end
+  end
+  ## -- private block
 end

@@ -15,6 +15,7 @@ RIFTAuctionManagement::Application.routes.draw do
     member do
       get 'sold'
       get 'expired'
+      get 'crafted'
     end
   end
   
