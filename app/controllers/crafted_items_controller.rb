@@ -2,7 +2,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items
   # GET /crafted_items.xml
   def index
-    @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "crafted_item_generated_id")
+    @crafted_items = CraftedItem.joins('left join items on items.id = crafted_items.crafted_item_generated_id').paginate(:page => params[:page], :order => "description")
 
     respond_to do |format|
       format.html # index.html.erb

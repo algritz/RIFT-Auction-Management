@@ -4,9 +4,8 @@ class SalesListingsController < ApplicationController
   def index
 
     if params[:status] != nil then
-      #will need to find how to use a join in order to achieve sorting
-      @sales_listings = SalesListing.paginate(:page => params[:page],
-      :order => "listing_status_id, item_id",
+      @sales_listings = SalesListing.joins('left join items on items.id = sales_listings.item_id').paginate(:page => params[:page],
+      :order => "description",
       :conditions => "listing_status_id = #{params[:status]}")
     else
       @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
@@ -190,6 +189,8 @@ class SalesListingsController < ApplicationController
   
   ## -- start of private block -- ##
   private
+  # this method is also present in application_helper, so any bug found
+  # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first

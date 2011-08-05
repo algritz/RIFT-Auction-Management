@@ -123,6 +123,8 @@ module ApplicationHelper
     end
   end
 
+  # this method is also present in SalesListing controller in the private method section, so any bug found
+  # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
