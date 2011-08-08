@@ -89,7 +89,7 @@ module ApplicationHelper
   def calculateProfit(id)
     price = SalesListing.find(id).price
     if price > 0 then
-      ah_cut = (price * 0.05).ceil
+      ah_cut = (price * 0.05).to_i
 
       deposit_cost = SalesListing.find(id).deposit_cost
       buyingCost = calculateBuyingCost(SalesListing.find(id).item_id)
