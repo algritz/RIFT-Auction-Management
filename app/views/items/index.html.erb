@@ -1,4 +1,10 @@
 <h1>Listing items</h1>
+<%= form_for :search, @search, :html => {:method => :get} do |f| %>
+<%= f.label :Item_name %>
+<%= f.text_field :description_contains %>
+<br />
+<%= f.submit %>
+<% end %>
 <%= will_paginate @items %>
 <table>
 	<tr>

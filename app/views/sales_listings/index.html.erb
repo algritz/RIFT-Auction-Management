@@ -1,7 +1,7 @@
 <h1>Listing sales_listings</h1>
 <%= form_for :search, @search, :html => {:method => :get} do |f| %>
 <%= f.label :Item_number %>
-<%= f.text_field :item_id_equals %>
+<%= f.text_field :description_contains %>
 <br />
 <%= f.submit %>
 <% end %>

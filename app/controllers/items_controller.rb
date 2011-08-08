@@ -2,7 +2,13 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.paginate(:page => params[:page], :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'source_id, description')
+
+    if params[:search] != nil then
+      @search = Item.search(params[:search])
+      @items = @search.paginate(:page => params[:page], :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'source_id, description')
+    else
+      @items = Item.paginate(:page => params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
