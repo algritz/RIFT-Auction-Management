@@ -2,9 +2,10 @@ class PageController < ApplicationController
   def items_to_craft
     item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id, description, source_id", :order => "source_id, description")
     sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+    expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
     @out_of_stock_list = []
     item_ids.each do |ids|
-      active_autions = SalesListing.count(ids.id, :conditions => "item_id = #{ids.id} and listing_status_id <> '#{sold.id}'")
+      active_autions = SalesListing.count(ids.id, :conditions => "item_id = #{ids.id} and listing_status_id not in ('#{sold.id}', '#{expired.id}')")
       if active_autions == 0 then
       @out_of_stock_list << ids.id
       end
@@ -27,7 +28,6 @@ class PageController < ApplicationController
     @sitting_in_bank = []
     item_ids.each do |ids|
       items_in_bank = SalesListing.find(:all, :conditions => "item_id = #{ids.id} and listing_status_id = #{in_bank.id}")
-      #readjust queries to have actual results
       items_in_bank.each do |ids_in_bank|
         active_autions = SalesListing.count(ids_in_bank.item_id, :conditions => "item_id = #{ids_in_bank.item_id} and listing_status_id = #{ongoing.id}")
         if active_autions == 0 then

@@ -88,29 +88,33 @@ module ApplicationHelper
 
   def calculateProfit(id)
     price = SalesListing.find(id).price
-    deposit_cost = SalesListing.find(id).deposit_cost
-    buyingCost = calculateBuyingCost(SalesListing.find(id).item_id)
-    if Item.find(SalesListing.find(id).item_id).is_crafted then
-      if CraftedItem.where("crafted_item_generated_id = #{SalesListing.find(id).item_id}").exists? then
-        crafting_materials = CraftedItem.find(:all, :conditions => "crafted_item_generated_id = #{SalesListing.find(id).item_id}")
-        cost = 0
-        crafting_materials.each do |materials|
-          material_cost = calculateCraftingCost(materials.component_item_id)
-          total_material_cost = (material_cost * materials.component_item_quantity)
-          if (material_cost.to_s != "no pattern defined yet for a sub-component") then
-          cost += total_material_cost
-          else
-            return "no pattern defined yet for a sub-component"
+    if price > 0 then
+      ah_cut = (price * 0.05).ceil
+
+      deposit_cost = SalesListing.find(id).deposit_cost
+      buyingCost = calculateBuyingCost(SalesListing.find(id).item_id)
+      if Item.find(SalesListing.find(id).item_id).is_crafted then
+        if CraftedItem.where("crafted_item_generated_id = #{SalesListing.find(id).item_id}").exists? then
+          crafting_materials = CraftedItem.find(:all, :conditions => "crafted_item_generated_id = #{SalesListing.find(id).item_id}")
+          cost = 0
+          crafting_materials.each do |materials|
+            material_cost = calculateCraftingCost(materials.component_item_id)
+            total_material_cost = (material_cost * materials.component_item_quantity)
+            if (material_cost.to_s != "no pattern defined yet for a sub-component") then
+            cost += total_material_cost
+            else
+              return "no pattern defined yet for a sub-component"
+            end
           end
+        profit = ((price + deposit_cost )- (cost + ah_cut))
+        return profit
+        else
+          return "no pattern defined yet"
         end
-      profit = (price - (deposit_cost + cost))
-      return profit
       else
-        return "no pattern defined yet"
+      profit = ((price + deposit_cost) - (buyingCost + ah_cut))
+      return profit
       end
-    else
-    profit = (price - (deposit_cost + buyingCost ))
-    return profit
     end
   end
 
@@ -137,9 +141,9 @@ module ApplicationHelper
         sold_id = sold.id
         price = SalesListing.find(sold_id).price
       else if expired != nil then
-        expired_id = expired.id
-        price = SalesListing.find(expired_id).price
-      end
+          expired_id = expired.id
+          price = SalesListing.find(expired_id).price
+        end
       end
     end
   end
@@ -165,6 +169,14 @@ module ApplicationHelper
 
   def is_final?(status_id)
     ListingStatus.find(status_id).is_final
+  end
+
+  def is_mailed?(status_id)
+    ListingStatus.find(status_id).description == 'Crafted'
+  end
+
+  def is_ongoing?(status_id)
+    ListingStatus.find(status_id).description == 'Ongoing'
   end
 
 end

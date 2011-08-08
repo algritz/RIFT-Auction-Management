@@ -16,6 +16,7 @@ RIFTAuctionManagement::Application.routes.draw do
       get 'sold'
       get 'expired'
       get 'crafted'
+      get 'mailed'
     end
   end
   

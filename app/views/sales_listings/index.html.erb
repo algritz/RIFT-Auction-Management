@@ -19,7 +19,7 @@
 </div>
 <%= will_paginate @sales_listings %>
 <table>
-	<tr>
+	<tr bgcolor="#c3c3c3">
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Item</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Stacksize</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Price</th>
@@ -28,10 +28,7 @@
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Listing status</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Crafting Cost</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">Profit</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left"></th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left"></th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"></th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"></th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left" colspan="5">Actions</th>
 	</tr>
 	<% @sales_listings.each do |sales_listing|
 	
@@ -46,10 +43,11 @@
 		<td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
 		<td align="right"><%= formatPrice(calculateCraftingCost(sales_listing.item_id)) %></td>
 		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"><%= formatPrice(calculateProfit(sales_listing.id)) %></td>
-		<td><% if !is_final?(sales_listing.listing_status_id) then %><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => 'Are you sure (Sold)?' %><% end %></td>
-		<td><% if !is_final?(sales_listing.listing_status_id) then %><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => 'Are you sure (Expired)?' %><% end %></td>
+		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;"><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?" %><% end %></td>
+		<td><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?" %><% end %></td>
+		<td><% if is_mailed?(sales_listing.listing_status_id) then %><%= link_to 'Mailed', mailed_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Mailed)?" %><% end %></td>
 		<td><%= link_to 'Show', sales_listing %></td>
-		<td><%= link_to 'Destroy', sales_listing, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to 'Destroy', sales_listing, :confirm => "Are you sure you want to destroy #{getItemDescription(sales_listing.item_id)}?", :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>

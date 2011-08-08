@@ -16,7 +16,8 @@ class SalesListingsController < ApplicationController
       end
     end
     @status_list = ListingStatus.find(:all,
-    :select => 'id, description')
+    :select => 'id, description',
+    :order => 'position')
     @items = Item.find(:all,
     :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
     :order => 'description')
@@ -173,7 +174,25 @@ class SalesListingsController < ApplicationController
 
   def crafted
     @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
-    @sales_listing = SalesListing.create!(:item_id => params[:id], :deposit_cost => 0, :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => false,  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
+
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing])
+        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def mailed
+    @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Mailed'")
+    @sales_listing = SalesListing.find(params[:id])
+    @sales_listing.listing_status_id = @mailed_listing.first.id
+    @sales_listing.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
 
     respond_to do |format|
@@ -212,5 +231,12 @@ class SalesListingsController < ApplicationController
       end
     end
   end
+
+  def lastDepositCost(id)
+    if id != nil then
+      SalesListing.find(id, :select => 'deposit_cost').deposit_cost
+    end
+  end
+
 ## -- private block
 end

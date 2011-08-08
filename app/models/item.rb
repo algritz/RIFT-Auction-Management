@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   validates_numericality_of :item_level
   cattr_reader :per_page
   @@per_page = 20
-
+  
 end
 
 # == Schema Information
