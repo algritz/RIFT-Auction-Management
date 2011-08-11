@@ -45,4 +45,25 @@ class PageController < ApplicationController
     end
   end
 
+  def items_with_more_than_one_listings
+    item_ids = Item.find(:all, :conditions => "to_list = 't'", :select => "id, description, source_id", :order => "source_id, description")
+    ongoing = ListingStatus.find(:all, :conditions => "description ='Ongoing'").first
+    @duplicate_listing = []
+    @last_duplicate
+    item_ids.each do |ids|
+      p ids
+      active_autions = SalesListing.count(ids.id, :conditions => "item_id = #{ids.id} and listing_status_id = #{ongoing.id}")
+      if active_autions >= 2 then
+        if ids.id !=  @last_duplicate then
+        @duplicate_listing << ids.id
+        @last_duplicate = ids.id
+        end
+      end
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @duplicate_listing }
+    end
+  end
+
 end

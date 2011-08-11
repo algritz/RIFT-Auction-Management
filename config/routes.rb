@@ -22,6 +22,7 @@ RIFTAuctionManagement::Application.routes.draw do
   
   get 'page/items_to_craft'
   get 'page/items_to_list_from_bank'
+  get 'page/items_with_more_than_one_listings'
   
    
   
