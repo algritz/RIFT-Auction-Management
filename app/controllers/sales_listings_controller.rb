@@ -4,15 +4,20 @@ class SalesListingsController < ApplicationController
   def index
 
     if params[:status] != nil then
-      @sales_listings = SalesListing.joins('left join items on items.id = sales_listings.item_id').paginate(:page => params[:page],
-      :order => "description",
-      :conditions => "listing_status_id = #{params[:status]}")
+      if params[:status] != "0" then
+        @sales_listings = SalesListing.joins('left join items on items.id = sales_listings.item_id').paginate(:page => params[:page],
+        :order => "description",
+        :conditions => "listing_status_id = #{params[:status]}")
+      else
+        @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
+        :order => "position, item_id")
+      end
     else if params[:search] != nil then
         @search = SalesListing.search(params[:search])
         @sales_listings = @search.paginate(:page => params[:page])
       else
         @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
-        :order => "position, item_id")
+        :order => "position, item_id", :conditions => "listing_statuses.is_final <> 'f'")
       end
     end
     @status_list = ListingStatus.find(:all,
@@ -235,7 +240,7 @@ class SalesListingsController < ApplicationController
 
   def lastDepositCost(id)
     if id != nil then
-     SalesListing.maximum('deposit_cost', :conditions => "item_id = #{id}").to_i
+      SalesListing.maximum('deposit_cost', :conditions => "item_id = #{id}").to_i
     end
   end
 

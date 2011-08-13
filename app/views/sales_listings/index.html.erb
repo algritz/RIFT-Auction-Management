@@ -14,7 +14,7 @@
 		<%
 		end
 		%>
-		<%= link_to "ALL Sales Listings", sales_listings_path %>
+		<%= link_to "ALL Sales Listings", sales_listings_path+"?status=0" %>
 	</p>
 </div>
 <%= will_paginate @sales_listings %>
