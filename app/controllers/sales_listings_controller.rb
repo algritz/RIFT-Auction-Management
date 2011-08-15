@@ -153,12 +153,13 @@ class SalesListingsController < ApplicationController
     :select => 'id, description',
     :conditions => "description = 'In Inventory'")
     if @sales_listing.relisted_status != true then
+      @last_listing = SalesListing.find(:last, :conditions => "item_id = #{@sales_listing.item_id} and is_undercut_price = 'f'")
       @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
       :stacksize => @sales_listing.stacksize,
       :deposit_cost => @sales_listing.deposit_cost,
       :listing_status_id => @inventory_listing.first.id,
-      :price => @sales_listing.price,
-      :is_undercut_price => @sales_listing.is_undercut_price)
+      :price => @last_listing.price,
+      :is_undercut_price => @last_listing.is_undercut_price)
     @sales_listing.listing_status_id = @expired_listing.first.id
     @sales_listing.relisted_status = true
     @sales_listing.save
