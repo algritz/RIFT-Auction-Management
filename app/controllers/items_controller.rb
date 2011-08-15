@@ -87,4 +87,10 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+## start of private block ##
+
+
+## end of private block
+
 end
