@@ -17,7 +17,7 @@ class SalesListingsController < ApplicationController
         @sales_listings = @search.paginate(:page => params[:page])
       else
         @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
-        :order => "position, item_id", :conditions => "listing_statuses.is_final == 'false'")
+        :order => "position, item_id", :conditions => "listing_statuses.is_final = 'false'")
       end
     end
     @status_list = ListingStatus.find(:all,
