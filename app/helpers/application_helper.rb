@@ -133,8 +133,8 @@ module ApplicationHelper
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
       expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
-      sql_str = "listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = 'f'"
-      sql_expired_str = "listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_str = "listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = 'false'"
+      sql_expired_str = "listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = 'false'"
       sold = SalesListing.find(:all, :conditions => sql_str).last
       expired = SalesListing.find(:all, :conditions => sql_expired_str).last
       if sold != nil then
@@ -155,9 +155,9 @@ module ApplicationHelper
       sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
       last_sold = SalesListing.find(:all, :conditions => sql_str, :order => "updated_at desc").first
       if last_sold != nil then
-        lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'f'", :group => 'listing_status_id')
+        lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'false'", :group => 'listing_status_id')
       else
-        lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and is_undercut_price = 'f'", :group => 'listing_status_id')
+        lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and is_undercut_price = 'false'", :group => 'listing_status_id')
       end
       lastListings_per_status = []
       lastListings.each do |status, value|
