@@ -188,9 +188,8 @@ class SalesListingsController < ApplicationController
   end
 
   def crafted
-    p params[:id]
     @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
-    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => false,  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> "to_list = 't'", :order => 'source_id, description').first
 
     respond_to do |format|
@@ -253,6 +252,26 @@ class SalesListingsController < ApplicationController
       SalesListing.maximum('deposit_cost', :conditions => "item_id = #{id}").to_i
     end
   end
-
+  
+  def lastIsUndercutPrice(id)
+     if id != nil then
+      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sql_str = "listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_expired_str = "listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sold = SalesListing.find(:all, :conditions => sql_str).last
+      expired = SalesListing.find(:all, :conditions => sql_expired_str).last
+      if sold != nil then
+        sold_id = sold.id
+        is_undercut_price = SalesListing.find(sold_id).is_undercut_price
+      else if expired != nil then
+          expired_id = expired.id
+          is_undercut_price = SalesListing.find(expired_id).is_undercut_price
+        else
+        is_undercut_price = false
+        end
+      end
+    end
+  end
 ## -- private block
 end

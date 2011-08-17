@@ -121,7 +121,7 @@ module ApplicationHelper
   def averageSalesPrice(id)
     if id != nil then
       sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-      sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'false'"
       price = SalesListing.average(:price, :conditions => sql_str)
     return price.to_i
     end
@@ -152,7 +152,7 @@ module ApplicationHelper
     if id != nil then
       sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
       # should get last sale date in order to limit records, since "limit" doesn't work on '.count' relations
-      sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'f'"
+      sql_str = "listing_status_id = #{sold.id} and item_id = #{id} and is_undercut_price = 'false'"
       last_sold = SalesListing.find(:all, :conditions => sql_str, :order => "updated_at desc").first
       if last_sold != nil then
         lastListings = SalesListing.count(:all, :conditions => "item_id = #{id} and updated_at >= '#{last_sold.updated_at}' and is_undercut_price = 'false'", :group => 'listing_status_id')
