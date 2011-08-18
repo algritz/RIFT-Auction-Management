@@ -164,7 +164,7 @@ class SalesListingsController < ApplicationController
       :deposit_cost => @sales_listing.deposit_cost,
       :listing_status_id => @inventory_listing.first.id,
       :price => lastSalesPrice(@sales_listing.item_id),
-      :is_undercut_price => lastIsUndercutPrice(@sales_listing)
+      :is_undercut_price => lastIsUndercutPrice(@sales_listing))
 
     @sales_listing.listing_status_id = @expired_listing.first.id
     @sales_listing.relisted_status = true
