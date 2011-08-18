@@ -224,13 +224,12 @@ class SalesListingsController < ApplicationController
   # this method is also present in application_helper, so any bug found
   # in this block is likely to happen over there
   def lastSalesPrice(id)
-    p "from controller"
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
       expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
       sold = SalesListing.find(:all, :conditions => ["listing_status_id = #{sold_status.id} and item_id = #{id} and is_undercut_price = ?", false]).last
       last_sold_date = SalesListing.find(:all, :conditions => "listing_status_id = #{sold_status.id} and item_id = #{id}").last
-      expired = SalesListing.find(:all, :conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ?", false]).last
+      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ?", false]).last
       if sold != nil then
         if sold.updated_at == last_sold_date.updated_at then
           sold_id = sold.id
@@ -239,24 +238,18 @@ class SalesListingsController < ApplicationController
           sold_id = sold.id
           price = SalesListing.find(sold_id).price
         end
-      else if expired != nil then
-          p "should consider expired"
+      else if expired_listing != nil then
           if last_sold_date != nil then
-            p "previous sales detected"
             @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ? and updated_at < '#{last_sold_date.updated_at}'", false] )
           else
-            p "no sales detected"
             @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ?", false] )
-            p SalesListing.count(:conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ?", false])
           end
-          p "@number_of_expired : #{@number_of_expired}"
-          if @number_of_expired >= 5 then
-            p "more than 5 sales expired detected"
-            expired_id = expired.id
+          if @number_of_expired.modulo(5) == 0 then
+            expired_id = expired_listing.id
             price = SalesListing.find(expired_id).price * 0.97
           else
-            p "less than 5 sales expired detected"
-            expired_id = expired.id
+            p @number_of_expired.modulo(5)
+            expired_id = expired_listing.id
             price = SalesListing.find(expired_id).price
           end
         else
