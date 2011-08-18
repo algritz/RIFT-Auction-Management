@@ -164,7 +164,7 @@ class SalesListingsController < ApplicationController
       :deposit_cost => @sales_listing.deposit_cost,
       :listing_status_id => @inventory_listing.first.id,
       :price => lastSalesPrice(@sales_listing.item_id),
-      :is_undercut_price => @sales_listing.is_undercut_price)
+      :is_undercut_price => lastIsUndercutPrice(@sales_listing)
 
     @sales_listing.listing_status_id = @expired_listing.first.id
     @sales_listing.relisted_status = true
@@ -273,10 +273,10 @@ class SalesListingsController < ApplicationController
       expired = SalesListing.find(:all, :conditions => ["listing_status_id = #{expired.id} and item_id = #{id} and is_undercut_price = ?", false]).last
       if sold != nil then
         sold_id = sold.id
-        is_undercut_price = SalesListing.find(sold_id).is_undercut_price
+        is_undercut_price = false
       else if expired != nil then
           expired_id = expired.id
-          is_undercut_price = SalesListing.find(expired_id).is_undercut_price
+          is_undercut_price = true
         else
         is_undercut_price = false
         end
