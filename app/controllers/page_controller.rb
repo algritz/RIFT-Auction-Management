@@ -66,4 +66,9 @@ class PageController < ApplicationController
     end
   end
 
+  def old_listings
+    listing_status_id = ListingStatus.find(:all, :select => "id, description" ,:conditions => ["description = ?", "Ongoing"])
+    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ?", Time.now - 5.days, listing_status_id])
+  end
+
 end

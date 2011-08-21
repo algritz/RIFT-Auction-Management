@@ -1,0 +1,17 @@
+<h1>Old Listings</h1>
+<table>
+	<tr align="left">
+		<th>Item Name</th><th style="padding-right: 20px;">Stack Size</th><th>Price</th><th>Deposit</th><th>Last Modified Date</th><th></th><th></th>
+	</tr>
+	<% @old_listings.each do |listing| %>
+	<tr>
+		<td><%= link_to getItemDescription(listing.item_id), edit_sales_listing_path(listing) %></td>
+		<td><%= listing.stacksize %></td>
+		<td style="padding-right: 20px;"><%= formatPrice(listing.price) %></td>
+		<td style="padding-right: 20px;"><%= formatPrice(listing.deposit_cost) %></td>
+		<td><%= listing.updated_at %></td>
+		<td><%= link_to 'Show', sales_listing_path(listing) %></td>
+		<td><%= link_to 'Destroy', listing, :confirm => "Are you sure you want to destroy listing for #{getItemDescription(listing.item_id)}?", :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
