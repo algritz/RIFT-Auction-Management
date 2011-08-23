@@ -157,7 +157,12 @@ module ApplicationHelper
             price = SalesListing.find(expired_id).price
           end
         else
-        price = 0
+          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
+          if listed_but_not_sold != nil then
+          price = listed_but_not_sold.price
+          else
+          price = 0
+          end
         end
       end
     end
