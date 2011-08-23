@@ -168,6 +168,15 @@ module ApplicationHelper
     end
   end
 
+  def lastSalesPrice_without_listed(id)
+    if id != nil then
+      sold =  @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", id, false, "Sold"]).last
+      if sold == nil then
+        @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", id, true, "Sold"]).last
+      end
+    end
+  end
+
   # this method is also present in the SalesListing controller, so any bug found there is likely to happen here
   def lastIsUndercutPrice(id)
     if id != nil then
@@ -244,15 +253,19 @@ module ApplicationHelper
   end
 
   def minimum_sales_price(item_id)
-    deposit_cost = getDepositCost
-    #crafting_cost = calculateCraftingCost(item_id)
-    ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", item_id, false, "Sold"]).last
-    p "it never sold"
-    if ever_sold != nil then
-
+    if item_id != nil then
+      crafting_cost = calculateCraftingCost(item_id)
+      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last
+      if ever_sold != nil then
+        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last.updated_at
+        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ?", item_id, "Expired", last_sold_date])
+        deposit_cost = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"]).last.deposit_cost
+        minimum_price = formatPrice(((number_of_relists_since_last_sold * deposit_cost) + crafting_cost))
       else
-      number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", item_id, true, "Sold"])
-      minimum_price = ((number_of_relists * deposit_cost))
+        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"])
+        deposit_cost = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"]).last.deposit_cost
+        minimum_price = formatPrice(((number_of_relists * deposit_cost) + crafting_cost))
+      end
     end
   end
 

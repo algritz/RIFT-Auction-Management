@@ -263,12 +263,14 @@ class SalesListingsController < ApplicationController
     end
   end
 
+  
+
   def lastDepositCost(id)
     if id != nil then
       SalesListing.maximum('deposit_cost', :conditions => ["item_id = ?", id]).to_i
     end
   end
-  
+
   # this method is also present in the application helper, so any bug found there is likely to happen here
   def lastIsUndercutPrice(id)
     if id != nil then

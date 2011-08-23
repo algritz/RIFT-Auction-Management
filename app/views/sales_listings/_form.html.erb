@@ -50,7 +50,10 @@
 	</div>
 	<p>
 		<b>Last sales price:</b>
-		<%= formatPrice(lastSalesPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))%> (is undercut : <%= lastIsUndercutPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>)
+		<% lastSalesPrice_without_listed(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])  %>
+		<% if @lastSalesPrice_without_listed != nil then %>
+		<%= formatPrice(@lastSalesPrice_without_listed.price)%> (is undercut : <%= @lastSalesPrice_without_listed.is_undercut_price%>)
+		<% end %>
 	</p>
 	<p>
 		<b>Average sales price:</b>
