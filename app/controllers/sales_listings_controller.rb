@@ -268,7 +268,8 @@ class SalesListingsController < ApplicationController
       SalesListing.maximum('deposit_cost', :conditions => ["item_id = ?", id]).to_i
     end
   end
-
+  
+  # this method is also present in the application helper, so any bug found there is likely to happen here
   def lastIsUndercutPrice(id)
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first

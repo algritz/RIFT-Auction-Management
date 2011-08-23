@@ -49,8 +49,21 @@
 		<%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus)) %>
 	</div>
 	<p>
+		<b>Last sales price:</b>
+		<%= formatPrice(lastSalesPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))%> (is undercut : <%= lastIsUndercutPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>)
+	</p>
+	<p>
 		<b>Average sales price:</b>
 		<%= formatPrice(averageSalesPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))%>
+	</p>
+	<p>
+		<b>Sales percentage at full price :</b> <%= sales_percentage_full_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>%
+	</p>
+	<p>
+		<b>Sales percentage when undercutting :</b> <%= sales_percentage_undercut(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>%
+	</p>
+	<p>
+		<b>Sales percentage Overall :</b> <%= sales_percentage_overall(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>%
 	</p>
 	<p>
 	<b>Last listings :</b><p style='padding-left:20px;padding-top:-20px;'>
@@ -58,6 +71,9 @@
 	</p>
 	<p>
 		<b>Crafting Cost :</b> <%= formatPrice(calculateCraftingCost(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %>
+	</p>
+	<p>
+		<b>Minimum sales price:</b> <%= minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]) %>
 	</p>
 	<div class="actions">
 		<%= f.submit %>

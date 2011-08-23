@@ -26,7 +26,7 @@ module SalesListingsHelper
 
   def getDefaultStatus
     if params[:item_id] != nil then
-      listing_status = ListingStatus.find(:all, :conditions => "description = 'In Inventory'").first
+      listing_status = ListingStatus.find(:all, :conditions => ["description = ?", 'In Inventory']).first
     listing_status.id
     else
     @sales_listing.listing_status_id
@@ -35,7 +35,7 @@ module SalesListingsHelper
 
   def getDepositCost
     if params[:item_id] != nil then
-      last_listing = SalesListing.find(:all, :conditions => "item_id = #{params[:item_id]}").last
+      last_listing = SalesListing.find(:all, :conditions => ["item_id = ?", params[:item_id]]).last
       if last_listing != nil then
       last_listing.deposit_cost
       end
