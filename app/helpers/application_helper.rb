@@ -255,16 +255,22 @@ module ApplicationHelper
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
+      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ?", item_id])
+      if deposit_cost == nil then
+        deposit_cost = 0
+      end
       ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last
       if ever_sold != nil then
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last.updated_at
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ?", item_id, "Expired", last_sold_date])
-        deposit_cost = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"]).last.deposit_cost
         minimum_price = formatPrice(((number_of_relists_since_last_sold * deposit_cost) + crafting_cost))
       else
         number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"])
-        deposit_cost = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"]).last.deposit_cost
-        minimum_price = formatPrice(((number_of_relists * deposit_cost) + crafting_cost))
+        if number_of_relists != nil then
+          minimum_price = formatPrice(((number_of_relists * deposit_cost) + crafting_cost))
+        else
+          minimum_price = formatPrice(deposit_cost + crafting_cost)
+        end
       end
     end
   end
