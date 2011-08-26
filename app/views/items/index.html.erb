@@ -1,9 +1,9 @@
 <h1>Listing items</h1>
-<%= form_for :search, @search, :html => {:method => :get} do |f| %>
-<%= f.label :Item_name %>
-<%= f.text_field :description_contains %>
-<br />
-<%= f.submit %>
+<% form_tag request.path, :method => 'get' do %>
+  <% content_tag :label do %>
+    Search term:
+    <%= text_field_tag :search, params[:search] %>
+  <% end %>
 <% end %>
 <%= will_paginate @items %>
 <table>

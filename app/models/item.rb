@@ -4,7 +4,12 @@ class Item < ActiveRecord::Base
   validates_numericality_of :item_level
   cattr_reader :per_page
   @@per_page = 20
-  
+  def self.search(search, page)
+    paginate :per_page => 20, :page => page,
+             :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
+             :order => 'source_id, description',
+             :conditions => ['description like ?', "%#{search}%"], :order => "description"
+  end
 end
 
 # == Schema Information

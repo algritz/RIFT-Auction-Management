@@ -13,8 +13,9 @@ class SalesListingsController < ApplicationController
         :order => "position, item_id")
       end
     else if params[:search] != nil then
-        @search = SalesListing.search(params[:search])
-        @sales_listings = @search.paginate(:page => params[:page])
+        # @search = SalesListing.search(params[:search])
+
+        @sales_listings = SalesListing.search(params[:search], params[:page])
       else
         @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
         :order => "position, item_id", :conditions => ["listing_statuses.is_final = ?", false])
@@ -217,8 +218,7 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-  
-  
+
   ## -- start of private block -- ##
   private
 
@@ -263,8 +263,6 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-
-  
 
   def lastDepositCost(id)
     if id != nil then
