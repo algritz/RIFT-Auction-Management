@@ -2,7 +2,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items
   # GET /crafted_items.xml
   def index
-    @crafted_items = CraftedItem.joins('left join items on items.id = crafted_items.crafted_item_generated_id').paginate(:page => params[:page], :order => "description")
+    @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:page => params[:page], :order => "description")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,8 +25,8 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items/new.xml
   def new
     @crafted_item = CraftedItem.new
-    @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => 'id, description', :order => 'description')
-    @item_ids = Item.find(:all, :select => 'id, description', :order => 'description')
+    @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
+    @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @crafted_item }
@@ -36,16 +36,16 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items/1/edit
   def edit
     @crafted_item = CraftedItem.find(params[:id])
-    @item_ids = Item.find(:all, :select => 'id, description', :order => 'description')
-    @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => 'id, description', :order => 'description')
+    @item_ids = Item.find(:all, :select => "id, description", :order => "description")
+    @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
   end
 
   # POST /crafted_items
   # POST /crafted_items.xml
   def create
     @crafted_item = CraftedItem.new(params[:crafted_item])
-    @craft_item_ids = Item.where("is_crafted='t'", :select => 'id, description', :order => 'description')
-    @item_ids = Item.find(:all, :select => 'id, description', :order => 'description')
+    @craft_item_ids = Item.where(["is_crafted = ?", true], :select => "id, description", :order => "description")
+    @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @crafted_item.save
         format.html { redirect_to(@crafted_item, :notice => 'Crafted item was successfully created.') }

@@ -5,25 +5,23 @@ class SalesListingsController < ApplicationController
 
     if params[:status] != nil then
       if params[:status] != "0" then
-        @sales_listings = SalesListing.joins('left join items on items.id = sales_listings.item_id').paginate(:page => params[:page],
+        @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
         :order => "description",
         :conditions => ["listing_status_id = ?", params[:status]])
       else
-        @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
         :order => "position, item_id")
       end
     else if params[:search] != nil then
-        # @search = SalesListing.search(params[:search])
-
         @sales_listings = SalesListing.search(params[:search], params[:page])
       else
-        @sales_listings = SalesListing.joins('left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id').paginate(:page => params[:page],
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
         :order => "position, item_id", :conditions => ["listing_statuses.is_final = ?", false])
       end
     end
     @status_list = ListingStatus.find(:all,
-    :select => 'id, description',
-    :order => 'position')
+    :select => "id, description",
+    :order => "description")
     @items = Item.find(:all,
     :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
     :order => 'description')
@@ -39,7 +37,7 @@ class SalesListingsController < ApplicationController
   def show
     @sales_listing = SalesListing.find(params[:id])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @sales_listing }
@@ -51,7 +49,7 @@ class SalesListingsController < ApplicationController
   def new
     @sales_listing = SalesListing.new
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'description')
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
@@ -63,14 +61,14 @@ class SalesListingsController < ApplicationController
   def edit
     @sales_listing = SalesListing.find(params[:id])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
   end
 
   # POST /sales_listings
   # POST /sales_listings.xml
   def create
     @sales_listing = SalesListing.new(params[:sales_listing])
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
+    @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
     respond_to do |format|
       if @sales_listing.save
@@ -89,9 +87,9 @@ class SalesListingsController < ApplicationController
   # PUT /sales_listings/1.xml
   def update
     @sales_listing = SalesListing.find(params[:id])
-    @listing_statuses = ListingStatus.find(:all, :select => 'id, description', :order => 'description')
-    @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Expired'")
-    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'In Inventory'")
+    @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
+    @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Expired'])
+    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
@@ -137,7 +135,7 @@ class SalesListingsController < ApplicationController
 
   def sold
     @sales_listing = SalesListing.find(params[:id])
-    @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Sold'")
+    @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @sales_listing.listing_status_id = @sold_listing.first.id
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
@@ -154,10 +152,10 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(params[:id])
     @expired_listing = ListingStatus.find(:all,
     :select => 'id, description',
-    :conditions => "description = 'Expired'")
+    :conditions => ["description = ?", 'Expired'])
     @inventory_listing = ListingStatus.find(:all,
     :select => 'id, description',
-    :conditions => "description = 'In Inventory'")
+    :conditions => ["description = ?", 'In Inventory'])
     if @sales_listing.relisted_status != true then
 
       @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
@@ -186,7 +184,7 @@ class SalesListingsController < ApplicationController
   end
 
   def crafted
-    @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
+    @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Crafted'])
     @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
 
@@ -202,7 +200,7 @@ class SalesListingsController < ApplicationController
   end
 
   def mailed
-    @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Mailed'")
+    @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Mailed'])
     @sales_listing = SalesListing.find(params[:id])
     @sales_listing.listing_status_id = @mailed_listing.first.id
     @sales_listing.save
@@ -226,8 +224,8 @@ class SalesListingsController < ApplicationController
   # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
+      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
       sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
       last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? ", sold_status.id, id]).last
       expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
@@ -273,8 +271,8 @@ class SalesListingsController < ApplicationController
   # this method is also present in the application helper, so any bug found there is likely to happen here
   def lastIsUndercutPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
+      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
       sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
       expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
       sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, true]).last

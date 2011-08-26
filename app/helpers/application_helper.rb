@@ -120,7 +120,7 @@ module ApplicationHelper
 
   def averageSalesPrice(id)
     if id != nil then
-      sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+      sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold.id, id, false])
     return price.to_i
     end
@@ -130,8 +130,8 @@ module ApplicationHelper
   # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
+      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
       sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
       last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? ", sold_status.id, id]).last
       expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
@@ -180,8 +180,8 @@ module ApplicationHelper
   # this method is also present in the SalesListing controller, so any bug found there is likely to happen here
   def lastIsUndercutPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => "description ='Sold'").first
-      expired = ListingStatus.find(:all, :conditions => "description ='Expired'").first
+      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
+      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
       sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
       expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
       sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, true]).last
@@ -204,7 +204,7 @@ module ApplicationHelper
 
   def lastListings(id)
     if id != nil then
-      sold = ListingStatus.find(:all, :conditions => "description ='Sold'").first
+      sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       last_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold.id, id, false], :order => "updated_at desc").first
       if last_sold != nil then
         lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ?", id, last_sold.updated_at, false], :group => 'listing_status_id')
