@@ -71,4 +71,17 @@ class PageController < ApplicationController
     @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ?", 5.days.ago, listing_status_id])
   end
 
+  def all_mailed
+    crafted_id = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
+    mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Mailed'")
+
+    @salesListing = SalesListing.find(:all, :conditions => ["listing_status_id = ?", crafted_id])
+    @salesListing.each do |listing|
+      listing.listing_status_id = mailed_listing.first.id
+      listing.save
+    end
+    redirect_to sales_listings_path
+
+  end
+
 end

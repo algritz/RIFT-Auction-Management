@@ -191,7 +191,7 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.html { redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -217,7 +217,8 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-
+  
+  
   ## -- start of private block -- ##
   private
 
