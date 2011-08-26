@@ -7,6 +7,8 @@ gem 'will_paginate', "~> 3.0.pre2"
 
 gem 'sqlite3'
 
+gem 'exception_notification'
+
 group :test do
   gem 'spork', '~> 0.9.0.rc'
   gem 'rspec-rails'

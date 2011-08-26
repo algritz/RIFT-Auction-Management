@@ -22,5 +22,12 @@ RIFTAuctionManagement::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.middleware.use ::ExceptionNotifier,
+  :email_prefix => "Rift-Auction-Management Errors: ",
+  :sender_address => %w{rift-ah@invalidemail.com},
+  :exception_recipients => %w{algritz@videotron.ca}
+  
+  
 end
 
