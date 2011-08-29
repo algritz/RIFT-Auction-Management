@@ -26,7 +26,13 @@ module SessionsHelper
       current_user.is_admin?
     end
   end
-
+  
+  def is_current_user?(user)
+    if signed_in? then
+      current_user == user
+    end
+  end
+  
   ## Start of Private Block ##
   private
 

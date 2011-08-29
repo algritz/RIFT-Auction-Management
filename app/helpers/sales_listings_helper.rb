@@ -35,7 +35,7 @@ module SalesListingsHelper
 
   def getDepositCost
     if params[:item_id] != nil then
-      last_listing = SalesListing.find(:all, :conditions => ["item_id = ?", params[:item_id]]).last
+      last_listing = SalesListing.find(:all, :conditions => ["item_id = ? and user_id = ?", params[:item_id], current_user]).last
       if last_listing != nil then
       last_listing.deposit_cost
       end

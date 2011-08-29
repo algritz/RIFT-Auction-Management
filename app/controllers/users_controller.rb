@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     @users = User.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      if is_admin? then
+        format.html # index.html.erb
+        format.xml  { render :xml => @users }
+      else
+        format.html { redirect_to (signin_path, :notice => 'Only an admin can see all users')}
+      end
     end
   end
 
@@ -16,8 +20,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      if is_admin? || is_current_user?(@user)then
+        format.html # show.html.erb
+        format.xml  { render :xml => @user }
+      else
+         format.html { redirect_to (signin_path, :notice => 'You can only view yourself unless you are an admin')}
+      end
     end
   end
 
@@ -35,6 +43,13 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    respond_to do |format|
+      if is_admin? || is_current_user?(@user)then
+        format.html # edit.html.erb
+      else
+         format.html { redirect_to (signin_path, :notice => 'You can only edit yourself unless you are an admin')}
+      end
+    end
   end
 
   # POST /users
@@ -44,7 +59,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to(signin_path, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -59,7 +74,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(params[:user] && (is_admin? || is_current_user?(@user)))
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -73,7 +88,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
+    if (is_admin? || is_current_user?(@user)) then
     @user.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(users_url) }

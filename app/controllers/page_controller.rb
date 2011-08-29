@@ -5,7 +5,7 @@ class PageController < ApplicationController
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
     @out_of_stock_list = []
     item_ids.each do |ids|
-      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?)", ids.id, sold.id, expired.id ])
+      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user.id])
       if active_autions == 0 then
       @out_of_stock_list << ids.id
       end
@@ -28,9 +28,9 @@ class PageController < ApplicationController
     @sitting_in_bank = []
     @last_id_in_bank
     item_ids.each do |ids|
-      items_in_bank = SalesListing.find(:all, :conditions => ["item_id = ? and listing_status_id = ?", ids.id, in_bank.id])
+      items_in_bank = SalesListing.find(:all, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids.id, in_bank.id, current_user.id])
       items_in_bank.each do |ids_in_bank|
-        active_autions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ?", ids_in_bank.item_id, ongoing.id])
+        active_autions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids_in_bank.item_id, ongoing.id, current_user.id])
         if active_autions == 0 then
           if ids.id !=  @last_id_in_bank then
           @sitting_in_bank << ids.id
@@ -52,7 +52,7 @@ class PageController < ApplicationController
     @last_duplicate
     item_ids.each do |ids|
       p ids
-      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id = ?", ids.id, ongoing.id])
+      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids.id, ongoing.id, current_user.id])
       if active_autions >= 2 then
         if ids.id !=  @last_duplicate then
         @duplicate_listing << ids.id
@@ -68,14 +68,14 @@ class PageController < ApplicationController
 
   def old_listings
     listing_status_id = ListingStatus.find(:all, :select => "id, description" ,:conditions => ["description = ?", "Ongoing"])
-    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ?", 5.days.ago, listing_status_id])
+    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user.id])
   end
 
   def all_mailed
     crafted_id = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
     mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Mailed'")
 
-    @salesListing = SalesListing.find(:all, :conditions => ["listing_status_id = ?", crafted_id])
+    @salesListing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and user_id = ?", crafted_id, current_user.id])
     @salesListing.each do |listing|
       listing.listing_status_id = mailed_listing.first.id
       listing.save

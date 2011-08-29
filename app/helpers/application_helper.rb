@@ -121,7 +121,7 @@ module ApplicationHelper
   def averageSalesPrice(id)
     if id != nil then
       sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
-      price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold.id, id, false])
+      price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, id, false, current_user])
     return price.to_i
     end
   end
@@ -132,9 +132,9 @@ module ApplicationHelper
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
-      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
-      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? ", sold_status.id, id]).last
-      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
+      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user]).last
+      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user]).last
+      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user]).last
       if sold != nil then
         if sold.updated_at == last_sold_date.updated_at then
           sold_id = sold.id
@@ -145,9 +145,9 @@ module ApplicationHelper
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ?", expired.id, id, false, last_sold_date.updated_at] )
+            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, id, false, last_sold_date.updated_at, current_user] )
           else
-            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false] )
+            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user] )
           end
           if @number_of_expired.modulo(5) == 0 then
             expired_id = expired_listing.id
@@ -157,7 +157,7 @@ module ApplicationHelper
             price = SalesListing.find(expired_id).price
           end
         else
-          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
+          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user]).last
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -170,9 +170,9 @@ module ApplicationHelper
 
   def lastSalesPrice_without_listed(id)
     if id != nil then
-      sold =  @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", id, false, "Sold"]).last
+      sold =  @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", id, false, "Sold", current_user]).last
       if sold == nil then
-        @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", id, true, "Sold"]).last
+        @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", id, true, "Sold", current_user]).last
       end
     end
   end
@@ -182,10 +182,10 @@ module ApplicationHelper
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
-      sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
-      expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
-      sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, true]).last
-      expired_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, true]).last
+      sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user]).last
+      expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user]).last
+      sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, true, current_user]).last
+      expired_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, true, current_user]).last
 
       if sold_not_undercut != nil then
       is_undercut_price = false
@@ -205,11 +205,11 @@ module ApplicationHelper
   def lastListings(id)
     if id != nil then
       sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
-      last_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold.id, id, false], :order => "updated_at desc").first
+      last_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, id, false, current_user], :order => "updated_at desc").first
       if last_sold != nil then
-        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ?", id, last_sold.updated_at, false], :group => 'listing_status_id')
+        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", id, last_sold.updated_at, false, current_user], :group => 'listing_status_id')
       else
-        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and is_undercut_price = ?", id, false], :group => 'listing_status_id')
+        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", id, false, current_user], :group => 'listing_status_id')
       end
       lastListings_per_status = []
       lastListings.each do |status, value|
@@ -232,22 +232,22 @@ module ApplicationHelper
   end
 
   def sales_percentage_full_price(item_id)
-    total_auctions_full_price = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ?", item_id, false, true])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", item_id, false, "Sold"])
+    total_auctions_full_price = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, false, true, current_user])
+    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", current_user])
     percentage = (sold_auctions.to_f / total_auctions_full_price.to_f) * 100
     format("%.2f",percentage)
   end
 
   def sales_percentage_undercut(item_id)
-    total_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ?", item_id, true, true])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ?", item_id, true, "Sold"])
+    total_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, true, current_user])
+    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", current_user])
     percentage = (sold_auctions.to_f / total_auctions.to_f) * 100
     format("%.2f",percentage)
   end
 
   def sales_percentage_overall(item_id)
-    total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.is_final = ?", item_id, true])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"])
+    total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user])
+    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
     format("%.2f",percentage)
   end
@@ -255,21 +255,21 @@ module ApplicationHelper
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
-      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ?", item_id])
+      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user])
       if deposit_cost == nil then
         deposit_cost = 0
       end
-      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last
+      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last
       if ever_sold != nil then
-        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Sold"]).last.updated_at
-        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ?", item_id, "Expired", last_sold_date])  
+        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last.updated_at
+        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user])  
         if number_of_relists_since_last_sold > 0 then
           minimum_price = formatPrice(((number_of_relists_since_last_sold * deposit_cost) + crafting_cost))
         else
           minimum_price = formatPrice((deposit_cost + crafting_cost))
         end
       else
-        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ?", item_id, "Expired"])
+        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user])
         if number_of_relists > 0 then
           minimum_price = formatPrice(((number_of_relists * deposit_cost) + crafting_cost))
         else

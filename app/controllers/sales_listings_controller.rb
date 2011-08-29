@@ -2,30 +2,29 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
-
-    if params[:status] != nil then
-      if params[:status] != "0" then
-        @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-        :order => "description",
-        :conditions => ["listing_status_id = ?", params[:status]])
-      else
-        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-        :order => "position, item_id")
+    if signed_in? then
+      if params[:status] != nil then
+        if params[:status] != "0" then
+          @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+          :order => "description",
+          :conditions => ["listing_status_id = ? and user_id = ?", params[:status], current_user.id])
+        else
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
+          :order => "position, item_id",
+          :conditions => ["user_id = ?", current_user.id])
+        end
+      else if params[:search] != nil then
+          @sales_listings = SalesListing.where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
+        else
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
+          :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])
+        end
       end
-    else if params[:search] != nil then
-        @sales_listings = SalesListing.search(params[:search], params[:page])
-      else
-        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-        :order => "position, item_id", :conditions => ["listing_statuses.is_final = ?", false])
-      end
+    else
+      @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
+      :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user])
     end
-    @status_list = ListingStatus.find(:all,
-    :select => "id, description",
-    :order => "description")
-    @items = Item.find(:all,
-    :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
-    :order => 'description')
-
+    @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sales_listings }
@@ -39,8 +38,12 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @sales_listing }
+      if @sales_listing.user_id == current_user.id then
+        format.html # show.html.erb
+        format.xml  { render :xml => @sales_listing }
+      else
+        format.html { redirect_to(signin_path, :notice => 'You can only view your own listings') }
+      end
     end
   end
 
@@ -62,6 +65,16 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(params[:id])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
+
+    respond_to do |format|
+      if @sales_listing.user_id == current_user.id then
+        format.html # show.html.erb
+        format.xml  { render :xml => @sales_listing }
+      else
+        format.html { redirect_to(signin_path, :notice => 'You can only edit your own listings') }
+      end
+    end
+
   end
 
   # POST /sales_listings
@@ -126,7 +139,9 @@ class SalesListingsController < ApplicationController
   # DELETE /sales_listings/1.xml
   def destroy
     @sales_listing = SalesListing.find(params[:id])
+    if (is_admin? || is_current_user?(@sales_listing.user_id)) then
     @sales_listing.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(sales_listings_url) }
@@ -138,6 +153,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(params[:id])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @sales_listing.listing_status_id = @sold_listing.first.id
+    @sales_listing.user_id = current_user.id
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
@@ -164,7 +180,8 @@ class SalesListingsController < ApplicationController
       :deposit_cost => @sales_listing.deposit_cost,
       :listing_status_id => @inventory_listing.first.id,
       :price => lastSalesPrice(@sales_listing.item_id),
-      :is_undercut_price => lastIsUndercutPrice(@sales_listing))
+      :is_undercut_price => lastIsUndercutPrice(@sales_listing),
+      :user_id => current_user)
 
     @sales_listing.listing_status_id = @expired_listing.first.id
     @sales_listing.relisted_status = true
@@ -186,7 +203,7 @@ class SalesListingsController < ApplicationController
 
   def crafted
     @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Crafted'])
-    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user.id, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
 
     respond_to do |format|
@@ -208,7 +225,7 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
 
     respond_to do |format|
-      if @sales_listing.update_attributes(params[:sales_listing])
+      if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -227,9 +244,9 @@ class SalesListingsController < ApplicationController
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
-      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
-      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? ", sold_status.id, id]).last
-      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
+      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id]).last
+      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id]).last
+      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
       if sold != nil then
         if sold.updated_at == last_sold_date.updated_at then
           sold_id = sold.id
@@ -240,9 +257,9 @@ class SalesListingsController < ApplicationController
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ?", expired.id, id, false, last_sold_date.updated_at] )
+            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, id, false, last_sold_date.updated_at, current_user.id] )
           else
-            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false] )
+            @number_of_expired = SalesListing.count(:conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id] )
           end
           if @number_of_expired.modulo(5) == 0 then
             expired_id = expired_listing.id
@@ -252,7 +269,7 @@ class SalesListingsController < ApplicationController
             price = SalesListing.find(expired_id).price
           end
         else
-          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
+          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -265,7 +282,7 @@ class SalesListingsController < ApplicationController
 
   def lastDepositCost(id)
     if id != nil then
-      SalesListing.maximum('deposit_cost', :conditions => ["item_id = ?", id]).to_i
+      SalesListing.maximum('deposit_cost', :conditions => ["item_id = ? and user_id = ?", id, current_user.id]).to_i
     end
   end
 
@@ -274,10 +291,10 @@ class SalesListingsController < ApplicationController
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
-      sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, false]).last
-      expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, false]).last
-      sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", sold_status.id, id, true]).last
-      expired_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ?", expired.id, id, true]).last
+      sold_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id]).last
+      expired_not_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
+      sold_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, true, current_user.id]).last
+      expired_and_undercut = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, true, current_user.id]).last
 
       if sold_not_undercut != nil then
       is_undercut_price = false

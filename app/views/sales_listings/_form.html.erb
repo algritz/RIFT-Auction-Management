@@ -48,6 +48,10 @@
 		<br />
 		<%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus)) %>
 	</div>
+	<div class="field">
+		<br />
+		<%= f.hidden_field(:user_id, :value => current_user.id) %>
+	</div>
 	<p>
 		<b>Last sales price:</b>
 		<% lastSalesPrice_without_listed(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])  %>
