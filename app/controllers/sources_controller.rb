@@ -44,7 +44,7 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.save
-        format.html { redirect_to(@source, :notice => 'Source was successfully created.') }
+        format.html {  redirect_to(@source, :notice => 'Source was successfully created.') }
         format.xml  { render :xml => @source, :status => :created, :location => @source }
       else
         format.html { render :action => "new" }

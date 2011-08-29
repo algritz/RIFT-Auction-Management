@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
 
     respond_to do |format|
-      if is_admin? then
+      if (is_admin?) then
         format.html # index.html.erb
         format.xml  { render :xml => @users }
       else
-        format.html { redirect_to (signin_path, :notice => 'Only an admin can see all users')}
+        format.html { redirect_to(signin_path, :notice => 'Only an admin can see all users') }
       end
     end
   end
@@ -20,11 +20,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if is_admin? || is_current_user?(@user)then
+      if (is_admin? || is_current_user?(@user)) then
         format.html # show.html.erb
         format.xml  { render :xml => @user }
       else
-         format.html { redirect_to (signin_path, :notice => 'You can only view yourself unless you are an admin')}
+        format.html { redirect_to(signin_path, :notice => 'You can only view yourself unless you are an admin')}
       end
     end
   end
@@ -44,10 +44,10 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     respond_to do |format|
-      if is_admin? || is_current_user?(@user)then
-        format.html # edit.html.erb
+      if (is_admin? || is_current_user?(@user)) then
+      format.html # edit.html.erb
       else
-         format.html { redirect_to (signin_path, :notice => 'You can only edit yourself unless you are an admin')}
+        format.html { redirect_to(signin_path, :notice => 'You can only edit yourself unless you are an admin')}
       end
     end
   end
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user] && (is_admin? || is_current_user?(@user)))
+      if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -97,4 +97,5 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
