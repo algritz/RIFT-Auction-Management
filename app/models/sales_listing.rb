@@ -1,5 +1,5 @@
 class SalesListing < ActiveRecord::Base
-  attr_accessible :item_id, :stacksize, :price, :is_undercut_price, :deposit_cost, :listing_status_id
+  attr_accessible :item_id, :stacksize, :price, :is_undercut_price, :deposit_cost, :listing_status_id, :user_id
   validates :item_id, :presence => true
   validates_numericality_of :item_id
   validates :stacksize, :presence => true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808011459) do
+ActiveRecord::Schema.define(:version => 20110829155202) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20110808011459) do
     t.timestamp "updated_at"
     t.boolean   "is_undercut_price"
     t.boolean   "relisted_status",   :default => false
+    t.integer   "user_id"
   end
 
   add_index "sales_listings", ["id"], :name => "index_sales_listings_on_id"
@@ -78,5 +79,17 @@ ActiveRecord::Schema.define(:version => 20110808011459) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.boolean  "is_admin"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
