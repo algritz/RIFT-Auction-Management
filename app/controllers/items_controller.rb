@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_admin
   # GET /items
   # GET /items.xml
   def index
@@ -10,7 +11,7 @@ class ItemsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # new.html.erb
       format.xml  { render :xml => @items }
     end
   end
@@ -33,7 +34,7 @@ class ItemsController < ApplicationController
     @source = Source.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @item }
+      format.xml  { render :xml => @items }
     end
   end
 
@@ -88,7 +89,6 @@ class ItemsController < ApplicationController
   end
 
 ## start of private block ##
-
 
 ## end of private block
 

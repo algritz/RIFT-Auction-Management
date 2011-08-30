@@ -1,4 +1,5 @@
 class SourcesController < ApplicationController
+  before_filter :authenticate_admin
   # GET /sources
   # GET /sources.xml
   def index

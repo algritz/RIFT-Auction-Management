@@ -1,4 +1,5 @@
 class ListingStatusesController < ApplicationController
+  before_filter :authenticate_admin
   # GET /listing_statuses
   # GET /listing_statuses.xml
   def index

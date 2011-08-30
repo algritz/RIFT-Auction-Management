@@ -1,14 +1,16 @@
 class CompetitorsController < ApplicationController
+  before_filter :authenticate
   # GET /competitors
   # GET /competitors.xml
   def index
-    @competitors = Competitor.paginate(:page => params[:page] , :select => 'distinct id, name, competitor_style_id, source_id', :order => 'name, source_id')
+    @competitors = Competitor.paginate(:page => params[:page] , :select => 'distinct id, name, competitor_style_id, source_id', :order => 'name, source_id', :conditions => ["user_id = ?", current_user.id])
     @competitor_styles = CompetitorStyle.find(:all, :select => 'id, description')
     @sources_name = Source.find(:all, :select => 'id, description')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @competitors }
     end
+
   end
 
   # GET /competitors/1
@@ -19,8 +21,12 @@ class CompetitorsController < ApplicationController
     @sources_name = Source.find(:all, :select => 'id, description')
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @competitor }
+      if is_current_user?(@competitor.user_id) then
+        format.html # show.html.erb
+        format.xml  { render :xml => @competitor }
+      else
+        format.html { redirect_to(competitors_path, :notice => "You can only see your own competition.")}
+      end
     end
   end
 
@@ -41,7 +47,9 @@ class CompetitorsController < ApplicationController
     @competitor = Competitor.find(params[:id])
     @competitor_styles = CompetitorStyle.find(:all, :select => 'id, description')
     @sources_name = Source.find(:all, :select => 'id, description')
-
+    if !is_current_user?(@competitor.user_id) then
+      redirect_to(competitors_path, :notice => "You can only edit your own competition.")
+    end
   end
 
   # POST /competitors

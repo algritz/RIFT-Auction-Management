@@ -1,29 +1,35 @@
 <%= form_for(@competitor) do |f| %>
-  <% if @competitor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@competitor.errors.count, "error") %> prohibited this competitor from being saved:</h2>
-
-      <ul>
-      <% @competitor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :competitor_style %><br />
-    <%= f.collection_select(:competitor_style_id, CompetitorStyle.find(:all, :select => 'id, description'), :id, :description)%>
-  </div>
-  <div class="field">
-    <%= f.label :source_id %><br />
-    <%= f.collection_select(:source_id, Source.find(:all, :select => 'id, description'), :id, :description)%>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @competitor.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@competitor.errors.count, "error") %> prohibited this competitor from being saved:</h2>
+	<ul>
+		<% @competitor.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
 <% end %>
+<div class="field">
+	<%= f.label :name %>
+	<br />
+	<%= f.text_field :name %>
+</div>
+<div class="field">
+	<%= f.label :competitor_style %>
+	<br />
+	<%= f.collection_select(:competitor_style_id, CompetitorStyle.find(:all, :select => 'id, description'), :id, :description)%>
+</div>
+<div class="field">
+	<%= f.label :source_id %>
+	<br />
+	<%= f.collection_select(:source_id, Source.find(:all, :select => 'id, description'), :id, :description)%>
+</div>
+<div class="field">
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %> 

@@ -1,28 +1,24 @@
 class SalesListingsController < ApplicationController
+  before_filter :authenticate
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
-    if signed_in? then
-      if params[:status] != nil then
-        if params[:status] != "0" then
-          @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-          :order => "description",
-          :conditions => ["listing_status_id = ? and user_id = ?", params[:status], current_user.id])
-        else
-          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-          :order => "position, item_id",
-          :conditions => ["user_id = ?", current_user.id])
-        end
-      else if params[:search] != nil then
-          @sales_listings = SalesListing.where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
-        else
-          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-          :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])
-        end
+    if params[:status] != nil then
+      if params[:status] != "0" then
+        @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+        :order => "description",
+        :conditions => ["listing_status_id = ? and user_id = ?", params[:status], current_user.id])
+      else
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
+        :order => "position, item_id",
+        :conditions => ["user_id = ?", current_user.id])
       end
-    else
-      @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-      :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user])
+    else if params[:search] != nil then
+        @sales_listings = SalesListing.where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
+      else
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
+        :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])
+      end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
@@ -56,7 +52,7 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
-      format.js {p params}
+      format.js
     end
   end
 
@@ -87,11 +83,9 @@ class SalesListingsController < ApplicationController
       if @sales_listing.save
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
-      format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
-      format.js
       end
     end
   end
@@ -139,7 +133,7 @@ class SalesListingsController < ApplicationController
   # DELETE /sales_listings/1.xml
   def destroy
     @sales_listing = SalesListing.find(params[:id])
-    if (is_admin? || is_current_user?(@sales_listing.user_id)) then
+    if (is_current_user?(@sales_listing.user_id)) then
     @sales_listing.destroy
     end
 

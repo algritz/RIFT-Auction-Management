@@ -1,4 +1,5 @@
 class CraftedItemsController < ApplicationController
+  before_filter :authenticate_admin
   # GET /crafted_items
   # GET /crafted_items.xml
   def index

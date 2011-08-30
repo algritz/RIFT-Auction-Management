@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if (is_admin? || is_current_user?(@user)) then
+      if (is_admin? || is_current_user?(@user.id)) then
         format.html # show.html.erb
         format.xml  { render :xml => @user }
       else
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     respond_to do |format|
-      if (is_admin? || is_current_user?(@user)) then
+      if (is_admin? || is_current_user?(@user.id)) then
       format.html # edit.html.erb
       else
         format.html { redirect_to(signin_path, :notice => 'You can only edit yourself unless you are an admin')}
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-    if (is_admin? || is_current_user?(@user)) then
+    if (is_admin? || is_current_user?(@user.id)) then
     @user.destroy
     end
 

@@ -26,13 +26,28 @@ module SessionsHelper
       current_user.is_admin?
     end
   end
-  
+
   def is_current_user?(user)
     if signed_in? then
-      current_user == user
+      current_user.id == user
     end
   end
+
+  def authenticate
+    deny_access unless signed_in?
+  end
   
+  def authenticate_admin
+    deny_access_admin unless is_admin?
+  end
+
+  def deny_access
+    redirect_to signin_path, :notice => "You need to be signed-in to see that page."
+  end
+  
+  def deny_access_admin
+    redirect_to signin_path, :notice => "You need to be an administrator to see that page."
+  end
   ## Start of Private Block ##
   private
 

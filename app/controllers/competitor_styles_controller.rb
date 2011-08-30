@@ -1,4 +1,5 @@
 class CompetitorStylesController < ApplicationController
+  before_filter :authenticate_admin
   # GET /competitor_styles
   # GET /competitor_styles.xml
   def index

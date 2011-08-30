@@ -1,4 +1,5 @@
 class PageController < ApplicationController
+  before_filter :authenticate
   def items_to_craft
     item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first

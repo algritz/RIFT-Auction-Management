@@ -1,4 +1,13 @@
 <h1>Listing competitors</h1>
+<p>
+	<section>
+		<% flash.each do |key, value| %>
+		<div class="flash <%= key %>">
+			<%= value %>
+		</div>
+		<% end %>
+	</section>
+</p>
 <%= will_paginate @competitors%>
 <table>
 	<tr>

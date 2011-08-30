@@ -5,6 +5,15 @@ Search term:
 <%= text_field_tag :search, params[:search] %>
 <% end %>
 <% end %>
+<p>
+	<section>
+		<% flash.each do |key, value| %>
+		<div class="flash <%= key %>">
+			<%= value %>
+		</div>
+		<% end %>
+	</section>
+</p>
 <div>
 	<p>
 		<%
