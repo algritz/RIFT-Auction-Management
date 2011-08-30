@@ -46,7 +46,9 @@ module ApplicationHelper
       end
     end
   end
-
+  
+  ## These methods are also in "page#controller" so any bug here is likely to happen there
+  
   def calculateCraftingCost(id)
     if id != nil then
       if Item.find(id).is_crafted then

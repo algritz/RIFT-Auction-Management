@@ -29,6 +29,7 @@ RIFTAuctionManagement::Application.routes.draw do
   get 'page/items_with_more_than_one_listings'
   get 'page/old_listings'
   get 'page/all_mailed'
+  get 'page/profit_per_day'
   
    
   resources :sessions, :only => [:new, :create, :destroy]
