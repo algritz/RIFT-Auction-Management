@@ -45,7 +45,7 @@ class CraftedItemsController < ApplicationController
   # POST /crafted_items.xml
   def create
     @crafted_item = CraftedItem.new(params[:crafted_item])
-    @craft_item_ids = Item.where(["is_crafted = ?", true], :select => "id, description", :order => "description")
+    @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @crafted_item.save
