@@ -1,6 +1,6 @@
 class AddIndexItemDescriptionToItems < ActiveRecord::Migration
-    def self.up
-     add_index :items, :description
+  def self.up
+    add_index :items, :description
   end
 
   def self.down

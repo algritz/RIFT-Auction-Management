@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110901020744) do
+ActiveRecord::Schema.define(:version => 20110901022400) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20110901020744) do
     t.integer   "position"
     t.boolean   "is_final",    :default => false
   end
+
+  add_index "listing_statuses", ["description"], :name => "index_listing_statuses_on_description"
 
   create_table "sales_listings", :force => true do |t|
     t.integer   "item_id"
