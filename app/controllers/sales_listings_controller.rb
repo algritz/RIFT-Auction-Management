@@ -101,6 +101,7 @@ class SalesListingsController < ApplicationController
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Expired'])
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
+    @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
@@ -119,6 +120,10 @@ class SalesListingsController < ApplicationController
               @sales_listing.relisted_status = true
               @sales_listing.save
               @sales_relisting.save
+              end
+            else if value.to_i ==  @sold_listing.first.id then
+                @sales_listing.profit = calculateProfit(params[:id])
+                @sales_listing.save
               end
             end
           end
@@ -150,6 +155,8 @@ class SalesListingsController < ApplicationController
   def sold
     @sales_listing = SalesListing.find(params[:id])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
+
+    @sales_listing.profit = calculateProfit(params[:id])
     @sales_listing.listing_status_id = @sold_listing.first.id
     @sales_listing.user_id = current_user.id
     respond_to do |format|
@@ -308,5 +315,84 @@ class SalesListingsController < ApplicationController
       end
     end
   end
+
+  def minimum_sales_price(item_id)
+    if item_id != nil then
+      crafting_cost = calculateCraftingCost(item_id)
+      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user])
+      if deposit_cost == nil then
+      deposit_cost = 0
+      end
+      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last
+      if ever_sold != nil then
+        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last.updated_at
+        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user])
+        if number_of_relists_since_last_sold > 0 then
+        minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
+        else
+        minimum_price = (deposit_cost + crafting_cost)
+        end
+      else
+        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user])
+        if number_of_relists > 0 then
+        minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
+        else
+        minimum_price = (deposit_cost + crafting_cost)
+        end
+      end
+    end
+  end
+
+  def calculateCraftingCost(id)
+    if id != nil then
+      if Item.find(id).is_crafted then
+        if CraftedItem.where(["crafted_item_generated_id = ?", id]).exists? then
+          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", id])
+          cost = 0
+          crafting_materials.each do |materials|
+            material_cost = calculateCraftingCost(materials.component_item_id)
+            total_material_cost = (material_cost * materials.component_item_quantity)
+            if (material_cost.to_s != "no pattern defined yet for a sub-component") then
+            cost += total_material_cost
+            else
+              return "no pattern defined yet for a sub-component"
+            end
+          end
+        return cost
+        else
+          return "no pattern defined yet for a sub-component"
+        end
+      else
+        return calculateBuyingCost(id)
+      end
+    end
+  end
+
+  def calculateBuyingCost(id)
+    selling_price = Item.find(id).vendor_selling_price
+    buying_price = Item.find(id).vendor_buying_price
+
+    if (selling_price != nil) then
+    return selling_price
+    else if (buying_price != nil) then
+      return buying_price
+      else
+        return "No price defined for item"
+      end
+    end
+  end
+
+  def calculateProfit(id)
+    price = SalesListing.find(id).price
+
+    if price > 0 then
+      ah_cut = (price * 0.05).to_i
+      deposit_cost = SalesListing.find(id).deposit_cost
+      minimumCost = minimum_sales_price(SalesListing.find(id).item_id)
+    profit = ((price + deposit_cost) - (minimumCost + ah_cut))
+    return profit
+    end
+  end
+
 ## -- private block
 end

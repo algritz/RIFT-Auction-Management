@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110901022400) do
+ActiveRecord::Schema.define(:version => 20110901144530) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20110901022400) do
     t.boolean   "is_undercut_price"
     t.boolean   "relisted_status",   :default => false
     t.integer   "user_id"
+    t.integer   "profit"
   end
 
   add_index "sales_listings", ["id"], :name => "index_sales_listings_on_id"
