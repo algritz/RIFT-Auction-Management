@@ -6,13 +6,16 @@ class ListingStatus < ActiveRecord::Base
   validates :position, :uniqueness => true
 end
 
+
 # == Schema Information
 #
 # Table name: listing_statuses
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  description :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
+#  position    :integer
+#  is_final    :boolean         default(FALSE)
 #
 

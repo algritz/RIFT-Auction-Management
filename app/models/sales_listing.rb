@@ -20,3 +20,20 @@ class SalesListing < ActiveRecord::Base
   end
 
 end
+# == Schema Information
+#
+# Table name: sales_listings
+#
+#  id                :integer         primary key
+#  item_id           :integer
+#  stacksize         :integer
+#  price             :integer
+#  deposit_cost      :integer
+#  listing_status_id :integer
+#  created_at        :timestamp
+#  updated_at        :timestamp
+#  is_undercut_price :boolean
+#  relisted_status   :boolean         default(FALSE)
+#  user_id           :integer
+#
+

@@ -7,13 +7,14 @@ class SourceTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: sources
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  description :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 

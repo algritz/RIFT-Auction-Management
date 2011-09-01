@@ -7,3 +7,17 @@ class Competitor < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 50
 end
+
+# == Schema Information
+#
+# Table name: competitors
+#
+#  id                  :integer         primary key
+#  name                :string(255)
+#  competitor_style_id :integer
+#  source_id           :integer
+#  created_at          :timestamp
+#  updated_at          :timestamp
+#  user_id             :integer
+#
+

@@ -22,16 +22,17 @@ class CraftedItem < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: crafted_items
 #
-#  id                        :integer         not null, primary key
+#  id                        :integer         primary key
 #  crafted_item_generated_id :integer
 #  crafted_item_stacksize    :integer
 #  component_item_id         :integer
 #  component_item_quantity   :integer
-#  created_at                :datetime
-#  updated_at                :datetime
+#  created_at                :timestamp
+#  updated_at                :timestamp
 #
 

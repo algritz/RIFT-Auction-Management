@@ -133,3 +133,18 @@ describe User do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :timestamp
+#  updated_at         :timestamp
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#  is_admin           :boolean
+#
+
