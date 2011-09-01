@@ -88,33 +88,13 @@ module ApplicationHelper
 
   def calculateProfit(id)
     price = SalesListing.find(id).price
+
     if price > 0 then
       ah_cut = (price * 0.05).to_i
-
       deposit_cost = SalesListing.find(id).deposit_cost
-      buyingCost = calculateBuyingCost(SalesListing.find(id).item_id)
-      if Item.find(SalesListing.find(id).item_id).is_crafted then
-        if CraftedItem.where(["crafted_item_generated_id = ?", SalesListing.find(id).item_id]).exists? then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", SalesListing.find(id).item_id])
-          cost = 0
-          crafting_materials.each do |materials|
-            material_cost = calculateCraftingCost(materials.component_item_id)
-            total_material_cost = (material_cost * materials.component_item_quantity)
-            if (material_cost.to_s != "no pattern defined yet for a sub-component") then
-            cost += total_material_cost
-            else
-              return "no pattern defined yet for a sub-component"
-            end
-          end
-        profit = ((price + deposit_cost )- (cost + ah_cut))
-        return profit
-        else
-          return "no pattern defined yet"
-        end
-      else
-      profit = ((price + deposit_cost) - (buyingCost + ah_cut))
-      return profit
-      end
+      minimumCost = minimum_sales_price(SalesListing.find(id).item_id)
+    profit = ((price + deposit_cost) - (minimumCost + ah_cut))
+    return profit
     end
   end
 
@@ -257,23 +237,23 @@ module ApplicationHelper
       crafting_cost = calculateCraftingCost(item_id)
       deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user])
       if deposit_cost == nil then
-        deposit_cost = 0
+      deposit_cost = 0
       end
       ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last
       if ever_sold != nil then
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user]).last.updated_at
-        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user])  
+        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user])
         if number_of_relists_since_last_sold > 0 then
-          minimum_price = formatPrice(((number_of_relists_since_last_sold * deposit_cost) + crafting_cost))
+          minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
         else
-          minimum_price = formatPrice((deposit_cost + crafting_cost))
+          minimum_price = (deposit_cost + crafting_cost)
         end
       else
         number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user])
         if number_of_relists > 0 then
-          minimum_price = formatPrice(((number_of_relists * deposit_cost) + crafting_cost))
+          minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
         else
-          minimum_price = formatPrice((deposit_cost + crafting_cost))
+          minimum_price = (deposit_cost + crafting_cost)
         end
       end
     end

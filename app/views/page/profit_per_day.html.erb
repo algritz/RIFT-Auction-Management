@@ -1,0 +1,10 @@
+<table>
+	<tr>
+		<th>Date</th><th>Profit</th>
+	</tr>
+	<% @salesListing.each do |key, value| %>
+	<tr>
+		<td  style='padding-right:20px;'><%= key %></td><td  style='padding-right:20px;' align="right"><%= formatPrice(value) %></td>
+	</tr>
+	<% end %>
+</table>
