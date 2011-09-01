@@ -14,7 +14,11 @@ class SalesListingsController < ApplicationController
         :conditions => ["user_id = ?", current_user.id])
       end
     else if params[:search] != nil then
-        @sales_listings = SalesListing.where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
+        if params[:every_listings] == nil then
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").where(["user_id = ? and listing_statuses.description = ?", current_user.id, "Ongoing"]).search(params[:search], params[:page])
+        else
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
+        end
       else
         @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
         :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])

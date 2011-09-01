@@ -1,22 +1,22 @@
 module ApplicationHelper
   def getSourceDescription (id)
-    Source.find(id).description
+    Source.find(:all, :conditions => ["id = ?", id]).last.description
   end
 
   def getItemDescription (id)
-    Item.find(id).description
+    item = Item.find(:all, :conditions => ["id = ?", id]).last.description
   end
 
   def getCompetitorStyleDescription (id)
-    CompetitorStyle.find(id).description
+    CompetitorStyle.find(:all, :conditions => ["id = ?", id]).last.description
   end
 
   def getListingStatusDescription(id)
-    ListingStatus.find(id).description
+    ListingStatus.find(:all, :conditions => ["id = ?", id]).last.description
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    Source.find(Item.find(id).source_id).description
+    Source.find(:all, :conditions => ["id = ?", Item.find(:all, :conditions => ["id = ?", id]).last.source_id]).last.description
   end
 
   def isNewRow(someID)

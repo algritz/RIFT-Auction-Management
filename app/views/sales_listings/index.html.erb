@@ -1,8 +1,13 @@
 <h1>Listing sales_listings</h1>
-<% form_tag request.path, :method => 'get' do %>
-<% content_tag :label do %>
+<%= form_tag request.path, :method => 'get' do %>
+<%= content_tag :label do %>
 Search term:
 <%= text_field_tag :search, params[:search] %>
+<%= submit_tag :search %>
+<br />
+<%= label_tag :Display_every_listings%>
+<%= check_box_tag :every_listings, true, params[:every_listings] %>
+
 <% end %>
 <% end %>
 <p>

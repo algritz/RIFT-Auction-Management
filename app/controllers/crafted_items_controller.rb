@@ -3,8 +3,11 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items
   # GET /crafted_items.xml
   def index
-    @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:page => params[:page], :order => "description")
-
+    if params[:search] == nil then
+      @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:page => params[:page], :order => "description")
+    else
+      @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:conditions => ["items.description = ?", params[:search]], :page => params[:page], :order => "description")
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @crafted_items }

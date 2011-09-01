@@ -3,6 +3,7 @@
 <% content_tag :label do %>
 Search term:
 <%= text_field_tag :search, params[:search] %>
+<%= submit_tag :search %>
 <% end %>
 <% end %>
 <%= will_paginate @items %>

@@ -1,4 +1,11 @@
 <h1>Listing crafted_items</h1>
+<% form_tag request.path, :method => 'get' do %>
+<% content_tag :label do %>
+Search term:
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag :search %>
+<% end %>
+<% end %>
 <%= will_paginate @crafted_items %>
 <table>
 	<tr>
@@ -10,16 +17,15 @@
 		<th></th>
 		<th></th>
 	</tr>
-
 	<% @crafted_items.each do |crafted_item|
-		isNewRow(crafted_item.crafted_item_generated_id)	
+	isNewRow(crafted_item.crafted_item_generated_id)
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
 		<td><%=
- 		if @isNewRow then
-        	getItemDescription(crafted_item.crafted_item_generated_id)
-      	end
-		%></td>
+ if @isNewRow then
+        getItemDescription(crafted_item.crafted_item_generated_id)
+      end
+%></td>
 		<td><%= if @isNewRow then crafted_item.crafted_item_stacksize end %></td>
 		<td><%= getItemDescription(crafted_item.component_item_id) %></td>
 		<td><%= crafted_item.component_item_quantity %></td>
@@ -29,7 +35,5 @@
 	</tr>
 	<% end %>
 </table>
-
 <br />
-
-<%= link_to 'New Crafted item', new_crafted_item_path %>
+<%= link_to 'New Crafted item', new_crafted_item_path %> 

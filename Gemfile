@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'exception_notification'
 
+gem 'slim_scrooge'
+
 group :test do
   gem 'spork', '~> 0.9.0.rc'
   gem 'rspec-rails'
