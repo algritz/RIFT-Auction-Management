@@ -89,7 +89,7 @@ class PageController < ApplicationController
 
     @salesListing = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").sum(:price,
     :conditions => (["sales_listings.user_id = ? and listing_statuses.description = ?", current_user.id, "Sold"]),
-    :group => ("DATE(sales_listings.updated_at)"))
+    :group => ("DATE(sales_listings.updated_at)"), :order => "DATE(sales_listings.updated_at) desc")
 
   end
 
