@@ -242,7 +242,7 @@ class SalesListingsController < ApplicationController
       last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id]).last
       expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
       if sold != nil then
-        if sold.updated_at == last_sold_date.updated_at then
+        if (sold.updated_at == last_sold_date.updated_at) then
           sold_id = sold.id
           price = (SalesListing.find(sold_id).price * 1.1).round
         else
