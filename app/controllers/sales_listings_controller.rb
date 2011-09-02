@@ -115,7 +115,7 @@ class SalesListingsController < ApplicationController
                 :listing_status_id => @inventory_listing.first.id,
                 :price => lastSalesPrice(@sales_listing.item_id),
                 :is_undercut_price => @sales_listing.is_undercut_price,
-                :user_id => current_user)
+                :user_id => current_user.id)
               @sales_relisting.listing_status_id = @inventory_listing.first.id
               @sales_listing.relisted_status = true
               @sales_listing.save
@@ -186,7 +186,7 @@ class SalesListingsController < ApplicationController
       :listing_status_id => @inventory_listing.first.id,
       :price => lastSalesPrice(@sales_listing.item_id),
       :is_undercut_price => lastIsUndercutPrice(@sales_listing),
-      :user_id => current_user)
+      :user_id => current_user.id)
 
     @sales_listing.listing_status_id = @expired_listing.first.id
     @sales_listing.relisted_status = true

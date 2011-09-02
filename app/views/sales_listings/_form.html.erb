@@ -80,7 +80,7 @@
 		<b>Crafting Cost :</b> <%= formatPrice(calculateCraftingCost(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %>
 	</p>
 	<p>
-		<b>Minimum sales price:</b> <%= minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]) %>
+		<b>Minimum sales price:</b> <%= formatPrice(minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %>
 	</p>
 	<div class="actions">
 		<%= f.submit %>
