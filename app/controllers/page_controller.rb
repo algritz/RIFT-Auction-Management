@@ -1,7 +1,14 @@
 class PageController < ApplicationController
   before_filter :authenticate
   def items_to_craft
-    item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
+    @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
+    source = Source.find(:all, :conditions => ["description = ?", params[:param]])
+    p source
+    if source != nil && params[:param] != nil then
+      item_ids = Item.find(:all, :conditions => ["to_list = ? and source_id = ?", true, source.first.id], :select => "id, description, source_id", :order => "source_id, description")
+    else
+      item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
+    end
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
     @out_of_stock_list = []

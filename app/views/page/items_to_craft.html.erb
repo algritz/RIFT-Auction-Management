@@ -1,4 +1,10 @@
 <h1>Items to Craft</h1>
+<%
+@source_list.each do |source|
+%>
+<%= link_to source.description, page_items_to_craft_path+"?param="+source.description %> ::
+<% end %>
+<%= link_to "All professions", page_items_to_craft_path %>
 <table>
 	<tr align="left">
 		<th>Item name</th>
@@ -14,7 +20,12 @@
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
-		<td><%= link_to 'Crafted', crafted_sales_listing_path(item), :confirm => 'Are you sure (Crafted)?' %></td>
+		<td> <%= if params[:param] != nil then
+	      	  link_to 'Crafted', crafted_sales_listing_path(item)+"?param="+params[:param], :confirm => "Are you sure you want to craft #{getItemDescription(item)}?"
+	     	 else
+	       	 link_to 'Crafted', crafted_sales_listing_path(item), :confirm => "Are you sure you want to craft #{getItemDescription(item)}?"
+	      	end %>
+		</td>
 	</tr>
 	<% end %>
 </table>

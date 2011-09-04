@@ -3,7 +3,7 @@ class SourcesController < ApplicationController
   # GET /sources
   # GET /sources.xml
   def index
-    @sources = Source.find(:all, :select => "id, description", :order => "description")
+    @sources = Source.find(:all, :select => "id, description, crafting_allowed", :order => "description")
 
     respond_to do |format|
       format.html # index.html.erb

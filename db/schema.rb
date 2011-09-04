@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110901144530) do
+ActiveRecord::Schema.define(:version => 20110904201712) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20110901144530) do
     t.string    "description"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "crafting_allowed"
   end
 
   create_table "users", :force => true do |t|

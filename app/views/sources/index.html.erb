@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Description</th>
+    <th>Crafting allowed</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
     <td><%= source.description %></td>
+    <td><%= source.crafting_allowed %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
     <td><%= link_to 'Destroy', source, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -123,7 +123,7 @@ class SalesListingsController < ApplicationController
               end
             else if value.to_i ==  @sold_listing.first.id then
                 @sales_listing.profit = calculateProfit(params[:id])
-                @sales_listing.save
+              @sales_listing.save
               end
             end
           end
@@ -213,7 +213,13 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.') }
+        format.html {
+          if params[:param] != nil then
+            redirect_to(page_items_to_craft_path+"?param="+params[:param], :notice => 'Sales listing was successfully updated.')
+          else
+            redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.')
+          end
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
