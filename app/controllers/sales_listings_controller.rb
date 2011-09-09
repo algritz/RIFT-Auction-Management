@@ -215,9 +215,17 @@ class SalesListingsController < ApplicationController
       if @sales_listing.update_attributes(params[:sales_listing])
         format.html {
           if params[:param] != nil then
-            redirect_to(page_items_to_craft_path+"?param="+params[:param], :notice => 'Sales listing was successfully updated.')
+            if params[:search] == nil then
+              redirect_to(page_items_to_craft_path+"?param="+params[:param], :notice => 'Sales listing was successfully updated.')
+            else
+              redirect_to(page_items_to_craft_path+"?param="+params[:param]+"&search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            end
           else
-            redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.')
+            if params[:search] == nil then
+              redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.')
+            else
+              redirect_to(page_items_to_craft_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            end
           end
         }
         format.xml  { head :ok }

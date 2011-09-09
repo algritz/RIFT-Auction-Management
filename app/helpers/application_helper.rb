@@ -215,21 +215,36 @@ module ApplicationHelper
     total_auctions_full_price = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, false, true, current_user.id])
     sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions_full_price.to_f) * 100
-    format("%.2f",percentage)
+    percentage = format("%.2f",percentage)
+    if percentage == "NaN" then
+      percentage = "Never Sold "
+    else
+      percentage = "#{format("%.2f",percentage)}%"
+    end
   end
 
   def sales_percentage_undercut(item_id)
     total_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, true, current_user.id])
     sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions.to_f) * 100
-    format("%.2f",percentage)
+    percentage = format("%.2f",percentage)
+    if percentage == "NaN" then
+      percentage = "Never Sold"
+    else
+      percentage = "#{format("%.2f",percentage)}%"
+    end
   end
 
-  def sales_percentage_overall(item_id)
+  def  sales_percentage_overall(item_id)
     total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user.id])
     sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
-    format("%.2f",percentage)
+    percentage = format("%.2f",percentage)
+    if percentage == "NaN" then
+      percentage = "Never Sold"
+    else
+      percentage = "#{format("%.2f",percentage)}%"
+    end
   end
 
   def minimum_sales_price(item_id)
@@ -244,16 +259,16 @@ module ApplicationHelper
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id]).last.updated_at
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user.id])
         if number_of_relists_since_last_sold > 0 then
-          minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
+        minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
         else
-          minimum_price = (deposit_cost + crafting_cost)
+        minimum_price = (deposit_cost + crafting_cost)
         end
       else
         number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user.id])
         if number_of_relists > 0 then
-          minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
+        minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
         else
-          minimum_price = (deposit_cost + crafting_cost)
+        minimum_price = (deposit_cost + crafting_cost)
         end
       end
     end
