@@ -86,6 +86,17 @@ module ApplicationHelper
     end
   end
 
+  def checkIfProfit(id)
+    sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
+    expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
+    if SalesListing.find(id).listing_status_id == sold.id then
+      SalesListing.find(id).profit
+    else if SalesListing.find(id).listing_status_id != expired.id then
+        calculateProfit(id)
+      end
+    end
+  end
+
   def calculateProfit(id)
     price = SalesListing.find(id).price
 
@@ -199,6 +210,10 @@ module ApplicationHelper
     end
   end
 
+  def is_relistable?(sales_listing)
+    (ListingStatus.find(sales_listing.listing_status_id).description == 'In Inventory' || ListingStatus.find(sales_listing.listing_status_id).description == 'Mailed') && sales_listing.price > 0
+  end
+
   def is_final?(status_id)
     ListingStatus.find(status_id).is_final
   end
@@ -250,6 +265,7 @@ module ApplicationHelper
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
+
       deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user.id])
       if deposit_cost == nil then
       deposit_cost = 0
@@ -268,7 +284,11 @@ module ApplicationHelper
         if number_of_relists > 0 then
         minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
         else
-        minimum_price = (deposit_cost + crafting_cost)
+          if crafting_cost.to_i > 0 then
+            minimum_price = (deposit_cost + crafting_cost)
+          else
+            minimum_price = deposit_cost
+          end
         end
       end
     end

@@ -30,7 +30,9 @@ Search term:
 		%>
 		<%= link_to "ALL Sales Listings", sales_listings_path+"?status=0" %>
 	</p>
-	<p><%= link_to "Mail all crated items", page_all_mailed_path %></p>
+	<p>
+		<%= link_to "Mail all crated items", page_all_mailed_path %>
+	</p>
 </div>
 <%= will_paginate @sales_listings %>
 <table>
@@ -39,14 +41,13 @@ Search term:
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Stacksize</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Price</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left">Is Undercut price</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">Deposit cost</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Listing status</th>
-		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Crafting Cost</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">Profit</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left" colspan="5">Actions</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">Minimum Price</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Profit</th>
+		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Listing Status</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left" colspan="6">Actions</th>
 	</tr>
 	<% @sales_listings.each do |sales_listing|
-	
+
 	isNewRow(sales_listing.id)
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
@@ -54,19 +55,24 @@ Search term:
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_undercut_price %></td>
-		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right"><%= formatPrice(sales_listing.deposit_cost) %></td>
+		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">
+			 <% if !is_final?(sales_listing.listing_status_id) then%>
+				<%= formatPrice(minimum_sales_price(sales_listing.item_id)) %>
+			<% end %>
+		</td>
+		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"><%= formatPrice(checkIfProfit(sales_listing.id)) %></td>
 		<td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
-		<td align="right"><%= formatPrice(calculateCraftingCost(sales_listing.item_id)) %></td>
-		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"><%= formatPrice(calculateProfit(sales_listing.id)) %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;"><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?" %><% end %></td>
 		<td><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?" %><% end %></td>
 		<td><% if is_mailed?(sales_listing.listing_status_id) then %><%= link_to 'Mailed', mailed_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Mailed)?" %><% end %></td>
+		<td> <% if is_relistable?(sales_listing) then %>
+		<%= link_to 'Relist', relist_sales_listing_path(sales_listing), :confirm => "Are you sure you want to relist #{getItemDescription(sales_listing.item_id)}?" %>
+		<% end %>
+		</td>
 		<td><%= link_to 'Show', sales_listing %></td>
 		<td><%= link_to 'Destroy', sales_listing, :confirm => "Are you sure you want to destroy #{getItemDescription(sales_listing.item_id)}?", :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>
-
 <br />
-
-<%= link_to 'New Sales listing', new_sales_listing_path %>
+<%= link_to 'New Sales listing', new_sales_listing_path %> 

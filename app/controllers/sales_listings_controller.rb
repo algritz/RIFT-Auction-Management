@@ -161,7 +161,7 @@ class SalesListingsController < ApplicationController
     @sales_listing.user_id = current_user.id
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -196,7 +196,7 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
 
       else
@@ -246,6 +246,24 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
         format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def relist
+    @sales_listing = SalesListing.find(params[:id])
+    @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
+
+    @sales_listing.listing_status_id = @ongoing_listing.first.id
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing])
+        format.html {
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -323,6 +341,8 @@ class SalesListingsController < ApplicationController
           is_undercut_price = true
           else if expired_and_undercut != nil then
             is_undercut_price = true
+          else 
+            is_undercut_price = false
             end
           end
         end

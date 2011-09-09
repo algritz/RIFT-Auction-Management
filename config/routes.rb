@@ -21,6 +21,7 @@ RIFTAuctionManagement::Application.routes.draw do
       get 'expired'
       get 'crafted'
       get 'mailed'
+      get 'relist'
     end
   end
   
