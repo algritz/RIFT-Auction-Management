@@ -55,20 +55,50 @@ Search term:
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_undercut_price %></td>
-		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">
-			 <% if !is_final?(sales_listing.listing_status_id) then%>
-				<%= formatPrice(minimum_sales_price(sales_listing.item_id)) %>
-			<% end %>
-		</td>
+		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right"> <% if !is_final?(sales_listing.listing_status_id) then%>
+		<%= formatPrice(minimum_sales_price(sales_listing.item_id)) %>
+		<% end %> </td>
 		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"><%= formatPrice(checkIfProfit(sales_listing.id)) %></td>
 		<td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
-		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;"><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?" %><% end %></td>
-		<td><% if is_ongoing?(sales_listing.listing_status_id) then %><%= link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?" %><% end %></td>
+		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;"><% if is_ongoing?(sales_listing.listing_status_id) then %>
+		<%=
+ if params[:search] != nil then
+        if params[:every_listings] != nil then
+          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search]+"&every_listings="+params[:every_listings], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+        else
+          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+        end
+      else
+        link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+      end
+%>
+		<% end %></td>
+		<td><% if is_ongoing?(sales_listing.listing_status_id) then %>
+		<%=
+ if params[:search] != nil then
+        if params[:every_listings] != nil then
+          link_to 'Expired', expired_sales_listing_path(sales_listing)+"?search="+ params[:search]+"&every_listings="+params[:every_listings], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+        else
+          link_to 'Expired', expired_sales_listing_path(sales_listing)+"?search="+ params[:search], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+        end
+      else
+        link_to 'Expired', expired_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+      end
+%><% end %></td>
 		<td><% if is_mailed?(sales_listing.listing_status_id) then %><%= link_to 'Mailed', mailed_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Mailed)?" %><% end %></td>
 		<td> <% if is_relistable?(sales_listing) then %>
-		<%= link_to 'Relist', relist_sales_listing_path(sales_listing), :confirm => "Are you sure you want to relist #{getItemDescription(sales_listing.item_id)}?" %>
-		<% end %>
-		</td>
+		<%=
+ if params[:search] != nil then
+        if params[:every_listings] != nil then
+          link_to 'Relist', relist_sales_listing_path(sales_listing)+"?search="+ params[:search]+"&every_listings="+params[:every_listings], :confirm => "Are you sure you want to relist #{getItemDescription(sales_listing.item_id)}?"
+        else
+          link_to 'Relist', relist_sales_listing_path(sales_listing)+"?search="+ params[:search], :confirm => "Are you sure you want to relist #{getItemDescription(sales_listing.item_id)}?"
+        end
+      else
+        link_to 'Relist', relist_sales_listing_path(sales_listing), :confirm => "Are you sure you want to relist #{getItemDescription(sales_listing.item_id)}?"
+      end
+%>
+		<% end %> </td>
 		<td><%= link_to 'Show', sales_listing %></td>
 		<td><%= link_to 'Destroy', sales_listing, :confirm => "Are you sure you want to destroy #{getItemDescription(sales_listing.item_id)}?", :method => :delete %></td>
 	</tr>

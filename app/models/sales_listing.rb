@@ -16,7 +16,7 @@ class SalesListing < ActiveRecord::Base
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
            :joins => ("left join items on items.id = sales_listings.item_id"),
-           :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.id desc"
+           :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
 
 end

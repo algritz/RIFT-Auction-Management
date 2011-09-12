@@ -6,22 +6,22 @@ class SalesListingsController < ApplicationController
     if params[:status] != nil then
       if params[:status] != "0" then
         @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-        :order => "description",
+        :order => "items.description, sales_listings.updated_at desc",
         :conditions => ["listing_status_id = ? and user_id = ?", params[:status], current_user.id])
       else
-        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-        :order => "position, item_id",
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+        :order => "position, items.description, sales_listings.updated_at desc",
         :conditions => ["user_id = ?", current_user.id])
       end
     else if params[:search] != nil then
         if params[:every_listings] == nil then
-          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").where(["user_id = ? and listing_statuses.description = ?", current_user.id, "Ongoing"]).search(params[:search], params[:page])
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ? and listing_statuses.description = ?", current_user.id, "Ongoing"]).search(params[:search], params[:page])
         else
-          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
+          @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user.id]).search(params[:search], params[:page])
         end
       else
-        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").paginate(:page => params[:page],
-        :order => "position, item_id", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])
+        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+        :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user.id])
       end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -161,7 +161,17 @@ class SalesListingsController < ApplicationController
     @sales_listing.user_id = current_user.id
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
+        format.html {
+          if params[:search] != nil then
+            if params[:every_listings] != nil then
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+            else
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            end
+          else
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+          end
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -196,7 +206,17 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
+        format.html {
+          if params[:search] != nil then
+            if params[:every_listings] != nil then
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+            else
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            end
+          else
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+          end
+        }
         format.xml  { head :ok }
 
       else
@@ -262,7 +282,17 @@ class SalesListingsController < ApplicationController
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
         format.html {
+          if params[:search] != nil then
+            if params[:every_listings] != nil then
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+            else
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            end
+
+          else
             redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+          end
+
         }
         format.xml  { head :ok }
       else
@@ -341,7 +371,7 @@ class SalesListingsController < ApplicationController
           is_undercut_price = true
           else if expired_and_undercut != nil then
             is_undercut_price = true
-          else 
+            else
             is_undercut_price = false
             end
           end
