@@ -41,6 +41,7 @@ Search term:
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Stacksize</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Price</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left">Is Undercut price</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left">Is Tainted</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right">Minimum Price</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Profit</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Listing Status</th>
@@ -55,6 +56,7 @@ Search term:
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_undercut_price %></td>
+		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_tainted %></td>
 		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="right"> <% if !is_final?(sales_listing.listing_status_id) then%>
 		<%= formatPrice(minimum_sales_price(sales_listing.item_id)) %>
 		<% end %> </td>

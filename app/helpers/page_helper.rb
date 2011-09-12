@@ -20,4 +20,25 @@ module PageHelper
       end
     end
   end
+  
+  def taintLevel(id)
+    total_auctions = SalesListing.count(:conditions => ["item_id = ?", id], :select => "id")
+    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_tainted = ?", id, true], :select => "id, is_tainted")
+    competition_percentage = (undercut_auctions.to_f / total_auctions.to_f) * 100
+    competition_percentage = format("%.2f",competition_percentage)
+    if competition_percentage == "0.00" then
+      competition_percentage = "Sane"
+    else if competition_percentage == "NaN" then
+        competition_percentage = "Never listed"
+      else
+        case competition_percentage.to_i
+        when 0..10 then "Tolerable"
+        when 11..90 then "Caution"  
+        when 81..90 then "Hazardous"
+        when 51..100 then "Toxic"
+        end
+      end
+    end
+  end
+  
 end

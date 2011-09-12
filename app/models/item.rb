@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :vendor_selling_price, :vendor_buying_price, :source_id, :is_crafted, :to_list, :item_level
+  attr_accessible :description, :vendor_selling_price, :vendor_buying_price, :source_id, :is_crafted, :to_list, :item_level, :note
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
   validates_numericality_of :item_level
   cattr_reader :per_page

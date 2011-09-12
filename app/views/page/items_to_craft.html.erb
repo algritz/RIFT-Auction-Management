@@ -24,6 +24,7 @@ Search term:
 		<th>Source</th>
 		<th>Crafting Cost</th>
 		<th>Competition Level</th>
+		<th>Taint Level</th>
 		<th>Sales Chance %</th>
 		<th></th>
 	</tr>
@@ -35,7 +36,8 @@ Search term:
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
-		<td><%= competitionLevel(item) %></td>
+		<td style='padding-right:20px;'><%= competitionLevel(item) %></td>
+		<td style='padding-right:20px;'><%= taintLevel(item) %></td>
 		<td><%= sales_percentage_overall(item) %></td>
 		<td> <%= if params[:param] != nil then
         if params[:search] == nil then
