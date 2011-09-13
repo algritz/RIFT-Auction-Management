@@ -65,18 +65,18 @@ ActiveRecord::Schema.define(:version => 20110912171012) do
   add_index "listing_statuses", ["description"], :name => "index_listing_statuses_on_description"
 
   create_table "sales_listings", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "stacksize"
-    t.integer  "price"
-    t.integer  "deposit_cost"
-    t.integer  "listing_status_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_undercut_price", :default => false
-    t.boolean  "relisted_status",   :default => false
-    t.integer  "user_id"
-    t.integer  "profit"
-    t.boolean  "is_tainted",        :default => false
+    t.integer   "item_id"
+    t.integer   "stacksize"
+    t.integer   "price"
+    t.integer   "deposit_cost"
+    t.integer   "listing_status_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_undercut_price", :default => false
+    t.boolean   "relisted_status",   :default => false
+    t.integer   "user_id"
+    t.integer   "profit"
+    t.boolean   "is_tainted",        :default => false
   end
 
   add_index "sales_listings", ["id"], :name => "index_sales_listings_on_id"

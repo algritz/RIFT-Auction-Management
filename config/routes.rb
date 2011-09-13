@@ -32,7 +32,7 @@ RIFTAuctionManagement::Application.routes.draw do
   get 'page/all_mailed'
   get 'page/profit_per_day'
   
-   
+
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'
