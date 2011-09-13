@@ -14,7 +14,7 @@ RIFTAuctionManagement::Application.routes.draw do
   resources :sources
 
   resources :listing_statuses
-  
+
   resources :sales_listings do
     member do
       get 'sold'
@@ -22,16 +22,16 @@ RIFTAuctionManagement::Application.routes.draw do
       get 'crafted'
       get 'mailed'
       get 'relist'
+      get 'in_inventory'
     end
   end
-  
+
   get 'page/items_to_craft'
   get 'page/items_to_list_from_bank'
   get 'page/items_with_more_than_one_listings'
   get 'page/old_listings'
   get 'page/all_mailed'
   get 'page/profit_per_day'
-  
 
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -45,7 +45,7 @@ RIFTAuctionManagement::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-  
+
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

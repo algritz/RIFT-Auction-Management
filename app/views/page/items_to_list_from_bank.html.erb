@@ -4,6 +4,7 @@
 		<th>Item name</th>
 		<th>Source</th>
 		<th>Crafting Cost</th>
+		<th></th>
 	</tr>
 	<%
 	@sitting_in_bank.each do |item|
@@ -13,6 +14,7 @@
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
+		<td><%= link_to "Put in inventory", in_inventory_sales_listing_path(item) %></td>
 	</tr>
 	<% end %>
 </table>

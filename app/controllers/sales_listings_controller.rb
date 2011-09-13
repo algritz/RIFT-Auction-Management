@@ -274,6 +274,25 @@ class SalesListingsController < ApplicationController
     end
   end
 
+  def in_inventory
+    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
+    @in_bank = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Bank'])
+    @sales_listing = SalesListing.find(:all, :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user.id, @in_bank]).first
+    @sales_listing.listing_status_id = @inventory_listing.first.id
+    @sales_listing.save
+    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+
+    respond_to do |format|
+      if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
+        format.html { redirect_to(page_items_to_list_from_bank_path, :notice => 'Sales listing was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def relist
     @sales_listing = SalesListing.find(params[:id])
     @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
