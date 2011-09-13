@@ -1,7 +1,7 @@
 module PageHelper
   def competitionLevel(id)
-    total_auctions = SalesListing.count(:conditions => ["item_id = ?", id], :select => "id")
-    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_undercut_price = ?", id, true], :select => "id, is_undercut_price")
+    total_auctions = SalesListing.count(:conditions => ["item_id = ? and user_id = ?", id, @current_user.id], :select => "id")
+    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", id, true, @current_user.id], :select => "id, is_undercut_price")
     competition_percentage = (undercut_auctions.to_f / total_auctions.to_f) * 100
     competition_percentage = format("%.2f",competition_percentage)
     if competition_percentage == "0.00" then
@@ -22,8 +22,8 @@ module PageHelper
   end
   
   def taintLevel(id)
-    total_auctions = SalesListing.count(:conditions => ["item_id = ?", id], :select => "id")
-    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_tainted = ?", id, true], :select => "id, is_tainted")
+    total_auctions = SalesListing.count(:conditions => ["item_id = ? and user_id = ?", id, @current_user.id], :select => "id")
+    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_tainted = ? and user_id = ?", id, true, @current_user.id], :select => "id, is_tainted")
     competition_percentage = (undercut_auctions.to_f / total_auctions.to_f) * 100
     competition_percentage = format("%.2f",competition_percentage)
     if competition_percentage == "0.00" then
@@ -39,6 +39,11 @@ module PageHelper
         end
       end
     end
+  end
+  
+  def average_profit(id)
+    profit = SalesListing.average(:profit, :conditions => ["item_id = ? and user_id = ?", id, @current_user.id])
+    profit = formatPrice(profit.to_i)
   end
   
 end

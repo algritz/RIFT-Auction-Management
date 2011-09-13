@@ -26,6 +26,7 @@ Search term:
 		<th>Competition Level</th>
 		<th>Taint Level</th>
 		<th>Sales Chance %</th>
+		<th>Average Profit</th>
 		<th></th>
 	</tr>
 	<%
@@ -35,10 +36,11 @@ Search term:
 	<tr bgcolor='<%= "#{@lastRowColor}"%>'>
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
-		<td style='padding-right:20px;'><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
+		<td style='padding-right:20px;' align="right"><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
 		<td style='padding-right:20px;'><%= competitionLevel(item) %></td>
 		<td style='padding-right:20px;'><%= taintLevel(item) %></td>
 		<td><%= sales_percentage_overall(item) %></td>
+		<td style='padding-right:20px;' align="right"><%= average_profit(item) %></td>
 		<td> <%= if params[:param] != nil then
         if params[:search] == nil then
           link_to 'Crafted', crafted_sales_listing_path(item)+"?param="+params[:param], :confirm => "Are you sure you want to craft #{getItemDescription(item)}?"
