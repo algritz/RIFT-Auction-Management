@@ -154,81 +154,94 @@ class SalesListingsController < ApplicationController
 
   def sold
     @sales_listing = SalesListing.find(params[:id])
-    @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
 
-    @sales_listing.profit = calculateProfit(params[:id])
-    @sales_listing.listing_status_id = @sold_listing.first.id
-    @sales_listing.user_id = current_user.id
-    respond_to do |format|
-      if @sales_listing.update_attributes(params[:sales_listing])
-        format.html {
-          if params[:search] != nil then
-            if params[:every_listings] != nil then
-              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+    if @sales_listing.user_id == @current_user.id then
+
+      @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
+
+      @sales_listing.profit = calculateProfit(params[:id])
+      @sales_listing.listing_status_id = @sold_listing.first.id
+      @sales_listing.user_id = current_user.id
+      respond_to do |format|
+        if @sales_listing.update_attributes(params[:sales_listing])
+          format.html {
+            if params[:search] != nil then
+              if params[:every_listings] != nil then
+                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              else
+                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              end
             else
-              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
             end
-          else
-            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
-          end
-        }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+          }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
   def expired
     @sales_listing = SalesListing.find(params[:id])
-    @expired_listing = ListingStatus.find(:all,
-    :select => 'id, description',
-    :conditions => ["description = ?", 'Expired'])
-    @inventory_listing = ListingStatus.find(:all,
-    :select => 'id, description',
-    :conditions => ["description = ?", 'In Inventory'])
-    if @sales_listing.relisted_status != true then
 
-      @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
-      :stacksize => @sales_listing.stacksize,
-      :deposit_cost => @sales_listing.deposit_cost,
-      :listing_status_id => @inventory_listing.first.id,
-      :price => lastSalesPrice(@sales_listing.item_id),
-      :is_undercut_price => lastIsUndercutPrice(@sales_listing),
-      :user_id => current_user.id)
+    if @sales_listing.user_id == @current_user.id then
 
-    @sales_listing.listing_status_id = @expired_listing.first.id
-    @sales_listing.relisted_status = true
-    @sales_listing.save
-    @sales_relisting.save
-    end
+      @expired_listing = ListingStatus.find(:all,
+      :select => 'id, description',
+      :conditions => ["description = ?", 'Expired'])
+      @inventory_listing = ListingStatus.find(:all,
+      :select => 'id, description',
+      :conditions => ["description = ?", 'In Inventory'])
+      if @sales_listing.relisted_status != true then
 
-    respond_to do |format|
-      if @sales_listing.update_attributes(params[:sales_listing])
-        format.html {
-          if params[:search] != nil then
-            if params[:every_listings] != nil then
-              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
-            else
-              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
-            end
-          else
-            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
-          end
-        }
-        format.xml  { head :ok }
+        @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
+        :stacksize => @sales_listing.stacksize,
+        :deposit_cost => @sales_listing.deposit_cost,
+        :listing_status_id => @inventory_listing.first.id,
+        :price => lastSalesPrice(@sales_listing.item_id),
+        :is_undercut_price => lastIsUndercutPrice(@sales_listing),
+        :user_id => current_user.id)
 
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      @sales_listing.listing_status_id = @expired_listing.first.id
+      @sales_listing.relisted_status = true
+      @sales_listing.save
+      @sales_relisting.save
       end
+
+      respond_to do |format|
+        if @sales_listing.update_attributes(params[:sales_listing])
+          format.html {
+            if params[:search] != nil then
+              if params[:every_listings] != nil then
+                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              else
+                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              end
+            else
+              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            end
+          }
+          format.xml  { head :ok }
+
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
   def crafted
     @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Crafted'])
     @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user.id, :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
 
     respond_to do |format|
@@ -259,18 +272,23 @@ class SalesListingsController < ApplicationController
   def mailed
     @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Mailed'])
     @sales_listing = SalesListing.find(params[:id])
-    @sales_listing.listing_status_id = @mailed_listing.first.id
-    @sales_listing.save
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+    if @sales_listing.user_id == @current_user.id then
 
-    respond_to do |format|
-      if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      @sales_listing.listing_status_id = @mailed_listing.first.id
+      @sales_listing.save
+      @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+
+      respond_to do |format|
+        if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
+          format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
@@ -278,6 +296,7 @@ class SalesListingsController < ApplicationController
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @in_bank = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Bank'])
     @sales_listing = SalesListing.find(:all, :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user.id, @in_bank]).first
+
     if @sales_listing.stacksize == 1 then
       @sales_listing.listing_status_id = @inventory_listing.first.id
       @sales_listing.is_undercut_price = lastIsUndercutPrice(params[:id])
@@ -300,33 +319,39 @@ class SalesListingsController < ApplicationController
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   def relist
     @sales_listing = SalesListing.find(params[:id])
-    @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
 
-    @sales_listing.listing_status_id = @ongoing_listing.first.id
-    respond_to do |format|
-      if @sales_listing.update_attributes(params[:sales_listing])
-        format.html {
-          if params[:search] != nil then
-            if params[:every_listings] != nil then
-              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+    if @sales_listing.user_id == @current_user.id then
+      @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
+
+      @sales_listing.listing_status_id = @ongoing_listing.first.id
+      respond_to do |format|
+        if @sales_listing.update_attributes(params[:sales_listing])
+          format.html {
+            if params[:search] != nil then
+              if params[:every_listings] != nil then
+                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              else
+                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              end
+
             else
-              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
             end
 
-          else
-            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
-          end
-
-        }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+          }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 

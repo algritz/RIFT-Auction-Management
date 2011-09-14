@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= getItemDescription(@price_override.item_id) %>
+</p>
+<p>
+  <b>Price per:</b>
+  <%= formatPrice(@price_override.price_per) %>
+</p>
+
+
+<%= link_to 'Edit', edit_price_override_path(@price_override) %> |
+<%= link_to 'Back', price_overrides_path %>

@@ -1,4 +1,6 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :price_overrides
+
   get "sessions/new"
 
   resources :users

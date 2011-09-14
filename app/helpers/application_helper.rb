@@ -75,13 +75,18 @@ module ApplicationHelper
   def calculateBuyingCost(id)
     selling_price = Item.find(id).vendor_selling_price
     buying_price = Item.find(id).vendor_buying_price
+    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, id])
+    if (override_price != nil) then
+    return override_price.price_per
+    else
+      if (selling_price != nil) then
+      return selling_price
+      else if (buying_price != nil) then
+        return buying_price
+        else
+          return "No price defined for item"
 
-    if (selling_price != nil) then
-    return selling_price
-    else if (buying_price != nil) then
-      return buying_price
-      else
-        return "No price defined for item"
+        end
       end
     end
   end
@@ -285,15 +290,13 @@ module ApplicationHelper
         minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
         else
           if crafting_cost.to_i > 0 then
-            minimum_price = (deposit_cost + crafting_cost)
+          minimum_price = (deposit_cost + crafting_cost)
           else
-            minimum_price = deposit_cost
+          minimum_price = deposit_cost
           end
         end
       end
     end
   end
-
-  
 
 end
