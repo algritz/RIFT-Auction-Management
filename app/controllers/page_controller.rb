@@ -40,13 +40,15 @@ class PageController < ApplicationController
     item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
     ongoing = ListingStatus.find(:all, :conditions => ["description = ?", 'Ongoing']).first
     in_bank = ListingStatus.find(:all, :conditions => ["description = ?", 'In Bank']).first
+    in_inventory = ListingStatus.find(:all, :conditions => ["description = ?", 'In Inventory']).first
     @sitting_in_bank = []
     @last_id_in_bank
     item_ids.each do |ids|
       items_in_bank = SalesListing.find(:all, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids.id, in_bank.id, current_user.id])
       items_in_bank.each do |ids_in_bank|
         active_autions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids_in_bank.item_id, ongoing.id, current_user.id])
-        if active_autions == 0 then
+        in_inventory_auctions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids_in_bank.item_id, in_inventory.id, current_user.id])
+        if active_autions == 0 && in_inventory_auctions == 0 then
           if ids.id !=  @last_id_in_bank then
           @sitting_in_bank << ids.id
           @last_id_in_bank = ids.id
