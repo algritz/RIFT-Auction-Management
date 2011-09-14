@@ -66,12 +66,12 @@ Search term:
 		<%=
  if params[:search] != nil then
         if params[:every_listings] != nil then
-          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search]+"&every_listings="+params[:every_listings], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search]+"&every_listings="+params[:every_listings], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?"
         else
-          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+          link_to 'Sold', sold_sales_listing_path(sales_listing)+"?search="+ params[:search], :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?"
         end
       else
-        link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Expired)?"
+        link_to 'Sold', sold_sales_listing_path(sales_listing), :confirm => "Are you sure to list #{getItemDescription(sales_listing.item_id)} as (Sold)?"
       end
 %>
 		<% end %></td>
