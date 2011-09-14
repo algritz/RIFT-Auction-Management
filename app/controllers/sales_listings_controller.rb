@@ -280,12 +280,15 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(:all, :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user.id, @in_bank]).first
     if @sales_listing.stacksize == 1 then
       @sales_listing.listing_status_id = @inventory_listing.first.id
+      @sales_listing.is_undercut_price = lastIsUndercutPrice(params[:id])
+      @sales_listing.deposit_cost = lastDepositCost(params[:id])
+      @sales_listing.price = lastSalesPrice(params[:id])
     else
       @sales_relisting = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user.id, :listing_status_id => @inventory_listing.first.id, :price => lastSalesPrice(params[:id]))
-      @sales_listing.stacksize = @sales_listing.stacksize - 1
+    @sales_listing.stacksize = @sales_listing.stacksize - 1
+    @sales_relisting.save
     end
     @sales_listing.save
-    @sales_relisting.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
 
     respond_to do |format|
