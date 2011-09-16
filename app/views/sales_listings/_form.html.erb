@@ -17,7 +17,8 @@
 	<%= f.label :item_id %>
 	<br />
 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, getDefaultItemSelected),{},
-    {:onchange => remote_function(:method=>:get)}) %>
+    {:onchange => remote_function(:method=>:get)})
+%>
 	<div class="field">
 		<%= f.label :stacksize %>
 		<br />
@@ -49,12 +50,12 @@
 		<%= f.label :deposit_cost %>
 		<br />
 		<%= f.text_field :deposit_cost, :value => getDepositCost %>
-		<%= "(#{formatPrice(getDepositCost)})" %>
+		<%= "(#{formatPrice(getDepositCost)})"%>
 	</div>
 	<div class="field">
 		<%= f.label :listing_status_id %>
 		<br />
-		<%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus)) %>
+		<%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus))%>
 	</div>
 	<div class="field">
 		<br />
@@ -62,30 +63,35 @@
 	</div>
 	<p>
 		<b>Last sales price:</b>
-		<% lastSalesPrice_without_listed(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])  %>
+		<% lastSalesPrice_without_listed(params[:item_id] == nil ? @sales_listing.item_id : params[:item_id]) %>
 		<% if @lastSalesPrice_without_listed != nil then %>
-		<%= formatPrice(@lastSalesPrice_without_listed.price)%> (is undercut : <%= @lastSalesPrice_without_listed.is_undercut_price%>)
+		<%= formatPrice(@lastSalesPrice_without_listed.price) %> (is undercut : <%= @lastSalesPrice_without_listed.is_undercut_price %>)
 		<% end %>
 	</p>
 	<p>
 		<b>Average sales price:</b>
-		<%= formatPrice(averageSalesPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))%>
+		<%= formatPrice(averageSalesPrice(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %>
 	</p>
 	<p>
-		<b>Sales percentage at full price :</b> <%= sales_percentage_full_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>
+		<b>Sales percentage at full price :</b> <%= sales_percentage_full_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])
+%>
 	</p>
 	<p>
-		<b>Sales percentage when undercutting :</b> <%= sales_percentage_undercut(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>
+		<b>Sales percentage when undercutting :</b> <%= sales_percentage_undercut(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])
+%>
 	</p>
 	<p>
-		<b>Sales percentage Overall :</b> <%= sales_percentage_overall(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])%>
+		<b>Sales percentage Overall :</b> <%= sales_percentage_overall(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])
+%>
 	</p>
 	<p>
 	<b>Last listings :</b><p style='padding-left:20px;padding-top:-20px;'>
-	<%= raw(lastListings(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))%>
+	<%= raw(lastListings(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))
+%>
 	</p>
 	<p>
-		<b>Crafting Cost :</b> <%= formatPrice(calculateCraftingCost(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %>
+		<b>Crafting Cost :</b> <%= formatPrice(calculateCraftingCost(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]))
+%>
 	</p>
 	
 	<div class="actions">

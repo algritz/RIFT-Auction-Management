@@ -5,11 +5,10 @@ class SalesListing < ActiveRecord::Base
   validates :stacksize, :presence => true
   validates_numericality_of :stacksize
   validates :deposit_cost, :presence => true
-  validates_numericality_of :deposit_cost
+  validates_numericality_of :deposit_cost, :allow_nil => true
   validates :listing_status_id, :presence => true
   validates_numericality_of :listing_status_id
-  validates :price, :presence => true
-  validates_numericality_of :price
+  validates_numericality_of :price, :allow_nil => true
 
   cattr_reader :per_page
   @@per_page = 20

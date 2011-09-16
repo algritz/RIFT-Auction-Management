@@ -96,9 +96,6 @@ module ApplicationHelper
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
     if SalesListing.find(id).listing_status_id == sold.id then
       SalesListing.find(id).profit
-    else if SalesListing.find(id).listing_status_id != expired.id then
-        calculateProfit(id)
-      end
     end
   end
 
