@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915152953) do
+ActiveRecord::Schema.define(:version => 20110916002517) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20110915152953) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
   end
+
+  add_index "crafted_items", ["component_item_id"], :name => "index_crafted_items_on_component_item_id"
+  add_index "crafted_items", ["crafted_item_generated_id"], :name => "index_crafted_items_on_crafted_item_generated_id"
 
   create_table "items", :force => true do |t|
     t.string    "description"

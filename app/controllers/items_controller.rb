@@ -7,8 +7,9 @@ class ItemsController < ApplicationController
     if params[:search] != nil then
       @items = Item.search(params[:search], params[:page])
     else
-      @items = Item.paginate(:page => params[:page])
-    end
+      @items = Item.paginate(:page => params[:page], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id", :order => "description")
+     end
+
 
     respond_to do |format|
       format.html # new.html.erb
