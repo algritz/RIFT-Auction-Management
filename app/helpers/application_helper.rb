@@ -34,16 +34,20 @@ module ApplicationHelper
   end
 
   def formatPrice(price)
-    if price.to_i > 0 then
-      if price != nil then
-        plat = price / 10000
-        goldRemaining = price % 10000
-        gold = goldRemaining / 100
-        silver = goldRemaining % 100
-        return "#{plat}p #{gold}g #{silver}s"
-      else
-        return ""
+    if price.class != String then
+      if price.to_i > 0 then
+        if price != nil then
+          plat = price / 10000
+          goldRemaining = price % 10000
+          gold = goldRemaining / 100
+          silver = goldRemaining % 100
+          return "#{plat}p #{gold}g #{silver}s"
+        else
+          return ""
+        end
       end
+    else
+      return price
     end
   end
 
@@ -204,7 +208,7 @@ module ApplicationHelper
       end
       lastListings_per_status = []
       lastListings.each do |status, value|
-        lastListings_per_status << "#{getListingStatusDescription(status)} : #{value} <br />"
+        lastListings_per_status << "#{getListingStatusDescription(status).description} : #{value} <br />"
       end
     return lastListings_per_status
     end
@@ -265,6 +269,9 @@ module ApplicationHelper
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
+      if crafting_cost.class == String then
+      return crafting_cost
+      end
       deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user.id])
       if deposit_cost == nil then
       deposit_cost = 0

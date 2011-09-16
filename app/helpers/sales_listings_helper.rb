@@ -9,10 +9,8 @@ module SalesListingsHelper
 
   def getDefaultStacksize
     if params[:item_id] != nil then
-      logger.info("#############################")
-      logger.info(Item.find(params[:item_id]))
-      logger.info("#############################")
-    #Item.find(params[:item_id]).stacksize
+    ## We assume we want to list only 1 item
+    1
     else
     @sales_listing.stacksize
     end
