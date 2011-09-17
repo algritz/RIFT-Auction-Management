@@ -18,11 +18,14 @@ Search term:
 <%= link_to source.description, page_items_to_craft_path+"?param="+source.description %> ::
 <% end %>
 <%= link_to "All professions", page_items_to_craft_path %>
+<%= if @had_to_limit then
+	raw("<p><i>Results limited to 50 in order to avoid timeouts, consider using the search</i></p>")
+end
+	 %>
 <table>
 	<tr align="left">
 		<th>Item name</th>
 		<th>Source</th>
-		<th>Crafting Cost</th>
 		<th>Competition Level</th>
 		<th>Taint Level</th>
 		<th>Sales Chance %</th>
@@ -36,7 +39,6 @@ Search term:
 	<tr bgcolor='<%= "#{@lastRowColor}"%>'>
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
-		<td style='padding-right:20px;' align="right"><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
 		<td style='padding-right:20px;'><%= competitionLevel(item) %></td>
 		<td style='padding-right:20px;'><%= taintLevel(item) %></td>
 		<td><%= sales_percentage_overall(item) %></td>

@@ -19,10 +19,17 @@ class PageController < ApplicationController
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
     @out_of_stock_list = []
+    i = 0
     item_ids.each do |ids|
       active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user.id])
       if active_autions == 0 then
       @out_of_stock_list << ids.id
+      end
+      if i==50 then
+        @had_to_limit = true
+      break
+      else
+      i+=1
       end
     end
 
@@ -108,6 +115,5 @@ class PageController < ApplicationController
     :group => ("DATE(sales_listings.updated_at)"), :order => "DATE(sales_listings.updated_at) desc")
 
   end
-
 
 end
