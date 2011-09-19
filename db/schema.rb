@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916002517) do
+ActiveRecord::Schema.define(:version => 20110919173921) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -36,10 +36,16 @@ ActiveRecord::Schema.define(:version => 20110916002517) do
     t.integer   "component_item_quantity"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.string    "required_skill"
+    t.integer   "required_skill_point"
+    t.integer   "rift_id"
+    t.string    "name"
   end
 
   add_index "crafted_items", ["component_item_id"], :name => "index_crafted_items_on_component_item_id"
   add_index "crafted_items", ["crafted_item_generated_id"], :name => "index_crafted_items_on_crafted_item_generated_id"
+  add_index "crafted_items", ["required_skill"], :name => "index_crafted_items_on_required_skill"
+  add_index "crafted_items", ["required_skill_point"], :name => "index_crafted_items_on_required_skill_point"
 
   create_table "items", :force => true do |t|
     t.string    "description"
@@ -54,12 +60,20 @@ ActiveRecord::Schema.define(:version => 20110916002517) do
     t.string    "note"
     t.string    "itemKey"
     t.string    "rarity"
+    t.string    "icon"
+    t.string    "soulboundtrigger"
+    t.string    "riftgem"
+    t.string    "salvageskill"
+    t.integer   "salvageskilllevel"
+    t.integer   "runebreakskilllevel"
+    t.boolean   "isAugmented"
   end
 
   add_index "items", ["description"], :name => "index_items_on_description"
   add_index "items", ["id"], :name => "index_items_on_id"
   add_index "items", ["itemKey"], :name => "index_items_on_itemKey"
   add_index "items", ["rarity"], :name => "index_items_on_rarity"
+  add_index "items", ["soulboundtrigger"], :name => "index_items_on_soulboundtrigger"
 
   create_table "listing_statuses", :force => true do |t|
     t.string    "description"
