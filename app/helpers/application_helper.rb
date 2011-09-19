@@ -1,22 +1,22 @@
 module ApplicationHelper
   def getSourceDescription (id)
-    Source.find(:all, :conditions => ["id = ?", id], :select => "id, description").last
+    Source.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
 
   def getItemDescription (id)
-    item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last
+    item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
 
   def getCompetitorStyleDescription (id)
-    CompetitorStyle.find(:all, :conditions => ["id = ?", id], :select => "id, description").last
+    CompetitorStyle.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
 
   def getListingStatusDescription(id)
-    ListingStatus.find(:all, :conditions => ["id = ?", id], :select => "id, description").last
+    ListingStatus.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    Source.find(:all, :conditions => ["id = ?", Item.find(:all, :conditions => ["id = ?", id], :select => "id, description, source_id").last.source_id]).last
+    Source.find(:all, :conditions => ["id = ?", Item.find(:all, :conditions => ["id = ?", id], :select => "id, description, source_id").last.source_id]).last.description
   end
 
   def isNewRow(someID)
@@ -208,7 +208,7 @@ module ApplicationHelper
       end
       lastListings_per_status = []
       lastListings.each do |status, value|
-        lastListings_per_status << "#{getListingStatusDescription(status).description} : #{value} <br />"
+        lastListings_per_status << "#{getListingStatusDescription(status)} : #{value} <br />"
       end
     return lastListings_per_status
     end

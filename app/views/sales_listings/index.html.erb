@@ -51,16 +51,16 @@ Search term:
 	isNewRow(sales_listing.id)
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
-		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"> <%= link_to getItemDescription(sales_listing.item_id).description, edit_sales_listing_path(sales_listing)%> </td>
+		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"> <%= link_to getItemDescription(sales_listing.item_id), edit_sales_listing_path(sales_listing)%> </td>
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>
-		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"> <% if !is_final?(sales_listing.listing_status_id) then%>
+		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="right"> <% if !is_final?(sales_listing.listing_status_id) then%>
 		<%= formatPrice(minimum_sales_price(sales_listing.item_id)) %>
 		<% end %> </td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_undercut_price %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;" align="left"><%= sales_listing.is_tainted %></td>
 		<td align="right" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="right"> <%= formatPrice(checkIfProfit(sales_listing.id)) %></td>
-		<td><%= getListingStatusDescription(sales_listing.listing_status_id).description %></td>
+		<td><%= getListingStatusDescription(sales_listing.listing_status_id) %></td>
 		<td style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;"> <% if is_ongoing?(sales_listing.listing_status_id) then %>
 		<%=
  if params[:search] != nil then
