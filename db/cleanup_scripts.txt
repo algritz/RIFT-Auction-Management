@@ -1,0 +1,19 @@
+-- return the list of items that are crafted
+select distinct crafted_item_generated_id from crafted_items 
+select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup'
+-- updates the items list to be crafted
+update items set to_list = 't', is_crafted = 't' where itemkey in (select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup')
+
+-- return the list of items that are not augmented and not in the crafted_items table
+select * from items where itemkey not in (select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup') and isAugmented = 'f'
+update items set is_crafted = 'f' where itemkey in (select itemkey from items where itemkey not in (select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup') and isAugmented = 'f') 
+
+
+-- sets to_list to false if item is BindOnPickup
+update items set to_list = 'f' where soulboundtrigger = 'BindOnPickup'
+
+-- return the list of BoE items not set to_list
+select * from items where to_list is null and soulboundtrigger <> 'BindOnPickup'
+
+-- set to_list = 'f' items that are BoE
+update items set to_list = 'f' where itemkey in (select itemkey from items where to_list is null and soulboundtrigger <> 'BindOnPickup')

@@ -23,11 +23,11 @@ Search term:
 	<tr bgcolor="<%= @lastRowColor %>">
 		<td><%=
  if @isNewRow then
-        getItemDescription(crafted_item.crafted_item_generated_id)
+        crafted_item.name
       end
 %></td>
 		<td><%= if @isNewRow then crafted_item.crafted_item_stacksize end %></td>
-		<td><%= getItemDescription(crafted_item.component_item_id) %></td>
+		<td><%= getItemDescriptionFromKey(crafted_item[:component_item_id]) %></td>
 		<td><%= crafted_item.component_item_quantity %></td>
 		<td><%= link_to 'Show', crafted_item %></td>
 		<td><%= link_to 'Edit', edit_crafted_item_path(crafted_item) %></td>

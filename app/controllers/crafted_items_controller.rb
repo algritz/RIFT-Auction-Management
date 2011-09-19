@@ -4,9 +4,9 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items.xml
   def index
     if params[:search] == nil then
-      @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:page => params[:page], :order => "description")
+      @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "name")
     else
-      @crafted_items = CraftedItem.joins("left join items on items.id = crafted_items.crafted_item_generated_id").paginate(:conditions => ["items.description = ?", params[:search]], :page => params[:page], :order => "description")
+      @crafted_items = CraftedItem.paginate(:conditions => ["name = ?", params[:search]], :page => params[:page], :order => "name")
     end
     respond_to do |format|
       format.html # index.html.erb

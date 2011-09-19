@@ -6,7 +6,11 @@ module ApplicationHelper
   def getItemDescription (id)
     item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
-
+  
+  def getItemDescriptionFromKey (itemKey)
+    item = Item.find(:all, :conditions => ["ItemKey = ?", itemKey], :select => "id, description, itemKey").last.description
+  end
+  
   def getCompetitorStyleDescription (id)
     CompetitorStyle.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
