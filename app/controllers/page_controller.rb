@@ -82,9 +82,9 @@ class PageController < ApplicationController
     ongoing_item_ids_list.each do |ids|
       active_autions = SalesListing.count(ids, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids, ongoing[:id], current_user[:id]])
       if active_autions >= 2 then
-        if ids[:id] !=  @last_duplicate then
-        @duplicate_listing << ids[:id]
-        @last_duplicate = ids[:id]
+        if ids !=  @last_duplicate then
+        @duplicate_listing << ids
+        @last_duplicate = ids
         end
       end
     end
