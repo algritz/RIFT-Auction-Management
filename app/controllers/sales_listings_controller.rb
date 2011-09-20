@@ -410,10 +410,10 @@ class SalesListingsController < ApplicationController
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
-      sold_not_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id]).last
-      expired_not_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
-      sold_and_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, true, current_user.id]).last
-      expired_and_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, true, current_user.id]).last
+      sold_not_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id])
+      expired_not_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id])
+      sold_and_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, true, current_user.id])
+      expired_and_undercut = SalesListing.count(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, true, current_user.id])
 
       if sold_not_undercut > 0 then
       is_undercut_price = false
@@ -461,7 +461,7 @@ class SalesListingsController < ApplicationController
 
   def calculateCraftingCost(id)
     if id != nil then
-      if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
+      if id.class == String then
         @item_info = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
       else
         @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
