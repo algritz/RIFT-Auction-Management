@@ -462,7 +462,7 @@ class SalesListingsController < ApplicationController
   def calculateCraftingCost(id)
     if id != nil then
       if id.class == String then
-        @item_info = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
+        @item_info = Item.find(:first, :conditions => ["ItemKey = ?", "#{id}"])
       else
         @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
       end
