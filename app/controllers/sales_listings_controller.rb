@@ -51,7 +51,16 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/new.xml
   def new
     @sales_listing = SalesListing.new
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'description')
+    p "####################################"
+    p params
+    p "####################################"
+    if params[:every_items] == nil then
+      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ?", true, false, "BindOnPickup"])
+    else
+      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and soulboundtrigger <> ?", true, "BindOnPickup"])
+    end
+    @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
+  
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
@@ -62,8 +71,13 @@ class SalesListingsController < ApplicationController
 
   # GET /sales_listings/1/edit
   def edit
+    p params[:every_items]
     @sales_listing = SalesListing.find(params[:id])
-    @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ?", true])
+    if params[:every_items] == nil then
+      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ?", true, false])
+    else
+      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ?", true])
+    end
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
 
