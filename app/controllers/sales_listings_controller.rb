@@ -464,11 +464,11 @@ class SalesListingsController < ApplicationController
       item = Item.find(id)
 
       if item.is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
+          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
           crafting_materials.each do |materials|
-            component = Item.find(:first, :conditions => ["itemKey = ?", materials.component_item_id])
+            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id])
             material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then

@@ -7,8 +7,8 @@ module ApplicationHelper
     item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
 
-  def getItemDescriptionFromKey (itemKey)
-    item = Item.find(:all, :conditions => ["ItemKey = ?", itemKey], :select => "id, description, itemKey").last.description
+  def getItemDescriptionFromKey (itemkey)
+    item = Item.find(:all, :conditions => ["ItemKey = ?", itemkey], :select => "id, description, itemkey").last.description
   end
 
   def getCompetitorStyleDescription (id)
@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    source = CraftedItem.joins("left join items on items.itemKey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
+    source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
     if source == nil then
       source = "Source Unclear"
     else
@@ -65,11 +65,11 @@ module ApplicationHelper
       item = Item.find(id)
       
     if item.is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
+          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
           crafting_materials.each do |materials|
-            component = Item.find(:first, :conditions => ["itemKey = ?", materials.component_item_id])
+            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id])
             material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then

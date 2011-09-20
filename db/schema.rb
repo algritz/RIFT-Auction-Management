@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920124358) do
+ActiveRecord::Schema.define(:version => 20110920171230) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -49,30 +49,30 @@ ActiveRecord::Schema.define(:version => 20110920124358) do
   add_index "crafted_items", ["required_skill_point"], :name => "index_crafted_items_on_required_skill_point"
 
   create_table "items", :force => true do |t|
-    t.string    "description"
-    t.integer   "vendor_selling_price"
-    t.integer   "vendor_buying_price"
-    t.integer   "source_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "is_crafted"
-    t.boolean   "to_list"
-    t.integer   "item_level"
-    t.string    "note"
-    t.string    "itemKey"
-    t.string    "rarity"
-    t.string    "icon"
-    t.string    "soulboundtrigger"
-    t.string    "riftgem"
-    t.string    "salvageskill"
-    t.integer   "salvageskilllevel"
-    t.integer   "runebreakskilllevel"
-    t.boolean   "isAugmented"
+    t.string   "description"
+    t.integer  "vendor_selling_price"
+    t.integer  "vendor_buying_price"
+    t.integer  "source_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_crafted"
+    t.boolean  "to_list"
+    t.integer  "item_level"
+    t.string   "note"
+    t.string   "itemkey"
+    t.string   "rarity"
+    t.string   "icon"
+    t.string   "soulboundtrigger"
+    t.string   "riftgem"
+    t.string   "salvageskill"
+    t.integer  "salvageskilllevel"
+    t.integer  "runebreakskilllevel"
+    t.boolean  "isAugmented"
   end
 
   add_index "items", ["description"], :name => "index_items_on_description"
   add_index "items", ["id"], :name => "index_items_on_id"
-  add_index "items", ["itemKey"], :name => "index_items_on_itemKey"
+  add_index "items", ["itemkey"], :name => "index_items_on_itemKey"
   add_index "items", ["rarity"], :name => "index_items_on_rarity"
   add_index "items", ["soulboundtrigger"], :name => "index_items_on_soulboundtrigger"
 
