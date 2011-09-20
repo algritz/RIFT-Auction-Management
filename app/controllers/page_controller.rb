@@ -3,18 +3,22 @@ class PageController < ApplicationController
   def items_to_craft
     @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
-    ongoing_item_ids = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["user_id = ? and listing_statuses.description not in (?,?)", current_user[:id], "Sold", "Expired"], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, listing_statuses.id" )
+    ongoing_item_ids = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", current_user[:id]])
+    ongoing_item_ids_list = []
+    ongoing_item_ids.each do |id|
+      ongoing_item_ids_list << id.item_id
+    end
     if source != nil && params[:param] != nil then
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids = Item.find(:all, :conditions => ["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
       else
-        item_ids = Item.where(["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids]).search(params[:search], params[:page])
+        item_ids = Item.where(["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids_list]).search(params[:search], params[:page])
       end
     else
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
       else
-        item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids]).search(params[:search], params[:page])
+        item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list]).search(params[:search], params[:page])
       end
     end
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
@@ -22,7 +26,7 @@ class PageController < ApplicationController
     @out_of_stock_list = []
     i = 0
     item_ids.each do |ids|
-      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user.id])
+      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user[:id]])
       if active_autions == 0 then
       @out_of_stock_list << ids.id
       i+=1
@@ -70,12 +74,17 @@ class PageController < ApplicationController
     ongoing = ListingStatus.find(:all, :conditions => ["description = ?", 'Ongoing']).first
     @duplicate_listing = []
     @last_duplicate
-    item_ids.each do |ids|
-      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids.id, ongoing.id, current_user.id])
+    ongoing_item_ids = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", current_user[:id]])
+    ongoing_item_ids_list = []
+    ongoing_item_ids.each do |id|
+      ongoing_item_ids_list << id.item_id
+    end
+    ongoing_item_ids_list.each do |ids|
+      active_autions = SalesListing.count(ids[:id], :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids[:id], ongoing[:id], current_user[:id]])
       if active_autions >= 2 then
-        if ids.id !=  @last_duplicate then
-        @duplicate_listing << ids.id
-        @last_duplicate = ids.id
+        if ids[:id] !=  @last_duplicate then
+        @duplicate_listing << ids[:id]
+        @last_duplicate = ids[:id]
         end
       end
     end
@@ -87,16 +96,16 @@ class PageController < ApplicationController
 
   def old_listings
     listing_status_id = ListingStatus.find(:all, :select => "id, description" ,:conditions => ["description = ?", "Ongoing"])
-    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user.id])
+    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user[:id]])
   end
 
   def all_mailed
     crafted_id = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")
     mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Mailed'")
 
-    @salesListing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and user_id = ?", crafted_id, current_user.id])
+    @salesListing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and user_id = ?", crafted_id, current_user[:id]])
     @salesListing.each do |listing|
-      listing.listing_status_id = mailed_listing.first.id
+      listing.listing_status_id = mailed_listing.first[:id]
       listing.save
     end
     redirect_to sales_listings_path
@@ -106,7 +115,7 @@ class PageController < ApplicationController
   def profit_per_day
 
     @salesListing = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").sum(:price,
-    :conditions => (["sales_listings.user_id = ? and listing_statuses.description = ?", current_user.id, "Sold"]),
+    :conditions => (["sales_listings.user_id = ? and listing_statuses.description = ?", current_user[:id], "Sold"]),
     :group => ("DATE(sales_listings.updated_at)"), :order => "DATE(sales_listings.updated_at) desc")
 
   end

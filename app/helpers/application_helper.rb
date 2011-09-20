@@ -62,17 +62,15 @@ module ApplicationHelper
 
   def calculateCraftingCost(id)
     if id != nil then
-      if id.class == String then
-        @item_info = Item.find(:first, :conditions => ["ItemKey = ?", "#{id}"])
-      else
-        @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
-      end
-      if @item_info.is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", @item_info.itemKey], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", @item_info.itemKey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+      item = Item.find(id)
+      
+    if item.is_crafted then
+        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id") > 0 then
+          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemKey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
           crafting_materials.each do |materials|
-            material_cost = calculateCraftingCost(materials.component_item_id)
+            component = Item.find(:first, :conditions => ["itemKey = ?", materials.component_item_id])
+            material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then
             cost += total_material_cost
@@ -91,14 +89,10 @@ module ApplicationHelper
   end
 
   def calculateBuyingCost(id)
-    if id.class == String then
-      item = Item.find(:first, :conditions => ["ItemKey = ?", "#{id}"])
-    else
-      item = Item.find(:first, :conditions => ["id = ?", "#{id}"])
-    end
+    item = Item.find(id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
-    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item.id], :select => "id user_id, item_id, price_per")
+    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id user_id, item_id, price_per")
     if (override_price != nil) then
     return override_price.price_per
     else
@@ -127,7 +121,7 @@ module ApplicationHelper
     if price > 0 then
       ah_cut = (price * 0.05).to_i
       deposit_cost = SalesListing.find(id).deposit_cost
-      minimumCost = minimum_sales_price(SalesListing.find(id).item_id)
+      minimumCost = minimum_sales_price(SalesListing.find(item).item_id)
     profit = ((price + deposit_cost) - (minimumCost + ah_cut))
     return profit
     end

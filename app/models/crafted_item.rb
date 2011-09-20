@@ -12,14 +12,12 @@ class CraftedItem < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
   def self.search(search, page)
-    p "search"
     paginate :per_page => 20, :page => page,
              :select => 'id, name, crafted_item_stacksize, component_item_quantity, required_skill, required_skill_point, crafted_item_generated_id, component_item_id',
              :order => 'required_skill, name',
              :conditions => ['name like ?', "%#{search}%"], :order => "name"
   end
-  
-  
+
   has_many :items
 
   validates_each :component_item_id do |model, attr, value|
@@ -29,7 +27,6 @@ class CraftedItem < ActiveRecord::Base
   end
 
 end
-
 
 # == Schema Information
 #
