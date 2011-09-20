@@ -92,7 +92,7 @@ module ApplicationHelper
     item = Item.find(id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
-    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id user_id, item_id, price_per")
+    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id, user_id, item_id, price_per")
     if (override_price != nil) then
     return override_price.price_per
     else
