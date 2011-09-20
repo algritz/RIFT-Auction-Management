@@ -6,7 +6,7 @@ class CraftedItemsController < ApplicationController
     if params[:search] == nil then
       @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "name")
     else
-      @crafted_items = CraftedItem.paginate(:conditions => ["name = ?", params[:search]], :page => params[:page], :order => "name")
+      @crafted_items = CraftedItem.search(params[:search], params[:page])
     end
     respond_to do |format|
       format.html # index.html.erb
