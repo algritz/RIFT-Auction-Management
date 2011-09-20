@@ -489,16 +489,26 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def calculateBuyingCost(id)
-    selling_price = Item.find(id).vendor_selling_price
-    buying_price = Item.find(id).vendor_buying_price
+   def calculateBuyingCost(id)
+    if id.class == String then
+      item = Item.find(:first, :conditions => ["ItemKey = ?", "#{id}"])
+    else
+      item = Item.find(:first, :conditions => ["id = ?", "#{id}"])
+    end
+    selling_price = item.vendor_selling_price
+    buying_price = item.vendor_buying_price
+    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item.id], :select => "id user_id, item_id, price_per")
+    if (override_price != nil) then
+    return override_price.price_per
+    else
+      if (selling_price != nil) then
+      return selling_price
+      else if (buying_price != nil) then
+        return buying_price
+        else
+          return "No price defined for item"
 
-    if (selling_price != nil) then
-    return selling_price
-    else if (buying_price != nil) then
-      return buying_price
-      else
-        return "No price defined for item"
+        end
       end
     end
   end

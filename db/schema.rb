@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919191251) do
+ActiveRecord::Schema.define(:version => 20110920124358) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -30,18 +30,21 @@ ActiveRecord::Schema.define(:version => 20110919191251) do
   add_index "competitors", ["user_id"], :name => "index_competitors_on_user_id"
 
   create_table "crafted_items", :force => true do |t|
-    t.integer  "crafted_item_stacksize"
-    t.integer  "component_item_quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "required_skill"
-    t.integer  "required_skill_point"
-    t.integer  "rift_id"
-    t.string   "name"
-    t.string   "crafted_item_generated_id"
-    t.string   "component_item_id"
+    t.integer   "crafted_item_stacksize"
+    t.integer   "component_item_quantity"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "required_skill"
+    t.integer   "required_skill_point"
+    t.integer   "rift_id"
+    t.string    "name"
+    t.string    "crafted_item_generated_id"
+    t.string    "component_item_id"
   end
 
+  add_index "crafted_items", ["component_item_id"], :name => "index_crafted_items_on_component_item_id"
+  add_index "crafted_items", ["crafted_item_generated_id"], :name => "index_crafted_items_on_crafted_item_generated_id"
+  add_index "crafted_items", ["name"], :name => "index_crafted_items_on_name"
   add_index "crafted_items", ["required_skill"], :name => "index_crafted_items_on_required_skill"
   add_index "crafted_items", ["required_skill_point"], :name => "index_crafted_items_on_required_skill_point"
 

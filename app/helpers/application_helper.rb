@@ -91,13 +91,14 @@ module ApplicationHelper
   end
 
   def calculateBuyingCost(id)
-    if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
-      id = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
+    if id.class == String then
+      item = Item.find(:first, :conditions => ["ItemKey = ?", "#{id}"])
+    else
+      item = Item.find(:first, :conditions => ["id = ?", "#{id}"])
     end
-    p id
-    selling_price = Item.find(id).vendor_selling_price
-    buying_price = Item.find(id).vendor_buying_price
-    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, id], :select => "id, user_id, item_id, price_per")
+    selling_price = item.vendor_selling_price
+    buying_price = item.vendor_buying_price
+    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item.id], :select => "id user_id, item_id, price_per")
     if (override_price != nil) then
     return override_price.price_per
     else
@@ -123,7 +124,6 @@ module ApplicationHelper
 
   def calculateProfit(id)
     price = SalesListing.find(id).price
-
     if price > 0 then
       ah_cut = (price * 0.05).to_i
       deposit_cost = SalesListing.find(id).deposit_cost

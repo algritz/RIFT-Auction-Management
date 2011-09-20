@@ -18,7 +18,7 @@ Search term:
 <%= link_to source.description, page_items_to_craft_path+"?param="+source.description %> ::
 <% end %>
 <%= link_to "All professions", page_items_to_craft_path %>
-<%= if @had_to_limit then
+<%= if @had_to_limit == true then
 	raw("<p><i>Results limited to 50 in order to avoid timeouts, consider using the search</i></p>")
 end
 	 %>

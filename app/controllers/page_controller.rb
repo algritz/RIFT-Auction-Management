@@ -3,17 +3,18 @@ class PageController < ApplicationController
   def items_to_craft
     @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
+    ongoing_item_ids = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["user_id = ? and listing_statuses.description not in (?,?)", current_user[:id], "Sold", "Expired"], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, listing_statuses.id" )
     if source != nil && params[:param] != nil then
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ? and source_id = ?", true, source.first.id], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids = Item.find(:all, :conditions => ["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids], :select => "id, description, source_id", :order => "source_id, description")
       else
-        item_ids = Item.where(["to_list = ? and source_id = ?", true, source.first.id]).search(params[:search], params[:page])
+        item_ids = Item.where(["to_list = ? and source_id = ? and is_crafted = ? and id not in (?)", true, source.first.id, true, ongoing_item_ids]).search(params[:search], params[:page])
       end
     else
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids], :select => "id, description, source_id", :order => "source_id, description")
       else
-        item_ids = Item.where(["to_list = ?", true]).search(params[:search], params[:page])
+        item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids]).search(params[:search], params[:page])
       end
     end
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
@@ -24,12 +25,11 @@ class PageController < ApplicationController
       active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user.id])
       if active_autions == 0 then
       @out_of_stock_list << ids.id
+      i+=1
       end
       if i==50 then
-        @had_to_limit = true
+      @had_to_limit = true
       break
-      else
-      i+=1
       end
     end
 
@@ -44,22 +44,18 @@ class PageController < ApplicationController
   end
 
   def items_to_list_from_bank
-    item_ids = Item.find(:all, :conditions => ["to_list = ?", true], :select => "id, description, source_id", :order => "source_id, description")
     ongoing = ListingStatus.find(:all, :conditions => ["description = ?", 'Ongoing']).first
     in_bank = ListingStatus.find(:all, :conditions => ["description = ?", 'In Bank']).first
     in_inventory = ListingStatus.find(:all, :conditions => ["description = ?", 'In Inventory']).first
     @sitting_in_bank = []
     @last_id_in_bank
-    item_ids.each do |ids|
-      items_in_bank = SalesListing.find(:all, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids.id, in_bank.id, current_user.id])
-      items_in_bank.each do |ids_in_bank|
-        active_autions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids_in_bank.item_id, ongoing.id, current_user.id])
-        in_inventory_auctions = SalesListing.count(ids_in_bank.item_id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids_in_bank.item_id, in_inventory.id, current_user.id])
-        if active_autions == 0 && in_inventory_auctions == 0 then
-          if ids.id !=  @last_id_in_bank then
-          @sitting_in_bank << ids.id
-          @last_id_in_bank = ids.id
-          end
+    items_in_bank = SalesListing.find(:all, :conditions => ["listing_status_id = ? and user_id = ?", in_bank[:id], current_user[:id]])
+    items_in_bank.each do |ids|
+      active_autions = SalesListing.count(ids[:item_id], :conditions => ["item_id = ? and listing_status_id in (?, ?) and user_id = ?", ids[:item_id], ongoing[:id], in_inventory[:id], current_user[:id]])
+      if active_autions == 0 then
+        if ids[:item_id] != @last_id_in_bank then
+          @sitting_in_bank << ids[:item_id]
+          @last_id_in_bank = ids[:item_id]
         end
       end
     end
