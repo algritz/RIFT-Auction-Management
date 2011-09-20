@@ -62,7 +62,7 @@ module ApplicationHelper
 
   def calculateCraftingCost(id)
     if id != nil then
-      if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
+      if id.class == String then
         @item_info = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
       else
         @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
