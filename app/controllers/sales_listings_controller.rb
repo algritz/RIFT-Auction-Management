@@ -461,9 +461,10 @@ class SalesListingsController < ApplicationController
 
   def calculateCraftingCost(id)
     if id != nil then
-      @item_info = Item.find(id)
-      if @item_info == nil then
-        @item_info = Item.find(:first, :conditions => ["itemKey = ?", id])
+      if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
+        @item_info = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
+      else
+        @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
       end
       if @item_info.is_crafted then
         if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", @item_info.itemKey], :select => "id, crafted_item_generated_id") > 0 then
