@@ -333,7 +333,15 @@ class SalesListingsController < ApplicationController
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
           format.html {
-            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            if params[:search] != nil then
+              if params[:every_listings] != nil then
+                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              else
+                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              end
+            else
+              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            end
           }
           format.xml  { head :ok }
         else
