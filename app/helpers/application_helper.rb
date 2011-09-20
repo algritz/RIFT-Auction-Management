@@ -6,11 +6,11 @@ module ApplicationHelper
   def getItemDescription (id)
     item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
-  
+
   def getItemDescriptionFromKey (itemKey)
     item = Item.find(:all, :conditions => ["ItemKey = ?", itemKey], :select => "id, description, itemKey").last.description
   end
-  
+
   def getCompetitorStyleDescription (id)
     CompetitorStyle.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
@@ -20,7 +20,12 @@ module ApplicationHelper
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    Source.find(:all, :conditions => ["id = ?", Item.find(:all, :conditions => ["id = ?", id], :select => "id, description, source_id").last.source_id]).last.description
+    source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
+    if source == nil then
+      source = "Source Unclear"
+    else
+    source = source.required_skill
+    end
   end
 
   def isNewRow(someID)
@@ -51,15 +56,20 @@ module ApplicationHelper
         end
       end
     else
-      return price
+    return price
     end
   end
 
   def calculateCraftingCost(id)
     if id != nil then
-      if Item.find(id).is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", id], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", id], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+      if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
+        @item_info = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
+      else
+        @item_info = Item.find(:first, :conditions => ["id = ?", "#{id}"])
+      end
+      if @item_info.is_crafted then
+        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", @item_info.itemKey], :select => "id, crafted_item_generated_id") > 0 then
+          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", @item_info.itemKey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
           crafting_materials.each do |materials|
             material_cost = calculateCraftingCost(materials.component_item_id)
@@ -81,6 +91,10 @@ module ApplicationHelper
   end
 
   def calculateBuyingCost(id)
+    if Item.find(:first, :conditions => ["id = ?", "#{id}"]) == nil then
+      id = Item.find(:first, :conditions => ["itemKey = ?", "#{id}"])
+    end
+    p id
     selling_price = Item.find(id).vendor_selling_price
     buying_price = Item.find(id).vendor_buying_price
     override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, id], :select => "id, user_id, item_id, price_per")
