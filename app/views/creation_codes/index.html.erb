@@ -1,16 +1,16 @@
 <h1>Listing creation_codes</h1>
 
 <table>
-  <tr align="left">
+  <tr align="left" bgcolor="#c3c3c3">
     <th>Creation code</th>
     <th>Used</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th align="center" colspan="3">Actions</th>
   </tr>
 
-<% @creation_codes.each do |creation_code| %>
-  <tr>
+<% @creation_codes.each do |creation_code| 
+	isNewRow(creation_code.id)
+%>
+  <tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
     <td style="padding-right: 20px;"><%= creation_code.creation_code %></td>
     <td style="padding-right: 20px;"><%= creation_code.used %></td>
     <td><%= link_to 'Show', creation_code %></td>

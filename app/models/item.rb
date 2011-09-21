@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   @@per_page = 20
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
-             :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id',
+             :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey',
              :order => 'source_id, description',
              :conditions => ['description like ?', "%#{search}%"], :order => "description"
   end

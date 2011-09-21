@@ -1,19 +1,17 @@
 <h1>Listing listing_statuses</h1>
 
 <table>
-	<tr>
+	<tr align="left" bgcolor="#c3c3c3">
 		<th>Description</th>
 		<th>Position</th>
 		<th>Is final</th>
-		<th></th>
-		<th></th>
-		<th></th>
+		<th colspan="3" align="center">Actions</th>
 	</tr>
 
 	<% @listing_statuses.each do |listing_status|
 	isNewRow(listing_status.id)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>">
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= listing_status.description %></td>
 		<td><%= listing_status.position %></td>
 		<td><%= listing_status.is_final %></td>

@@ -8,16 +8,14 @@ Search term:
 <% end %>
 <% end %>
 <table>
-  <tr align="left">
+  <tr align="left" bgcolor="#c3c3c3">
     <th>Item</th>
     <th>Price per</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3" align="center">Actions</th>
   </tr>
 
 <% @price_overrides.each do |price_override| %>
-  <tr>
+  <tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
     <td style="padding-right: 20px;"><%= getItemDescription(price_override.item_id) %></td>
     <td accesskey="right" style="padding-right: 20px;"><%= formatPrice(price_override.price_per) %></td>
     <td><%= link_to 'Show', price_override %></td>

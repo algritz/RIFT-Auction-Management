@@ -1,10 +1,10 @@
 <h1>Old Listings</h1>
 <table>
-	<tr align="left">
+	<tr align="left" bgcolor="#c3c3c3">
 		<th>Item Name</th><th style="padding-right: 20px;">Stack Size</th><th>Price</th><th>Deposit</th><th>Last Modified Date</th><th></th><th></th>
 	</tr>
 	<% @old_listings.each do |listing| %>
-	<tr>
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= link_to getItemDescription(listing.item_id), edit_sales_listing_path(listing) %></td>
 		<td><%= listing.stacksize %></td>
 		<td style="padding-right: 20px;"><%= formatPrice(listing.price) %></td>

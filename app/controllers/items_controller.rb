@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
       @items = Item.search(params[:search], params[:page])
     else
       @items = Item.paginate(:page => params[:page], :conditions => ["rarity <>  ?", "Trash"], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey", :order => "description")
-     end
+    end
 
 
     respond_to do |format|

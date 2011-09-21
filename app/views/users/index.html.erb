@@ -1,27 +1,23 @@
 <h1>Listing users</h1>
-
 <table>
-  <tr align="left">
-    <th>Name</th>
-    <th>Email</th>
-    <th>Creation Code</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td style="padding-right: 20px;"><%= user.name %></td>
-    <td style="padding-right: 20px;"><%= user.email %></td>
-    <td style="padding-right: 20px;"><%= user.creation_code %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<tr align="left" bgcolor="#c3c3c3">
+		<th>Name</th>
+		<th>Email</th>
+		<th>Creation Code</th>
+		<th colspan="3" align="center">Actions</th>
+	</tr>
+	<% @users.each do |user|
+	isNewRow(user.id)
+	%>
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
+		<td style="padding-right: 20px;"><%= user.name %></td>
+		<td style="padding-right: 20px;"><%= user.email %></td>
+		<td style="padding-right: 20px;"><%= user.creation_code %></td>
+		<td><%= link_to 'Show', user %></td>
+		<td><%= link_to 'Edit', edit_user_path(user) %></td>
+		<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
-
 <br />
-
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path %> 

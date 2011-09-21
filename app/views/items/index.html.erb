@@ -8,23 +8,21 @@ Search term:
 <% end %>
 <%= will_paginate @items %>
 <table>
-	<tr>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Description</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Sells from vendor for</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Vendor buys for</th>
+	<tr bgcolor="#c3c3c3" align="left">
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Description</th>
+		<th align="right">Sells from vendor for</th>
+		<th align="right">Vendor buys for</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Source</th>
-		<th colspan="2" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Only active listing</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;"></th>
+		<th colspan="2" align="center">Only active listing</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" colspan="3" align="center">Actions</th>
 	</tr>
 	<% @items.each do |item|
 	isNewRow(item.id)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>">
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= link_to("#{item.description}", "http://rift.zam.com/en/item/#{item.itemkey}/") %></td>
-		<td><%= formatPrice(item.vendor_selling_price) %></td>
-		<td><%= formatPrice(item.vendor_buying_price) %></td>
+		<td align="right"><%= formatPrice(item.vendor_selling_price) %></td>
+		<td align="right"><%= formatPrice(item.vendor_buying_price) %></td>
 		<td><%= item.source_id!=nil ? getSourceDescription(item.source_id): item.source_id %></td>
 		<td><% if get_single_auction_id(item.id) then %><%= link_to 'Expired', expired_sales_listing_path(get_single_auction_id(item.id)), :confirm => "Are you sure to list #{getItemDescription(item.id)} as (Expired)?" %> <% end %></td>
 		<td><% if get_single_auction_id(item.id) then %><%= link_to 'Sold', sold_sales_listing_path(get_single_auction_id(item.id)), :confirm => "Are you sure to list #{getItemDescription(item.id)} as (Sold)?" %> <% end %></td>

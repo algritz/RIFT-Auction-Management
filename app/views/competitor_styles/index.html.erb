@@ -1,17 +1,15 @@
 <h1>Listing competitor_styles</h1>
-
 <table>
-	<tr>
-		<th>Description</th>
-		<th></th>
-		<th></th>
-		<th></th>
+	<tr bgcolor="#c3c3c3">
+		<th align="left">Description</th>
+		<th colspan="3">Actions</th>
+		
 	</tr>
 
 	<% @competitor_styles.each do |competitor_style|
 	isNewRow(competitor_style.id)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>">
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= competitor_style.description %></td>
 		<td><%= link_to 'Show', competitor_style %></td>
 		<td><%= link_to 'Edit', edit_competitor_style_path(competitor_style) %></td>

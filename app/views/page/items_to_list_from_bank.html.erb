@@ -1,17 +1,17 @@
 <h1>Items to list from Bank</h1>
 <table>
-	<tr align="left">
+	<tr align="left" bgcolor="#c3c3c3">
 		<th>Item name</th>
 		<th>Id</th>
 		<th>Source</th>
 		<th>Crafting Cost</th>
-		<th></th>
+		<th align="center">Actions</th>
 	</tr>
 	<%
 	@sitting_in_bank.each do |item|
 	isNewRow(item)
 	%>
-	<tr bgcolor='<%= "#{@lastRowColor}"%>'>
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= "#{getItemDescription(item)}"%></td>
 		<td><%= item %></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>

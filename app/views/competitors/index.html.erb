@@ -10,19 +10,17 @@
 </p>
 <%= will_paginate @competitors%>
 <table>
-	<tr>
-		<th align="left">Name</th>
-		<th align="left">Competitor style</th>
-		<th align="left">Source</th>
-		<th align="left"></th>
-		<th align="left"></th>
-		<th align="left"></th>
+	<tr bgcolor="#c3c3c3" align="left">
+		<th>Name</th>
+		<th>Competitor style</th>
+		<th>Source</th>
+		<th colspan="3" align="center">Actions</th>
 	</tr>
 
 	<% @competitors.each do |competitor|
 	isNewRow(competitor.name)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">
+	<tr bgcolor="<%= @lastRowColor %>"  onmouseover="this.className = 'hlt';" onmouseout="this.className = '';" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">
 		<td><%=
  if @isNewRow then
         competitor.name

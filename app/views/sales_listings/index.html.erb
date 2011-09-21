@@ -39,18 +39,18 @@ Search term:
 	<tr bgcolor="#c3c3c3">
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Item</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Stacksize</th>
-		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Price</th>
-		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Minimum Price</th>
+		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="left">Price</th>
+		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="left">Minimum Price</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left">Is Undercut price</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left">Is Tainted</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Profit</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Listing Status</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="left" colspan="6">Actions</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="center" colspan="6">Actions</th>
 	</tr>
 	<% @sales_listings.each do |sales_listing|
 	isNewRow(sales_listing.id)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>">
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"> <%= link_to getItemDescription(sales_listing.item_id), edit_sales_listing_path(sales_listing)%> </td>
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>
