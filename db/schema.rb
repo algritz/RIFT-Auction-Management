@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921012840) do
+ActiveRecord::Schema.define(:version => 20110921141244) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -48,26 +48,33 @@ ActiveRecord::Schema.define(:version => 20110921012840) do
   add_index "crafted_items", ["required_skill"], :name => "index_crafted_items_on_required_skill"
   add_index "crafted_items", ["required_skill_point"], :name => "index_crafted_items_on_required_skill_point"
 
-  create_table "items", :force => true do |t|
-    t.string   "description"
-    t.integer  "vendor_selling_price"
-    t.integer  "vendor_buying_price"
-    t.integer  "source_id"
+  create_table "creation_codes", :force => true do |t|
+    t.string   "creation_code"
+    t.boolean  "used"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_crafted"
-    t.boolean  "to_list"
-    t.integer  "item_level"
-    t.string   "note"
-    t.string   "itemkey"
-    t.string   "rarity"
-    t.string   "icon"
-    t.string   "soulboundtrigger"
-    t.string   "riftgem"
-    t.string   "salvageskill"
-    t.integer  "salvageskilllevel"
-    t.integer  "runebreakskilllevel"
-    t.boolean  "isaugmented"
+  end
+
+  create_table "items", :force => true do |t|
+    t.string    "description"
+    t.integer   "vendor_selling_price"
+    t.integer   "vendor_buying_price"
+    t.integer   "source_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_crafted"
+    t.boolean   "to_list"
+    t.integer   "item_level"
+    t.string    "note"
+    t.string    "itemkey"
+    t.string    "rarity"
+    t.string    "icon"
+    t.string    "soulboundtrigger"
+    t.string    "riftgem"
+    t.string    "salvageskill"
+    t.integer   "salvageskilllevel"
+    t.integer   "runebreakskilllevel"
+    t.boolean   "isaugmented"
   end
 
   add_index "items", ["description"], :name => "index_items_on_description"
@@ -129,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20110921012840) do
     t.string    "encrypted_password"
     t.string    "salt"
     t.boolean   "is_admin"
+    t.string    "creation_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

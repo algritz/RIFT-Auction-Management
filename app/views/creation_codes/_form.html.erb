@@ -1,0 +1,26 @@
+<%= form_for(@creation_code) do |f| %>
+  <% if @creation_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creation_code.errors.count, "error") %> prohibited this creation_code from being saved:</h2>
+
+      <ul>
+      <% @creation_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <b><%= f.label :creation_code %><br /></b>
+    <%= @creation_code.creation_code %>
+    <%= f.hidden_field :creation_code, :value =>@creation_code.creation_code %>
+  </div>
+  <div class="field">
+    <%= f.label :used %><br />
+    <%= f.check_box :used %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

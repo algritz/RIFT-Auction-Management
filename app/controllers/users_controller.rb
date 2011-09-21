@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
     respond_to do |format|
       if (is_admin? || is_current_user?(@user.id)) then
         format.html # show.html.erb
@@ -33,7 +32,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    @creation_code = CreationCode.find(:first, :conditions => ["used = ?", false])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -56,9 +55,11 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+    @creation_code = CreationCode.find(:first, :conditions => ["creation_code = ?", @user.creation_code])
     respond_to do |format|
       if @user.save
+        @creation_code.used = true
+        @creation_code.save
         format.html { redirect_to(signin_path, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Creation code:</b>
+  <%= @creation_code.creation_code %>
+</p>
+
+<p>
+  <b>Used:</b>
+  <%= @creation_code.used %>
+</p>
+
+
+<%= link_to 'Edit', edit_creation_code_path(@creation_code) %> |
+<%= link_to 'Back', creation_codes_path %>

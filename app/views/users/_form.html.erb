@@ -11,6 +11,11 @@
 	</ul>
 </div>
 <% end %>
+<% if @creation_code== nil then%>
+<div>
+	<h3>Account Creation is disabled at the moment, please come back later.</h3>
+</div>
+<% else %>
 <div class="field">
 	<%= f.label :name %>
 	<br />
@@ -31,7 +36,14 @@
 	<br />
 	<%= f.password_field :password_confirmation %>
 </div>
+<div class="field">
+	<%= f.label :creation_code %>
+	<br />
+	<%= f.text_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end), :size => 75, :disabled => true %>
+	<%= f.hidden_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end) %>
+</div>
 <div class="actions">
 	<%= f.submit %>
 </div>
+<% end %>
 <% end %> 
