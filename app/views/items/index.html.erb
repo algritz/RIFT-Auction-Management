@@ -10,7 +10,6 @@ Search term:
 <table>
 	<tr>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left">Description</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">ID</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Sells from vendor for</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Vendor buys for</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Source</th>
@@ -23,8 +22,7 @@ Search term:
 	isNewRow(item.id)
 	%>
 	<tr bgcolor="<%= @lastRowColor %>">
-		<td><%= item.description %></td>
-		<td><%= item.id %></td>
+		<td><%= link_to("#{item.description}", "http://rift.zam.com/en/item/#{item.itemkey}/") %></td>
 		<td><%= formatPrice(item.vendor_selling_price) %></td>
 		<td><%= formatPrice(item.vendor_buying_price) %></td>
 		<td><%= item.source_id!=nil ? getSourceDescription(item.source_id): item.source_id %></td>
