@@ -12,17 +12,12 @@
 	</ul>
 </div>
 <% end %>
-
 <div class="field">
 	<%= f.label :item_id %>
 	<br />
 	<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, getDefaultItemSelected),{},
     {:onchange => remote_function(:method=>:get)})
 %>
-	<p>
-		Display every items ?
-		<%= f.check_box  :every_items, {:onchange => remote_function(:method=>:get)} %>
-	</p>
 	<div class="field">
 		<%= f.label :stacksize %>
 		<br />

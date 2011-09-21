@@ -51,16 +51,10 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/new.xml
   def new
     @sales_listing = SalesListing.new
-    p "####################################"
-    p params
-    p "####################################"
-    if params[:every_items] == nil then
-      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ?", true, false, "BindOnPickup"])
-    else
-      @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and soulboundtrigger <> ?", true, "BindOnPickup"])
-    end
+
+    @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
-  
+
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
