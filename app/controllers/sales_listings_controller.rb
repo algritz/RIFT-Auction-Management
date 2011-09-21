@@ -366,7 +366,7 @@ class SalesListingsController < ApplicationController
     if id != nil then
       sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
       expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
-      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user[:id]], :select => "id, listing_status_id, item_id, is_undercut_price, user_id").last
+      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user[:id]], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price").last
       last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user[:id]]).last
       expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user[:id]]).last
       if sold != nil then
