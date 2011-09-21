@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920171230) do
+ActiveRecord::Schema.define(:version => 20110921012840) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110920171230) do
     t.string   "salvageskill"
     t.integer  "salvageskilllevel"
     t.integer  "runebreakskilllevel"
-    t.boolean  "isAugmented"
+    t.boolean  "isaugmented"
   end
 
   add_index "items", ["description"], :name => "index_items_on_description"
