@@ -30,7 +30,7 @@ class PriceOverridesController < ApplicationController
   # GET /price_overrides/new.xml
   def new
     @price_override = PriceOverride.new
-    @items = Item.find(:all, :select => "id, description", :order => "description")
+    @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", false, "BindOnPickup", "Trash"])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @price_override }

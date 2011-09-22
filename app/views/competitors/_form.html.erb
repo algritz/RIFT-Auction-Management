@@ -11,25 +11,21 @@
 	</ul>
 </div>
 <% end %>
-<div class="field">
-	<%= f.label :name %>
-	<br />
-	<%= f.text_field :name %>
-</div>
-<div class="field">
-	<%= f.label :competitor_style %>
-	<br />
-	<%= f.collection_select(:competitor_style_id, CompetitorStyle.find(:all, :select => 'id, description'), :id, :description)%>
-</div>
-<div class="field">
-	<%= f.label :source_id %>
-	<br />
-	<%= f.collection_select(:source_id, Source.find(:all, :select => 'id, description'), :id, :description)%>
-</div>
-<div class="field">
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-</div>
-<div class="actions">
-	<%= f.submit %>
-</div>
+<table>
+	<tr align="left">
+		<th><%= f.label :name %></th>
+		<th><%= f.label :competitor_style %></th>
+		<th><%= f.label :source_id %></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td><%= f.text_field :name %></td>
+		<td><%= f.collection_select(:competitor_style_id, CompetitorStyle.find(:all, :select => 'id, description'), :id, :description)%></td>
+		<td><%= f.collection_select(:source_id, Source.find(:all, :select => 'id, description'), :id, :description)%></td>
+		<td>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.submit %>
+		</td>
+	</tr>
+</table>
 <% end %> 

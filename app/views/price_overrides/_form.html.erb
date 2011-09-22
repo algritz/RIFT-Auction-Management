@@ -1,34 +1,33 @@
 <%= form_for(@price_override) do |f| %>
-  <% if @price_override.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@price_override.errors.count, "error") %> prohibited this price_override from being saved:</h2>
-
-      <ul>
-      <% @price_override.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :item_id %><br />
-    <%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @price_override.item_id),{},
-    {:onchange => remote_function(:method=>:get)}) %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field(:user_id, :value => current_user.id) %>
-  </div>
-  <div class="field">
-    <%= f.label :price_per %><br />
-    <%= f.text_field :price_per %> 
-    <%= 
-    	if @price_override.price_per != nil then
-    		"(#{formatPrice(@price_override.price_per)})" 
-    	end
-    %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @price_override.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@price_override.errors.count, "error") %> prohibited this price_override from being saved:</h2>
+	<ul>
+		<% @price_override.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
 <% end %>
+<table>
+	<tr align="left">
+		<th><%= f.label :item_id %></th>
+		<th><%= f.label :price_per %></th>
+	</tr>
+	<tr align="left">
+		<td><%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @price_override.item_id),{},
+    {:onchange => remote_function(:method=>:get)}) %></td>
+		<td><%= f.text_field :price_per %>
+			<%=  if @price_override.price_per != nil then
+      			"(#{formatPrice(@price_override.price_per)})"
+    		end %>
+		</td>		
+	</tr>
+	<tr>
+		<td><%= f.hidden_field(:user_id, :value => current_user.id) %></td>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %> 

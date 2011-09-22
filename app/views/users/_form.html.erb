@@ -16,34 +16,36 @@
 	<h3>Account Creation is disabled at the moment, please come back later.</h3>
 </div>
 <% else %>
-<div class="field">
-	<%= f.label :name %>
-	<br />
-	<%= f.text_field :name %>
-</div>
-<div class="field">
-	<%= f.label :email %>
-	<br />
-	<%= f.text_field :email %>
-</div>
-<div class="field">
-	<%= f.label :password %>
-	<br />
-	<%= f.password_field :password %>
-</div>
-<div class="field">
-	<%= f.label :password_confirmation %>
-	<br />
-	<%= f.password_field :password_confirmation %>
-</div>
-<div class="field">
-	<%= f.label :creation_code %>
-	<br />
-	<%= f.text_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end), :size => 75, :disabled => true %>
-	<%= f.hidden_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end) %>
-</div>
-<div class="actions">
-	<%= f.submit %>
-</div>
+<table>
+	<tr align="left">
+		<th><%= f.label :name %></th>
+		<th><%= f.label :email %></th>
+	</tr>
+	<tr align="left">
+		<td><%= f.text_field :name %></td>
+		<td><%= f.text_field :email %></td>
+	</tr>
+	<tr align="left">
+		<th><%= f.label :password %></th>
+		<th><%= f.label :password_confirmation %></th>
+	</tr>
+	<tr align="left">
+		<td><%= f.password_field :password %></td>
+		<td><%= f.password_field :password_confirmation %></td>
+	</tr>
+	<tr align="left">
+		<th colspan="2"><%= f.label :creation_code %></th>
+	</tr>
+	<tr align="left">
+		<td colspan="2">
+			<%= f.text_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end), :size => 75, :disabled => true %>
+			<%= f.hidden_field :creation_code, :value => (if @creation_code!= nil then @creation_code.creation_code else nil end) %>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right"><%= f.submit %></td>
+	</tr>
+</table>
+
 <% end %>
 <% end %> 
