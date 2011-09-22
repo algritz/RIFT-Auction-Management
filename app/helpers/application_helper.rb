@@ -218,11 +218,6 @@ module ApplicationHelper
       else
         lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", id, false, current_user.id], :group => 'listing_status_id')
       end
-      lastListings_per_status = []
-      lastListings.each do |status, value|
-        lastListings_per_status << "#{getListingStatusDescription(status)} : #{value} <br />"
-      end
-    return lastListings_per_status
     end
   end
 
@@ -266,7 +261,7 @@ module ApplicationHelper
     end
   end
 
-  def  sales_percentage_overall(item_id)
+  def sales_percentage_overall(item_id)
     total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user.id])
     sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
