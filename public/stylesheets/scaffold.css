@@ -20,7 +20,7 @@ a:visited {
 }
 a:hover {
 	color: #fff;
-	background-color: #000;
+	background-color: darkslateblue;
 }
 div.field, div.actions {
 	margin-bottom: 10px;
@@ -36,6 +36,9 @@ div.field, div.actions {
 .hlt td {
 	background-color: darkslateblue;
 	color: white;
+}
+th {
+	background-color: slateblue;
 }
 #error_explanation {
 	width: 450px;

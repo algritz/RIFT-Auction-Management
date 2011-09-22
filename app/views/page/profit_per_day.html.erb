@@ -2,8 +2,10 @@
 	<tr align="left">
 		<th>Date</th><th>Profit</th><th>Guild proceeds</th>
 	</tr>
-	<% @salesListing.each do |key, value| %>
-	<tr>
+	<% @salesListing.each do |key, value| 
+		isNewRow(key)
+	%>
+	<tr  bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td  style='padding-right:20px;'><%= key %></td><td  style='padding-right:20px;' align="right"><%= formatPrice(value) %></td><td  style='padding-right:20px;' align="right"><%= formatPrice((value * 0.1).to_i) %></td>
 	</tr>
 	<% end %>

@@ -46,4 +46,10 @@ module PageHelper
     profit = formatPrice(profit.to_i)
   end
   
+  def market_confidence(item)
+    total_listings = SalesListing.count(:conditions => ["item_id = ? and user_id = ?", item, current_user[:id]])
+    percentage = (total_listings.to_f / 25.to_f) * 100
+    format("%.2f", percentage)
+  end
+  
 end
