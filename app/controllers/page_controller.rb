@@ -4,7 +4,7 @@ class PageController < ApplicationController
     @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
     ongoing_item_ids = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", current_user[:id]])
-    ongoing_item_ids_list = []
+    ongoing_item_ids_list = [0]
     ongoing_item_ids.each do |id|
       ongoing_item_ids_list << id.item_id
     end
