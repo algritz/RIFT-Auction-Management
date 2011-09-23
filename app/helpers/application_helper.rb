@@ -18,7 +18,15 @@ module ApplicationHelper
   def getListingStatusDescription(id)
     ListingStatus.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
   end
-
+  
+  def getItemRarity(id)
+    Item.find(id).rarity
+  end
+  
+  def getItemRequiredLevel(id)
+    Item.find(id).item_level
+  end
+  
   def getSourceDescriptionForItemsToCraft (id)
     source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
     if source == nil then

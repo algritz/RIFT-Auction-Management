@@ -11,57 +11,73 @@
 	</ul>
 </div>
 <% end %>
-<table width="800">
+<table width="1024" border="1">
 	<tr align="left">
-		<th> <% if @sales_listing.item_id != nil then %>
+		<th colspan="2"><% if @sales_listing.item_id != nil then %>
 		<%= f.label :item_id %>
 		<% else %>
 		<%= f.label :item_id %>
 		<% end %> </th>
-		<th> <%= f.label :price %> </th>
-		<th> <%= f.label :is_undercut_price %> </th>
+		<th><%= f.label :price %> </th>
+		<th><nobr>Minimum sales price</nobr></th>
+		<th><%= f.hidden_field(:user_id, :value => current_user.id) %></th>
 	</tr>
 	<tr align="left">
-		<td> <% if @sales_listing.item_id != nil then %> <b><%= getItemDescription(@sales_listing.item_id) %></b> <%= f.hidden_field(:item_id) %>
+		<td colspan="2"><% if @sales_listing.item_id != nil then %> <b><%= getItemDescription(@sales_listing.item_id) %></b> <%= f.hidden_field(:item_id) %>
 		<% else %>
 		<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, getDefaultItemSelected),{},
       {:onchange => remote_function(:method=>:get)}) %>
 		<% end %> </td>
 		<td> <%= f.text_field :price, :value => getDefaultPricing, :size => 12 %>
-		<%= if (getDefaultPricing != nil) then
+			<nobr><%= if (getDefaultPricing != nil) then
         "(#{formatPrice(getDefaultPricing)})"
       end
-%> 
-	</td>
-		<td> <%= f.check_box :is_undercut_price %> </td>
+%></nobr></td>
+		<td><%= formatPrice(minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %></td>
+		<td><%= f.submit %> </td>
 	</tr>
 	<tr align="left">
 		<th><%= f.label :stacksize %></th>
-		<th>Minimum sales price</th>
+		<th><%= f.label :is_undercut_price %></th>
 		<th><%= f.label :is_tainted %></th>
+		<th><%= f.label :deposit_cost %></th>
+		<th><%= f.label :listing_status_id %></th>
 	</tr>
 	<tr align="left">
 		<td><%= f.text_field :stacksize, :value => getDefaultStacksize, :size => 12 %></td>
-		<td><%= formatPrice(minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %></td>
+		<td><%= f.check_box :is_undercut_price %></td>
 		<td><%= f.check_box :is_tainted %></td>
+		<td><%= f.text_field :deposit_cost, :value => getDepositCost, :size => 12 %><%= "(#{formatPrice(getDepositCost)})"%></td>
+		<td><%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus))%></td>
 	</tr>
 	<tr align="left">
-		<th> <%= f.label :deposit_cost %> </th>
-		<th> <%= f.label :listing_status_id %> </th>
-		<th></th>
+		<th><%= f.label :rarity %></th>
+		<th colspan="4"><%= f.label :required_level %></th>
 	</tr>
 	<tr align="left">
-		<td> <%= f.text_field :deposit_cost, :value => getDepositCost, :size => 12 %>
-		<%= "(#{formatPrice(getDepositCost)})"%> </td>
-		<td> <%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus))%> </td>
-		<td> <%= f.hidden_field(:user_id, :value => current_user.id) %>
-		<%= f.submit %> </td>
+		<td><%=
+			 if @sales_listing.item_id == nil then
+			        params[:item_id] == nil ? "" : getItemRarity(params[:item_id])
+			      else
+			        getItemRarity(@sales_listing.item_id)
+			      end
+			%>
+		</td>
+		<td colspan="4">
+			<%=
+			 if @sales_listing.item_id == nil then
+			        params[:item_id] == nil ? "" : getItemRequiredLevel(params[:item_id])
+			      else
+			        getItemRequiredLevel(@sales_listing.item_id)
+			      end
+			%>
+		</td>
 	</tr>
 </table>
 <% end %>
 <hr style="width: 800px;" align="left" />
 <% if params[:item_id]!=nil || @sales_listing.item_id != nil  then %>
-<table width="800">
+<table width="1024">
 	<tr align="left">
 		<th> Last sales price </th>
 		<th colspan="2"> Average sales price </th>
@@ -96,10 +112,7 @@
 			isNewRow(key)
 			%>
 			<tr bgcolor="<%= @lastRowColor %>">
-				<td>
-					 <%= "#{ListingStatus.find(key).description}:" %>
-					<span align='right'><%= "#{value}" %></span>
-				</td>
+				<td> <%= "#{ListingStatus.find(key).description}:" %> <span align='right'><%= "#{value}" %></span></td>
 			</tr>
 			<%
 			end

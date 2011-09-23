@@ -89,7 +89,7 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
     respond_to do |format|
       if @sales_listing.save
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully created.') }
+        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
       else
         format.html { render :action => "new" }
@@ -133,7 +133,7 @@ class SalesListingsController < ApplicationController
           end
 
         end
-        format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
+        format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
