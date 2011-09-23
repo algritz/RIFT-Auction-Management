@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921141244) do
+ActiveRecord::Schema.define(:version => 20110923152134) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -126,6 +126,21 @@ ActiveRecord::Schema.define(:version => 20110921141244) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.boolean   "crafting_allowed"
+  end
+
+  create_table "toon_skill_levels", :force => true do |t|
+    t.integer  "toon_id"
+    t.integer  "source_id"
+    t.integer  "skill_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "toons", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
