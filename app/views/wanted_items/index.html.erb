@@ -1,0 +1,27 @@
+<h1>Listing wanted_items</h1>
+
+<table>
+  <tr align="left">
+    <th>Item</th>
+    <th>Toon</th>
+    <th>Price per</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @wanted_items.each do |wanted_item| 
+	isNewRow(wanted_item)
+%>
+  <tr bgcolor="<%= @lastRowColor %>">
+    <td><%= getItemDescription(wanted_item.item_id) %></td>
+    <td><%= getToonName(wanted_item.toon_id) %></td>
+    <td><%= formatPrice(wanted_item.price_per) %></td>
+    <td><%= link_to 'Show', wanted_item %></td>
+    <td><%= link_to 'Edit', edit_wanted_item_path(wanted_item) %></td>
+    <td><%= link_to 'Destroy', wanted_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wanted item', new_wanted_item_path %>

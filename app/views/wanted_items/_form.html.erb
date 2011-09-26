@@ -1,0 +1,30 @@
+<%= form_for(@wanted_item) do |f| %>
+<% if @wanted_item.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@wanted_item.errors.count, "error") %> prohibited this wanted_item from being saved:</h2>
+	<ul>
+		<% @wanted_item.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<table width="1024">
+	<tr align="left">
+		<th><%= f.label :item %></th>
+		<th><%= f.label :toon_id %></th>
+		<th><%= f.label :public_request %></th>
+		<th><%= f.label :price_per %></th>
+		<th></th>
+	</tr>
+	<tr align="left">
+		<td><%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description),{}) %></td>
+		<td><%= f.select(:toon_id, options_from_collection_for_select(@toons, :id, :name),{}) %></td>
+		<td><%= f.check_box :is_public %></td>
+		<td><%= f.text_field :price_per %></td>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %> 

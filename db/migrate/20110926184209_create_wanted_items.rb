@@ -1,0 +1,16 @@
+class CreateWantedItems < ActiveRecord::Migration
+  def self.up
+    create_table :wanted_items do |t|
+      t.integer :item_id
+      t.integer :toon_id
+      t.boolean :is_public
+      t.integer :price_per
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :wanted_items
+  end
+end

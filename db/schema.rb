@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923152134) do
+ActiveRecord::Schema.define(:version => 20110926184209) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20110923152134) do
   add_index "crafted_items", ["required_skill_point"], :name => "index_crafted_items_on_required_skill_point"
 
   create_table "creation_codes", :force => true do |t|
-    t.string   "creation_code"
-    t.boolean  "used"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "creation_code"
+    t.boolean   "used"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "items", :force => true do |t|
@@ -155,5 +155,14 @@ ActiveRecord::Schema.define(:version => 20110923152134) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "wanted_items", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "toon_id"
+    t.boolean  "is_public"
+    t.integer  "price_per"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

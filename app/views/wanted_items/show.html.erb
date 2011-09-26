@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= getItemDescription(@wanted_item.item_id) %>
+</p>
+
+<p>
+  <b>Toon:</b>
+  <%= getToonName(@wanted_item.toon_id) %>
+</p>
+
+<p>
+  <b>Is public:</b>
+  <%= @wanted_item.is_public %>
+</p>
+
+<p>
+  <b>Price per:</b>
+  <%= formatPrice(@wanted_item.price_per) %>
+</p>
+
+
+<%= link_to 'Edit', edit_wanted_item_path(@wanted_item) %> |
+<%= link_to 'Back', wanted_items_path %>

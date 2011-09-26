@@ -11,6 +11,7 @@
 <%= link_to "Tutorial", "/documents/Rift-ah_tutorial.docx" %> ::
 <%= link_to "Manage Toons", toons_path %> ::
 <%= link_to "Manage Toon's Skill", toon_skill_levels_path %> ::
+<%= link_to "Wanted Items", wanted_items_path %> ::
 <%= link_to "Sign out (#{current_user.name})", signout_path, :method => :delete %>
 <% else %>
 <%= link_to "Sign in", signin_path %>
