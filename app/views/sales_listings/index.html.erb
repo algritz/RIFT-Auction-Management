@@ -3,10 +3,9 @@
 <%= content_tag :label do %>
 Search term:
 <%= text_field_tag :search, params[:search] %>
-<%= submit_tag :search %>
-<br />
 <%= label_tag :Display_every_listings%>
 <%= check_box_tag :every_listings, true, params[:every_listings] %>
+<%= submit_tag :search %>
 
 <% end %>
 <% end %>
@@ -35,22 +34,22 @@ Search term:
 	</p>
 </div>
 <%= will_paginate @sales_listings %>
-<table>
-	<tr align="left">
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Item</th>
+<table width="1336">
+	<tr align="left" valign="top">
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" width="325">Item</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Stacksize</th>
 		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">Price</th>
-		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">Minimum Price</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;">Is Undercut price</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;">Is Tainted</th>
-		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Profit</th>
-		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;" align="right">Listing Status</th>
+		<th align="center" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">Minimum Price</th>
+		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;">Undercut?</th>
+		<th>Tainted?</th>
+		<th align="center" style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Profit</th>
+		<th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:20px;">Listing Status</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;" align="center" colspan="6">Actions</th>
 	</tr>
 	<% @sales_listings.each do |sales_listing|
 	isNewRow(sales_listing.id)
 	%>
-	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
+	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';" valign="top">
 		<td style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" align="left"> <%= link_to getItemDescription(sales_listing.item_id), edit_sales_listing_path(sales_listing)%> </td>
 		<td><%= sales_listing.stacksize %></td>
 		<td align="right"><%= formatPrice(sales_listing.price) %></td>

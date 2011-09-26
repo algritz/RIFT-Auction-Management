@@ -129,18 +129,18 @@ ActiveRecord::Schema.define(:version => 20110926184209) do
   end
 
   create_table "toon_skill_levels", :force => true do |t|
-    t.integer  "toon_id"
-    t.integer  "source_id"
-    t.integer  "skill_level"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "toon_id"
+    t.integer   "source_id"
+    t.integer   "skill_level"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "toons", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|

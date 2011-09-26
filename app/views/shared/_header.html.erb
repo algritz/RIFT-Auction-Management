@@ -6,27 +6,18 @@
 <%= link_to "Items with many listings" , page_items_with_more_than_one_listings_path %> ::
 <%= link_to "Old listings" , page_old_listings_path %> ::
 <%= link_to "Profit per day" , page_profit_per_day_path %> ::
+<%= link_to "Wanted Items", wanted_items_path %>
+<br />
+<hr />
 <%= link_to "Manage Competitors", competitors_path %> ::
 <%= link_to "Manage Price Overrides", price_overrides_path %> ::
-<%= link_to "Tutorial", "/documents/Rift-ah_tutorial.docx" %> ::
 <%= link_to "Manage Toons", toons_path %> ::
 <%= link_to "Manage Toon's Skill", toon_skill_levels_path %> ::
-<%= link_to "Wanted Items", wanted_items_path %> ::
+<%= link_to "Tutorial", "/documents/Rift-ah_tutorial.docx" %> ::
 <%= link_to "Sign out (#{current_user.name})", signout_path, :method => :delete %>
 <% else %>
 <%= link_to "Sign in", signin_path %>
 <% end %>
-<p>
-<!-- Admin actions -->
-<% if is_admin? %>
-<%= link_to "Manage Items", items_path %> :: 
-<%= link_to "Manage Crafted Items", crafted_items_path %> :: 
-<%= link_to "Manage Listing Statuses", listing_statuses_path %> ::
-<%= link_to "Manage Sources", sources_path %> ::
-<%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
-<%= link_to "Manage Users", users_path %> ::
-<%= link_to "Manage Account Creation Code", creation_codes_path %>
-<% end %>
-</p>
+
 
 
