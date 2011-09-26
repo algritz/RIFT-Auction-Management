@@ -19,7 +19,10 @@
 		<%= f.label :item_id %>
 		<% end %> </th>
 		<th><%= f.label :price %> </th>
-		<th><nobr>Minimum sales price</nobr></th>
+		<th>
+		<nobr>
+			Minimum sales price
+		</nobr></th>
 		<th><%= f.hidden_field(:user_id, :value => current_user.id) %></th>
 	</tr>
 	<tr align="left">
@@ -29,10 +32,12 @@
       {:onchange => remote_function(:method=>:get)}) %>
 		<% end %> </td>
 		<td> <%= f.text_field :price, :value => getDefaultPricing, :size => 12 %>
-			<nobr><%= if (getDefaultPricing != nil) then
+		<nobr>
+			<%= if (getDefaultPricing != nil) then
         "(#{formatPrice(getDefaultPricing)})"
       end
-%></nobr></td>
+%>
+		</nobr></td>
 		<td><%= formatPrice(minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %></td>
 		<td><%= f.submit %> </td>
 	</tr>
@@ -56,22 +61,19 @@
 	</tr>
 	<tr align="left">
 		<td><%=
-			 if @sales_listing.item_id == nil then
-			        params[:item_id] == nil ? "" : getItemRarity(params[:item_id])
-			      else
-			        getItemRarity(@sales_listing.item_id)
-			      end
-			%>
-		</td>
-		<td colspan="4">
-			<%=
-			 if @sales_listing.item_id == nil then
-			        params[:item_id] == nil ? "" : getItemRequiredLevel(params[:item_id])
-			      else
-			        getItemRequiredLevel(@sales_listing.item_id)
-			      end
-			%>
-		</td>
+ if @sales_listing.item_id == nil then
+        params[:item_id] == nil ? "" : getItemRarity(params[:item_id])
+      else
+        getItemRarity(@sales_listing.item_id)
+      end
+%> </td>
+		<td colspan="4"> <%=
+ if @sales_listing.item_id == nil then
+        params[:item_id] == nil ? "" : getItemRequiredLevel(params[:item_id])
+      else
+        getItemRequiredLevel(@sales_listing.item_id)
+      end
+%> </td>
 	</tr>
 </table>
 <% end %>
@@ -100,8 +102,8 @@
 		<td> <%= sales_percentage_overall(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id]) %> </td>
 	</tr>
 	<tr align="left">
-		<th colspan="2"> Last listings (<i>listings since the last one you sold at full price</i>) </th>
-		<th> Crafting Cost </th>
+		<th colspan="2">Last listings (<i>listings since the last one you sold at full price</i>) </th>
+		<th>Crafting Cost</th>
 	</tr>
 	<tr align="left">
 		<td colspan="2">

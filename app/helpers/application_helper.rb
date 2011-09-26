@@ -27,6 +27,10 @@ module ApplicationHelper
     Item.find(id).item_level
   end
   
+  def getToonName(id)
+    Toon.find(id).name
+  end
+  
   def getSourceDescriptionForItemsToCraft (id)
     source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
     if source == nil then

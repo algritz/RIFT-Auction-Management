@@ -1,0 +1,27 @@
+<h1>Listing toon_skill_levels</h1>
+
+<table>
+  <tr align="left">
+    <th>Toon</th>
+    <th>Source</th>
+    <th>Skill level</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @toon_skill_levels.each do |toon_skill_level| 
+	isNewRow(toon_skill_level)
+%>
+  <tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
+    <td><%= getToonName(toon_skill_level.toon_id) %></td>
+    <td><%= getSourceDescription(toon_skill_level.source_id) %></td>
+    <td><%= toon_skill_level.skill_level %></td>
+    <td><%= link_to 'Show', toon_skill_level %></td>
+    <td><%= link_to 'Edit', edit_toon_skill_level_path(toon_skill_level) %></td>
+    <td><%= link_to 'Destroy', toon_skill_level, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Toon skill level', new_toon_skill_level_path %>

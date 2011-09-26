@@ -1,4 +1,8 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :toon_skill_levels
+
+  resources :toons
+
   resources :creation_codes
 
   resources :price_overrides

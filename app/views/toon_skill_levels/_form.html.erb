@@ -1,0 +1,37 @@
+<%= form_for(@toon_skill_level) do |f| %>
+  <% if @toon_skill_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@toon_skill_level.errors.count, "error") %> prohibited this toon_skill_level from being saved:</h2>
+
+      <ul>
+      <% @toon_skill_level.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+	<tr align="left">
+		<th><%= f.label :toon_name %></th>
+		<th><%= f.label :profession %></th>
+		<th><%= f.label :skill_level %></th>
+		<th></th>
+	</tr>
+	<tr align="left">
+		<td>
+			<%= 
+				if @toon_skill_level.toon_id != nil then
+					getToonName(@toon_skill_level.toon_id)
+				else
+					f.select(:toon_id, options_from_collection_for_select(@toon, :id, :name, @toon_skill_level.toon_id),{})
+				end 
+			%>
+		</td>
+		<td>
+			<%= f.select(:source_id, options_from_collection_for_select(@source, :id, :description, @toon_skill_level.source_id),{}) %>
+		</td>
+		<td><%= f.text_field :skill_level %></td>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %>
