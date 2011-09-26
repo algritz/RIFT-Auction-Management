@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Toon:</b>
+  <%= getToonName(@toon_skill_level.toon_id) %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= getSourceDescription(@toon_skill_level.source_id) %>
+</p>
+
+<p>
+  <b>Skill level:</b>
+  <%= @toon_skill_level.skill_level %>
+</p>
+
+
+<%= link_to 'Edit', edit_toon_skill_level_path(@toon_skill_level) %> |
+<%= link_to 'Back', toon_skill_levels_path %>

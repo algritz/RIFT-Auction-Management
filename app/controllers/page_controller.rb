@@ -2,9 +2,20 @@ class PageController < ApplicationController
   before_filter :authenticate
   def items_to_craft
     @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
+    toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    toon_skills = ToonSkillLevel.find(:all, :conditions => ["toon_id in (?)", toons])
+    @known_patterns = []
+    toon_skills.each do |skill|
+      source = Source.find(:first, :conditions => ["id = ?", skill.source_id])
+      item_keys = CraftedItem.find(:all, :conditions => ["required_skill = ? and required_skill_point <= ?", source.description, skill.skill_level])
+      item_keys.each do |key|
+        item_id = Item.find(:all, :conditions => ["itemkey = (?)", key[:crafted_item_generated_id]])
+        @known_patterns << item_id.first[:id]
+      end
+    end
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
     ongoing_item_ids = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", current_user[:id]])
-    ongoing_item_ids_list = []
+    ongoing_item_ids_list = [0]
     ongoing_item_ids.each do |id|
       ongoing_item_ids_list << id.item_id
     end
@@ -28,8 +39,11 @@ class PageController < ApplicationController
     item_ids.each do |ids|
       active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user[:id]])
       if active_autions == 0 then
-      @out_of_stock_list << ids.id
-      i+=1
+
+        if @known_patterns.index(ids[:id]) != nil then
+          @out_of_stock_list << ids[:id]
+          i+=1
+        end
       end
       if i==50 then
       @had_to_limit = true

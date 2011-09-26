@@ -1,0 +1,24 @@
+<%= form_for(@toon) do |f| %>
+  <% if @toon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@toon.errors.count, "error") %> prohibited this toon from being saved:</h2>
+
+      <ul>
+      <% @toon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+	<tr align="left">
+		<th><%= f.label :name %></th>
+		<th> <%= f.hidden_field :user_id, :value => current_user[:id] %></th>
+	</tr>
+	<tr align="left">
+		<td><%= f.text_field :name %></td>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+
+<% end %>
