@@ -3,8 +3,8 @@ class WantedItemsController < ApplicationController
   # GET /wanted_items
   # GET /wanted_items.xml
   def index
-    toon_list = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id")
-    @wanted_items = WantedItem.find(:all, :conditions => ["is_public = ? or toon_id in (?)", true, toon_list])
+    toon_list = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, user_id")
+    @wanted_items = WantedItem.find(:all, :conditions => ["is_public = ? or toon_id in (?)", true, toon_list], :select => "id, item_id, toon_id, price_per, is_public")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,8 +15,8 @@ class WantedItemsController < ApplicationController
   # GET /wanted_items/1
   # GET /wanted_items/1.xml
   def show
-    @wanted_item = WantedItem.find(params[:id])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @wanted_item = WantedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, item_id, price_per, is_public")
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
     respond_to do |format|
       if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id]).first.user_id == current_user[:id] then
         format.html # show.html.erb
@@ -32,7 +32,7 @@ class WantedItemsController < ApplicationController
   def new
     @wanted_item = WantedItem.new
     @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger not in (?, ?) and rarity <> ? and source_id <> ?", false, "BindOnPickup", "BindOnEquip", "Trash", 10])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @wanted_item }
@@ -41,11 +41,11 @@ class WantedItemsController < ApplicationController
 
   # GET /wanted_items/1/edit
   def edit
-    @wanted_item = WantedItem.find(params[:id])
+    @wanted_item = WantedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, item_id, price_per, is_public")
     @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger not in (?, ?) and rarity <> ? and source_id <> ?", false, "BindOnPickup", "BindOnEquip", "Trash", 10])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
     respond_to do |format|
-      if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id]).first.user_id == current_user[:id] then
+      if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id], :select => "id, user_id").first.user_id == current_user[:id] then
         format.html # show.html.erb
         format.xml  { render :xml => @wanted_item }
       else
@@ -59,7 +59,7 @@ class WantedItemsController < ApplicationController
   def create
     @wanted_item = WantedItem.new(params[:wanted_item])
     @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger not in (?, ?) and rarity <> ? and source_id <> ?", false, "BindOnPickup", "BindOnEquip", "Trash", 10])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
     respond_to do |format|
       if @wanted_item.save
         format.html { redirect_to(@wanted_item, :notice => 'Wanted item was successfully created.') }
@@ -74,7 +74,7 @@ class WantedItemsController < ApplicationController
   # PUT /wanted_items/1
   # PUT /wanted_items/1.xml
   def update
-    @wanted_item = WantedItem.find(params[:id])
+    @wanted_item = WantedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, item_id, price_per, is_public")
 
     respond_to do |format|
       if @wanted_item.update_attributes(params[:wanted_item])
@@ -90,7 +90,7 @@ class WantedItemsController < ApplicationController
   # DELETE /wanted_items/1
   # DELETE /wanted_items/1.xml
   def destroy
-    @wanted_item = WantedItem.find(params[:id])
+    @wanted_item = WantedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, item_id, price_per, is_public")
 
     respond_to do |format|
       if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id]).first.user_id == current_user[:id] then

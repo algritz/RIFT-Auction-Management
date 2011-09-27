@@ -24,6 +24,9 @@ group :development do
   gem 'rspec-rails'
   gem 'watchr'
   gem 'webrat'
+  gem 'term-ansicolor'
+  gem 'query_trace'
+ 
 end
 
 # Use unicorn as the web server

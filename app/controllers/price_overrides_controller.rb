@@ -3,7 +3,7 @@ class PriceOverridesController < ApplicationController
   # GET /price_overrides
   # GET /price_overrides.xml
   def index
-    @price_overrides = PriceOverride.find(:all, :conditions => ["user_id = ?", @current_user.id])
+    @price_overrides = PriceOverride.find(:all, :conditions => ["user_id = ?", @current_user.id], :select => "id, user_id, item_id, price_per")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class PriceOverridesController < ApplicationController
   # GET /price_overrides/1
   # GET /price_overrides/1.xml
   def show
-    @price_override = PriceOverride.find(params[:id])
+    @price_override = PriceOverride.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, user_id, price_per")
 
     respond_to do |format|
       if @price_override.user_id == @current_user.id  then
@@ -39,7 +39,7 @@ class PriceOverridesController < ApplicationController
 
   # GET /price_overrides/1/edit
   def edit
-    @price_override = PriceOverride.find(params[:id])
+    @price_override = PriceOverride.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, user_id, price_per")
     @items = Item.find(:all, :select => "id, description", :order => "description")
     if @price_override.user_id != @current_user.id then
       redirect_to(signin_path, :notice => 'You can only edit your own price overrides')
@@ -81,7 +81,7 @@ class PriceOverridesController < ApplicationController
   # DELETE /price_overrides/1
   # DELETE /price_overrides/1.xml
   def destroy
-    @price_override = PriceOverride.find(params[:id])
+    @price_override = PriceOverride.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, user_id, price_per")
     @price_override.destroy
 
     respond_to do |format|

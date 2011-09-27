@@ -22,8 +22,8 @@ module PageHelper
   end
   
   def taintLevel(id)
-    total_auctions = SalesListing.count(:conditions => ["item_id = ? and user_id = ?", id, @current_user.id], :select => "id")
-    undercut_auctions = SalesListing.count(:conditions => ["item_id = ? and is_tainted = ? and user_id = ?", id, true, @current_user.id], :select => "id, is_tainted")
+    total_auctions = SalesListing.count(:id, :conditions => ["item_id = ? and user_id = ?", id, @current_user.id], :select => "id")
+    undercut_auctions = SalesListing.count(:id, :conditions => ["item_id = ? and is_tainted = ? and user_id = ?", id, true, @current_user.id], :select => "id, is_tainted")
     competition_percentage = (undercut_auctions.to_f / total_auctions.to_f) * 100
     competition_percentage = format("%.2f",competition_percentage)
     if competition_percentage == "0.00" then
@@ -47,7 +47,7 @@ module PageHelper
   end
   
   def market_confidence(item)
-    total_listings = SalesListing.count(:conditions => ["item_id = ? and user_id = ?", item, current_user[:id]])
+    total_listings = SalesListing.count(:id, :conditions => ["item_id = ? and user_id = ?", item, current_user[:id]])
     percentage = (total_listings.to_f / 25.to_f) * 100
     format("%.2f", percentage)
   end

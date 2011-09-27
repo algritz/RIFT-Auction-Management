@@ -157,12 +157,12 @@ ActiveRecord::Schema.define(:version => 20110926184209) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   create_table "wanted_items", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "toon_id"
-    t.boolean  "is_public"
-    t.integer  "price_per"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "toon_id"
+    t.boolean   "is_public"
+    t.integer   "price_per"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end

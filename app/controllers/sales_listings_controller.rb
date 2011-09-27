@@ -34,7 +34,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1
   # GET /sales_listings/1.xml
   def show
-    @sales_listing = SalesListing.find(params[:id])
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
@@ -65,7 +65,7 @@ class SalesListingsController < ApplicationController
 
   # GET /sales_listings/1/edit
   def edit
-    @sales_listing = SalesListing.find(params[:id])
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
     #@items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -101,7 +101,7 @@ class SalesListingsController < ApplicationController
   # PUT /sales_listings/1
   # PUT /sales_listings/1.xml
   def update
-    @sales_listing = SalesListing.find(params[:id])
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Expired'])
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])

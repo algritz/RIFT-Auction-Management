@@ -1,15 +1,15 @@
 class PageController < ApplicationController
   before_filter :authenticate
   def items_to_craft
-    @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true])
+    @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true], :select => "id, description")
     toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
     toon_skills = ToonSkillLevel.find(:all, :conditions => ["toon_id in (?)", toons])
     @known_patterns = []
     toon_skills.each do |skill|
-      source = Source.find(:first, :conditions => ["id = ?", skill.source_id])
-      item_keys = CraftedItem.find(:all, :conditions => ["required_skill = ? and required_skill_point <= ?", source.description, skill.skill_level])
+      source = Source.find(:first, :conditions => ["id = ?", skill.source_id], :select => "id, description")
+      item_keys = CraftedItem.find(:all, :conditions => ["required_skill = ? and required_skill_point <= ?", source.description, skill.skill_level], :select => "id, required_skill, required_skill_point, crafted_item_generated_id")
       item_keys.each do |key|
-        item_id = Item.find(:all, :conditions => ["itemkey = (?)", key[:crafted_item_generated_id]])
+        item_id = Item.find(:all, :conditions => ["itemkey = (?)", key[:crafted_item_generated_id]], :select => "id, itemkey")
         @known_patterns << item_id.first[:id]
       end
     end
@@ -37,7 +37,7 @@ class PageController < ApplicationController
     @out_of_stock_list = []
     i = 0
     item_ids.each do |ids|
-      active_autions = SalesListing.count(ids.id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user[:id]])
+      active_autions = SalesListing.count(:id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user[:id]])
       if active_autions == 0 then
 
         if @known_patterns.index(ids[:id]) != nil then
@@ -94,7 +94,7 @@ class PageController < ApplicationController
       ongoing_item_ids_list << id.item_id
     end
     ongoing_item_ids_list.each do |ids|
-      active_autions = SalesListing.count(ids, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids, ongoing[:id], current_user[:id]])
+      active_autions = SalesListing.count(:id, :conditions => ["item_id = ? and listing_status_id = ? and user_id = ?", ids, ongoing[:id], current_user[:id]])
       if active_autions >= 2 then
         if ids !=  @last_duplicate then
         @duplicate_listing << ids
@@ -110,7 +110,7 @@ class PageController < ApplicationController
 
   def old_listings
     listing_status_id = ListingStatus.find(:all, :select => "id, description" ,:conditions => ["description = ?", "Ongoing"])
-    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user[:id]])
+    @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user[:id]], :select => "id, item_id, stacksize, price, deposit_cost")
   end
 
   def all_mailed

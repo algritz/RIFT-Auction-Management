@@ -2,8 +2,8 @@ class ToonSkillLevelsController < ApplicationController
   # GET /toon_skill_levels
   # GET /toon_skill_levels.xml
   def index
-    user_toon_list = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
-    @toon_skill_levels = ToonSkillLevel.find(:all, :conditions => ["toon_id in (?)", user_toon_list])
+    user_toon_list = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, user_id")
+    @toon_skill_levels = ToonSkillLevel.find(:all, :conditions => ["toon_id in (?)", user_toon_list], :select => "id, toon_id, source_id, skill_level")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +14,8 @@ class ToonSkillLevelsController < ApplicationController
   # GET /toon_skill_levels/1
   # GET /toon_skill_levels/1.xml
   def show
-    @toon_skill_level = ToonSkillLevel.find(params[:id])
-    users_toon = Toon.find(@toon_skill_level.toon_id).user_id == current_user[:id]
+    @toon_skill_level = ToonSkillLevel.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, source_id, skill_level")
+    users_toon = Toon.find(:first, :conditions => ["id = ?", @toon_skill_level.toon_id], :select => "id, user_id").user_id == current_user[:id]
     respond_to do |format|
       if users_toon then
         format.html # show.html.erb
@@ -30,7 +30,7 @@ class ToonSkillLevelsController < ApplicationController
   # GET /toon_skill_levels/new.xml
   def new
     @toon_skill_level = ToonSkillLevel.new
-    @toon = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :order => "name")
+    @toon = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :order => "name", :select => "id, name")
     @source = Source.find(:all, :conditions => ["crafting_allowed = ?", true], :order => "description", :select => "id, description")
     respond_to do |format|
       format.html # new.html.erb
@@ -40,10 +40,10 @@ class ToonSkillLevelsController < ApplicationController
 
   # GET /toon_skill_levels/1/edit
   def edit
-    @toon_skill_level = ToonSkillLevel.find(params[:id])
-    @toon = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :order => "name")
+    @toon_skill_level = ToonSkillLevel.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, source_id, skill_level")
+    @toon = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :order => "name", :select => "id, name")
     @source = Source.find(:all, :conditions => ["crafting_allowed = ?", true], :order => "description", :select => "id, description")
-    users_toon = Toon.find(@toon_skill_level.toon_id).user_id == current_user[:id]
+    users_toon = Toon.find(:first, :conditions => ["id = ?", @toon_skill_level.toon_id], :select => "id, user_id").user_id == current_user[:id]
     respond_to do |format|
       if users_toon then
         format.html # show.html.erb
@@ -59,7 +59,7 @@ class ToonSkillLevelsController < ApplicationController
   def create
     @toon_skill_level = ToonSkillLevel.new(params[:toon_skill_level])
     @source = Source.find(:all, :conditions => ["crafting_allowed = ?", true], :order => "description", :select => "id, description")
-    users_toon = Toon.find(@toon_skill_level.toon_id).user_id == current_user[:id]
+    users_toon = Toon.find(:first, :conditions => ["id = ?", @toon_skill_level.toon_id], :select => "id, user_id").user_id == current_user[:id]
     respond_to do |format|
       if @toon_skill_level.save
         format.html { redirect_to(@toon_skill_level, :notice => 'Toon skill level was successfully created.') }
@@ -74,7 +74,7 @@ class ToonSkillLevelsController < ApplicationController
   # PUT /toon_skill_levels/1
   # PUT /toon_skill_levels/1.xml
   def update
-    @toon_skill_level = ToonSkillLevel.find(params[:id])
+    @toon_skill_level = ToonSkillLevel.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, source_id, skill_level")
 
     respond_to do |format|
       if @toon_skill_level.update_attributes(params[:toon_skill_level])
@@ -90,7 +90,7 @@ class ToonSkillLevelsController < ApplicationController
   # DELETE /toon_skill_levels/1
   # DELETE /toon_skill_levels/1.xml
   def destroy
-    @toon_skill_level = ToonSkillLevel.find(params[:id])
+    @toon_skill_level = ToonSkillLevel.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, source_id, skill_level")
     @toon_skill_level.destroy
 
     respond_to do |format|

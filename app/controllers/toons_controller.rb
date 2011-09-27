@@ -2,7 +2,7 @@ class ToonsController < ApplicationController
   # GET /toons
   # GET /toons.xml
   def index
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, name, user_id")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @toons }
@@ -12,7 +12,7 @@ class ToonsController < ApplicationController
   # GET /toons/1
   # GET /toons/1.xml
   def show
-    @toon = Toon.find(params[:id])
+    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
     respond_to do |format|
       if @toon.user_id == current_user[:id] then
         format.html # show.html.erb
@@ -36,7 +36,7 @@ class ToonsController < ApplicationController
 
   # GET /toons/1/edit
   def edit
-    @toon = Toon.find(params[:id])
+    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
     respond_to do |format|
       p @toon.id
       if (is_admin? || is_current_user?(@toon.user_id) || @toon.id == nil ) then
@@ -66,7 +66,7 @@ class ToonsController < ApplicationController
   # PUT /toons/1
   # PUT /toons/1.xml
   def update
-    @toon = Toon.find(params[:id])
+    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
 
     respond_to do |format|
       if @toon.update_attributes(params[:toon])
@@ -82,7 +82,7 @@ class ToonsController < ApplicationController
   # DELETE /toons/1
   # DELETE /toons/1.xml
   def destroy
-    @toon = Toon.find(params[:id])
+    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
 
     if (is_admin? || is_current_user?(@toon.id)) then
     @toon.destroy

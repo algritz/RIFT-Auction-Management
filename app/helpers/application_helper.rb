@@ -28,7 +28,7 @@ module ApplicationHelper
   end
   
   def getToonName(id)
-    Toon.find(id).name
+    Toon.find(:first, :conditions => ["id = ?", id], :select =>["id, name"]).name
   end
   
   def getSourceDescriptionForItemsToCraft (id)
@@ -74,14 +74,13 @@ module ApplicationHelper
 
   def calculateCraftingCost(id)
     if id != nil then
-      item = Item.find(id)
-      
-    if item.is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
+      item = Item.find(:first, :conditions => ["id = ?", id], :select => "id, is_crafted, itemkey")
+     if item.is_crafted then
+        if CraftedItem.count(:id, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
           crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
           crafting_materials.each do |materials|
-            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id])
+            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id], :select => "id, itemkey")
             material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then
@@ -101,7 +100,7 @@ module ApplicationHelper
   end
 
   def calculateBuyingCost(id)
-    item = Item.find(id)
+    item = Item.find(:first, :conditions => ["id = ?", id], :select => "id, vendor_selling_price, vendor_buying_price")
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
     override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id, user_id, item_id, price_per")
@@ -123,8 +122,9 @@ module ApplicationHelper
   def checkIfProfit(id)
     sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
-    if SalesListing.find(id).listing_status_id == sold.id then
-      SalesListing.find(id).profit
+    auction = SalesListing.find(:first, :conditions => ["id = ?", id], :select => "id, listing_status_id, profit")
+    if auction.listing_status_id == sold.id then
+      auction.profit
     end
   end
 
@@ -274,8 +274,8 @@ module ApplicationHelper
   end
 
   def sales_percentage_overall(item_id)
-    total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user.id])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
+    total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user.id])
+    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
     percentage = format("%.2f",percentage)
     if percentage == "NaN" then
@@ -295,7 +295,7 @@ module ApplicationHelper
       if deposit_cost == nil then
       deposit_cost = 0
       end
-      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
+      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
       if ever_sold > 0 then
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, sales_listings.updated_at").last.updated_at
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user.id])
@@ -305,7 +305,7 @@ module ApplicationHelper
         minimum_price = (deposit_cost + crafting_cost)
         end
       else
-        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user.id])
+        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user.id])
         if number_of_relists > 0 then
         minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
         else

@@ -16,7 +16,7 @@ class CompetitorsController < ApplicationController
   # GET /competitors/1
   # GET /competitors/1.xml
   def show
-    @competitor = Competitor.find(params[:id])
+    @competitor = Competitor.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, name, competitor_style_id, source_id")
     @competitor_styles = CompetitorStyle.find(:all, :select => 'id, description')
     @sources_name = Source.find(:all, :select => 'id, description')
 
@@ -44,7 +44,7 @@ class CompetitorsController < ApplicationController
 
   # GET /competitors/1/edit
   def edit
-    @competitor = Competitor.find(params[:id])
+    @competitor = Competitor.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, name, competitor_style_id, source_id")
     @competitor_styles = CompetitorStyle.find(:all, :select => 'id, description')
     @sources_name = Source.find(:all, :select => 'id, description')
     if !is_current_user?(@competitor.user_id) then
@@ -71,7 +71,7 @@ class CompetitorsController < ApplicationController
   # PUT /competitors/1
   # PUT /competitors/1.xml
   def update
-    @competitor = Competitor.find(params[:id])
+    @competitor = Competitor.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, name, competitor_style_id, source_id")
 
     respond_to do |format|
       if @competitor.update_attributes(params[:competitor])
@@ -87,7 +87,7 @@ class CompetitorsController < ApplicationController
   # DELETE /competitors/1
   # DELETE /competitors/1.xml
   def destroy
-    @competitor = Competitor.find(params[:id])
+    @competitor = Competitor.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, name, competitor_style_id, source_id")
     @competitor.destroy
 
     respond_to do |format|
