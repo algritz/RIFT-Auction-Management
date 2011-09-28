@@ -11,7 +11,7 @@
 	</ul>
 </div>
 <% end %>
-<table width="1024">
+<table width="1336" border="0">
 	<tr align="left">
 		<th colspan="2"><% if @sales_listing.item_id != nil then %>
 		<%= f.label :item_id %>
@@ -23,6 +23,9 @@
 		<nobr>
 			Minimum sales price
 		</nobr></th>
+		<th><%= f.label :undercut? %></th>
+		<th><%= f.label :tainted? %></th>
+		<th><%= f.label :listing_status_id %></th>
 		<th><%= f.hidden_field(:user_id, :value => current_user.id) %></th>
 	</tr>
 	<tr align="left">
@@ -39,27 +42,23 @@
 %>
 		</nobr></td>
 		<td><%= formatPrice(minimum_sales_price(params[:item_id]==nil ? @sales_listing.item_id : params[:item_id])) %></td>
+		<td><%= f.check_box :is_undercut_price %></td>
+		<td><%= f.check_box :is_tainted %></td>
+		<td><%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus))%></td>
 		<td><%= f.submit %> </td>
 	</tr>
 	<tr align="left">
+		<th colspan="3"></th>
 		<th><%= f.label :stacksize %></th>
-		<th><%= f.label :is_undercut_price %></th>
-		<th><%= f.label :is_tainted %></th>
 		<th><%= f.label :deposit_cost %></th>
-		<th><%= f.label :listing_status_id %></th>
-	</tr>
-	<tr align="left">
-		<td><%= f.text_field :stacksize, :value => getDefaultStacksize, :size => 12 %></td>
-		<td><%= f.check_box :is_undercut_price %></td>
-		<td><%= f.check_box :is_tainted %></td>
-		<td><%= f.text_field :deposit_cost, :value => getDepositCost, :size => 12 %><%= "(#{formatPrice(getDepositCost)})"%></td>
-		<td><%= f.select(:listing_status_id, options_from_collection_for_select(@listing_statuses, :id, :description, getDefaultStatus))%></td>
-	</tr>
-	<tr align="left">
 		<th><%= f.label :rarity %></th>
-		<th colspan="4"><%= f.label :required_level %></th>
+		<th><%= f.label :required_level %></th>
+		<th></th>
 	</tr>
 	<tr align="left">
+		<td colspan="3"></td>
+		<td><%= f.text_field :stacksize, :value => getDefaultStacksize, :size => 12 %></td>
+		<td><%= f.text_field :deposit_cost, :value => getDepositCost, :size => 12 %><%= "(#{formatPrice(getDepositCost)})"%></td>
 		<td><%=
  if @sales_listing.item_id == nil then
         params[:item_id] == nil ? "" : getItemRarity(params[:item_id])
@@ -67,19 +66,20 @@
         getItemRarity(@sales_listing.item_id)
       end
 %> </td>
-		<td colspan="4"> <%=
+		<td> <%=
  if @sales_listing.item_id == nil then
         params[:item_id] == nil ? "" : getItemRequiredLevel(params[:item_id])
       else
         getItemRequiredLevel(@sales_listing.item_id)
       end
 %> </td>
+		<td></td>
 	</tr>
 </table>
 <% end %>
-<hr style="width: 800px;" align="left" />
+<hr style="width: 1336px;" align="left" />
 <% if params[:item_id]!=nil || @sales_listing.item_id != nil  then %>
-<table width="1024">
+<table width="1336">
 	<tr align="left">
 		<th> Last sales price </th>
 		<th colspan="2"> Average sales price </th>
