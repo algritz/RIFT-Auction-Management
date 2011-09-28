@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    @users = User.find(:all, :select => "id, name, email, creation_code")
 
     respond_to do |format|
       if (is_admin?) then
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
+    @user = User.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, name, email, creation_code")
     respond_to do |format|
       if (is_admin? || is_current_user?(@user.id)) then
         format.html # show.html.erb
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-    @creation_code = CreationCode.find(:first, :conditions => ["used = ?", false])
+    @creation_code = CreationCode.find(:first, :conditions => ["used = ?", false], :select => "id, creation_code, used")
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -41,7 +41,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, name, email, creation_code")
+    @creation_code = CreationCode.find(:first, :conditions => ["creation_code = ?", @user.creation_code], :select => "id, creation_code")
+    @creation_code == nil ? @creation_code = CreationCode.find(:first, :conditions => ["used = ?", false], :select => "id, creation_code, used"):@creation_code
     respond_to do |format|
       if (is_admin? || is_current_user?(@user.id)) then
       format.html # edit.html.erb
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @creation_code = CreationCode.find(:first, :conditions => ["creation_code = ?", @user.creation_code])
+    @creation_code = CreationCode.find(:first, :conditions => ["creation_code = ?", @user.creation_code], :select => "id, creation_code")
     respond_to do |format|
       if @user.save
         @creation_code.used = true
@@ -72,10 +74,14 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
-
+    @user = User.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, name, email, creation_code, salt, encrypted_password")
+    @creation_code = CreationCode.find(:first, :conditions => ["creation_code = ?", @user.creation_code], :select => "id, creation_code")
+    @creation_code == nil ? @creation_code = CreationCode.find(:first, :conditions => ["used = ?", false], :select => "id, creation_code, used"):@creation_code
+    p  @creation_code
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        @creation_code.used = true
+        @creation_code.save
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -88,7 +94,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, name, email, is_admin, creation_code")
     if (is_admin? || is_current_user?(@user.id)) then
     @user.destroy
     end
