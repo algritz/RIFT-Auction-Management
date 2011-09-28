@@ -8,6 +8,10 @@
   <b>Position:</b>
   <%= @listing_status.position %>
 </p>
+<p>
+  <b>Is final:</b>
+  <%= @listing_status.is_final %>
+</p>
 
 <%= link_to 'Edit', edit_listing_status_path(@listing_status) %> |
 <%= link_to 'Back', listing_statuses_path %>

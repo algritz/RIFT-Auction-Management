@@ -17,7 +17,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items/1
   # GET /crafted_items/1.xml
   def show
-    @crafted_item = CraftedItem.find(params[:id])
+    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +39,7 @@ class CraftedItemsController < ApplicationController
 
   # GET /crafted_items/1/edit
   def edit
-    @crafted_item = CraftedItem.find(params[:id])
+   @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
   end
@@ -64,7 +64,7 @@ class CraftedItemsController < ApplicationController
   # PUT /crafted_items/1
   # PUT /crafted_items/1.xml
   def update
-    @crafted_item = CraftedItem.find(params[:id])
+    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
 
     respond_to do |format|
       if @crafted_item.update_attributes(params[:crafted_item])
@@ -80,7 +80,7 @@ class CraftedItemsController < ApplicationController
   # DELETE /crafted_items/1
   # DELETE /crafted_items/1.xml
   def destroy
-    @crafted_item = CraftedItem.find(params[:id])
+    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
     @crafted_item.destroy
 
     respond_to do |format|

@@ -364,11 +364,11 @@ class SalesListingsController < ApplicationController
   # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
-      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
-      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at").last
-      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at").last
-      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at").last
+      sold_status = ListingStatus.find(:first, :conditions => ["description = ?", 'Sold'], :select => "id, description")
+      expired = ListingStatus.find(:first, :conditions => ["description = ?", 'Expired'], :select => "id, description")
+      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
+      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
       if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
@@ -387,7 +387,7 @@ class SalesListingsController < ApplicationController
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
+          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else

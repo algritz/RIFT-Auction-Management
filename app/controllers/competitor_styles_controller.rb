@@ -3,7 +3,7 @@ class CompetitorStylesController < ApplicationController
   # GET /competitor_styles
   # GET /competitor_styles.xml
   def index
-    @competitor_styles = CompetitorStyle.all
+    @competitor_styles = CompetitorStyle.find(:all, :select => "id, description")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class CompetitorStylesController < ApplicationController
   # GET /competitor_styles/1
   # GET /competitor_styles/1.xml
   def show
-    @competitor_style = CompetitorStyle.find(params[:id])
+    @competitor_style = CompetitorStyle.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class CompetitorStylesController < ApplicationController
 
   # GET /competitor_styles/1/edit
   def edit
-    @competitor_style = CompetitorStyle.find(params[:id])
+    @competitor_style = CompetitorStyle.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description")
   end
 
   # POST /competitor_styles
@@ -57,7 +57,7 @@ class CompetitorStylesController < ApplicationController
   # PUT /competitor_styles/1
   # PUT /competitor_styles/1.xml
   def update
-    @competitor_style = CompetitorStyle.find(params[:id])
+    @competitor_style = CompetitorStyle.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description")
 
     respond_to do |format|
       if @competitor_style.update_attributes(params[:competitor_style])
@@ -73,7 +73,7 @@ class CompetitorStylesController < ApplicationController
   # DELETE /competitor_styles/1
   # DELETE /competitor_styles/1.xml
   def destroy
-    @competitor_style = CompetitorStyle.find(params[:id])
+    @competitor_style = CompetitorStyle.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description")
     @competitor_style.destroy
 
     respond_to do |format|

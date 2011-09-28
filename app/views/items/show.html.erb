@@ -44,8 +44,19 @@
 </p>
 <p>
 	<b>Last listings:</b><p style='padding-left:20px;padding-top:-20px;'>
-	<%= raw(lastListings(@item.id))%>
-	</p>
+	<table width="100">
+			<% @lastListings = lastListings(@item.id) %>
+			<%
+			@lastListings.each do |key, value|
+			isNewRow(key)
+			%>
+			<tr bgcolor="<%= @lastRowColor %>">
+				<td> <%= "#{ListingStatus.find(key).description}:" %> <span align='right'><%= "#{value}" %></span></td>
+			</tr>
+			<%
+			end
+			%>
+		</table>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

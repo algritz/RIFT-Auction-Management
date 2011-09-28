@@ -14,8 +14,7 @@ class ListingStatusesController < ApplicationController
   # GET /listing_statuses/1
   # GET /listing_statuses/1.xml
   def show
-    @listing_status = ListingStatus.find(params[:id])
-
+    @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @listing_status }
@@ -35,7 +34,7 @@ class ListingStatusesController < ApplicationController
 
   # GET /listing_statuses/1/edit
   def edit
-    @listing_status = ListingStatus.find(params[:id])
+    @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
   end
 
   # POST /listing_statuses
@@ -57,7 +56,7 @@ class ListingStatusesController < ApplicationController
   # PUT /listing_statuses/1
   # PUT /listing_statuses/1.xml
   def update
-    @listing_status = ListingStatus.find(params[:id])
+    @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
 
     respond_to do |format|
       if @listing_status.update_attributes(params[:listing_status])
@@ -73,7 +72,7 @@ class ListingStatusesController < ApplicationController
   # DELETE /listing_statuses/1
   # DELETE /listing_statuses/1.xml
   def destroy
-    @listing_status = ListingStatus.find(params[:id])
+    @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
     @listing_status.destroy
 
     respond_to do |format|

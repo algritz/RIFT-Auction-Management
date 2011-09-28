@@ -1,22 +1,26 @@
 module ApplicationHelper
   def getSourceDescription (id)
-    Source.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
+    if id != nil then
+    Source.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+    else
+      "Unknown source"
+    end
   end
 
   def getItemDescription (id)
-    item = Item.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
+    item = Item.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
   end
 
   def getItemDescriptionFromKey (itemkey)
-    item = Item.find(:all, :conditions => ["ItemKey = ?", itemkey], :select => "id, description, itemkey").last.description
+    item = Item.find(:first, :conditions => ["ItemKey = ?", itemkey], :select => "id, description, itemkey").description
   end
 
   def getCompetitorStyleDescription (id)
-    CompetitorStyle.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
+    CompetitorStyle.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
   end
 
   def getListingStatusDescription(id)
-    ListingStatus.find(:all, :conditions => ["id = ?", id], :select => "id, description").last.description
+    ListingStatus.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
   end
   
   def getItemRarity(id)
@@ -151,11 +155,11 @@ module ApplicationHelper
   # in this block is likely to happen over there
   def lastSalesPrice(id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
-      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
-      sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at").last
-      last_sold_date = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at").last
-      expired_listing = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at").last
+      sold_status = ListingStatus.find(:first, :conditions => ["description = ?", 'Sold'], :select => "id, description")
+      expired = ListingStatus.find(:first, :conditions => ["description = ?", 'Expired'], :select => "id, description")
+      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
+      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
       if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
@@ -174,7 +178,7 @@ module ApplicationHelper
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id]).last
+          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -223,12 +227,12 @@ module ApplicationHelper
 
   def lastListings(id)
     if id != nil then
-      sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
-      last_sold = SalesListing.find(:all, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, id, false, current_user.id], :order => "updated_at desc").first
+      sold = ListingStatus.find(:first, :conditions => ["description = ?", 'Sold'], :select => "id, description")
+      last_sold = SalesListing.find(:first, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, id, false, current_user.id], :order => "updated_at desc", :select => "id, item_id, user_id, is_undercut_price, listing_status_id, updated_at")
       if last_sold != nil then
-        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", id, last_sold.updated_at, false, current_user.id], :group => 'listing_status_id')
+        lastListings = SalesListing.count(:id, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", id, last_sold.updated_at, false, current_user.id], :group => 'listing_status_id')
       else
-        lastListings = SalesListing.count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", id, false, current_user.id], :group => 'listing_status_id')
+        lastListings = SalesListing.count(:id, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", id, false, current_user.id], :group => 'listing_status_id')
       end
     end
   end

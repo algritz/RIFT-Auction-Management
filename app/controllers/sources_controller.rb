@@ -14,7 +14,7 @@ class SourcesController < ApplicationController
   # GET /sources/1
   # GET /sources/1.xml
   def show
-    @source = Source.find(params[:id])
+    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class SourcesController < ApplicationController
 
   # GET /sources/1/edit
   def edit
-    @source = Source.find(params[:id])
+    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
   end
 
   # POST /sources
@@ -57,7 +57,7 @@ class SourcesController < ApplicationController
   # PUT /sources/1
   # PUT /sources/1.xml
   def update
-    @source = Source.find(params[:id])
+    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
 
     respond_to do |format|
       if @source.update_attributes(params[:source])
@@ -73,7 +73,7 @@ class SourcesController < ApplicationController
   # DELETE /sources/1
   # DELETE /sources/1.xml
   def destroy
-    @source = Source.find(params[:id])
+    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
     @source.destroy
 
     respond_to do |format|
