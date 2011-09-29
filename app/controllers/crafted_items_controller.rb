@@ -1,6 +1,6 @@
 class CraftedItemsController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index, :layout => false
+  caches_action :index
   caches_action :show, :layout => false
   # GET /crafted_items
   # GET /crafted_items.xml
@@ -8,7 +8,6 @@ class CraftedItemsController < ApplicationController
     if params[:search] == nil then
       @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "name")
     else
-      expire_action :action => :index
       @crafted_items = CraftedItem.search(params[:search], params[:page])
     end
     respond_to do |format|

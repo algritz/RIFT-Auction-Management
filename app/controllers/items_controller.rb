@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index, :layout => false
+  caches_action :index
   caches_action :show, :layout => false
+  
   # GET /items
   # GET /items.xml
   def index
@@ -11,6 +12,7 @@ class ItemsController < ApplicationController
     else
       @items = Item.paginate(:page => params[:page], :conditions => ["rarity <>  ?", "Trash"], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey", :order => "description")
     end
+
 
     respond_to do |format|
       format.html # new.html.erb
