@@ -1,6 +1,6 @@
 class WantedItemsController < ApplicationController
   before_filter :authenticate
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
 
   # GET /wanted_items

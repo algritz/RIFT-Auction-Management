@@ -1,6 +1,6 @@
 class CompetitorStylesController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /competitor_styles
   # GET /competitor_styles.xml

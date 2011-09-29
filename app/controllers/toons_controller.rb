@@ -1,5 +1,5 @@
 class ToonsController < ApplicationController
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /toons
   # GET /toons.xml

@@ -1,7 +1,7 @@
 class PriceOverridesController < ApplicationController
   before_filter :authenticate
 
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /price_overrides
   # GET /price_overrides.xml

@@ -1,6 +1,6 @@
 class CraftedItemsController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /crafted_items
   # GET /crafted_items.xml

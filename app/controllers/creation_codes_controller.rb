@@ -1,6 +1,6 @@
 class CreationCodesController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /creation_codes
   # GET /creation_codes.xml

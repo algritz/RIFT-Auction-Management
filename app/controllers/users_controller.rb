@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  caches_action :index
+  caches_action :index, :layout => false
   caches_action :show, :layout => false
   # GET /users
   # GET /users.xml

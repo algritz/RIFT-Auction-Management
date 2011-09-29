@@ -1,5 +1,7 @@
 class ListingStatusesController < ApplicationController
   before_filter :authenticate_admin
+  caches_action :index, :layout => false
+  caches_action :show, :layout => false
   # GET /listing_statuses
   # GET /listing_statuses.xml
   def index
@@ -44,6 +46,7 @@ class ListingStatusesController < ApplicationController
 
     respond_to do |format|
       if @listing_status.save
+        expire_action :action => :index
         format.html { redirect_to(@listing_status, :notice => 'Listing status was successfully created.') }
         format.xml  { render :xml => @listing_status, :status => :created, :location => @listing_status }
       else
@@ -60,6 +63,7 @@ class ListingStatusesController < ApplicationController
 
     respond_to do |format|
       if @listing_status.update_attributes(params[:listing_status])
+        expire_action :action => :index
         format.html { redirect_to(@listing_status, :notice => 'Listing status was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -74,7 +78,7 @@ class ListingStatusesController < ApplicationController
   def destroy
     @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
     @listing_status.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(listing_statuses_url) }
       format.xml  { head :ok }
