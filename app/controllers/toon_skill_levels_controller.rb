@@ -1,4 +1,6 @@
 class ToonSkillLevelsController < ApplicationController
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /toon_skill_levels
   # GET /toon_skill_levels.xml
   def index
@@ -62,6 +64,7 @@ class ToonSkillLevelsController < ApplicationController
     users_toon = Toon.find(:first, :conditions => ["id = ?", @toon_skill_level.toon_id], :select => "id, user_id").user_id == current_user[:id]
     respond_to do |format|
       if @toon_skill_level.save
+        expire_action :action => :index
         format.html { redirect_to(@toon_skill_level, :notice => 'Toon skill level was successfully created.') }
         format.xml  { render :xml => @toon_skill_level, :status => :created, :location => @toon_skill_level }
       else
@@ -78,6 +81,7 @@ class ToonSkillLevelsController < ApplicationController
 
     respond_to do |format|
       if @toon_skill_level.update_attributes(params[:toon_skill_level])
+        expire_action :action => :index
         format.html { redirect_to(@toon_skill_level, :notice => 'Toon skill level was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -92,7 +96,7 @@ class ToonSkillLevelsController < ApplicationController
   def destroy
     @toon_skill_level = ToonSkillLevel.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, source_id, skill_level")
     @toon_skill_level.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(toon_skill_levels_url) }
       format.xml  { head :ok }

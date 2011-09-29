@@ -1,5 +1,7 @@
 class SourcesController < ApplicationController
   before_filter :authenticate_admin
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /sources
   # GET /sources.xml
   def index
@@ -45,6 +47,7 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.save
+        expire_action :action => :index
         format.html {  redirect_to(@source, :notice => 'Source was successfully created.') }
         format.xml  { render :xml => @source, :status => :created, :location => @source }
       else
@@ -61,6 +64,7 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.update_attributes(params[:source])
+        expire_action :action => :index
         format.html { redirect_to(@source, :notice => 'Source was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -75,7 +79,7 @@ class SourcesController < ApplicationController
   def destroy
     @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
     @source.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(sources_url) }
       format.xml  { head :ok }

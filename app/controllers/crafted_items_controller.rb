@@ -1,5 +1,7 @@
 class CraftedItemsController < ApplicationController
   before_filter :authenticate_admin
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /crafted_items
   # GET /crafted_items.xml
   def index
@@ -39,7 +41,7 @@ class CraftedItemsController < ApplicationController
 
   # GET /crafted_items/1/edit
   def edit
-   @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
+    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
   end
@@ -52,6 +54,7 @@ class CraftedItemsController < ApplicationController
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @crafted_item.save
+        expire_action :action => :index
         format.html { redirect_to(@crafted_item, :notice => 'Crafted item was successfully created.') }
         format.xml  { render :xml => @crafted_item, :status => :created, :location => @crafted_item }
       else
@@ -68,6 +71,7 @@ class CraftedItemsController < ApplicationController
 
     respond_to do |format|
       if @crafted_item.update_attributes(params[:crafted_item])
+        expire_action :action => :index
         format.html { redirect_to(@crafted_item, :notice => 'Crafted item was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -82,7 +86,7 @@ class CraftedItemsController < ApplicationController
   def destroy
     @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
     @crafted_item.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(crafted_items_url) }
       format.xml  { head :ok }

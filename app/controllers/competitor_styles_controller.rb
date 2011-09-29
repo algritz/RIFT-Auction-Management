@@ -1,5 +1,7 @@
 class CompetitorStylesController < ApplicationController
   before_filter :authenticate_admin
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /competitor_styles
   # GET /competitor_styles.xml
   def index
@@ -45,6 +47,7 @@ class CompetitorStylesController < ApplicationController
 
     respond_to do |format|
       if @competitor_style.save
+        expire_action :action => :index
         format.html { redirect_to(@competitor_style, :notice => 'Competitor style was successfully created.') }
         format.xml  { render :xml => @competitor_style, :status => :created, :location => @competitor_style }
       else
@@ -61,6 +64,7 @@ class CompetitorStylesController < ApplicationController
 
     respond_to do |format|
       if @competitor_style.update_attributes(params[:competitor_style])
+        expire_action :action => :index
         format.html { redirect_to(@competitor_style, :notice => 'Competitor style was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -75,7 +79,7 @@ class CompetitorStylesController < ApplicationController
   def destroy
     @competitor_style = CompetitorStyle.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description")
     @competitor_style.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(competitor_styles_url) }
       format.xml  { head :ok }

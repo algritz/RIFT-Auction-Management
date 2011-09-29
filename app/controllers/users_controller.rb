@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /users
   # GET /users.xml
   def index
@@ -62,6 +65,7 @@ class UsersController < ApplicationController
       if @user.save
         @creation_code.used = true
         @creation_code.save
+        expire_action :action => :index
         format.html { redirect_to(signin_path, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -82,6 +86,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         @creation_code.used = true
         @creation_code.save
+        expire_action :action => :index
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -96,7 +101,8 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, name, email, is_admin, creation_code")
     if (is_admin? || is_current_user?(@user.id)) then
-    @user.destroy
+      @user.destroy
+      expire_action :action => :index
     end
 
     respond_to do |format|

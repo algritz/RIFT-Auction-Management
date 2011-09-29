@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_admin
+  caches_action :index
+  caches_action :show, :layout => false
+  
   # GET /items
   # GET /items.xml
   def index
@@ -52,6 +55,7 @@ class ItemsController < ApplicationController
     @source = Source.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @item.save
+        expire_action :action => :index
         format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
@@ -68,6 +72,7 @@ class ItemsController < ApplicationController
     @source = Source.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @item.update_attributes(params[:item])
+        expire_action :action => :index
         format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -82,7 +87,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
     @item.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(items_url) }
       format.xml  { head :ok }

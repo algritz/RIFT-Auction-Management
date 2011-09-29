@@ -1,5 +1,8 @@
 class WantedItemsController < ApplicationController
   before_filter :authenticate
+  caches_action :index
+  caches_action :show, :layout => false
+
   # GET /wanted_items
   # GET /wanted_items.xml
   def index
@@ -62,6 +65,7 @@ class WantedItemsController < ApplicationController
     @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
     respond_to do |format|
       if @wanted_item.save
+        expire_action :action => :index
         format.html { redirect_to(@wanted_item, :notice => 'Wanted item was successfully created.') }
         format.xml  { render :xml => @wanted_item, :status => :created, :location => @wanted_item }
       else
@@ -78,6 +82,7 @@ class WantedItemsController < ApplicationController
 
     respond_to do |format|
       if @wanted_item.update_attributes(params[:wanted_item])
+        expire_action :action => :index
         format.html { redirect_to(@wanted_item, :notice => 'Wanted item was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -95,6 +100,7 @@ class WantedItemsController < ApplicationController
     respond_to do |format|
       if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id]).first.user_id == current_user[:id] then
         @wanted_item.destroy
+        expire_action :action => :index
         format.html { redirect_to(wanted_items_url) }
         format.xml  { head :ok }
       else

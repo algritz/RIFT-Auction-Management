@@ -1,5 +1,7 @@
 class CompetitorsController < ApplicationController
   before_filter :authenticate
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /competitors
   # GET /competitors.xml
   def index
@@ -59,6 +61,7 @@ class CompetitorsController < ApplicationController
 
     respond_to do |format|
       if @competitor.save
+        expire_action :action => :index
         format.html { redirect_to(@competitor, :notice => 'Competitor was successfully created.') }
         format.xml  { render :xml => @competitor, :status => :created, :location => @competitor }
       else
@@ -75,6 +78,7 @@ class CompetitorsController < ApplicationController
 
     respond_to do |format|
       if @competitor.update_attributes(params[:competitor])
+        expire_action :action => :index
         format.html { redirect_to(@competitor, :notice => 'Competitor was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -89,7 +93,7 @@ class CompetitorsController < ApplicationController
   def destroy
     @competitor = Competitor.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, name, competitor_style_id, source_id")
     @competitor.destroy
-
+    expire_action :action => :index
     respond_to do |format|
       format.html { redirect_to(competitors_url) }
       format.xml  { head :ok }

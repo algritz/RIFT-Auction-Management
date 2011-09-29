@@ -1,4 +1,6 @@
 class ToonsController < ApplicationController
+  caches_action :index
+  caches_action :show, :layout => false
   # GET /toons
   # GET /toons.xml
   def index
@@ -38,7 +40,6 @@ class ToonsController < ApplicationController
   def edit
     @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
     respond_to do |format|
-      p @toon.id
       if (is_admin? || is_current_user?(@toon.user_id) || @toon.id == nil ) then
       format.html # edit.html.erb
       else
@@ -54,6 +55,7 @@ class ToonsController < ApplicationController
 
     respond_to do |format|
       if @toon.save
+        expire_action :action => :index
         format.html { redirect_to(@toon, :notice => 'Toon was successfully created.') }
         format.xml  { render :xml => @toon, :status => :created, :location => @toon }
       else
@@ -70,6 +72,7 @@ class ToonsController < ApplicationController
 
     respond_to do |format|
       if @toon.update_attributes(params[:toon])
+        expire_action :action => :index
         format.html { redirect_to(@toon, :notice => 'Toon was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -85,7 +88,8 @@ class ToonsController < ApplicationController
     @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
 
     if (is_admin? || is_current_user?(@toon.id)) then
-    @toon.destroy
+      @toon.destroy
+      expire_action :action => :index
     end
 
     respond_to do |format|
