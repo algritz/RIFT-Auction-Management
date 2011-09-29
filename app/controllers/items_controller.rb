@@ -2,18 +2,15 @@ class ItemsController < ApplicationController
   before_filter :authenticate_admin
   caches_action :index, :layout => false
   caches_action :show, :layout => false
-  
   # GET /items
   # GET /items.xml
   def index
 
     if params[:search] != nil then
-      expire_action :action => :index
       @items = Item.search(params[:search], params[:page])
     else
       @items = Item.paginate(:page => params[:page], :conditions => ["rarity <>  ?", "Trash"], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey", :order => "description")
     end
-
 
     respond_to do |format|
       format.html # new.html.erb
