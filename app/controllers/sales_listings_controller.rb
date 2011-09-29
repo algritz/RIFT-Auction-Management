@@ -6,6 +6,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings.xml
   def index
     if params[:status] != nil then
+      expire_action :action => :index
       if params[:status] != "0" then
         @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
         :order => "items.description, sales_listings.updated_at desc",
@@ -16,6 +17,7 @@ class SalesListingsController < ApplicationController
         :conditions => ["user_id = ?", current_user[:id]])
       end
     else if params[:search] != nil then
+      expire_action :action => :index
         if params[:every_listings] == nil then
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ? and listing_statuses.description = ?", current_user[:id], "Ongoing"]).search(params[:search], params[:page])
         else

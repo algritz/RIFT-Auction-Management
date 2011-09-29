@@ -8,6 +8,7 @@ class CraftedItemsController < ApplicationController
     if params[:search] == nil then
       @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "name")
     else
+      expire_action :action => :index
       @crafted_items = CraftedItem.search(params[:search], params[:page])
     end
     respond_to do |format|
