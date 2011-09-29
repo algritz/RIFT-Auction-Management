@@ -1,12 +1,8 @@
 class SalesListingsController < ApplicationController
   before_filter :authenticate
-  caches_action :index, :layout => false
-  caches_action :show, :layout => false
-  
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
-    @stats = Rails.cache.stats.first.last
     if params[:status] != nil then
       if params[:status] != "0" then
         @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
@@ -93,7 +89,7 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
     respond_to do |format|
       if @sales_listing.save
-        expire_action :action => :index
+        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
       else
@@ -114,7 +110,7 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        expire_action :action => :index
+
         params[:sales_listing].each do |key, value|
           if key == "listing_status_id" then
             if value.to_i ==  @expired_listing.first.id then
@@ -139,6 +135,7 @@ class SalesListingsController < ApplicationController
           end
 
         end
+        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -153,8 +150,8 @@ class SalesListingsController < ApplicationController
   def destroy
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
     if (is_current_user?(@sales_listing.user_id)) then
-      @sales_listing.destroy
-      expire_action :action => :index
+    @sales_listing.destroy
+
     end
 
     respond_to do |format|
@@ -175,7 +172,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.user_id = current_user[:id]
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
-          expire_action :action => :index
+
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
@@ -227,7 +224,7 @@ class SalesListingsController < ApplicationController
 
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
-          expire_action :action => :index
+
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
@@ -259,7 +256,7 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-        expire_action :action => :index
+
         format.html {
           if params[:param] != nil then
             if params[:search] == nil then
@@ -294,7 +291,7 @@ class SalesListingsController < ApplicationController
 
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
-          expire_action :action => :index
+
           format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
           format.xml  { head :ok }
         else
@@ -327,7 +324,7 @@ class SalesListingsController < ApplicationController
 
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
-        expire_action :action => :index
+
         format.html { redirect_to(page_items_to_list_from_bank_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -347,7 +344,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @ongoing_listing.first.id
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
-          expire_action :action => :index
+
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then

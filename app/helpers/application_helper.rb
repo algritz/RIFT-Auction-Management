@@ -1,7 +1,7 @@
 module ApplicationHelper
   def getSourceDescription (id)
     if id != nil then
-    Source.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+      Source.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
     else
       "Unknown source"
     end
@@ -22,19 +22,19 @@ module ApplicationHelper
   def getListingStatusDescription(id)
     ListingStatus.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
   end
-  
+
   def getItemRarity(id)
     Item.find(id).rarity
   end
-  
+
   def getItemRequiredLevel(id)
     Item.find(id).item_level
   end
-  
+
   def getToonName(id)
     Toon.find(:first, :conditions => ["id = ?", id], :select =>["id, name"]).name
   end
-  
+
   def getSourceDescriptionForItemsToCraft (id)
     source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
     if source == nil then
@@ -79,7 +79,7 @@ module ApplicationHelper
   def calculateCraftingCost(id)
     if id != nil then
       item = Item.find(:first, :conditions => ["id = ?", id], :select => "id, is_crafted, itemkey")
-     if item.is_crafted then
+      if item.is_crafted then
         if CraftedItem.count(:id, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
           crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
           cost = 0
@@ -128,7 +128,7 @@ module ApplicationHelper
     expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
     auction = SalesListing.find(:first, :conditions => ["id = ?", id], :select => "id, listing_status_id, profit")
     if auction.listing_status_id == sold.id then
-      auction.profit
+    auction.profit
     end
   end
 
@@ -317,6 +317,10 @@ module ApplicationHelper
         end
       end
     end
+  end
+
+  def get_cache_stats
+    @stats = Rails.cache.stats.first.last
   end
 
 end

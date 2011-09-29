@@ -1,6 +1,6 @@
 class ToonsController < ApplicationController
-  caches_action :index, :layout => false
-  caches_action :show, :layout => false
+  
+  
   # GET /toons
   # GET /toons.xml
   def index
@@ -55,7 +55,7 @@ class ToonsController < ApplicationController
 
     respond_to do |format|
       if @toon.save
-        expire_action :action => :index
+        
         format.html { redirect_to(@toon, :notice => 'Toon was successfully created.') }
         format.xml  { render :xml => @toon, :status => :created, :location => @toon }
       else
@@ -72,7 +72,7 @@ class ToonsController < ApplicationController
 
     respond_to do |format|
       if @toon.update_attributes(params[:toon])
-        expire_action :action => :index
+        
         format.html { redirect_to(@toon, :notice => 'Toon was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -89,7 +89,7 @@ class ToonsController < ApplicationController
 
     if (is_admin? || is_current_user?(@toon.id)) then
       @toon.destroy
-      expire_action :action => :index
+      
     end
 
     respond_to do |format|

@@ -8,5 +8,24 @@
 <%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
 <%= link_to "Manage Users", users_path %> ::
 <%= link_to "Manage Account Creation Code", creation_codes_path %>
+<% get_cache_stats %>
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Cache hits:</td>
+    <td><%= @stats['get_hits'] %></td>
+  </tr>
+  <tr>
+    <td>Cache misses:</td>
+    <td><%= @stats['get_misses'] %></td>
+  </tr>
+  <tr>
+    <td>Cache flushes:</td>
+    <td><%= @stats['cmd_flush'] %></td>
+  </tr>
+</table> 
 <% end %>
 </p>

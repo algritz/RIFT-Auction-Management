@@ -1,7 +1,7 @@
 class CreationCodesController < ApplicationController
   before_filter :authenticate_admin
-  caches_action :index, :layout => false
-  caches_action :show, :layout => false
+  
+  
   # GET /creation_codes
   # GET /creation_codes.xml
   def index
@@ -48,7 +48,7 @@ class CreationCodesController < ApplicationController
 
     respond_to do |format|
       if @creation_code.save
-        expire_action :action => :index
+        
         format.html { redirect_to(@creation_code, :notice => 'Creation code was successfully created.') }
         format.xml  { render :xml => @creation_code, :status => :created, :location => @creation_code }
       else
@@ -65,7 +65,7 @@ class CreationCodesController < ApplicationController
 
     respond_to do |format|
       if @creation_code.update_attributes(params[:creation_code])
-        expire_action :action => :index
+        
         format.html { redirect_to(@creation_code, :notice => 'Creation code was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -80,7 +80,7 @@ class CreationCodesController < ApplicationController
   def destroy
     @creation_code = CreationCode.find(params[:id])
     @creation_code.destroy
-    expire_action :action => :index
+    
     respond_to do |format|
       format.html { redirect_to(creation_codes_url) }
       format.xml  { head :ok }

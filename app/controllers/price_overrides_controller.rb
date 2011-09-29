@@ -1,8 +1,8 @@
 class PriceOverridesController < ApplicationController
   before_filter :authenticate
 
-  caches_action :index, :layout => false
-  caches_action :show, :layout => false
+  
+  
   # GET /price_overrides
   # GET /price_overrides.xml
   def index
@@ -56,7 +56,7 @@ class PriceOverridesController < ApplicationController
     @items = Item.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @price_override.save
-        expire_action :action => :index
+        
         format.html { redirect_to(@price_override, :notice => 'Price override was successfully created.') }
         format.xml  { render :xml => @price_override, :status => :created, :location => @price_override }
       else
@@ -73,7 +73,7 @@ class PriceOverridesController < ApplicationController
 
     respond_to do |format|
       if @price_override.update_attributes(params[:price_override])
-        expire_action :action => :index
+        
         format.html { redirect_to(@price_override, :notice => 'Price override was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -88,7 +88,7 @@ class PriceOverridesController < ApplicationController
   def destroy
     @price_override = PriceOverride.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, user_id, price_per")
     @price_override.destroy
-    expire_action :action => :index
+    
     respond_to do |format|
       format.html { redirect_to(price_overrides_url) }
       format.xml  { head :ok }

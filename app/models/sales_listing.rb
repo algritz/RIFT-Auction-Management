@@ -19,7 +19,20 @@ class SalesListing < ActiveRecord::Base
            :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
 
+  def self.all_cached(user_id)
+    Rails.cache.fetch("SalesListing.#{user_id}.all") { all }
+  end
+
+  def self.sales_listing_cached(user_id)
+    Rails.cache.fetch("SalesListing.#{user_id}.id") { id }
+  end
+
+  def self.clear_all_cached(user_id)
+    Rails.cache.delete("SalesListing.#{user_id}.all")
+  end
+
 end
+
 # == Schema Information
 #
 # Table name: sales_listings
