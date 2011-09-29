@@ -105,4 +105,23 @@ Search term:
 	<% end %>
 </table>
 <br />
-<%= link_to 'New Sales listing', new_sales_listing_path %> 
+<%= link_to 'New Sales listing', new_sales_listing_path %>
+<br />
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Cache hits:</td>
+    <td><%= @stats['get_hits'] %></td>
+  </tr>
+  <tr>
+    <td>Cache misses:</td>
+    <td><%= @stats['get_misses'] %></td>
+  </tr>
+  <tr>
+    <td>Cache flushes:</td>
+    <td><%= @stats['cmd_flush'] %></td>
+  </tr>
+</table> 

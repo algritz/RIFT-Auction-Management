@@ -6,6 +6,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
+    @stats = Rails.cache.stats.first.last
     if params[:status] != nil then
       if params[:status] != "0" then
         @sales_listings = SalesListing.joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
