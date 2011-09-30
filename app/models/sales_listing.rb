@@ -20,7 +20,19 @@ class SalesListing < ActiveRecord::Base
   end
 
   def self.all_cached(user_id)
-    Rails.cache.fetch("SalesListing.#{user_id}.all") { all }
+    data = Rails.cache.fetch("SalesListing.#{user_id}.all") { all }
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all,
+      :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
+      Rails.cache.write("SalesListing.#{user_id}.all", data)
+    else
+    #  Rails.cache.delete("SalesListing.#{user_id}.all")
+    #   data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all,
+    #  :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
+    #  Rails.cache.write("SalesListing.#{user_id}.all", data)
+    p "data was already existing"
+    end
+    return data
   end
 
   def self.sales_listing_cached(user_id)

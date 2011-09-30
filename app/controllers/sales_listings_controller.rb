@@ -1,5 +1,6 @@
 class SalesListingsController < ApplicationController
   before_filter :authenticate
+  after_filter :get_cache_stats
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
@@ -20,8 +21,9 @@ class SalesListingsController < ApplicationController
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user[:id]]).search(params[:search], params[:page])
         end
       else
-        @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-        :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
+      # @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+      # :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
+        @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page], :order => "position, items.description, sales_listings.updated_at desc")
       end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")

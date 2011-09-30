@@ -318,9 +318,5 @@ module ApplicationHelper
       end
     end
   end
-
-  def get_cache_stats
-    @stats = Rails.cache.stats.first.last
-  end
-
+  
 end
