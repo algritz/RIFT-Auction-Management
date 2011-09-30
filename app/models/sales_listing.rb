@@ -19,28 +19,29 @@ class SalesListing < ActiveRecord::Base
            :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
 
-  def self.all_cached(user_id)
-    data = Rails.cache.fetch("SalesListing.#{user_id}.all") { all }
+  def self.cached_listing(listing_id)
+    data = Rails.cache.fetch("SalesListing.#{listing_id}") { all }
     if data == nil then
-      data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all,
-      :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
-      Rails.cache.write("SalesListing.#{user_id}.all", data)
+      data = SalesListing.find(:first, :conditions => ["id = ?", listing_id], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
+      Rails.cache.write("SalesListing.#{listing_id}", data)
     else
-    #  Rails.cache.delete("SalesListing.#{user_id}.all")
-    #   data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all,
-    #  :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
-    #  Rails.cache.write("SalesListing.#{user_id}.all", data)
-    p "data was already existing"
+    #data = Rails.cache.clear("SalesListing.#{user_id}.all")
+    #data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all,
+    #:conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id], :select => "sales_listings.id, item_id, stacksize, price, listing_status_id, is_undercut_price, is_tainted", :order => "listing_statuses.position, items.description, sales_listings.updated_at desc")
+    #Rails.cache.write("SalesListing.#{user_id}.all", data)
+    #data = Rails.cache.fetch("SalesListing.#{user_id}.all") { all }
+      p "data was already existing"
     end
     return data
   end
 
-  def self.sales_listing_cached(user_id)
-    Rails.cache.fetch("SalesListing.#{user_id}.id") { id }
+  def self.sales_listing_cached(listing_id)
+    Rails.cache.fetch("SalesListing.#{listing_id}.id") { id }
   end
 
   def self.clear_all_cached(user_id)
-    Rails.cache.delete("SalesListing.#{user_id}.all")
+    Rails.cache.clear("SalesListing.#{listing_id}")
+    p "cache cleared"
   end
 
 end

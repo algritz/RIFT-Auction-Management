@@ -8,7 +8,7 @@
 	<%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
 	<%= link_to "Manage Users", users_path %> ::
 	<%= link_to "Manage Account Creation Code", creation_codes_path %>
-	<% if @stats then %>
+	<% if @stats != nil then %>
 	<table>
 		<tr>
 			<th>Metric</th>

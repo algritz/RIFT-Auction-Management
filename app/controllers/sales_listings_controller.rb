@@ -1,6 +1,6 @@
 class SalesListingsController < ApplicationController
   before_filter :authenticate
-  after_filter :get_cache_stats
+  before_filter :get_cache_stats
   # GET /sales_listings
   # GET /sales_listings.xml
   def index
@@ -21,9 +21,8 @@ class SalesListingsController < ApplicationController
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user[:id]]).search(params[:search], params[:page])
         end
       else
-      # @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-      # :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
-        @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page], :order => "position, items.description, sales_listings.updated_at desc")
+       @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+       :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
       end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -36,7 +35,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1
   # GET /sales_listings/1.xml
   def show
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
+    @sales_listing = SalesListing.cached_listing(params[:id])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
@@ -71,7 +70,7 @@ class SalesListingsController < ApplicationController
     #@items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
-
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.user_id == current_user[:id] then
         format.html # show.html.erb
@@ -89,9 +88,9 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.new(params[:sales_listing])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.save
-        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
       else
@@ -110,9 +109,9 @@ class SalesListingsController < ApplicationController
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-
         params[:sales_listing].each do |key, value|
           if key == "listing_status_id" then
             if value.to_i ==  @expired_listing.first.id then
@@ -137,7 +136,6 @@ class SalesListingsController < ApplicationController
           end
 
         end
-        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -152,8 +150,8 @@ class SalesListingsController < ApplicationController
   def destroy
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
     if (is_current_user?(@sales_listing.user_id)) then
-    @sales_listing.destroy
-
+      @sales_listing.destroy
+      SalesListing.clear_all_cached(current_user[:id])
     end
 
     respond_to do |format|
@@ -172,9 +170,9 @@ class SalesListingsController < ApplicationController
       @sales_listing.profit = calculateProfit(params[:id])
       @sales_listing.listing_status_id = @sold_listing.first.id
       @sales_listing.user_id = current_user[:id]
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
-
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
@@ -218,15 +216,15 @@ class SalesListingsController < ApplicationController
         :is_undercut_price => lastIsUndercutPrice(@sales_listing),
         :user_id => current_user[:id])
 
-      @sales_listing.listing_status_id = @expired_listing.first.id
-      @sales_listing.relisted_status = true
-      @sales_listing.save
-      @sales_relisting.save
+        @sales_listing.listing_status_id = @expired_listing.first.id
+        @sales_listing.relisted_status = true
+        @sales_listing.save
+        @sales_relisting.save
+        SalesListing.clear_all_cached(current_user[:id])
       end
 
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
-
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
@@ -255,10 +253,9 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
 
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
-
         format.html {
           if params[:param] != nil then
             if params[:search] == nil then
@@ -284,16 +281,16 @@ class SalesListingsController < ApplicationController
 
   def mailed
     @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Mailed'])
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, listing_status_id")
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, listing_status_id, item_id, stacksize, deposit_cost, price")
     if @sales_listing.user_id == @current_user[:id] then
 
       @sales_listing.listing_status_id = @mailed_listing.first.id
       @sales_listing.save
       @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
-
+          Rails.cache.delete("SalesListing.#{current_user[:id]}.all")
           format.html { redirect_to(@sales_listing, :notice => 'Sales listing was successfully updated.') }
           format.xml  { head :ok }
         else
@@ -323,10 +320,9 @@ class SalesListingsController < ApplicationController
     end
     @sales_listing.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
-
         format.html { redirect_to(page_items_to_list_from_bank_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -344,20 +340,20 @@ class SalesListingsController < ApplicationController
       @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
 
       @sales_listing.listing_status_id = @ongoing_listing.first.id
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
-          format.html {
-            if params[:search] != nil then
-              if params[:every_listings] != nil then
-                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
-              else
-                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
-              end
+          if params[:search] != nil then
+            if params[:every_listings] != nil then
+              format.html { redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.') }
             else
-              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+              format.html { redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.') }
             end
-          }
+          else
+            format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
+          end
+
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
