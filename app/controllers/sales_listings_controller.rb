@@ -35,7 +35,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1
   # GET /sales_listings/1.xml
   def show
-    @sales_listing = SalesListing.cached_listing(params[:id])
+    @sales_listing = SalesListing.SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
