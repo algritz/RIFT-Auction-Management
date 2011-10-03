@@ -20,7 +20,7 @@
 		<th></th>
 	</tr>
 	<tr align="left">
-		<td><%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description),{}) %></td>
+		<td><%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @wanted_item.item_id),{}) %></td>
 		<td><%= f.select(:toon_id, options_from_collection_for_select(@toons, :id, :name, @wanted_item.toon_id),{}) %></td>
 		
 		<td><%= f.check_box :is_public %></td>

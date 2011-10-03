@@ -46,7 +46,7 @@ class WantedItemsController < ApplicationController
   def edit
     @wanted_item = WantedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, toon_id, item_id, price_per, is_public")
     @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger not in (?, ?) and rarity <> ? and source_id <> ?", false, "BindOnPickup", "BindOnEquip", "Trash", 10])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, user_id, name")
     respond_to do |format|
       if Toon.find(:all, :conditions => ["id = ?", @wanted_item.toon_id], :select => "id, user_id").first.user_id == current_user[:id] then
         format.html # show.html.erb
@@ -62,7 +62,7 @@ class WantedItemsController < ApplicationController
   def create
     @wanted_item = WantedItem.new(params[:wanted_item])
     @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["isaugmented = ? and soulboundtrigger not in (?, ?) and rarity <> ? and source_id <> ?", false, "BindOnPickup", "BindOnEquip", "Trash", 10])
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "user_id, name")
+    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, user_id, name")
     respond_to do |format|
       if @wanted_item.save
         
