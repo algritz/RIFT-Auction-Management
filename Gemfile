@@ -10,11 +10,9 @@ gem 'sqlite3'
 gem 'exception_notification'
 
 gem 'slim_scrooge'
-gem 'dalli'
 
 group :production do
   gem 'newrelic_rpm'
-  
 end
 
 group :test do
