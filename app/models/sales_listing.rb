@@ -18,6 +18,16 @@ class SalesListing < ActiveRecord::Base
            :joins => ("left join items on items.id = sales_listings.item_id"),
            :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
+  
+  def self.all_cached(user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.all_cached")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all, :select => "sales_listings.id, item_id, stacksize, price, listing_status_id, is_undercut_price, is_tainted", :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
+      logger.info data
+      Rails.cache.write("SalesListings.#{user_id}.all_cached", data)
+    end
+    return data
+  end
 
 end
 
