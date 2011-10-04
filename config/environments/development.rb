@@ -5,8 +5,7 @@ RIFTAuctionManagement::Application.configure do
 # every request.  This slows down response time but is perfect for development
 # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
-  config.cache_store = :dalli_store, 'localhost:11211', { :namespace => "RIFT-Auction-Management", :expires_in => 1.day, :compress => true, :socket_max_failures => 3,
-    :socket_failure_delay => 1.0 }
+  config.cache_store = :dalli_store, 'localhost:11211', { :namespace => "RIFT-Auction-Management", :expires_in => 1.day, :compress => true }
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
