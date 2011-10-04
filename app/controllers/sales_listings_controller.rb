@@ -66,7 +66,6 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1/edit
   def edit
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
-    #@items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
 
@@ -89,7 +88,6 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
     respond_to do |format|
       if @sales_listing.save
-        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
       else
@@ -135,7 +133,6 @@ class SalesListingsController < ApplicationController
           end
 
         end
-        SalesListing.clear_all_cached(current_user[:id])
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.') }
         format.xml  { head :ok }
       else
