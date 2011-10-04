@@ -36,7 +36,7 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1.xml
   def show
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+    @items = Item.all_cached_item
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @sales_listing.user_id == current_user[:id] then
@@ -53,7 +53,7 @@ class SalesListingsController < ApplicationController
   def new
     @sales_listing = SalesListing.new
 
-    @items = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
+    @items = Item.all_cached_item_to_list
     @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
 
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -109,6 +109,7 @@ class SalesListingsController < ApplicationController
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_cached_prices(params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -151,6 +152,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
     if (is_current_user?(@sales_listing.user_id)) then
       SalesListing.clear_all_cached(current_user[:id])
+      SalesListing.clear_cached_prices(params[:id])
     @sales_listing.destroy
     end
 
@@ -171,6 +173,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @sold_listing.first.id
       @sales_listing.user_id = current_user[:id]
       SalesListing.clear_all_cached(current_user[:id])
+      SalesListing.clear_cached_prices(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -223,6 +226,7 @@ class SalesListingsController < ApplicationController
       @sales_relisting.save
       end
       SalesListing.clear_all_cached(current_user[:id])
+      SalesListing.clear_cached_prices(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -344,6 +348,7 @@ class SalesListingsController < ApplicationController
 
       @sales_listing.listing_status_id = @ongoing_listing.first.id
       SalesListing.clear_all_cached(current_user[:id])
+      SalesListing.clear_cached_prices(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 

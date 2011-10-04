@@ -1,7 +1,5 @@
 class ListingStatusesController < ApplicationController
   before_filter :authenticate_admin
-  
-  
   # GET /listing_statuses
   # GET /listing_statuses.xml
   def index
@@ -46,7 +44,7 @@ class ListingStatusesController < ApplicationController
 
     respond_to do |format|
       if @listing_status.save
-        
+
         format.html { redirect_to(@listing_status, :notice => 'Listing status was successfully created.') }
         format.xml  { render :xml => @listing_status, :status => :created, :location => @listing_status }
       else
@@ -60,10 +58,11 @@ class ListingStatusesController < ApplicationController
   # PUT /listing_statuses/1.xml
   def update
     @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
-
+    ListingStatus.clear_cached(params[:id])
+    ListingStatus.clear_cached_from_description(@listing_status.description)
     respond_to do |format|
       if @listing_status.update_attributes(params[:listing_status])
-        
+
         format.html { redirect_to(@listing_status, :notice => 'Listing status was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,8 +76,9 @@ class ListingStatusesController < ApplicationController
   # DELETE /listing_statuses/1.xml
   def destroy
     @listing_status = ListingStatus.find(:first, :conditions => ["id = ?", params[:id]], :select => 'id, description, position, is_final', :order => 'description')
+    ListingStatus.clear_cached(params[:id])
+    ListingStatus.clear_cached_from_description(@listing_status.description)
     @listing_status.destroy
-    
     respond_to do |format|
       format.html { redirect_to(listing_statuses_url) }
       format.xml  { head :ok }

@@ -10,8 +10,54 @@ class Item < ActiveRecord::Base
              :order => 'source_id, description',
              :conditions => ['description like ?', "%#{search}%"], :order => "description"
   end
-end
 
+  def self.cached_item(item_id)
+    data = Rails.cache.fetch("Item.#{item_id}.cached_item")
+    if data == nil then
+      data = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, description")
+      Rails.cache.write("Item.#{item_id}.cached_item", data)
+    end
+    return data
+  end
+
+  def self.all_cached_item
+    data = Rails.cache.fetch("Item.all_cached_item")
+    if data == nil then
+      data = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+      Rails.cache.write("Item.all_cached_item", data)
+    end
+    return data
+  end
+
+  def self.all_cached_item_to_list
+    data = Rails.cache.fetch("Item.all_cached_item_to_list")
+    if data == nil then
+      data = Item.find(:all, :select => 'id, description', :order => 'description', :conditions => ["to_list = ? and isaugmented = ? and soulboundtrigger <> ? and rarity <>  ?", true, false, "BindOnPickup", "Trash"])
+      Rails.cache.write("Item.all_cached_item_to_list", data)
+    end
+    return data
+  end
+
+  def self.cached_item_from_key(item_key)
+    data = Rails.cache.fetch("Item.#{item_key}.cached_item_from_key")
+    if data == nil then
+      data = Item.find(:first, :conditions => ["itemkey = ?", item_key], :select => "id, description, itemkey")
+      Rails.cache.write("Item.#{item_key}.cached_item_from_key", data)
+    end
+    return data
+  end
+
+  def self.clear_cached(item_id)
+    Rails.cache.clear("Item.#{item_id}.cached_item")
+    self.clear_all_cached
+  end
+  
+  def self.clear_all_cached
+    Rails.cache.clear("Item.all_cached_item_to_list")
+    Rails.cache.clear("Item.all_cached_item")
+  end
+
+end
 
 # == Schema Information
 #

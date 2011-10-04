@@ -1,8 +1,5 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_admin
-  
-  
-  
   # GET /items
   # GET /items.xml
   def index
@@ -12,7 +9,6 @@ class ItemsController < ApplicationController
     else
       @items = Item.paginate(:page => params[:page], :conditions => ["rarity <>  ?", "Trash"], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey", :order => "description")
     end
-
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,7 +51,7 @@ class ItemsController < ApplicationController
     @source = Source.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @item.save
-        
+
         format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
@@ -70,9 +66,10 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
     @source = Source.find(:all, :select => "id, description", :order => "description")
+    Item.clear_cached(params[:id])
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        
+
         format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -87,7 +84,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
     @item.destroy
-    
+    Item.clear_cached(params[:id])
     respond_to do |format|
       format.html { redirect_to(items_url) }
       format.xml  { head :ok }

@@ -8,11 +8,11 @@ module ApplicationHelper
   end
 
   def getItemDescription (id)
-    item = Item.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+    item = Item.cached_item(id).description
   end
 
   def getItemDescriptionFromKey (itemkey)
-    item = Item.find(:first, :conditions => ["ItemKey = ?", itemkey], :select => "id, description, itemkey").description
+    item = Item.cached_item_from_key(itemkey).description
   end
 
   def getCompetitorStyleDescription (id)
@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def getListingStatusDescription(id)
-    ListingStatus.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+    ListingStatus.cached_listing_status(id).description
   end
 
   def getItemRarity(id)
@@ -124,8 +124,8 @@ module ApplicationHelper
   end
 
   def checkIfProfit(id)
-    sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
-    expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
+    sold = ListingStatus.cached_listing_status_from_description("Sold")
+    expired = ListingStatus.cached_listing_status_from_description("Expired")
     auction = SalesListing.find(:first, :conditions => ["id = ?", id], :select => "id, listing_status_id, profit")
     if auction.listing_status_id == sold.id then
     auction.profit
@@ -133,7 +133,7 @@ module ApplicationHelper
   end
 
   def calculateProfit(id)
-    price = SalesListing.find(id).price
+    price = SalesListing.cached_prices.price
     if price > 0 then
       ah_cut = (price * 0.05).to_i
       deposit_cost = SalesListing.find(id).deposit_cost
@@ -242,15 +242,15 @@ module ApplicationHelper
   end
 
   def is_final?(status_id)
-    ListingStatus.find(status_id).is_final
+    ListingStatus.cached_listing_status(status_id).is_final
   end
 
   def is_mailed?(status_id)
-    ListingStatus.find(status_id).description == 'Crafted'
+    ListingStatus.cached_listing_status(status_id).description == 'Crafted'
   end
 
   def is_ongoing?(status_id)
-    ListingStatus.find(status_id).description == 'Ongoing'
+    ListingStatus.cached_listing_status(status_id).description == 'Ongoing'
   end
 
   def sales_percentage_full_price(item_id)

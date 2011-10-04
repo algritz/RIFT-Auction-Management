@@ -27,7 +27,20 @@ class SalesListing < ActiveRecord::Base
     end
     return data
   end
-  
+
+  def self.cached_prices(listing_id)
+    data = Rails.cache.fetch("SalesListings.#{listing_id}.cached_prices")
+    if data == nil then
+      data = SalesListing.find(listing_id, :select => 'id, price')
+      Rails.cache.write("SalesListings.#{listing_id}.cached_prices", data)
+    end
+    return data
+  end
+
+  def self.clear_cached_prices(listing_id)
+    Rails.cache.clear("SalesListings.#{listing_id}.cached_prices")
+  end
+
   def self.clear_all_cached(user_id)
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
   end
