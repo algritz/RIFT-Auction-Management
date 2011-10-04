@@ -31,7 +31,7 @@ group :development do
   gem 'webrat'
   gem 'term-ansicolor'
   gem 'query_trace'
- 
+  gem 'thin'
 end
 
 # Use unicorn as the web server
