@@ -26,6 +26,12 @@
     <td>Cache flushes:</td>
     <td><%= @stats['cmd_flush'] %></td>
   </tr>
+  <tr>
+  	<th colspan="2">Usage:</th>
+  </tr>
+  <tr>
+  	<td colspan="2"><%= format("%.2f",(@stats["mem_used"].to_f / @stats["limit_maxbytes"].to_f)*100) %> % used</td>
+  </tr>
 </table> 
 <% end %>
 </p>
