@@ -42,7 +42,7 @@ class PageController < ApplicationController
 
         if @known_patterns.index(ids[:id]) != nil then
           @out_of_stock_list << ids[:id]
-          i+=1
+        i+=1
         end
       end
       if i==50 then
@@ -122,6 +122,7 @@ class PageController < ApplicationController
       listing.listing_status_id = mailed_listing.first[:id]
       listing.save
     end
+    SalesListing.clear_all_cached(current_user[:id])
     redirect_to sales_listings_path
 
   end

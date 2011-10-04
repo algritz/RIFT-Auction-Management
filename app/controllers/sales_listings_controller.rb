@@ -283,7 +283,7 @@ class SalesListingsController < ApplicationController
 
   def mailed
     @mailed_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Mailed'])
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, listing_status_id")
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, stacksize, deposit_cost, price, user_id, listing_status_id")
     if @sales_listing.user_id == @current_user[:id] then
 
       @sales_listing.listing_status_id = @mailed_listing.first.id
