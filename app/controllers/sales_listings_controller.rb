@@ -20,8 +20,8 @@ class SalesListingsController < ApplicationController
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user[:id]]).search(params[:search], params[:page])
         end
       else
-        #@sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
-        #:order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
+      #@sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
+      #:order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
         @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
       end
     end
@@ -87,6 +87,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.new(params[:sales_listing])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.save
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
@@ -107,6 +108,7 @@ class SalesListingsController < ApplicationController
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -148,8 +150,8 @@ class SalesListingsController < ApplicationController
   def destroy
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
     if (is_current_user?(@sales_listing.user_id)) then
+      SalesListing.clear_all_cached(current_user[:id])
     @sales_listing.destroy
-
     end
 
     respond_to do |format|
@@ -168,6 +170,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.profit = calculateProfit(params[:id])
       @sales_listing.listing_status_id = @sold_listing.first.id
       @sales_listing.user_id = current_user[:id]
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -219,7 +222,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.save
       @sales_relisting.save
       end
-
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -251,7 +254,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
 
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -286,7 +289,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @mailed_listing.first.id
       @sales_listing.save
       @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -319,7 +322,7 @@ class SalesListingsController < ApplicationController
     end
     @sales_listing.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-
+    SalesListing.clear_all_cached(current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -340,6 +343,7 @@ class SalesListingsController < ApplicationController
       @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
 
       @sales_listing.listing_status_id = @ongoing_listing.first.id
+      SalesListing.clear_all_cached(current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
