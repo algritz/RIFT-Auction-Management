@@ -28,7 +28,25 @@ class SalesListing < ActiveRecord::Base
     end
     return data
   end
-
+  
+   def self.ongoing_listing_count_cached_for_user(user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
+    if data == nil then
+      data = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", user_id])
+      Rails.cache.write("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user", data)
+    end
+    return data
+  end
+  
+  def self.active_auctions_cached_for_user(item_id, sold_id, expired_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.active_auctions_cached_for_user")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", item_id, sold_id, expired_id, user_id])
+      Rails.cache.write("SalesListings.#{user_id}.active_auctions_cached_for_user", data)
+    end
+    return data
+  end
+  
   def self.all_cached(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.all_cached")
     if data == nil then
@@ -53,6 +71,8 @@ class SalesListing < ActiveRecord::Base
 
   def self.clear_all_cached(user_id)
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
+    Rails.cache.clear("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
+    Rails.cache.clear("SalesListings.#{user_id}.active_auctions_cached_for_user")
   end
   
   def self.clear_average_profit_cached_for_user(item_id, user_id)

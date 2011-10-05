@@ -14,7 +14,7 @@ class PageController < ApplicationController
       end
     end
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
-    ongoing_item_ids = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", current_user[:id]])
+    ongoing_item_ids = SalesListing.ongoing_listing_count_cached_for_user(current_user[:id])
     ongoing_item_ids_list = [0]
     ongoing_item_ids.each do |id|
       ongoing_item_ids_list << id.item_id
@@ -32,12 +32,12 @@ class PageController < ApplicationController
         item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list]).search(params[:search], params[:page])
       end
     end
-    sold = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold']).first
-    expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired']).first
+    sold = ListingStatus.cached_listing_status_from_description("Sold")
+    expired = ListingStatus.cached_listing_status_from_description("Expired")
     @out_of_stock_list = []
     i = 0
     item_ids.each do |ids|
-      active_autions = SalesListing.count(:id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", ids.id, sold.id, expired.id, current_user[:id]])
+      active_autions = SalesListing.active_auctions_cached_for_user(ids.id, sold.id, expired.id, current_user[:id])
       if active_autions == 0 then
 
         if @known_patterns.index(ids[:id]) != nil then
