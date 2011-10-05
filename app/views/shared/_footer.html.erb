@@ -1,40 +1,50 @@
 <p>
-<!-- Admin actions -->
-<% if is_admin? %>
-<%= link_to "Manage Items", items_path %> :: 
-<%= link_to "Manage Crafted Items", crafted_items_path %> :: 
-<%= link_to "Manage Listing Statuses", listing_statuses_path %> ::
-<%= link_to "Manage Sources", sources_path %> ::
-<%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
-<%= link_to "Manage Users", users_path %> ::
-<%= link_to "Manage Account Creation Code", creation_codes_path %>
-<% get_cache_stats %>
-<table>
-  <tr>
-    <th>Metric</th>
-    <th>Value</th>
-  </tr>
-  <tr>
-    <td>Cache hits:</td>
-    <td><%= @stats['get_hits'] %></td>
-  </tr>
-  <tr>
-    <td>Cache misses:</td>
-    <td><%= @stats['get_misses'] %></td>
-  </tr>
-  <tr>
-    <td>Cache flushes:</td>
-    <td><%= @stats['cmd_flush'] %></td>
-  </tr>
-  <tr>
-  	<th colspan="2">Usage:</th>
-  </tr>
-  <% @stats.each do |key, value| %>
-  <tr>
-  	<td><%= key %></td>
-  	<td><%= value %></td>
-  </tr>
-  <% end %>
-</table> 
-<% end %>
+	<!-- Admin actions -->
+	<% if is_admin? %>
+	<%= link_to "Manage Items", items_path %> ::
+	<%= link_to "Manage Crafted Items", crafted_items_path %> ::
+	<%= link_to "Manage Listing Statuses", listing_statuses_path %> ::
+	<%= link_to "Manage Sources", sources_path %> ::
+	<%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
+	<%= link_to "Manage Users", users_path %> ::
+	<%= link_to "Manage Account Creation Code", creation_codes_path %>
+	<% get_cache_stats %>
+	<table>
+		<tr>
+			<th>Metric</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<td>Cache hits:</td>
+			<td><%= @stats['get_hits'] %></td>
+		</tr>
+		<tr>
+			<td>Cache misses:</td>
+			<td><%= @stats['get_misses'] %></td>
+		</tr>
+		<tr>
+			<td>Cache flushes:</td>
+			<td><%= @stats['cmd_flush'] %></td>
+		</tr>
+		<tr>
+			<td>Cache size:</td>
+			<td><%=
+ if (@stats['bytes'] != nil) then
+amount = @stats["bytes"]
+amount = (amount.to_f / 1024 )
+amount = amount / 1024
+end
+%> </td>
+		</tr>
+		<tr>
+			<th colspan="2">Usage:</th>
+		</tr>
+		<% @stats.each do |key, value| %>
+		<tr>
+			<td><%= key %></td>
+			<td><%= value %></td>
+		</tr>
+		<% end %>
+	</table>
+	<% end %>
 </p>
