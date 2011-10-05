@@ -42,8 +42,7 @@ module PageHelper
   end
   
   def average_profit(id)
-    profit = SalesListing.average(:profit, :conditions => ["item_id = ? and user_id = ?", id, @current_user.id])
-    profit = formatPrice(profit.to_i)
+    profit = formatPrice(SalesListing.average_profit_cached_for_user(id, @current_user.id).to_i)
   end
   
   def market_confidence(item)

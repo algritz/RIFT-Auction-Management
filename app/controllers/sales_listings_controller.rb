@@ -88,6 +88,7 @@ class SalesListingsController < ApplicationController
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
     SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     respond_to do |format|
       if @sales_listing.save
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
@@ -110,6 +111,7 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     SalesListing.clear_all_cached(current_user[:id])
     SalesListing.clear_cached_prices(params[:id])
+    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -153,6 +155,7 @@ class SalesListingsController < ApplicationController
     if (is_current_user?(@sales_listing.user_id)) then
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     @sales_listing.destroy
     end
 
@@ -174,6 +177,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.user_id = current_user[:id]
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -227,6 +231,7 @@ class SalesListingsController < ApplicationController
       end
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -255,10 +260,12 @@ class SalesListingsController < ApplicationController
 
   def crafted
     @crafted_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Crafted'])
-    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut_price => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
 
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
+    Item.clear_cached_item_source_description(params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -294,6 +301,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.save
       @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
       SalesListing.clear_all_cached(current_user[:id])
+      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -327,6 +335,7 @@ class SalesListingsController < ApplicationController
     @sales_listing.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -349,6 +358,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @ongoing_listing.first.id
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 

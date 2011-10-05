@@ -36,12 +36,16 @@ module ApplicationHelper
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id])
+    source = Rails.cache.fetch("ItemToCraft.#{id}.cached_item_source_description")
     if source == nil then
-      source = "Source Unclear"
-    else
-    source = source.required_skill
+      source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", id], :select => "crafted_items.id, source_id, required_skill")
+      if source == nil then
+        source = "Source Unclear"
+      else
+        Rails.cache.write("ItemToCraft.#{id}.cached_item_source_description", source)
+      end
     end
+    return source.required_skill
   end
 
   def isNewRow(someID)

@@ -19,6 +19,16 @@ class SalesListing < ActiveRecord::Base
            :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
 
+  ## cache section, series of handlers related to cache in order to help performance
+  def self.average_profit_cached_for_user(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
+    if data == nil then
+      data = SalesListing.average(:profit, :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
+      Rails.cache.write("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user", data)
+    end
+    return data
+  end
+
   def self.all_cached(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.all_cached")
     if data == nil then
@@ -44,7 +54,11 @@ class SalesListing < ActiveRecord::Base
   def self.clear_all_cached(user_id)
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
   end
-
+  
+  def self.clear_average_profit_cached_for_user(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
+  end
+  
 end
 
 # == Schema Information

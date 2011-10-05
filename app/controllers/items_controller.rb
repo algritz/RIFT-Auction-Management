@@ -67,6 +67,7 @@ class ItemsController < ApplicationController
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
     @source = Source.find(:all, :select => "id, description", :order => "description")
     Item.clear_cached(params[:id])
+    Item.clear_cached_item_source_description(params[:id])
     respond_to do |format|
       if @item.update_attributes(params[:item])
 

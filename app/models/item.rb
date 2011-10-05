@@ -49,9 +49,15 @@ class Item < ActiveRecord::Base
 
   def self.clear_cached(item_id)
     Rails.cache.clear("Item.#{item_id}.cached_item")
+    Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
     self.clear_all_cached
   end
   
+  ## the reason why it is listed a second time is that I want to clear it from the cache for crafted item if its not needed
+  def self.clear_cached_item_source_description(item_id)
+    Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
+  end
+
   def self.clear_all_cached
     Rails.cache.clear("Item.all_cached_item_to_list")
     Rails.cache.clear("Item.all_cached_item")
