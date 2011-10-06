@@ -1,26 +1,26 @@
 module ApplicationHelper
-  def getSourceDescription (id)
-    if id != nil then
-      Source.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+  def getSourceDescription (source_id)
+    if source_id != nil then
+    Source.cached_source(source_id).description
     else
     "Unknown source"
     end
   end
 
-  def getItemDescription (id)
-    item = Item.cached_item(id).description
+  def getItemDescription (item_id)
+    item = Item.cached_item(item_id).description
   end
 
   def getItemDescriptionFromKey (itemkey)
     item = Item.cached_item_from_key(itemkey).description
   end
 
-  def getCompetitorStyleDescription (id)
-    CompetitorStyle.find(:first, :conditions => ["id = ?", id], :select => "id, description").description
+  def getCompetitorStyleDescription (style_id)
+    CompetitorStyle.cached_competitor_style(style_id).description
   end
 
-  def getListingStatusDescription(id)
-    ListingStatus.cached_listing_status(id).description
+  def getListingStatusDescription(status_id)
+    ListingStatus.cached_listing_status(status_id).description
   end
 
   def getItemRarity(item_id)
@@ -148,9 +148,9 @@ module ApplicationHelper
   end
 
   def averageSalesPrice(item_id)
-    if id != nil then
+    if item_id != nil then
       sold = ListingStatus.cached_listing_status_from_description('Sold')
-      price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, id, false, current_user.id])
+      price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, item_id, false, current_user.id])
     return price.to_i
     end
   end
@@ -158,7 +158,7 @@ module ApplicationHelper
   # this method is also present in SalesListing controller in the private method section, so any bug found
   # in this block is likely to happen over there
   def lastSalesPrice(item_id)
-    if id != nil then
+    if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description('Sold')
       expired = ListingStatus.cached_listing_status_from_description('Expired')
       sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
@@ -230,7 +230,7 @@ module ApplicationHelper
   end
 
   def lastListings(item_id)
-    if id != nil then
+    if item_id != nil then
       sold = ListingStatus.cached_listing_status_from_description("Sold")
       last_sold = SalesListing.find(:first, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, item_id, false, current_user.id], :order => "updated_at desc", :select => "id, item_id, user_id, is_undercut_price, listing_status_id, updated_at")
       if last_sold != nil then

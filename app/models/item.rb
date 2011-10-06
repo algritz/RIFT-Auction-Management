@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   @@per_page = 20
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
-             :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey',
+             :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey, rarity',
              :order => 'source_id, description',
              :conditions => ['description like ?', "%#{search}%"], :order => "description"
   end
@@ -14,7 +14,7 @@ class Item < ActiveRecord::Base
   def self.cached_item(item_id)
     data = Rails.cache.fetch("Item.#{item_id}.cached_item")
     if data == nil then
-      data = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, description")
+      data = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
       Rails.cache.write("Item.#{item_id}.cached_item", data)
     end
     return data
@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
   def self.all_cached_item
     data = Rails.cache.fetch("Item.all_cached_item")
     if data == nil then
-      data = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description')
+      data = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey, rarity', :order => 'description')
       Rails.cache.write("Item.all_cached_item", data)
     end
     return data

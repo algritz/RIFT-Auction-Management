@@ -1,11 +1,9 @@
 class SourcesController < ApplicationController
   before_filter :authenticate_admin
-  
-  
   # GET /sources
   # GET /sources.xml
   def index
-    @sources = Source.find(:all, :select => "id, description, crafting_allowed", :order => "description")
+    @sources = Source.cached_all_sources
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +14,7 @@ class SourcesController < ApplicationController
   # GET /sources/1
   # GET /sources/1.xml
   def show
-    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
+    @source = Source.cached_source(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,17 +35,17 @@ class SourcesController < ApplicationController
 
   # GET /sources/1/edit
   def edit
-    @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
+    @source = Source.cached_source(params[:id])
   end
 
   # POST /sources
   # POST /sources.xml
   def create
     @source = Source.new(params[:source])
-
+    Source.clear_cached_all_sources
     respond_to do |format|
       if @source.save
-        
+
         format.html {  redirect_to(@source, :notice => 'Source was successfully created.') }
         format.xml  { render :xml => @source, :status => :created, :location => @source }
       else
@@ -61,10 +59,11 @@ class SourcesController < ApplicationController
   # PUT /sources/1.xml
   def update
     @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
-
+    Source.clear_cached_source(params[:id])
+    Source.clear_cached_all_sources
     respond_to do |format|
       if @source.update_attributes(params[:source])
-        
+
         format.html { redirect_to(@source, :notice => 'Source was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -78,8 +77,10 @@ class SourcesController < ApplicationController
   # DELETE /sources/1.xml
   def destroy
     @source = Source.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, crafting_allowed")
+    Source.clear_cached_source(params[:id])
+    Source.clear_cached_all_sources
     @source.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to(sources_url) }
       format.xml  { head :ok }

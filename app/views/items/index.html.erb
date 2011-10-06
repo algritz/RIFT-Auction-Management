@@ -13,6 +13,7 @@ Search term:
 		<th align="right">Sells from vendor for</th>
 		<th align="right">Vendor buys for</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;">Source</th>
+		<th>Rarity</th>
 		<th colspan="2" align="center">Only active listing</th>
 		<th style="padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:0px;" colspan="3" align="center">Actions</th>
 	</tr>
@@ -24,6 +25,7 @@ Search term:
 		<td align="right"><%= formatPrice(item.vendor_selling_price) %></td>
 		<td align="right"><%= formatPrice(item.vendor_buying_price) %></td>
 		<td><%= item.source_id!=nil ? getSourceDescription(item.source_id): item.source_id %></td>
+		<td><%= item.rarity %></td>
 		<td><% if get_single_auction_id(item.id) then %><%= link_to 'Expired', expired_sales_listing_path(get_single_auction_id(item.id)), :confirm => "Are you sure to list #{getItemDescription(item.id)} as (Expired)?" %> <% end %></td>
 		<td><% if get_single_auction_id(item.id) then %><%= link_to 'Sold', sold_sales_listing_path(get_single_auction_id(item.id)), :confirm => "Are you sure to list #{getItemDescription(item.id)} as (Sold)?" %> <% end %></td>
 		<td><%= link_to 'Show', item %></td>

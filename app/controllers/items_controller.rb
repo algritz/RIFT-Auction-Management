@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     if params[:search] != nil then
       @items = Item.search(params[:search], params[:page])
     else
-      @items = Item.paginate(:page => params[:page], :conditions => ["rarity <>  ?", "Trash"], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey", :order => "description")
+      @items = Item.all_cached_item.paginate(:page => params[:page])
     end
 
     respond_to do |format|
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.xml
   def show
-    @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
+    @item = Item.cached_item(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @source = Source.find(:all, :select => "id, description", :order => "description")
+    Item.clear_all_cached
     respond_to do |format|
       if @item.save
 
@@ -68,6 +69,7 @@ class ItemsController < ApplicationController
     @source = Source.find(:all, :select => "id, description", :order => "description")
     Item.clear_cached(params[:id])
     Item.clear_cached_item_source_description(params[:id])
+    Item.clear_all_cached
     respond_to do |format|
       if @item.update_attributes(params[:item])
 
@@ -86,6 +88,7 @@ class ItemsController < ApplicationController
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
     @item.destroy
     Item.clear_cached(params[:id])
+    Item.clear_all_cached
     respond_to do |format|
       format.html { redirect_to(items_url) }
       format.xml  { head :ok }
