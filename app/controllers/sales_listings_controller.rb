@@ -432,14 +432,14 @@ class SalesListingsController < ApplicationController
   end
 
   def lastDepositCost(item_id)
-    if id != nil then
+    if item_id != nil then
       SalesListing.maximum('deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
     end
   end
 
   # this method is also present in the application helper, so any bug found there is likely to happen here
   def lastIsUndercutPrice(item_id)
-    if id != nil then
+    if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
       expired = ListingStatus.cached_listing_status_from_description('Expired')
       sold_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user[:id]])
@@ -491,9 +491,9 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def calculateCraftingCost(id)
-    if id != nil then
-      item = Item.find(id)
+  def calculateCraftingCost(item_id)
+    if item_id != nil then
+      item = Item.find(item_id)
 
       if item.is_crafted then
         if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
@@ -514,13 +514,13 @@ class SalesListingsController < ApplicationController
         return "no pattern defined yet for a sub-component"
         end
       else
-      return calculateBuyingCost(id)
+      return calculateBuyingCost(item_id)
       end
     end
   end
 
-  def calculateBuyingCost(id)
-    item = Item.find(id)
+  def calculateBuyingCost(item_id)
+    item = Item.find(item_id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
     override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id, user_id, item_id, price_per")
@@ -539,8 +539,8 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def calculateProfit(id)
-    listing = SalesListing.find(:first, :conditions => ["id = ?", id], :select => "id, price, stacksize, item_id, deposit_cost")
+  def calculateProfit(item_id)
+    listing = SalesListing.find(:first, :conditions => ["id = ?", iditem_id, :select => "id, price, stacksize, item_id, deposit_cost")
     price_per = listing.price
     stacksize = listing.stacksize
 
