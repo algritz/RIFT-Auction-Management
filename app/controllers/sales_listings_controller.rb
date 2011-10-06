@@ -22,7 +22,7 @@ class SalesListingsController < ApplicationController
       else
       #@sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").paginate(:page => params[:page],
       #:order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, current_user[:id]])
-        @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
+      @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
       end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -111,7 +111,9 @@ class SalesListingsController < ApplicationController
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
     SalesListing.clear_all_cached(current_user[:id])
     SalesListing.clear_cached_prices(params[:id])
+    SalesListing.clear_cached_profit(params[:id])
     SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
+
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -119,20 +121,20 @@ class SalesListingsController < ApplicationController
           if key == "listing_status_id" then
             if value.to_i ==  @expired_listing.first.id then
               if @sales_listing.relisted_status != true then
-                @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
-                :stacksize => @sales_listing.stacksize,
-                :deposit_cost => @sales_listing.deposit_cost,
-                :listing_status_id => @inventory_listing.first.id,
-                :price => lastSalesPrice(@sales_listing.item_id),
-                :is_undercut_price => @sales_listing.is_undercut_price,
-                :user_id => current_user[:id])
+              @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
+              :stacksize => @sales_listing.stacksize,
+              :deposit_cost => @sales_listing.deposit_cost,
+              :listing_status_id => @inventory_listing.first.id,
+              :price => lastSalesPrice(@sales_listing.item_id),
+              :is_undercut_price => @sales_listing.is_undercut_price,
+              :user_id => current_user[:id])
               @sales_relisting.listing_status_id = @inventory_listing.first.id
               @sales_listing.relisted_status = true
               @sales_listing.save
               @sales_relisting.save
               end
             else if value.to_i ==  @sold_listing.first.id then
-                @sales_listing.profit = calculateProfit(params[:id])
+              @sales_listing.profit = calculateProfit(params[:id])
               @sales_listing.save
               end
             end
@@ -153,9 +155,10 @@ class SalesListingsController < ApplicationController
   def destroy
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
     if (is_current_user?(@sales_listing.user_id)) then
-      SalesListing.clear_all_cached(current_user[:id])
-      SalesListing.clear_cached_prices(params[:id])
-      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
+    SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_cached_prices(params[:id])
+    SalesListing.clear_cached_profit(params[:id])
+    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     @sales_listing.destroy
     end
 
@@ -177,6 +180,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.user_id = current_user[:id]
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_cached_profit(params[:id])
       SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
@@ -184,12 +188,12 @@ class SalesListingsController < ApplicationController
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
-                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
               else
-                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
               end
             else
-              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
             end
           }
           format.xml  { head :ok }
@@ -199,7 +203,7 @@ class SalesListingsController < ApplicationController
         end
       end
     else
-      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
+    redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
@@ -216,13 +220,13 @@ class SalesListingsController < ApplicationController
       :conditions => ["description = ?", 'In Inventory'])
       if @sales_listing.relisted_status != true then
 
-        @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
-        :stacksize => @sales_listing.stacksize,
-        :deposit_cost => @sales_listing.deposit_cost,
-        :listing_status_id => @inventory_listing.first.id,
-        :price => lastSalesPrice(@sales_listing.item_id),
-        :is_undercut_price => lastIsUndercutPrice(@sales_listing),
-        :user_id => current_user[:id])
+      @sales_relisting = SalesListing.new(:item_id => @sales_listing.item_id,
+      :stacksize => @sales_listing.stacksize,
+      :deposit_cost => @sales_listing.deposit_cost,
+      :listing_status_id => @inventory_listing.first.id,
+      :price => lastSalesPrice(@sales_listing.item_id),
+      :is_undercut_price => lastIsUndercutPrice(@sales_listing),
+      :user_id => current_user[:id])
 
       @sales_listing.listing_status_id = @expired_listing.first.id
       @sales_listing.relisted_status = true
@@ -231,6 +235,7 @@ class SalesListingsController < ApplicationController
       end
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_cached_profit(params[:id])
       SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
@@ -238,12 +243,12 @@ class SalesListingsController < ApplicationController
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
-                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
               else
-                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
               end
             else
-              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
             end
           }
           format.xml  { head :ok }
@@ -254,7 +259,7 @@ class SalesListingsController < ApplicationController
         end
       end
     else
-      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
+    redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
@@ -272,15 +277,15 @@ class SalesListingsController < ApplicationController
         format.html {
           if params[:param] != nil then
             if params[:search] == nil then
-              redirect_to(page_items_to_craft_path+"?param="+params[:param], :notice => 'Sales listing was successfully updated.')
+            redirect_to(page_items_to_craft_path+"?param="+params[:param], :notice => 'Sales listing was successfully updated.')
             else
-              redirect_to(page_items_to_craft_path+"?param="+params[:param]+"&search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            redirect_to(page_items_to_craft_path+"?param="+params[:param]+"&search="+params[:search], :notice => 'Sales listing was successfully updated.')
             end
           else
             if params[:search] == nil then
-              redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.')
+            redirect_to(page_items_to_craft_path, :notice => 'Sales listing was successfully updated.')
             else
-              redirect_to(page_items_to_craft_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+            redirect_to(page_items_to_craft_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
             end
           end
         }
@@ -313,7 +318,7 @@ class SalesListingsController < ApplicationController
         end
       end
     else
-      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
+    redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
@@ -323,12 +328,12 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(:all, :select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank]).first
 
     if @sales_listing.stacksize == 1 then
-      @sales_listing.listing_status_id = @inventory_listing.first.id
-      @sales_listing.is_undercut_price = lastIsUndercutPrice(params[:id])
-      @sales_listing.deposit_cost = lastDepositCost(params[:id])
-      @sales_listing.price = lastSalesPrice(params[:id])
+    @sales_listing.listing_status_id = @inventory_listing.first.id
+    @sales_listing.is_undercut_price = lastIsUndercutPrice(params[:id])
+    @sales_listing.deposit_cost = lastDepositCost(params[:id])
+    @sales_listing.price = lastSalesPrice(params[:id])
     else
-      @sales_relisting = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @inventory_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_relisting = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @inventory_listing.first.id, :price => lastSalesPrice(params[:id]))
     @sales_listing.stacksize = @sales_listing.stacksize - 1
     @sales_relisting.save
     end
@@ -358,6 +363,7 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @ongoing_listing.first.id
       SalesListing.clear_all_cached(current_user[:id])
       SalesListing.clear_cached_prices(params[:id])
+      SalesListing.clear_cached_profit(params[:id])
       SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
@@ -365,12 +371,12 @@ class SalesListingsController < ApplicationController
           format.html {
             if params[:search] != nil then
               if params[:every_listings] != nil then
-                redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search]+"&every_listings="+params[:every_listings], :notice => 'Sales listing was successfully updated.')
               else
-                redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
+              redirect_to(sales_listings_path+"?search="+params[:search], :notice => 'Sales listing was successfully updated.')
               end
             else
-              redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
+            redirect_to(sales_listings_path, :notice => 'Sales listing was successfully updated.')
             end
           }
           format.xml  { head :ok }
@@ -380,7 +386,7 @@ class SalesListingsController < ApplicationController
         end
       end
     else
-      redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
+    redirect_to(signin_path, :notice => 'You can only edit your own sales listings')
     end
   end
 
@@ -389,13 +395,13 @@ class SalesListingsController < ApplicationController
 
   # this method is also present in application_helper, so any bug found
   # in this block is likely to happen over there
-  def lastSalesPrice(id)
+  def lastSalesPrice(item_id)
     if id != nil then
-      sold_status = ListingStatus.find(:first, :conditions => ["description = ?", 'Sold'], :select => "id, description")
-      expired = ListingStatus.find(:first, :conditions => ["description = ?", 'Expired'], :select => "id, description")
-      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
-      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
-      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      sold_status = ListingStatus.cached_listing_status_from_description('Sold')
+      expired = ListingStatus.cached_listing_status_from_description('Expired')
+      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, item_id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
+      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
       if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
@@ -404,9 +410,9 @@ class SalesListingsController < ApplicationController
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, id, false, last_sold_date.updated_at, current_user.id] )
+            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, item_id, false, last_sold_date.updated_at, current_user.id] )
           else
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id] )
+            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id] )
           end
           if @number_of_expired.modulo(5) == 0 then
           price = (expired_listing.price * 0.97).round
@@ -414,7 +420,7 @@ class SalesListingsController < ApplicationController
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
+          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -425,21 +431,21 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def lastDepositCost(id)
+  def lastDepositCost(item_id)
     if id != nil then
-      SalesListing.maximum('deposit_cost', :conditions => ["item_id = ? and user_id = ?", id, current_user[:id]]).to_i
+      SalesListing.maximum('deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
     end
   end
 
   # this method is also present in the application helper, so any bug found there is likely to happen here
-  def lastIsUndercutPrice(id)
+  def lastIsUndercutPrice(item_id)
     if id != nil then
-      sold_status = ListingStatus.find(:all, :conditions => ["description = ?", 'Sold'], :select => "id, description").first
-      expired = ListingStatus.find(:all, :conditions => ["description = ?", 'Expired'], :select => "id, description").first
-      sold_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, false, current_user[:id]])
-      expired_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, false, current_user[:id]])
-      sold_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, id, true, current_user[:id]])
-      expired_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, id, true, current_user[:id]])
+      sold_status = ListingStatus.cached_listing_status_from_description("Sold")
+      expired = ListingStatus.cached_listing_status_from_description('Expired')
+      sold_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user[:id]])
+      expired_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user[:id]])
+      sold_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, true, current_user[:id]])
+      expired_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, true, current_user[:id]])
 
       if sold_not_undercut > 0 then
       is_undercut_price = false
@@ -500,15 +506,15 @@ class SalesListingsController < ApplicationController
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then
             cost += total_material_cost
             else
-              return "no pattern defined yet for a sub-component"
+            return "no pattern defined yet for a sub-component"
             end
           end
         return cost
         else
-          return "no pattern defined yet for a sub-component"
+        return "no pattern defined yet for a sub-component"
         end
       else
-        return calculateBuyingCost(id)
+      return calculateBuyingCost(id)
       end
     end
   end
@@ -526,7 +532,7 @@ class SalesListingsController < ApplicationController
       else if (buying_price != nil) then
         return buying_price
         else
-          return "No price defined for item"
+        return "No price defined for item"
 
         end
       end
@@ -540,9 +546,9 @@ class SalesListingsController < ApplicationController
 
     price = price_per * stacksize
     if price > 0 then
-      ah_cut = (price * 0.05).to_i
-      deposit_cost = listing.deposit_cost
-      minimumCost = minimum_sales_price(listing.item_id)
+    ah_cut = (price * 0.05).to_i
+    deposit_cost = listing.deposit_cost
+    minimumCost = minimum_sales_price(listing.item_id)
     profit = ((price + deposit_cost) - (minimumCost + ah_cut))
     return profit
     end

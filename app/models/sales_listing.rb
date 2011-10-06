@@ -15,8 +15,8 @@ class SalesListing < ActiveRecord::Base
   @@per_page = 20
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
-           :joins => ("left join items on items.id = sales_listings.item_id"),
-           :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
+    :joins => ("left join items on items.id = sales_listings.item_id"),
+    :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
 
   ## cache section, series of handlers related to cache in order to help performance
@@ -24,34 +24,34 @@ class SalesListing < ActiveRecord::Base
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
     if data == nil then
       data = SalesListing.average(:profit, :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
-      Rails.cache.write("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user", data)
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user", data)
     end
     return data
   end
-  
-   def self.ongoing_listing_count_cached_for_user(user_id)
+
+  def self.ongoing_listing_count_cached_for_user(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     if data == nil then
       data = SalesListing.find_by_sql(["select distinct item_id from sales_listings where user_id = ? and listing_status_id not in (5,1)", user_id])
-      Rails.cache.write("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user", data)
+    Rails.cache.write("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user", data)
     end
     return data
   end
-  
+
   def self.active_auctions_cached_for_user(item_id, sold_id, expired_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.active_auctions_cached_for_user")
     if data == nil then
       data = SalesListing.count(:id, :conditions => ["item_id = ? and listing_status_id not in (?, ?) and user_id = ?", item_id, sold_id, expired_id, user_id])
-      Rails.cache.write("SalesListings.#{user_id}.active_auctions_cached_for_user", data)
+    Rails.cache.write("SalesListings.#{user_id}.active_auctions_cached_for_user", data)
     end
     return data
   end
-  
+
   def self.all_cached(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.all_cached")
     if data == nil then
       data = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").find(:all, :select => "sales_listings.id, item_id, stacksize, price, listing_status_id, is_undercut_price, is_tainted", :order => "position, items.description, sales_listings.updated_at desc", :conditions => ["listing_statuses.is_final = ? and user_id = ?", false, user_id])
-      Rails.cache.write("SalesListings.#{user_id}.all_cached", data)
+    Rails.cache.write("SalesListings.#{user_id}.all_cached", data)
     end
     return data
   end
@@ -59,8 +59,17 @@ class SalesListing < ActiveRecord::Base
   def self.cached_prices(listing_id)
     data = Rails.cache.fetch("SalesListings.#{listing_id}.cached_prices")
     if data == nil then
-      data = SalesListing.find(listing_id, :select => 'id, price')
-      Rails.cache.write("SalesListings.#{listing_id}.cached_prices", data)
+    data = SalesListing.find(listing_id, :select => 'id, price')
+    Rails.cache.write("SalesListings.#{listing_id}.cached_prices", data)
+    end
+    return data
+  end
+
+  def self.cached_profit(listing_id)
+    data = Rails.cache.fetch("SalesListings.#{listing_id}.cached_profit")
+    if data == nil then
+      data = SalesListing.find(:first, :conditions => ["id = ?", listing_id], :select => "id, listing_status_id, profit")
+    Rails.cache.write("SalesListings.#{listing_id}.cached_profit", data)
     end
     return data
   end
@@ -69,16 +78,20 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{listing_id}.cached_prices")
   end
 
+  def self.clear_cached_profit(listing_id)
+    Rails.cache.clear("SalesListings.#{listing_id}.cached_profit")
+  end
+
   def self.clear_all_cached(user_id)
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
     Rails.cache.clear("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     Rails.cache.clear("SalesListings.#{user_id}.active_auctions_cached_for_user")
   end
-  
+
   def self.clear_average_profit_cached_for_user(item_id, user_id)
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
   end
-  
+
 end
 
 # == Schema Information
