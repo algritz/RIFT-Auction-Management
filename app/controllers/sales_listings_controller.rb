@@ -540,7 +540,7 @@ class SalesListingsController < ApplicationController
   end
 
   def calculateProfit(item_id)
-    listing = SalesListing.find(:first, :conditions => ["id = ?", iditem_id, :select => "id, price, stacksize, item_id, deposit_cost")
+    listing = SalesListing.find(:first, :conditions => ["id = ?", item_id], :select => "id, price, stacksize, item_id, deposit_cost")
     price_per = listing.price
     stacksize = listing.stacksize
 
