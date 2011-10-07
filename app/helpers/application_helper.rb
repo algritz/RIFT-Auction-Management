@@ -258,8 +258,8 @@ module ApplicationHelper
   end
 
   def sales_percentage_full_price(item_id)
-    total_auctions_full_price = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, false, true, current_user.id])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", current_user.id])
+    total_auctions_full_price = SalesListing.cached_sales_percentage_full_price(item_id, current_user[:id])
+    sold_auctions = SalesListing.sold_auctions_cached_for_user(item_id, current_user[:id])
     percentage = (sold_auctions.to_f / total_auctions_full_price.to_f) * 100
     percentage = format("%.2f",percentage)
     if percentage == "NaN" then
@@ -270,8 +270,8 @@ module ApplicationHelper
   end
 
   def sales_percentage_undercut(item_id)
-    total_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, true, current_user.id])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", current_user.id])
+    total_auctions = SalesListing.sold_auctions_including_undercut_cached_for_user(item_id, current_user[:id])
+    sold_auctions = SalesListing.cached_sales_percentage_undercut_price(item_id, current_user[:id])
     percentage = (sold_auctions.to_f / total_auctions.to_f) * 100
     percentage = format("%.2f",percentage)
     if percentage == "NaN" then
@@ -282,7 +282,7 @@ module ApplicationHelper
   end
 
   def sales_percentage_overall(item_id)
-    total_auctions_overall = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, current_user.id])
+    total_auctions_overall = SalesListing.cached_total_auctions_overall(item_id, current_user[:id])
     sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
     percentage = format("%.2f",percentage)

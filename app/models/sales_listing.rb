@@ -29,6 +29,24 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  def self.sold_auctions_cached_for_user(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user", data)
+    end
+    return data
+  end
+
+  def self.sold_auctions_including_undercut_cached_for_user(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.sold_auctions_including_undercut_cached_for_user")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, true, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.sold_auctions_including_undercut_cached_for_user", data)
+    end
+    return data
+  end
+
   def self.ongoing_listing_count_cached_for_user(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     if data == nil then
@@ -74,6 +92,42 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  def self.cached_sales_percentage_full_price(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_full_price")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.is_final = ? and user_id = ?", item_id, false, true, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_full_price", data)
+    end
+    return data
+  end
+
+  def self.cached_sales_percentage_undercut_price(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_undercut_price")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_undercut_price", data)
+    end
+    return data
+  end
+
+  def self.cached_total_auctions_overall(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.is_final = ? and user_id = ?", item_id, true, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall", data)
+    end
+    return data
+  end
+
+  def self.cached_sold_auctions_overall(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall", data)
+    end
+    return data
+  end
+
   def self.clear_cached_prices(listing_id)
     Rails.cache.clear("SalesListings.#{listing_id}.cached_prices")
   end
@@ -92,6 +146,34 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
   end
 
+  def self.clear_cached_sales_percentage_full_price(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_full_price")
+  end
+
+  def self.clear_sold_auctions_cached_for_user(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
+  end
+
+  def self.clear_sold_auctions_cached_for_user(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
+  end
+
+  def self.clear_sold_auctions_including_undercut_cached_for_user(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_including_undercut_cached_for_user")
+  end
+
+  def self.clear_cached_sales_percentage_undercut_price(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_undercut_price")
+  end
+
+  def self.clear_cached_total_auctions_overall(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall")
+  end
+  
+  def self.clear_cached_sold_auctions_overall(item_id, user_id)
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
+  end
+  
 end
 
 # == Schema Information
