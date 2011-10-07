@@ -38,7 +38,7 @@ module ApplicationHelper
   def getSourceDescriptionForItemsToCraft (item_id)
     source = Rails.cache.fetch("ItemToCraft.#{item_id}.cached_item_source_description")
     if source == nil then
-      source = CraftedItem.joins("left join items on items.itemkey = crafted_items.crafted_item_generated_id").find(:first, :conditions => ["items.id = ?", item_id], :select => "crafted_items.id, source_id, required_skill")
+      source = CraftedItem.cached_source_description_for_crafted_item(item_id)
       if source == nil then
       source = "Source Unclear"
       else
@@ -82,13 +82,13 @@ module ApplicationHelper
 
   def calculateCraftingCost(item_id)
     if item_id != nil then
-      item = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, is_crafted, itemkey")
+      item = Item.cached_item(item_id)
       if item.is_crafted then
-        if CraftedItem.count(:id, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+        if CraftedItem.cached_crafted_item_count(item.itemkey) > 0 then
+          crafting_materials = CraftedItem.cached_crafted_item_by_component_item_id(item.itemkey)
           cost = 0
           crafting_materials.each do |materials|
-            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id], :select => "id, itemkey")
+            component = Item.cached_item_by_itemkey(materials.component_item_id)
             material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then
@@ -108,10 +108,10 @@ module ApplicationHelper
   end
 
   def calculateBuyingCost(item_id)
-    item = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, vendor_selling_price, vendor_buying_price")
+    item = Item.cached_item(item_id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
-    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id, user_id, item_id, price_per")
+    override_price = PriceOverride.cached_price_override_for_item_for_user(@current_user.id, item_id)
     if (override_price != nil) then
     return override_price.price_per
     else
@@ -140,8 +140,8 @@ module ApplicationHelper
     price = SalesListing.cached_prices.price
     if price > 0 then
     ah_cut = (price * 0.05).to_i
-    deposit_cost = SalesListing.find(listing_id).deposit_cost
-    minimumCost = minimum_sales_price(SalesListing.find(listing_id).item_id)
+    deposit_cost = SalesListing.cached_saleslisting(listing_id).deposit_cost
+    minimumCost = minimum_sales_price(SalesListing.cached_saleslisting(listing_id).item_id)
     profit = ((price + deposit_cost) - (minimumCost + ah_cut))
     return profit
     end

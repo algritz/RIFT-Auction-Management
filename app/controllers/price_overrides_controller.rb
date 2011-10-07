@@ -70,7 +70,7 @@ class PriceOverridesController < ApplicationController
   # PUT /price_overrides/1.xml
   def update
     @price_override = PriceOverride.find(params[:id])
-
+    PriceOverride.clear_cached_price_override_for_item_for_user(current_user[:id], @price_override.item_id)
     respond_to do |format|
       if @price_override.update_attributes(params[:price_override])
         
@@ -87,6 +87,7 @@ class PriceOverridesController < ApplicationController
   # DELETE /price_overrides/1.xml
   def destroy
     @price_override = PriceOverride.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, item_id, user_id, price_per")
+    PriceOverride.clear_cached_price_override_for_item_for_user(current_user[:id], @price_override.item_id)
     @price_override.destroy
     
     respond_to do |format|

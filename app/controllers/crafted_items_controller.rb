@@ -71,7 +71,11 @@ class CraftedItemsController < ApplicationController
   def update
     @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
     CraftedItem.clear_cached_crafted_item(params[:id])
+    CraftedItem.clear_cached_source_description_for_crafted_item(params[:id])
+    CraftedItem.clear_cached_crafted_item_by_component_item_id(@crafted_item.crafted_item_generated_id)
+    CraftedItem.clear_cached_crafted_item_count(@crafted_item.crafted_item_generated_id)
     CraftedItem.clear_all_cached_crafted_item
+    
     respond_to do |format|
       if @crafted_item.update_attributes(params[:crafted_item])
         
@@ -90,6 +94,9 @@ class CraftedItemsController < ApplicationController
     @crafted_item = CraftedItem.cached_crafted_item(params[:id])
     CraftedItem.clear_cached_crafted_item(params[:id])
     CraftedItem.clear_all_cached_crafted_item
+    CraftedItem.clear_cached_source_description_for_crafted_item(params[:id])
+    CraftedItem.clear_cached_crafted_item_by_component_item_id(@crafted_item.crafted_item_generated_id)
+    CraftedItem.clear_cached_crafted_item_count(@crafted_item.crafted_item_generated_id)
     @crafted_item.destroy
     
     respond_to do |format|

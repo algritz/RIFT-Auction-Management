@@ -65,6 +65,15 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  def self.cached_saleslisting(listing_id)
+    data = Rails.cache.fetch("SalesListings.#{listing_id}.cached_saleslisting")
+    if data == nil then
+    data = SalesListing.find(listing_id, :select => "id, item_id, stacksize, price, is_undercut_price, deposit_cost, listing_status_id, user_id, is_tainted")
+    Rails.cache.write("SalesListings.#{listing_id}.cached_saleslisting", data)
+    end
+    return data
+  end
+
   def self.all_cached(user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.all_cached")
     if data == nil then
@@ -169,11 +178,15 @@ class SalesListing < ActiveRecord::Base
   def self.clear_cached_total_auctions_overall(item_id, user_id)
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall")
   end
-  
+
   def self.clear_cached_sold_auctions_overall(item_id, user_id)
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
   end
-  
+
+  def self.clear_cached_saleslisting(listing_id)
+    Rails.cache.clear("SalesListings.#{listing_id}.cached_saleslisting")
+  end
+
 end
 
 # == Schema Information

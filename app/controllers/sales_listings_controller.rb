@@ -123,6 +123,7 @@ class SalesListingsController < ApplicationController
     SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
     SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
     SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+    SalesListing.clear_cached_saleslisting(params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -175,6 +176,7 @@ class SalesListingsController < ApplicationController
     SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
     SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
     SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+    SalesListing.clear_cached_saleslisting(params[:id])
     @sales_listing.destroy
     end
 
@@ -204,6 +206,7 @@ class SalesListingsController < ApplicationController
       SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
       SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
       SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+      SalesListing.clear_cached_saleslisting(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -265,6 +268,7 @@ class SalesListingsController < ApplicationController
       SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
       SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
       SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+      SalesListing.clear_cached_saleslisting(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -305,6 +309,7 @@ class SalesListingsController < ApplicationController
     SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
     SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
     SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+    SalesListing.clear_cached_saleslisting(params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -347,6 +352,7 @@ class SalesListingsController < ApplicationController
       SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
       SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
       SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+      SalesListing.clear_cached_saleslisting(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -387,6 +393,7 @@ class SalesListingsController < ApplicationController
     SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
     SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
     SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+    SalesListing.clear_cached_saleslisting(params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -417,6 +424,7 @@ class SalesListingsController < ApplicationController
       SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
       SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
       SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+      SalesListing.clear_cached_saleslisting(params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -545,14 +553,13 @@ class SalesListingsController < ApplicationController
 
   def calculateCraftingCost(item_id)
     if item_id != nil then
-      item = Item.find(item_id)
-
+      item = Item.cached_item(item_id)
       if item.is_crafted then
-        if CraftedItem.count(:all, :conditions=> ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id") > 0 then
-          crafting_materials = CraftedItem.find(:all, :conditions => ["crafted_item_generated_id = ?", item.itemkey], :select => "id, crafted_item_generated_id, component_item_id, component_item_quantity")
+        if CraftedItem.cached_crafted_item_count(item.itemkey) > 0 then
+          crafting_materials = CraftedItem.cached_crafted_item_by_component_item_id(item.itemkey)
           cost = 0
           crafting_materials.each do |materials|
-            component = Item.find(:first, :conditions => ["itemkey = ?", materials.component_item_id])
+            component = Item.cached_item_by_itemkey(materials.component_item_id)
             material_cost = calculateCraftingCost(component[:id])
             total_material_cost = (material_cost * materials.component_item_quantity)
             if (material_cost.to_s != "no pattern defined yet for a sub-component") then
@@ -591,8 +598,8 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  def calculateProfit(item_id)
-    listing = SalesListing.find(:first, :conditions => ["id = ?", item_id], :select => "id, price, stacksize, item_id, deposit_cost")
+  def calculateProfit(listing_id)
+    listing = SalesListing.cached_saleslisting(listing_id)
     price_per = listing.price
     stacksize = listing.stacksize
 

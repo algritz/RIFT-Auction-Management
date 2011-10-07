@@ -69,6 +69,7 @@ class ItemsController < ApplicationController
     @source = Source.cached_all_sources
     Item.clear_cached(params[:id])
     Item.clear_cached_item_source_description(params[:id])
+    Item.clear_cached_item_by_itemkey(@item.itemkey)
     Item.clear_all_cached
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -86,9 +87,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1.xml
   def destroy
     @item = Item.cached_item(params[:id])
-    @item.destroy
     Item.clear_cached(params[:id])
+    Item.clear_cached_item_by_itemkey(@item.itemkey)
     Item.clear_all_cached
+    @item.destroy
     respond_to do |format|
       format.html { redirect_to(items_url) }
       format.xml  { head :ok }

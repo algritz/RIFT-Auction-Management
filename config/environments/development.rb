@@ -29,7 +29,7 @@ RIFTAuctionManagement::Application.configure do
   #:exception_recipients => %w{algritz@videotron.ca}
 
   ## splits the development log in 5 megabytes chunks, discards older logs
-  config.logger = Logger.new(Rails.root.join("log",Rails.env + ".log"),3,5*1024*1024)
+  config.logger = Logger.new(Rails.root.join("log",Rails.env + ".log"),3,25*1024*1024)
 
   ## add activerecord logging to stdout
   if "irb" == $0
