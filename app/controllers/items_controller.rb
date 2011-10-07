@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
   def index
 
     if params[:search] != nil then
-      @items = Item.search(params[:search], params[:page])
+    @items = Item.search(params[:search], params[:page])
     else
-      @items = Item.all_cached_item.paginate(:page => params[:page])
+    @items = Item.all_cached_item.paginate(:page => params[:page])
     end
 
     respond_to do |format|
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   # GET /items/new.xml
   def new
     @item = Item.new
-    @source = Source.find(:all, :select => "id, description", :order => "description")
+    @source = Source.cached_all_sources
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @items }
@@ -40,15 +40,15 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
-    @source = Source.find(:all, :select => "id, description", :order => "description")
+    @item = Item.cached_item(params[:id])
+    @source = Source.cached_all_sources
   end
 
   # POST /items
   # POST /items.xml
   def create
     @item = Item.new(params[:item])
-    @source = Source.find(:all, :select => "id, description", :order => "description")
+    @source = Source.cached_all_sources
     Item.clear_all_cached
     respond_to do |format|
       if @item.save
@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
   # PUT /items/1.xml
   def update
     @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
-    @source = Source.find(:all, :select => "id, description", :order => "description")
+    @source = Source.cached_all_sources
     Item.clear_cached(params[:id])
     Item.clear_cached_item_source_description(params[:id])
     Item.clear_all_cached
@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.xml
   def destroy
-    @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
+    @item = Item.cached_item(params[:id])
     @item.destroy
     Item.clear_cached(params[:id])
     Item.clear_all_cached

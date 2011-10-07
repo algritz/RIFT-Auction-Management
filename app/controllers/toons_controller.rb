@@ -1,10 +1,8 @@
 class ToonsController < ApplicationController
-  
-  
   # GET /toons
   # GET /toons.xml
   def index
-    @toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]], :select => "id, name, user_id")
+    @toons = Toon.all_cached_toon_for_user(current_user[:id])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @toons }
@@ -14,7 +12,8 @@ class ToonsController < ApplicationController
   # GET /toons/1
   # GET /toons/1.xml
   def show
-    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
+    @toon = Toon.cached_toon(params[:id])
+
     respond_to do |format|
       if @toon.user_id == current_user[:id] then
         format.html # show.html.erb
@@ -29,7 +28,7 @@ class ToonsController < ApplicationController
   # GET /toons/new.xml
   def new
     @toon = Toon.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @toon }
@@ -38,7 +37,7 @@ class ToonsController < ApplicationController
 
   # GET /toons/1/edit
   def edit
-    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
+    @toon = Toon.cached_toon(params[:id])
     respond_to do |format|
       if (is_admin? || is_current_user?(@toon.user_id) || @toon.id == nil ) then
       format.html # edit.html.erb
@@ -52,10 +51,10 @@ class ToonsController < ApplicationController
   # POST /toons.xml
   def create
     @toon = Toon.new(params[:toon])
-
+    Toon.clear_all_cached_toon_for_user(current_user[:id])
     respond_to do |format|
       if @toon.save
-        
+
         format.html { redirect_to(@toon, :notice => 'Toon was successfully created.') }
         format.xml  { render :xml => @toon, :status => :created, :location => @toon }
       else
@@ -69,10 +68,11 @@ class ToonsController < ApplicationController
   # PUT /toons/1.xml
   def update
     @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
-
+    Toon.clear_cached_toon(params[:id])
+    Toon.clear_all_cached_toon_for_user(current_user[:id])
     respond_to do |format|
       if @toon.update_attributes(params[:toon])
-        
+
         format.html { redirect_to(@toon, :notice => 'Toon was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -85,11 +85,12 @@ class ToonsController < ApplicationController
   # DELETE /toons/1
   # DELETE /toons/1.xml
   def destroy
-    @toon = Toon.find(:first, :conditions=>["id = ?", params[:id]], :select => "id, name, user_id")
+    @toon = Toon.cached_toon(params[:id])
 
     if (is_admin? || is_current_user?(@toon.id)) then
-      @toon.destroy
-      
+    Toon.clear_cached_toon(params[:id])
+    Toon.clear_all_cached_toon_for_user(current_user[:id])
+    @toon.destroy
     end
 
     respond_to do |format|

@@ -6,7 +6,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items.xml
   def index
     if params[:search] == nil then
-      @crafted_items = CraftedItem.paginate(:page => params[:page], :order => "name")
+      @crafted_items = CraftedItem.all_cached_crafted_item.paginate(:page => params[:page])
     else
       @crafted_items = CraftedItem.search(params[:search], params[:page])
     end
@@ -19,7 +19,7 @@ class CraftedItemsController < ApplicationController
   # GET /crafted_items/1
   # GET /crafted_items/1.xml
   def show
-    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
+    @crafted_item = CraftedItem.cached_crafted_item(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +41,7 @@ class CraftedItemsController < ApplicationController
 
   # GET /crafted_items/1/edit
   def edit
-    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
+    @crafted_item = CraftedItem.cached_crafted_item(params[:id])
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
     @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
   end
@@ -52,6 +52,8 @@ class CraftedItemsController < ApplicationController
     @crafted_item = CraftedItem.new(params[:crafted_item])
     @craft_item_ids = Item.find(:all, :conditions => ["is_crafted = ?", true], :select => "id, description", :order => "description")
     @item_ids = Item.find(:all, :select => "id, description", :order => "description")
+    
+    CraftedItem.clear_all_cached_crafted_item
     respond_to do |format|
       if @crafted_item.save
         
@@ -68,7 +70,8 @@ class CraftedItemsController < ApplicationController
   # PUT /crafted_items/1.xml
   def update
     @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
-
+    CraftedItem.clear_cached_crafted_item(params[:id])
+    CraftedItem.clear_all_cached_crafted_item
     respond_to do |format|
       if @crafted_item.update_attributes(params[:crafted_item])
         
@@ -84,7 +87,9 @@ class CraftedItemsController < ApplicationController
   # DELETE /crafted_items/1
   # DELETE /crafted_items/1.xml
   def destroy
-    @crafted_item = CraftedItem.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, crafted_item_generated_id, crafted_item_stacksize, component_item_id, component_item_quantity")
+    @crafted_item = CraftedItem.cached_crafted_item(params[:id])
+    CraftedItem.clear_cached_crafted_item(params[:id])
+    CraftedItem.clear_all_cached_crafted_item
     @crafted_item.destroy
     
     respond_to do |format|

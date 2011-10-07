@@ -24,15 +24,15 @@ module ApplicationHelper
   end
 
   def getItemRarity(item_id)
-    Item.find(item_id).rarity
+    Item.cached_item(item_id).rarity
   end
 
   def getItemRequiredLevel(item_id)
-    Item.find(item_id).item_level
+    Item.cached_item(item_id).item_level
   end
 
   def getToonName(toon_id)
-    Toon.find(:first, :conditions => ["id = ?", toon_id], :select =>["id, name"]).name
+    Toon.cached_toon(toon_id).name
   end
 
   def getSourceDescriptionForItemsToCraft (item_id)

@@ -14,7 +14,7 @@ class Item < ActiveRecord::Base
   def self.cached_item(item_id)
     data = Rails.cache.fetch("Item.#{item_id}.cached_item")
     if data == nil then
-      data = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
+      data = Item.find(:first, :conditions => ["id = ?", item_id], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note, rarity, item_level")
       Rails.cache.write("Item.#{item_id}.cached_item", data)
     end
     return data
