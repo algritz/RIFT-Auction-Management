@@ -448,7 +448,7 @@ class SalesListingsController < ApplicationController
   # this method is also present in application_helper, so any bug found
   # in this block is likely to happen over there
   def lastSalesPrice(item_id)
-    if id != nil then
+    if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description('Sold')
       expired = ListingStatus.cached_listing_status_from_description('Expired')
       sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
