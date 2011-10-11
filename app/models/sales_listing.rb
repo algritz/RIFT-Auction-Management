@@ -128,6 +128,15 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  def self.cached_average_selling_price(item_id, user_id, sold_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_average_selling_price")
+    if data == nil then
+      data = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_id, item_id, false, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_average_selling_price", data)
+    end
+    return data
+  end
+
   def self.cached_sold_auctions_overall(item_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
     if data == nil then
@@ -136,55 +145,152 @@ class SalesListing < ActiveRecord::Base
     end
     return data
   end
-
-  def self.clear_cached_prices(listing_id)
-    Rails.cache.clear("SalesListings.#{listing_id}.cached_prices")
+  
+  def self.cached_last_sold_auction(sold_status, item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction")
+    if data == nil then
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status, item_id, false, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction", data)
+    end
+    return data
   end
 
-  def self.clear_cached_profit(listing_id)
-    Rails.cache.clear("SalesListings.#{listing_id}.cached_profit")
+  def self.cached_last_sold_date(sold_status, item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_sold_date")
+    if data == nil then
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status, item_id, user_id], :select => "id, listing_status_id, item_id, user_id, updated_at")
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_sold_date", data)
+    end
+    return data
   end
 
-  def self.clear_all_cached(user_id)
+  def self.cached_expired_listing(expired_status, item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_listing")
+    if data == nil then
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, false, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_listing", data)
+    end
+    return data
+  end
+
+  def self.cached_expired_count(expired_status, item_id, user_id, last_sold_date)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired_status, item_id, false, last_sold_date, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_count", data)
+    end
+    return data
+  end
+
+  def self.cached_expired_count_overall(expired_status, item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_count_overall")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, false, user_id] )
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_count_overall", data)
+    end
+    return data
+  end
+
+  def self.cached_listed_but_not_sold(expired_status, item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_listed_but_not_sold")
+    if data == nil then
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, false, user_id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_listed_but_not_sold", data)
+    end
+    return data
+  end
+
+  def self.cached_lastSalesPrice_without_listed(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", user_id]).last
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed", data)
+    end
+    return data
+  end
+
+  def self.cached_lastSalesPrice_without_listed_including_undercut(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed_including_undercut")
+    if data == nil then
+      data = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", user_id]).last
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed_including_undercut", data)
+    end
+    return data
+  end
+
+  def self.cached_sold_not_undercut_count(item_id, user_id, sold_status)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sold_not_undercut_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status, item_id, false, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sold_not_undercut_count", data)
+    end
+    return data
+  end
+
+  def self.cached_expired_not_undercut_count(item_id, user_id, expired_status)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_not_undercut_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, false, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_not_undercut_count", data)
+    end
+    return data
+  end
+
+  def self.cached_sold_and_undercut_count(item_id, user_id, sold_status)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sold_and_undercut_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status, item_id, true, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sold_and_undercut_count", data)
+    end
+    return data
+  end
+
+  def self.cached_expired_and_undercut_count(item_id, user_id, expired_status)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_and_undercut_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, true, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_and_undercut_count", data)
+    end
+    return data
+  end
+
+  ## clear block
+  def self.clear_saleslisting_block(item_id, user_id, listing_id)
+
+    if user_id != nil then
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
     Rails.cache.clear("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     Rails.cache.clear("SalesListings.#{user_id}.active_auctions_cached_for_user")
-  end
+    end
 
-  def self.clear_average_profit_cached_for_user(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
-  end
-
-  def self.clear_cached_sales_percentage_full_price(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_full_price")
-  end
-
-  def self.clear_sold_auctions_cached_for_user(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
-  end
-
-  def self.clear_sold_auctions_cached_for_user(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
-  end
-
-  def self.clear_sold_auctions_including_undercut_cached_for_user(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_including_undercut_cached_for_user")
-  end
-
-  def self.clear_cached_sales_percentage_undercut_price(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_undercut_price")
-  end
-
-  def self.clear_cached_total_auctions_overall(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall")
-  end
-
-  def self.clear_cached_sold_auctions_overall(item_id, user_id)
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
-  end
-
-  def self.clear_cached_saleslisting(listing_id)
+    if listing_id != nil then
     Rails.cache.clear("SalesListings.#{listing_id}.cached_saleslisting")
+    Rails.cache.clear("SalesListings.#{listing_id}.cached_profit")
+    Rails.cache.clear("SalesListings.#{listing_id}.cached_prices")
+    end
+    if user_id != nil && item_id != nil then
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_auctions_overall")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_average_selling_price")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_total_auctions_overall")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_undercut_price")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_including_undercut_cached_for_user")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.sold_auctions_cached_for_user")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_percentage_full_price")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.average_profit_cached_for_user")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_last_sold_date")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_listing")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_count_overall")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_listed_but_not_sold")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_lastSalesPrice_without_listed_including_undercut")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_not_undercut_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_not_undercut_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_and_undercut_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_and_undercut_count")
+    end
   end
 
 end

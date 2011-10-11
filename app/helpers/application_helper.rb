@@ -131,16 +131,20 @@ module ApplicationHelper
     sold = ListingStatus.cached_listing_status_from_description("Sold")
     expired = ListingStatus.cached_listing_status_from_description("Expired")
     auction = SalesListing.cached_profit(listing_id)
-    if auction.listing_status_id == sold.id then
+    if auction[:listing_status_id] == sold[:id] then
     auction.profit
     end
   end
 
   def calculateProfit(listing_id)
-    price = SalesListing.cached_prices.price
+    listing = SalesListing.cached_saleslisting(listing_id)
+    price_per = listing.price
+    stacksize = listing.stacksize
+
+    price = price_per * stacksize
     if price > 0 then
     ah_cut = (price * 0.05).to_i
-    deposit_cost = SalesListing.cached_saleslisting(listing_id).deposit_cost
+    deposit_cost = listing.deposit_cost
     minimumCost = minimum_sales_price(SalesListing.cached_saleslisting(listing_id).item_id)
     profit = ((price + deposit_cost) - (minimumCost + ah_cut))
     return profit
@@ -149,8 +153,8 @@ module ApplicationHelper
 
   def averageSalesPrice(item_id)
     if item_id != nil then
-      sold = ListingStatus.cached_listing_status_from_description('Sold')
-      price = SalesListing.average(:price, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, item_id, false, current_user.id])
+    sold = ListingStatus.cached_listing_status_from_description('Sold')
+    price = SalesListing.cached_average_selling_price(item_id, current_user.id, sold.id)
     return price.to_i
     end
   end
@@ -160,10 +164,11 @@ module ApplicationHelper
   def lastSalesPrice(item_id)
     if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description('Sold')
-      expired = ListingStatus.cached_listing_status_from_description('Expired')
-      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
-      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, item_id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
-      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, current_user.id)
+      last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
+      expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, current_user.id)
+
       if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
@@ -172,9 +177,10 @@ module ApplicationHelper
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, item_id, false, last_sold_date.updated_at, current_user.id] )
+          @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, current_user.id, last_sold_date.updated_at)
           else
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id] )
+          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, false, current_user.id)
+
           end
           if @number_of_expired.modulo(5) == 0 then
           price = (expired_listing.price * 0.97).round
@@ -182,7 +188,7 @@ module ApplicationHelper
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
+          listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, current_user.id)
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -195,22 +201,23 @@ module ApplicationHelper
 
   def lastSalesPrice_without_listed(item_id)
     if item_id != nil then
-      sold =  @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, false, "Sold", current_user]).last
+      sold =  @lastSalesPrice_without_listed = SalesListing.cached_lastSalesPrice_without_listed(item_id, current_user.id)
       if sold == nil then
-        @lastSalesPrice_without_listed = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and is_undercut_price = ? and listing_statuses.description = ? and user_id = ?", item_id, true, "Sold", current_user]).last
+      @lastSalesPrice_without_listed = SalesListing.cached_lastSalesPrice_without_listed_including_undercut(item_id, current_user.id)
       end
     end
+
   end
 
   # this method is also present in the SalesListing controller, so any bug found there is likely to happen here
   def lastIsUndercutPrice(item_id)
-    if id != nil then
+    if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
-      expired = ListingStatus.cached_listing_status_from_description('Expired')
-      sold_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user[:id]])
-      expired_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user[:id]])
-      sold_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, true, current_user[:id]])
-      expired_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, true, current_user[:id]])
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold_not_undercut = SalesListing.cached_sold_not_undercut_count(item_id, current_user.id, sold_status[:id])
+      expired_not_undercut = SalesListing.cached_expired_not_undercut_count(item_id, current_user.id, expired_status[:id])
+      sold_and_undercut = SalesListing.cached_sold_and_undercut_count(item_id, current_user.id, sold_status[:id])
+      expired_and_undercut = SalesListing.cached_expired_and_undercut_count(item_id, current_user.id, expired_status[:id])
 
       if sold_not_undercut > 0 then
       is_undercut_price = false

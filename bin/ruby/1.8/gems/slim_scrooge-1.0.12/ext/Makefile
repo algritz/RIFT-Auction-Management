@@ -98,8 +98,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = D:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.8/gems/slim_scrooge-1.0.12/lib$(target_prefix)
-RUBYARCHDIR = D:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.8/gems/slim_scrooge-1.0.12/lib$(target_prefix)
+RUBYLIBDIR = d:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.8/gems/slim_scrooge-1.0.12/lib$(target_prefix)
+RUBYARCHDIR = d:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.8/gems/slim_scrooge-1.0.12/lib$(target_prefix)
 
 TARGET_SO     = $(DLLIB)
 CLEANLIBS     = $(TARGET).so $(TARGET).il? $(TARGET).tds $(TARGET).map

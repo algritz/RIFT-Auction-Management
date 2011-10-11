@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-gem 'will_paginate', "~> 3.0.pre2"
+gem 'will_paginate'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -17,14 +17,14 @@ group :production do
 end
 
 group :test do
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork'
   gem 'rspec-rails'
   gem 'watchr'
   gem 'webrat'
 end
 
 group :development do
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork'
   gem 'annotate'
   gem 'rspec-rails'
   gem 'watchr'

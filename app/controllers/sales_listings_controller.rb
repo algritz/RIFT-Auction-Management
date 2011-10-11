@@ -20,7 +20,7 @@ class SalesListingsController < ApplicationController
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user[:id]]).search(params[:search], params[:page])
         end
       else
-        @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
+      @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
       end
     end
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
@@ -85,14 +85,10 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.new(params[:sales_listing])
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
-    SalesListing.clear_all_cached(current_user[:id])
-    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
+    # Cache clearing block: item_id, user_id, listing_id
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(nil, nil, params[:id])
     respond_to do |format|
       if @sales_listing.save
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
@@ -113,17 +109,10 @@ class SalesListingsController < ApplicationController
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-    SalesListing.clear_all_cached(current_user[:id])
-    SalesListing.clear_cached_prices(params[:id])
-    SalesListing.clear_cached_profit(params[:id])
-    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_saleslisting(params[:id])
+    # Cache clearing block: item_id, user_id, listing_id
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(nil, nil, params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -163,20 +152,12 @@ class SalesListingsController < ApplicationController
   # DELETE /sales_listings/1
   # DELETE /sales_listings/1.xml
   def destroy
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id")
+    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id")
     if (is_current_user?(@sales_listing.user_id)) then
-    SalesListing.clear_all_cached(current_user[:id])
-    SalesListing.clear_cached_prices(params[:id])
-    SalesListing.clear_cached_profit(params[:id])
-    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_saleslisting(params[:id])
+    # Cache clearing block: item_id, user_id, listing_id
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(nil, nil, params[:id])
     @sales_listing.destroy
     end
 
@@ -196,17 +177,10 @@ class SalesListingsController < ApplicationController
       @sales_listing.profit = calculateProfit(params[:id])
       @sales_listing.listing_status_id = @sold_listing.first.id
       @sales_listing.user_id = current_user[:id]
-      SalesListing.clear_all_cached(current_user[:id])
-      SalesListing.clear_cached_prices(params[:id])
-      SalesListing.clear_cached_profit(params[:id])
-      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-      SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_saleslisting(params[:id])
+      # Cache clearing block: item_id, user_id, listing_id
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -258,17 +232,10 @@ class SalesListingsController < ApplicationController
       @sales_listing.save
       @sales_relisting.save
       end
-      SalesListing.clear_all_cached(current_user[:id])
-      SalesListing.clear_cached_prices(params[:id])
-      SalesListing.clear_cached_profit(params[:id])
-      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-      SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_saleslisting(params[:id])
+      # Cache clearing block: item_id, user_id, listing_id
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -300,16 +267,11 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.create!(:item_id => params[:id], :is_undercut_price => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @crafted_listing.first.id, :price => lastSalesPrice(params[:id]))
 
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-    SalesListing.clear_all_cached(current_user[:id])
-    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
     Item.clear_cached_item_source_description(params[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_saleslisting(params[:id])
+    # Cache clearing block: item_id, user_id, listing_id
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(nil, nil, params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -344,15 +306,10 @@ class SalesListingsController < ApplicationController
       @sales_listing.listing_status_id = @mailed_listing.first.id
       @sales_listing.save
       @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-      SalesListing.clear_all_cached(current_user[:id])
-      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-      SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_saleslisting(params[:id])
+      # Cache clearing block: item_id, user_id, listing_id
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -385,15 +342,10 @@ class SalesListingsController < ApplicationController
     end
     @sales_listing.save
     @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
-    SalesListing.clear_all_cached(current_user[:id])
-    SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-    SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-    SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-    SalesListing.clear_cached_saleslisting(params[:id])
+    # Cache clearing block: item_id, user_id, listing_id
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+    SalesListing.clear_saleslisting_block(nil, nil, params[:id])
     respond_to do |format|
       if @sales_listing.update_attributes(params[:sales_listing] && (is_admin? || is_current_user?(@user)))
 
@@ -414,17 +366,11 @@ class SalesListingsController < ApplicationController
       @ongoing_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Ongoing'])
 
       @sales_listing.listing_status_id = @ongoing_listing.first.id
-      SalesListing.clear_all_cached(current_user[:id])
-      SalesListing.clear_cached_prices(params[:id])
-      SalesListing.clear_cached_profit(params[:id])
-      SalesListing.clear_average_profit_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_full_price(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_sold_auctions_including_undercut_cached_for_user(params[:id], current_user[:id])
-      SalesListing.clear_cached_sales_percentage_undercut_price(params[:id], current_user[:id])
-      SalesListing.clear_cached_total_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_sold_auctions_overall(params[:id], current_user[:id])
-      SalesListing.clear_cached_saleslisting(params[:id])
+
+      # Cache clearing block: item_id, user_id, listing_id
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, params[:id])
       respond_to do |format|
         if @sales_listing.update_attributes(params[:sales_listing])
 
@@ -458,11 +404,12 @@ class SalesListingsController < ApplicationController
   def lastSalesPrice(item_id)
     if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description('Sold')
-      expired = ListingStatus.cached_listing_status_from_description('Expired')
-      sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
-      last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status.id, item_id, current_user.id], :select => "id, listing_status_id, item_id, user_id, updated_at")
-      expired_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
-      if sold != nil then
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, current_user.id)
+      last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
+      expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, current_user.id)
+    
+     if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
         else
@@ -470,9 +417,10 @@ class SalesListingsController < ApplicationController
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and updated_at < ? and user_id = ?", expired.id, item_id, false, last_sold_date.updated_at, current_user.id] )
+          @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, current_user.id, last_sold_date.updated_at)
           else
-            @number_of_expired = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id] )
+          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, current_user.id)
+
           end
           if @number_of_expired.modulo(5) == 0 then
           price = (expired_listing.price * 0.97).round
@@ -480,7 +428,7 @@ class SalesListingsController < ApplicationController
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user.id], :select => "id, price, listing_status_id, item_id, is_undercut_price, user_id")
+          listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, current_user.id)
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -501,11 +449,11 @@ class SalesListingsController < ApplicationController
   def lastIsUndercutPrice(item_id)
     if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
-      expired = ListingStatus.cached_listing_status_from_description('Expired')
-      sold_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, false, current_user[:id]])
-      expired_not_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, false, current_user[:id]])
-      sold_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status.id, item_id, true, current_user[:id]])
-      expired_and_undercut = SalesListing.count(:id, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired.id, item_id, true, current_user[:id]])
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold_not_undercut = SalesListing.cached_sold_not_undercut_count(item_id, current_user.id, sold_status[:id])
+      expired_not_undercut = SalesListing.cached_expired_not_undercut_count(item_id, current_user.id, expired_status[:id])
+      sold_and_undercut = SalesListing.cached_sold_and_undercut_count(item_id, current_user.id, sold_status[:id])
+      expired_and_undercut = SalesListing.cached_expired_and_undercut_count(item_id, current_user.id, expired_status[:id])
 
       if sold_not_undercut > 0 then
       is_undercut_price = false
@@ -523,7 +471,8 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-
+  
+  
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
@@ -579,10 +528,10 @@ class SalesListingsController < ApplicationController
   end
 
   def calculateBuyingCost(item_id)
-    item = Item.find(item_id)
+    item = Item.cached_item(item_id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
-    override_price = PriceOverride.find(:first, :conditions => ["user_id = ? and item_id = ?", @current_user.id, item[:id]], :select => "id, user_id, item_id, price_per")
+    override_price = PriceOverride.cached_price_override_for_item_for_user(@current_user.id, item_id)
     if (override_price != nil) then
     return override_price.price_per
     else
@@ -607,7 +556,7 @@ class SalesListingsController < ApplicationController
     if price > 0 then
     ah_cut = (price * 0.05).to_i
     deposit_cost = listing.deposit_cost
-    minimumCost = minimum_sales_price(listing.item_id)
+    minimumCost = minimum_sales_price(SalesListing.cached_saleslisting(listing_id).item_id)
     profit = ((price + deposit_cost) - (minimumCost + ah_cut))
     return profit
     end

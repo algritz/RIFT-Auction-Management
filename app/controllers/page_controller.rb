@@ -9,8 +9,8 @@ class PageController < ApplicationController
       source = Source.find(:first, :conditions => ["id = ?", skill.source_id], :select => "id, description")
       item_keys = CraftedItem.find(:all, :conditions => ["required_skill = ? and required_skill_point <= ?", source.description, skill.skill_level], :select => "id, required_skill, required_skill_point, crafted_item_generated_id")
       item_keys.each do |key|
-        item_id = Item.find(:all, :conditions => ["itemkey = (?)", key[:crafted_item_generated_id]], :select => "id, itemkey")
-        @known_patterns << item_id.first[:id]
+        item_id = Item.cached_item_by_itemkey(key[:crafted_item_generated_id])
+        @known_patterns << item_id[:id]
       end
     end
     source = Source.find(:all, :conditions => ["description = ?", params[:param]])
@@ -58,7 +58,7 @@ class PageController < ApplicationController
   end
 
   def getSourceDescriptionForItemsToCraft (id)
-    Source.find(Item.find(id).source_id).description
+    Source.cached_source(Item.cached_item(id).source_id).description
   end
 
   def items_to_list_from_bank
