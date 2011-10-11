@@ -238,8 +238,8 @@ module ApplicationHelper
 
   def lastListings(item_id)
     if item_id != nil then
-      sold = ListingStatus.cached_listing_status_from_description("Sold")
-      last_sold = SalesListing.find(:first, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold.id, item_id, false, current_user.id], :order => "updated_at desc", :select => "id, item_id, user_id, is_undercut_price, listing_status_id, updated_at")
+      sold_status = ListingStatus.cached_listing_status_from_description("Sold")
+      last_sold = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
       if last_sold != nil then
         lastListings = SalesListing.count(:id, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", item_id, last_sold.updated_at, false, current_user.id], :group => 'listing_status_id')
       else
