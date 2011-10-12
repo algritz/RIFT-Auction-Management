@@ -8,7 +8,16 @@ class ListingStatus < ActiveRecord::Base
     data = Rails.cache.fetch("ListingStatus.#{listing_status_id}.cached_listing_status")
     if data == nil then
       data = ListingStatus.find(:first, :conditions => ["id = ?", listing_status_id], :select => "id, description, is_final")
-      Rails.cache.write("ListingStatus.#{listing_status_id}.cached_listing_status", data)
+    Rails.cache.write("ListingStatus.#{listing_status_id}.cached_listing_status", data)
+    end
+    return data
+  end
+
+  def self.cached_all_listing_status
+    data = Rails.cache.fetch("ListingStatus.cached_all_listing_status")
+    if data == nil then
+    data = ListingStatus.find(:all, :select => "id, description, is_final")
+    Rails.cache.write("ListingStatus.cached_all_listing_status", data)
     end
     return data
   end
@@ -17,17 +26,19 @@ class ListingStatus < ActiveRecord::Base
     data = Rails.cache.fetch("ListingStatus.#{listing_status_description}.cached_listing_status_from_description")
     if data == nil then
       data = ListingStatus.find(:first, :conditions => ["description = ?", listing_status_description], :select => "id, description, is_final")
-      Rails.cache.write("ListingStatus.#{listing_status_description}.cached_listing_status_from_description", data)
+    Rails.cache.write("ListingStatus.#{listing_status_description}.cached_listing_status_from_description", data)
     end
     return data
   end
 
   def self.clear_cached(listing_status_id)
     Rails.cache.clear("ListingStatus.#{listing_status_id}.cached_listing_status")
+    Rails.cache.clear("ListingStatus.cached_all_listing_status")
   end
 
   def self.clear_cached_from_description(listing_status_description)
     Rails.cache.clear("ListingStatus.#{listing_status_description}.cached_listing_status_from_description")
+    Rails.cache.clear("ListingStatus.cached_all_listing_status")
   end
 
 end

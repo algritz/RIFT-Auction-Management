@@ -25,6 +25,10 @@
 			<td><%= @stats['get_misses'] %></td>
 		</tr>
 		<tr>
+			<td>Cache hit rate:</td>
+			<td><%= format("%.2f", @stats['get_hits'].to_f / (@stats['get_misses'].to_f + @stats['get_hits'].to_f)*100) %>%</td>
+		</tr>
+		<tr>
 			<td>Cache flushes:</td>
 			<td><%= @stats['cmd_flush'] %></td>
 		</tr>

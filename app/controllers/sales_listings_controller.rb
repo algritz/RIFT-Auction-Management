@@ -20,9 +20,11 @@ class SalesListingsController < ApplicationController
           @sales_listings = SalesListing.joins("left join listing_statuses on sales_listings.listing_status_id = listing_statuses.id").joins("left join items on items.id = sales_listings.item_id").where(["user_id = ?", current_user[:id]]).search(params[:search], params[:page])
         end
       else
+      # Using all_cached provides better performance while paging records, displaying the main page provides similar results though
       @sales_listings = SalesListing.all_cached(current_user[:id]).paginate(:page => params[:page])
       end
     end
+    # using uncached results provide better performance, might be due to smaller data set
     @status_list = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # index.html.erb
@@ -33,8 +35,10 @@ class SalesListingsController < ApplicationController
   # GET /sales_listings/1
   # GET /sales_listings/1.xml
   def show
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
+    #using cached results provide similar performance so we use cache in order to limit DB I/O
+    @sales_listing = SalesListing.cached_saleslisting(params[:id])
     @items = Item.all_cached_item
+    # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       if @sales_listing.user_id == current_user[:id] then
@@ -52,8 +56,10 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.new
 
     @items = Item.all_cached_item_to_list
-    @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
 
+    @item_details = Item.cached_item(@sales_listing.item_id)
+
+    # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     respond_to do |format|
       format.html # new.html.erb
@@ -64,8 +70,9 @@ class SalesListingsController < ApplicationController
 
   # GET /sales_listings/1/edit
   def edit
-    @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, item_id, stacksize, price, is_undercut_price, deposit_cost, is_tainted, listing_status_id")
-    @item_details = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :order => 'description', :conditions => ["id = ?", @sales_listing.item_id])
+    @sales_listing = SalesListing.cached_saleslisting(params[:id])
+    @item_details = Item.cached_item(@sales_listing.item_id)
+    # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
 
     respond_to do |format|
@@ -83,8 +90,10 @@ class SalesListingsController < ApplicationController
   # POST /sales_listings.xml
   def create
     @sales_listing = SalesListing.new(params[:sales_listing])
+    
+    # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description')
+    @items = Item.all_cached_item_to_list
     # Cache clearing block: item_id, user_id, listing_id
     SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
     SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
@@ -104,11 +113,12 @@ class SalesListingsController < ApplicationController
   # PUT /sales_listings/1.xml
   def update
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
+    # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @expired_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Expired'])
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
-    @items = Item.find(:all, :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id', :conditions=> ["to_list = ?", true], :order => 'source_id, description').first
+    @items = Item.all_cached_item_to_list
     # Cache clearing block: item_id, user_id, listing_id
     SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
     SalesListing.clear_saleslisting_block(@sales_listing.item_id, current_user[:id], nil)
@@ -171,7 +181,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price")
 
     if @sales_listing.user_id == @current_user[:id] then
-
+      
       @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
 
       @sales_listing.profit = calculateProfit(params[:id])
@@ -408,8 +418,8 @@ class SalesListingsController < ApplicationController
       sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, current_user.id)
       last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
       expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, current_user.id)
-    
-     if sold != nil then
+
+      if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
         price = (sold.price * 1.1).round
         else
@@ -471,17 +481,17 @@ class SalesListingsController < ApplicationController
       end
     end
   end
-  
-  
+
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
-      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]])
+      deposit_cost = SalesListing.cached_maximum_deposit_cost_for_item(item_id, current_user.id)
       if deposit_cost == nil then
       deposit_cost = 0
       end
-      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user[:id]])
+      ever_sold = SalesListing.cached_sold_count_for_item(item_id, current_user.id)
       if ever_sold > 0 then
+        ## last_sold_date performs better without cache when called repeatedly
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user[:id]], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, sales_listings.updated_at").last.updated_at
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user[:id]])
         if number_of_relists_since_last_sold > 0 then
