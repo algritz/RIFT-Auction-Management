@@ -8,6 +8,8 @@
 	<%= link_to "Manage Competitor Styles", competitor_styles_path %> ::
 	<%= link_to "Manage Users", users_path %> ::
 	<%= link_to "Manage Account Creation Code", creation_codes_path %>
+	<br />
+	Page Rendered in : <%= "#{Time.now-@start_time} seconds" %>
 	<% get_cache_stats %>
 	<table>
 		<tr>

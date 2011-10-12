@@ -241,9 +241,9 @@ module ApplicationHelper
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
       last_sold = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
       if last_sold != nil then
-        lastListings = SalesListing.count(:id, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", item_id, last_sold.updated_at, false, current_user.id], :group => 'listing_status_id')
+        lastListings = SalesListing.cached_sales_listing_per_status_count(item_id, current_user.id, last_sold.updated_at)
       else
-        lastListings = SalesListing.count(:id, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", item_id, false, current_user.id], :group => 'listing_status_id')
+        lastListings = SalesListing.cached_sales_listing_per_status_overall_count(item_id, current_user.id)
       end
     end
   end
@@ -290,7 +290,7 @@ module ApplicationHelper
 
   def sales_percentage_overall(item_id)
     total_auctions_overall = SalesListing.cached_total_auctions_overall(item_id, current_user[:id])
-    sold_auctions = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
+    sold_auctions = SalesListing.cached_sold_auctions_overall(item_id, current_user[:id])
     percentage = (sold_auctions.to_f / total_auctions_overall.to_f) * 100
     percentage = format("%.2f",percentage)
     if percentage == "NaN" then

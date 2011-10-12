@@ -145,7 +145,7 @@ class SalesListing < ActiveRecord::Base
     end
     return data
   end
-  
+
   def self.cached_last_sold_auction(sold_status, item_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction")
     if data == nil then
@@ -254,6 +254,24 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  def self.cached_sales_listing_per_status_count(item_id, user_id, last_sold)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["item_id = ? and updated_at >= ? and is_undercut_price = ? and user_id = ?", item_id, last_sold, false, user_id], :group => 'listing_status_id')
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_count", data)
+    end
+    return data
+  end
+
+  def self.cached_sales_listing_per_status_overall_count(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_overall_count")
+    if data == nil then
+      data = SalesListing.count(:id, :conditions => ["item_id = ? and is_undercut_price = ? and user_id = ?", item_id, false, user_id], :group => 'listing_status_id')
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_overall_count", data)
+    end
+    return data
+  end
+
   ## clear block
   def self.clear_saleslisting_block(item_id, user_id, listing_id)
 
@@ -290,6 +308,8 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_not_undercut_count")
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_and_undercut_count")
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_and_undercut_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_count")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_overall_count")
     end
   end
 
