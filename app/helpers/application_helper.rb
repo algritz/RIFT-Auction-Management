@@ -1,7 +1,8 @@
 module ApplicationHelper
   def getSourceDescription (source_id)
     if source_id != nil then
-    Source.cached_source(source_id).description
+    #Source.cached_source(source_id).description
+    Source.first(:conditions => ["source_id = ?", source_id], :select => "id, description").description
     else
     "Unknown source"
     end
