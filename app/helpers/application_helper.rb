@@ -1,42 +1,50 @@
 module ApplicationHelper
   def getSourceDescription (source_id)
     if source_id != nil then
-    #Source.cached_source(source_id).description
-    Source.first(:conditions => ["source_id = ?", source_id], :select => "id, description").description
+    #using cached results yields similar results as non-cached, but in order to save on DB I/O, we use cache
+    Source.cached_source(source_id).description
     else
     "Unknown source"
     end
   end
 
   def getItemDescription (item_id)
+    # using cache provides a significant performance gain
     item = Item.cached_item(item_id).description
   end
 
   def getItemDescriptionFromKey (itemkey)
+    # using cache provides a slight performance gain
     item = Item.cached_item_from_key(itemkey).description
   end
 
   def getCompetitorStyleDescription (style_id)
+    #using cached results yields similar results as non-cached, but in order to save on DB I/O, we use cache
     CompetitorStyle.cached_competitor_style(style_id).description
   end
 
-  def getListingStatusDescription(status_id)
-    ListingStatus.cached_listing_status(status_id).description
+  def getListingStatusDescription(listing_status_id)
+    #using cached results yields similar results as non-cached, but in order to save on DB I/O, we use cache
+    ListingStatus.cached_listing_status(listing_status_id).description
   end
 
   def getItemRarity(item_id)
+    # using cache provides a significant performance gain
     Item.cached_item(item_id).rarity
   end
 
   def getItemRequiredLevel(item_id)
+    # using cache provides a significant performance gain
     Item.cached_item(item_id).item_level
   end
 
   def getToonName(toon_id)
+    #using cached results yields similar results as non-cached, but in order to save on DB I/O, we use cache
     Toon.cached_toon(toon_id).name
   end
 
   def getSourceDescriptionForItemsToCraft (item_id)
+    #using cached results yields similar results as non-cached, but in order to save on DB I/O, we use cache
     source = Rails.cache.fetch("ItemToCraft.#{item_id}.cached_item_source_description")
     if source == nil then
       source = CraftedItem.cached_source_description_for_crafted_item(item_id)
@@ -242,9 +250,9 @@ module ApplicationHelper
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
       last_sold = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
       if last_sold != nil then
-        lastListings = SalesListing.cached_sales_listing_per_status_count(item_id, current_user.id, last_sold.updated_at)
+      lastListings = SalesListing.cached_sales_listing_per_status_count(item_id, current_user.id, last_sold.updated_at)
       else
-        lastListings = SalesListing.cached_sales_listing_per_status_overall_count(item_id, current_user.id)
+      lastListings = SalesListing.cached_sales_listing_per_status_overall_count(item_id, current_user.id)
       end
     end
   end

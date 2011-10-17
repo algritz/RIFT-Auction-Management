@@ -4,6 +4,7 @@ class ListingStatus < ActiveRecord::Base
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>32},  :format => { :with => litteral_string }, :uniqueness => true
   validates_numericality_of :position
   validates :position, :uniqueness => true
+  
   def self.cached_listing_status(listing_status_id)
     data = Rails.cache.fetch("ListingStatus.#{listing_status_id}.cached_listing_status")
     if data == nil then
