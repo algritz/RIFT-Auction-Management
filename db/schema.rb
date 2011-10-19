@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004140812) do
+ActiveRecord::Schema.define(:version => 20111019125931) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -139,8 +139,6 @@ ActiveRecord::Schema.define(:version => 20111004140812) do
   end
 
   add_index "sales_listings", ["id"], :name => "index_sales_listings_on_id"
-  add_index "sales_listings", ["is_tainted"], :name => "index_sales_listings_on_is_tainted"
-  add_index "sales_listings", ["is_undercut_price"], :name => "index_sales_listings_on_is_undercut_price"
   add_index "sales_listings", ["item_id"], :name => "index_sales_listings_on_item_id"
   add_index "sales_listings", ["listing_status_id"], :name => "index_sales_listings_on_listing_status_id"
   add_index "sales_listings", ["user_id"], :name => "index_sales_listings_on_user_id"
