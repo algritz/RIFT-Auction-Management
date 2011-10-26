@@ -338,7 +338,7 @@ class SalesListingsController < ApplicationController
   def in_inventory
     @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
     @in_bank = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Bank'])
-    @sales_listing = SalesListing.find(:all, :select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank]).first
+    @sales_listing = SalesListing.find(:all, :select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price, item_id", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank]).first
 
     if @sales_listing.stacksize == 1 then
     @sales_listing.listing_status_id = @inventory_listing.first.id
