@@ -5,7 +5,8 @@ gem 'will_paginate'
 #gem 'exception_notification'
 #gem 'slim_scrooge'
 gem 'dalli'
-
+gem 'thin'
+  
 group :production do
   gem 'newrelic_rpm'
   gem 'pg'
@@ -28,7 +29,7 @@ group :development do
   gem 'webrat'
   gem 'term-ansicolor'
   gem 'query_trace'
-  gem 'thin'
+
 end
 
 # Use unicorn as the web server
