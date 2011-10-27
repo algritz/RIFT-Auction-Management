@@ -7,7 +7,7 @@ RIFTAuctionManagement::Application.configure do
   config.cache_store = :dalli_store
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_controller.consider_all_requests_local = false
 

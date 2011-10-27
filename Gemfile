@@ -7,7 +7,7 @@ gem 'will_paginate'
 
 gem 'sqlite3'
 
-gem 'exception_notification'
+#gem 'exception_notification'
 
 #gem 'slim_scrooge'
 gem 'dalli'
