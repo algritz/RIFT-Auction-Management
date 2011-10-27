@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.1'
 gem 'will_paginate'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'exception_notification'
 
-gem 'slim_scrooge'
+#gem 'slim_scrooge'
 gem 'dalli'
 
 group :production do

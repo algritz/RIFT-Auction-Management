@@ -1,23 +1,23 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{thin}
+  s.name = "thin"
   s.version = "1.2.11"
-  s.platform = %q{x86-mingw32}
+  s.platform = "x86-mingw32"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Marc-Andre Cournoyer}]
-  s.date = %q{2011-03-28}
-  s.description = %q{A thin and fast web server}
-  s.email = %q{macournoyer@gmail.com}
-  s.executables = [%q{thin}]
-  s.files = [%q{bin/thin}]
-  s.homepage = %q{http://code.macournoyer.com/thin/}
-  s.require_paths = [%q{lib}]
+  s.authors = ["Marc-Andre Cournoyer"]
+  s.date = "2011-03-28"
+  s.description = "A thin and fast web server"
+  s.email = "macournoyer@gmail.com"
+  s.executables = ["thin"]
+  s.files = ["bin/thin"]
+  s.homepage = "http://code.macournoyer.com/thin/"
+  s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.5")
-  s.rubyforge_project = %q{thin}
-  s.rubygems_version = %q{1.8.5}
-  s.summary = %q{A thin and fast web server}
+  s.rubyforge_project = "thin"
+  s.rubygems_version = "1.8.11"
+  s.summary = "A thin and fast web server"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
