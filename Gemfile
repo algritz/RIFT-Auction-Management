@@ -14,6 +14,7 @@ gem 'dalli'
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'pg'
 end
 
 group :test do
