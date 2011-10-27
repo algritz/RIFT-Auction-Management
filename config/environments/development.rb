@@ -28,7 +28,7 @@ RIFTAuctionManagement::Application.configure do
   #:sender_address => %w{rift-ah@invalidemail.com},
   #:exception_recipients => %w{algritz@videotron.ca}
 
-  ## splits the development log in 5 megabytes chunks, discards older logs
+  ## splits the development log in 25 megabytes chunks, discards older logs
   config.logger = Logger.new(Rails.root.join("log",Rails.env + ".log"),3,25*1024*1024)
 
   ## add activerecord logging to stdout
