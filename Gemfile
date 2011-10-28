@@ -9,7 +9,7 @@ gem 'thin'
 gem 'execjs'
 gem 'json'
 gem 'therubyracer', :platforms => :ruby
-gem 'eventmachine',  "1.0.0.beta.4.1"
+gem 'eventmachine',  "1.0.0.beta.4", :git => "git://github.com/eventmachine/eventmachine.git"
 gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
