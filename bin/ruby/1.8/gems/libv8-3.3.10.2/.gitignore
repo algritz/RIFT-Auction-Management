@@ -1,8 +1,0 @@
-*.gem
-*.bundle
-*.so
-*.a
-Gemfile.lock
-pkg/*
-tmp/*
-lib/libv8/build/*

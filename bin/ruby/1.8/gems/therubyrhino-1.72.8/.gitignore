@@ -1,6 +1,0 @@
-.idea
-doc
-*.gem
-.rvmrc
-.bundle
-Gemfile.lock
