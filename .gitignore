@@ -9,3 +9,6 @@ doc/app
 *.swp
 *~
 .DS_Store
+.sass-cache/
+public/assets/*
+log/*
