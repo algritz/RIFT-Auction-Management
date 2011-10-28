@@ -43,7 +43,7 @@ GEM
     dalli (1.1.3)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    eventmachine (1.0.0.beta.4-x86-mingw32)
+    eventmachine (1.0.0.beta.4.1-x86-mingw32)
     execjs (1.2.9)
       multi_json (~> 1.0)
     hike (1.2.1)
@@ -145,7 +145,7 @@ DEPENDENCIES
   annotate
   coffee-rails (~> 3.1.1)
   dalli
-  eventmachine (= 1.0.0.beta.4)
+  eventmachine (= 1.0.0.beta.4.1)
   execjs
   jquery-rails
   json
