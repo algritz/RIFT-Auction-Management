@@ -6,7 +6,7 @@ gem 'will_paginate'
 #gem 'slim_scrooge'
 gem 'dalli'
 gem 'thin'
-
+gem 'execjs'
 gem 'json'
 
 # Gems used only for assets and not required

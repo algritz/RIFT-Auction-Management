@@ -145,6 +145,7 @@ DEPENDENCIES
   annotate
   coffee-rails (~> 3.1.1)
   dalli
+  execjs
   jquery-rails
   json
   newrelic_rpm
