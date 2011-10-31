@@ -5,11 +5,11 @@ gem 'will_paginate'
 #gem 'exception_notification'
 #gem 'slim_scrooge'
 gem 'dalli'
-gem 'thin'
+
 gem 'execjs'
 gem 'json'
 gem 'therubyracer', :platforms => :ruby
-gem 'eventmachine', '1.0.0.beta.4.1'
+
 gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +22,9 @@ end
 
 
 group :production do
-  gem 'newrelic_rpm'
+  gem 'eventmachine', '1.0.0.beta.4.1'
+  gem 'thin'
+  #gem 'newrelic_rpm'
   gem 'pg'
 end
 
