@@ -9,7 +9,7 @@ gem 'dalli'
 gem 'execjs'
 gem 'json'
 gem 'therubyracer', :platforms => :ruby
-gem 'eventmachine', '1.0.0.beta.4.1'
+gem 'eventmachine', '~>1.0.0.beta.4'
 gem 'thin'
 
 gem 'jquery-rails'

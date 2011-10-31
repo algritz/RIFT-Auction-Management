@@ -144,7 +144,7 @@ DEPENDENCIES
   annotate
   coffee-rails (~> 3.1.1)
   dalli
-  eventmachine (= 1.0.0.beta.4.1)
+  eventmachine (~> 1.0.0.beta.4)
   execjs
   jquery-rails
   json
