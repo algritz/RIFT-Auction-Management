@@ -9,6 +9,8 @@ gem 'dalli'
 gem 'execjs'
 gem 'json'
 gem 'therubyracer', :platforms => :ruby
+gem 'eventmachine', '1.0.0.beta.4.1'
+gem 'thin'
 
 gem 'jquery-rails'
 # Gems used only for assets and not required
@@ -20,11 +22,9 @@ group :assets do
 end
 
 
-
 group :production do
-  gem 'eventmachine', '1.0.0.beta.4.1'
-  gem 'thin'
-  #gem 'newrelic_rpm'
+
+#gem 'newrelic_rpm'
   gem 'pg'
 end
 

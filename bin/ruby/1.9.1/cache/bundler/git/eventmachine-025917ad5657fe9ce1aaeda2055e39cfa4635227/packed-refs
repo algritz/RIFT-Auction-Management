@@ -1,0 +1,17 @@
+# pack-refs with: peeled 
+b55e18c891d43dcfd91e10bdcf5558efd83b5e25 refs/tags/v0.12.8
+35f1970b40f5634ed6e28df331b103db0c6e2358 refs/tags/v0.12.6
+1860d3f8939df6de43de5013e8d4520f233fa45f refs/tags/v0.12.4
+7a71d5e82f3936fcf08edb63a8953419c03937a1 refs/tags/v0.12.10
+4f5db645146594679ec362e5d066b19d3628547f refs/heads/writev
+5cb0794af9592b625a1832af8189e6eaf45defcf refs/heads/thread_blocking_region
+f4489268eed5db746e569898828ce347f39e9c58 refs/heads/tags/v0_12_0
+0556252ee0276835316b7006e2965a4541ab0756 refs/heads/tags/v0.12.2
+43f7fecbd037f88f700df3138e8477aa788a53dc refs/heads/tags/eventmachine
+a9077a01316e1260e97450b3be4f5f1c988580b0 refs/heads/no_string_bindings
+2b05a1230075a69fc0d54487617c15ca562cefe7 refs/heads/mri
+86784d267448b6603f81dbbd0f92182c8e3a6a6e refs/heads/master
+9b15eb6973dd30fb2287ee3fa44cb0a7ec6c6428 refs/heads/hooks
+011cd2907fdc10a8c86951c0b7020f0597cfecfb refs/heads/gh-pages
+fb11a41671b5bc1b15372d319280cecf086c9104 refs/heads/exit_status
+2741ee179d07e0a95003ba1fbb734e33ae804ae7 refs/heads/crank
