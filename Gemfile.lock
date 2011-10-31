@@ -32,6 +32,7 @@ GEM
     annotate (2.4.0)
     arel (2.2.1)
     builder (3.0.0)
+    closure-compiler (1.1.4)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -143,6 +144,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  closure-compiler
   coffee-rails (~> 3.1.1)
   dalli
   eventmachine (~> 1.0.0.beta.4)
@@ -160,7 +162,7 @@ DEPENDENCIES
   term-ansicolor
   therubyracer
   thin
-  uglifier (>= 1.0.3)
+  uglifier (>= 1.0.4)
   watchr
   webrat
   will_paginate

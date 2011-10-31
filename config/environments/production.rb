@@ -56,5 +56,8 @@ RIFTAuctionManagement::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
+  
+  # change compiler
+  config.assets.js_compressor = :closure
+  
 end

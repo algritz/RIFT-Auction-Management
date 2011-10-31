@@ -2,8 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 gem 'will_paginate'
-#gem 'exception_notification'
-#gem 'slim_scrooge'
 gem 'dalli'
 
 gem 'execjs'
@@ -13,12 +11,15 @@ gem 'eventmachine', '~>1.0.0.beta.4'
 gem 'thin'
 
 gem 'jquery-rails'
+
+gem 'closure-compiler'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.0.4'
 end
 
 
