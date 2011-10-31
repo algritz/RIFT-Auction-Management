@@ -10,5 +10,4 @@ doc/app
 *~
 .DS_Store
 .sass-cache/
-public/assets/*
 log/*
