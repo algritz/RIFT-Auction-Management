@@ -6,6 +6,7 @@ update items set to_list = 't', is_crafted = 't' where itemkey in (select itemke
 
 -- return the list of items that are not augmented and not in the crafted_items table
 select * from items where itemkey not in (select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup') and isAugmented = 'f'
+-- Sets "BoE" and not augmented items to not crafted
 update items set is_crafted = 'f' where itemkey in (select itemkey from items where itemkey not in (select itemkey from items where itemkey in (select distinct crafted_item_generated_id from crafted_items) and soulboundtrigger <> 'BindOnPickup') and isAugmented = 'f') 
 
 
@@ -17,3 +18,8 @@ select * from items where to_list is null and soulboundtrigger <> 'BindOnPickup'
 
 -- set to_list = 'f' items that are BoE
 update items set to_list = 'f' where itemkey in (select itemkey from items where to_list is null and soulboundtrigger <> 'BindOnPickup')
+
+-- Returns the lists of 'Runecrafting' ingredients
+select * from items where description in ('Kinetic Arc', 'Kinetic Burst', 'Kinetic Charge', 'Perpetual Blur', 'Perpetual Glow', 'Perpetual Flare', 'Sentience Blast', 'Sentience Spark', 'Sentience Surge')
+-- Sets the following 'Runecrafting' ingredients to not crafted (avoid stack too deep issue)
+update items set is_crafted = 'f' where id in (select id from items where description in ('Kinetic Arc', 'Kinetic Burst', 'Kinetic Charge', 'Perpetual Blur', 'Perpetual Glow', 'Perpetual Flare', 'Sentience Blast', 'Sentience Spark', 'Sentience Surge'))
