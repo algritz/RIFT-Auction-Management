@@ -27,3 +27,16 @@ class PriceOverride < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: price_overrides
+#
+#  id         :integer         primary key
+#  item_id    :integer
+#  user_id    :integer
+#  price_per  :integer
+#  created_at :timestamp
+#  updated_at :timestamp
+#
+

@@ -32,13 +32,15 @@ class Source < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: sources
 #
-#  id          :integer         primary key
-#  description :string(255)
-#  created_at  :timestamp
-#  updated_at  :timestamp
+#  id               :integer         primary key
+#  description      :string(255)
+#  created_at       :timestamp
+#  updated_at       :timestamp
+#  crafting_allowed :boolean
 #
 

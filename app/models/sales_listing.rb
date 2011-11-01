@@ -335,6 +335,7 @@ class SalesListing < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: sales_listings
@@ -347,8 +348,10 @@ end
 #  listing_status_id :integer
 #  created_at        :timestamp
 #  updated_at        :timestamp
-#  is_undercut_price :boolean
+#  is_undercut_price :boolean         default(FALSE)
 #  relisted_status   :boolean         default(FALSE)
 #  user_id           :integer
+#  profit            :integer
+#  is_tainted        :boolean         default(FALSE)
 #
 

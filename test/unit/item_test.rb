@@ -8,6 +8,7 @@ class ItemTest < ActiveSupport::TestCase
 end
 
 
+
 # == Schema Information
 #
 # Table name: items
@@ -22,5 +23,15 @@ end
 #  is_crafted           :boolean
 #  to_list              :boolean
 #  item_level           :integer
+#  note                 :string(255)
+#  itemkey              :string(255)
+#  rarity               :string(255)
+#  icon                 :string(255)
+#  soulboundtrigger     :string(255)
+#  riftgem              :string(255)
+#  salvageskill         :string(255)
+#  salvageskilllevel    :integer
+#  runebreakskilllevel  :integer
+#  isaugmented          :boolean
 #
 

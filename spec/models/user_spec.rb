@@ -134,6 +134,7 @@ describe User do
 
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -146,5 +147,6 @@ end
 #  encrypted_password :string(255)
 #  salt               :string(255)
 #  is_admin           :boolean
+#  creation_code      :string(255)
 #
 

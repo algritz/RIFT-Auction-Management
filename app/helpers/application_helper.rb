@@ -258,7 +258,7 @@ module ApplicationHelper
   end
 
   def is_relistable?(sales_listing)
-    (ListingStatus.cached_listing_status(sales_listing.listing_status_id).description == 'In Inventory' || ListingStatus.cached_listing_status(sales_listing.listing_status_id).description == 'Mailed') && sales_listing.price > 0
+    ((ListingStatus.cached_listing_status(sales_listing.listing_status_id).description == 'In Inventory' || ListingStatus.cached_listing_status(sales_listing.listing_status_id).description == 'Mailed')&& sales_listing.price != nil)
   end
 
   def is_final?(status_id)
@@ -315,13 +315,14 @@ module ApplicationHelper
       if crafting_cost.class == String then
       return crafting_cost
       end
-      deposit_cost = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, current_user.id])
+      deposit_cost = SalesListing.cached_maximum_deposit_cost_for_item(item_id, current_user[:id])
       if deposit_cost == nil then
       deposit_cost = 0
       end
-      ever_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:id, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id])
-      if ever_sold > 0 then
-        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user.id], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, sales_listings.updated_at").last.updated_at
+      sold_status = ListingStatus.cached_listing_status_from_description("Sold")
+      ever_sold = SalesListing.cached_last_sold_auction(sold_status, item_id, current_user[:id])
+      if ever_sold != nil then
+        last_sold_date = SalesListing.cached_last_sold_date(sold_status, item_id, current_user[:id])
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user.id])
         if number_of_relists_since_last_sold > 0 then
         minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)

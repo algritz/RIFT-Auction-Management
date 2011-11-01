@@ -31,3 +31,15 @@ class Toon < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: toons
+#
+#  id         :integer         primary key
+#  name       :string(255)
+#  user_id    :integer
+#  created_at :timestamp
+#  updated_at :timestamp
+#
+
