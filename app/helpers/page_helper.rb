@@ -51,4 +51,9 @@ module PageHelper
     format("%.2f", percentage)
   end
   
+  def bank_stacksize(item_id)
+    in_bank = ListingStatus.cached_listing_status_from_description("In Bank")
+    count = SalesListing.count(:id, :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", item_id, current_user[:id], in_bank[:id]])
+  end
+  
 end

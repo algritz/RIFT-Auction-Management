@@ -2,7 +2,7 @@
 <table width="1336">
 	<tr align="left">
 		<th>Item name</th>
-		<th>Id</th>
+		<th>Stacksize</th>
 		<th>Source</th>
 		<th>Crafting Cost</th>
 		<th align="center">Actions</th>
@@ -13,7 +13,7 @@
 	%>
 	<tr bgcolor="<%= @lastRowColor %>" onmouseover="this.className = 'hlt';" onmouseout="this.className = '';">
 		<td><%= "#{getItemDescription(item)}"%></td>
-		<td><%= item %></td>
+		<td><%= bank_stacksize(item) %></td>
 		<td style='padding-right:20px;'><%= "#{getSourceDescriptionForItemsToCraft(item)}"%></td>
 		<td style='padding-right:20px;'><%= "#{formatPrice(calculateCraftingCost(item))}"%></td>
 		<td><%= link_to "Put in inventory", in_inventory_sales_listing_path(item) %></td>

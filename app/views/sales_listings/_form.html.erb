@@ -1,3 +1,4 @@
+<%= javascript_include_tag :items_list %>
 <%= form_for(@sales_listing) do |f| %>
 <% if @sales_listing.errors.any? %>
 <div id="error_explanation">
@@ -31,8 +32,7 @@
 	<tr align="left">
 		<td colspan="2"><% if @sales_listing.item_id != nil then %> <b><%= getItemDescription(@sales_listing.item_id) %></b> <%= f.hidden_field(:item_id) %>
 		<% else %>
-		<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, getDefaultItemSelected),{},
-      {:onchange => remote_function(:method=>:get)}) %>
+		<%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, getDefaultItemSelected),{}) %>
 		<% end %> </td>
 		<td> <%= f.text_field :price, :value => getDefaultPricing, :size => 12 %>
 		<nobr>

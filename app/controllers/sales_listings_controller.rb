@@ -57,14 +57,18 @@ class SalesListingsController < ApplicationController
 
     @items = Item.all_cached_item_to_list
 
-    @item_details = Item.cached_item(@sales_listing.item_id)
+    @item_details = Item.cached_item(params[:item_id])
 
     # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
+      if request.xhr? then
+      render 'new'
       format.js
+      end
     end
   end
 
@@ -90,7 +94,7 @@ class SalesListingsController < ApplicationController
   # POST /sales_listings.xml
   def create
     @sales_listing = SalesListing.new(params[:sales_listing])
-    
+
     # using uncached results provide better performance, might be due to smaller data set
     @listing_statuses = ListingStatus.find(:all, :select => "id, description", :order => "description")
     @items = Item.all_cached_item_to_list
@@ -102,9 +106,11 @@ class SalesListingsController < ApplicationController
       if @sales_listing.save
         format.html { redirect_to(sales_listings_path, :notice => 'Sales listing was successfully created.') }
         format.xml  { render :xml => @sales_listing, :status => :created, :location => @sales_listing }
+      format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @sales_listing.errors, :status => :unprocessable_entity }
+      format.js
       end
     end
   end
@@ -118,7 +124,7 @@ class SalesListingsController < ApplicationController
     @expired_listing = ListingStatus.cached_listing_status_from_description('Expired')
     @inventory_listing = ListingStatus.cached_listing_status_from_description('In Inventory')
     @sold_listing = ListingStatus.cached_listing_status_from_description('Sold')
-    
+
     @items = Item.all_cached_item_to_list
     # Cache clearing block: item_id, user_id, listing_id
     SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
@@ -182,7 +188,7 @@ class SalesListingsController < ApplicationController
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price")
 
     if @sales_listing.user_id == @current_user[:id] then
-      
+
       @sold_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'Sold'])
 
       @sales_listing.profit = calculateProfit(params[:id])
@@ -337,17 +343,17 @@ class SalesListingsController < ApplicationController
   end
 
   def in_inventory
-    @inventory_listing = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Inventory'])
-    @in_bank = ListingStatus.find(:all, :select => 'id, description', :conditions => ["description = ?", 'In Bank'])
-    @sales_listing = SalesListing.find(:all, :select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price, item_id", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank]).first
+    @inventory_listing = ListingStatus.cached_listing_status_from_description('In Inventory')
+    @in_bank = ListingStatus.cached_listing_status_from_description('In Bank')
+    @sales_listing = SalesListing.first(:select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price, item_id", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank])
 
     if @sales_listing.stacksize == 1 then
-    @sales_listing.listing_status_id = @inventory_listing.first.id
+    @sales_listing.listing_status_id = @inventory_listing[:id]
     @sales_listing.is_undercut_price = lastIsUndercutPrice(params[:id])
     @sales_listing.deposit_cost = lastDepositCost(params[:id])
     @sales_listing.price = lastSalesPrice(params[:id])
     else
-    @sales_relisting = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @inventory_listing.first.id, :price => lastSalesPrice(params[:id]))
+    @sales_relisting = SalesListing.create!(:item_id => params[:id], :is_undercut => lastIsUndercutPrice(params[:id]),  :deposit_cost => lastDepositCost(params[:id]), :stacksize => 1, :user_id => current_user[:id], :listing_status_id => @inventory_listing[:id], :price => lastSalesPrice(params[:id]))
     @sales_listing.stacksize = @sales_listing.stacksize - 1
     @sales_relisting.save
     end
@@ -371,6 +377,7 @@ class SalesListingsController < ApplicationController
   end
 
   def relist
+    # using direct call to database since cached data is read-only
     @sales_listing = SalesListing.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
 
     if @sales_listing.user_id == @current_user[:id] then
