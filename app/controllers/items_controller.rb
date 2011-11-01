@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.xml
   def update
-    @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note")
+    @item = Item.find(:first, :conditions => ["id = ?", params[:id]], :select => "id, description, vendor_selling_price, vendor_buying_price, source_id, item_level, is_crafted, to_list, note, itemkey")
     @source = Source.cached_all_sources
     Item.clear_cached(params[:id])
     Item.clear_cached_item_source_description(params[:id])
