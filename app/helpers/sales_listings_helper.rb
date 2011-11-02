@@ -1,6 +1,5 @@
 module SalesListingsHelper
   def getDefaultItemSelected
-  p "get default selected"
     if params[:item_id] != nil then
     item_id = params[:item_id]
     else

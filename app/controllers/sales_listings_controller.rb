@@ -66,7 +66,6 @@ class SalesListingsController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @sales_listing }
       if request.xhr? then
-      render 'new'
       format.js
       end
     end
