@@ -9,15 +9,6 @@ Search term:
 
 <% end %>
 <% end %>
-<p>
-	<section>
-		<% flash.each do |key, value| %>
-		<div class="flash <%= key %>">
-			<%= value %>
-		</div>
-		<% end %>
-	</section>
-</p>
 <div>
 	<p>
 		<%
@@ -33,6 +24,15 @@ Search term:
 		<%= link_to "Mail all crated items", page_all_mailed_path %>
 	</p>
 </div>
+<p>
+	<section>
+		<% flash.each do |key, value| %>
+		<div class="flash <%= key %>">
+			<%= value %>
+		</div>
+		<% end %>
+	</section>
+</p>
 <%= will_paginate @sales_listings %>
 <table width="1336">
 	<tr align="left" valign="top">

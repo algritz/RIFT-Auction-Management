@@ -1,5 +1,5 @@
 <%= javascript_include_tag :items_list %>
-<%= form_for(@sales_listing, :remote => true) do |f| %>
+<%= form_for(@sales_listing) do |f| %>
 <% if @sales_listing.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@sales_listing.errors.count, "error") %> prohibited this sales_listing from being saved:</h2>

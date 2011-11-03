@@ -1,7 +1,13 @@
 class SalesListingsController < ApplicationController
   before_filter :authenticate
+  before_filter :load, :only => [:index, :relist, :expired, :sold, :crafted, :mailed, :in_inventory]
   # GET /sales_listings
   # GET /sales_listings.xml
+  def load
+    @sales_listings = SalesListing.all_cached(current_user[:id])
+
+  end
+
   def index
     if params[:status] != nil then
       if params[:status] != "0" then

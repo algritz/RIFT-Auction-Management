@@ -28,6 +28,9 @@ RIFTAuctionManagement::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  # add a prfix to avoir loading application.js files twice
+  config.assets.prefix = '/devassets'
+  
   ## splits the development log in 25 megabytes chunks, discards older logs
   config.logger = Logger.new(Rails.root.join("log",Rails.env + ".log"),3,25*1024*1024)
 
