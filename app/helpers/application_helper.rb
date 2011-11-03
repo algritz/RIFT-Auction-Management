@@ -323,8 +323,8 @@ module ApplicationHelper
       expired_status = ListingStatus.cached_listing_status_from_description("Expired")
       ever_sold = SalesListing.cached_last_sold_auction(sold_status, item_id, current_user[:id])
       if ever_sold != nil then
-        last_sold_date = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status[:id], item_id, current_user[:id]], :select => "id, listing_status_id, item_id, user_id, updated_at")
-        number_of_relists_since_last_sold = SalesListing.count(:all, :conditions => ["item_id = ? and listing_status_id = ? and sales_listings.updated_at > ? and user_id = ?", item_id, expired_status[:id], last_sold_date, current_user[:id]])
+        last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user[:id])
+        number_of_relists_since_last_sold = SalesListing.count(:all, :conditions => ["item_id = ? and listing_status_id = ? and sales_listings.updated_at > ? and user_id = ?", item_id, expired_status[:id], last_sold_date[:updated_at], current_user[:id]])
         if number_of_relists_since_last_sold > 0 then
         minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
         else
