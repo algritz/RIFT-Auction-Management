@@ -39,7 +39,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'spork'
+  #gem 'spork'
   gem 'annotate'
   gem 'rspec-rails'
   gem 'watchr'

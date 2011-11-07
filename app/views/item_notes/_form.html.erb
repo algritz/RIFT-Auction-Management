@@ -1,0 +1,32 @@
+<%= form_for(@item_note) do |f| %>
+  <% if @item_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_note.errors.count, "error") %> prohibited this item_note from being saved:</h2>
+
+      <ul>
+      <% @item_note.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :item_id %><br />
+    <%= f.select(:item_id, options_from_collection_for_select(@items, :id, :description, @item_note.item_id),{}) %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user[:id] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

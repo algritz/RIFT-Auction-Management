@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Item:</b>
+  <%= getItemDescription(@item_note.item_id) %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @item_note.note %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_item_note_path(@item_note) %> |
+<%= link_to 'Back', item_notes_path %>

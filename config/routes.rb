@@ -1,4 +1,6 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :item_notes
+
   resources :wanted_items
 
   resources :toon_skill_levels

@@ -1,0 +1,31 @@
+<h1>Listing item_notes</h1>
+
+<table>
+  <tr>
+
+    <th>Item</th>
+
+    <th>Note</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @item_notes.each do |item_note| %>
+  <tr>
+
+    <td><%= getItemDescription(item_note.item_id) %></td>
+
+    <td><%= item_note.note %></td>
+
+    <td><%= link_to 'Show', item_note %></td>
+    <td><%= link_to 'Edit', edit_item_note_path(item_note) %></td>
+    <td><%= link_to 'Destroy', item_note, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item note', new_item_note_path %>
