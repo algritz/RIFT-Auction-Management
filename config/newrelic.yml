@@ -1,0 +1,18 @@
+production:
+  error_collector:
+    capture_source: true
+    enabled: true
+    ignore_errors: ActionController::RoutingError
+  apdex_t: 0.5
+  ssl: false
+  monitor_mode: true
+  license_key: <%= ENV["112de0425dfa724170beadc5dbbc0ba161723baf4cd2c80"] %>
+  developer_mode: false
+  app_name: <%= ENV["rift-ah"] %>
+  transaction_tracer:
+    record_sql: obfuscated
+    enabled: true
+    stack_trace_threshold: 0.5
+    transaction_threshold: apdex_f
+  capture_params: false
+  log_level: info
