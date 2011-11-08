@@ -1,0 +1,11 @@
+# pack-refs with: peeled 
+2a9ba36679428462f15bc826f8880b4dab89f9b9 refs/heads/gucki
+b75b18115b5c30ef2da74c4eb957aa18f6a08e01 refs/heads/master
+3a8dd45959156078749942cd150cfb458ca67e68 refs/heads/v1.0
+fc2591b4cb44902add41413ead2492e0a3239392 refs/tags/v1.0.0
+0e5000b516eed688c7c1e7e9677e5682b56d5ece refs/tags/v1.0.1
+70e60276eba3840c45cba84c6bca1219db7b714a refs/tags/v1.0.2
+eb42c92ae640df37c1f4fc262c47187b7b5b5709 refs/tags/v1.0.3
+e556e45fb6d903f3f4bc5457dcca2ac0ced9eb29 refs/tags/v1.0.4
+704491687f8bed780ed4453b5f0b4f28f10e143a refs/tags/v1.0.5
+a3653e19528d14309d4d03bb246123a9bea69acc refs/tags/v1.1.1

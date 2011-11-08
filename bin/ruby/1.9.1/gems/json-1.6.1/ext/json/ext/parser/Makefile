@@ -116,8 +116,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = D:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.9.1/gems/json-1.6.1/ext/json/ext$(target_prefix)
-RUBYARCHDIR = D:/Users/dcloutier/workspace/RIFT-Auction-Management/bin/ruby/1.9.1/gems/json-1.6.1/ext/json/ext$(target_prefix)
+RUBYLIBDIR = C:/Users/David Cloutier/workspace/RIFT-Auction-Management/bin/ruby/1.9.1/gems/json-1.6.1/ext/json/ext$(target_prefix)
+RUBYARCHDIR = C:/Users/David Cloutier/workspace/RIFT-Auction-Management/bin/ruby/1.9.1/gems/json-1.6.1/ext/json/ext$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 

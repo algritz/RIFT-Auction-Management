@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 gem 'will_paginate'
-gem 'dalli'
+gem 'dalli', :git => 'git://github.com/mperham/dalli.git'
 
 gem 'execjs'
 gem 'json'
