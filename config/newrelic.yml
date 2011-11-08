@@ -6,9 +6,9 @@ production:
   apdex_t: 0.5
   ssl: false
   monitor_mode: true
-  license_key: <%= ENV["deefccf1d67e7ced4752e7204a35ed77da1360c54cd2c80"] %>
+  license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] %>
   developer_mode: false
-  app_name: <%= ENV["rift-ah"] %>
+  app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
   transaction_tracer:
     record_sql: obfuscated
     enabled: true
