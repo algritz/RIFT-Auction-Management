@@ -290,6 +290,8 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
+  
+  
   ## clear block
   def self.clear_saleslisting_block(item_id, user_id, listing_id)
 
@@ -297,6 +299,7 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
     Rails.cache.clear("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     Rails.cache.clear("SalesListings.#{user_id}.active_auctions_cached_for_user")
+    Rails.cache.clear("Items.#{user_id}.cached_sold_count_for_item")
     end
 
     if listing_id != nil then

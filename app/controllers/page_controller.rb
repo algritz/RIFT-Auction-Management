@@ -27,7 +27,8 @@ class PageController < ApplicationController
       end
     else
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
+        #item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids= Item.cached_items_without_listings(current_user[:id], ongoing_item_ids_list)
       else
         item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list]).search(params[:search], params[:page])
       end
