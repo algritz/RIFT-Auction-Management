@@ -19,7 +19,7 @@ Search term:
 <% end %>
 <%= link_to "All professions", page_items_to_craft_path %>
 <%= if @had_to_limit == true then
-	raw("<p><i>Results limited to 25 in order to avoid timeouts, consider using the search</i></p>")
+	raw("<p><i>Results limited to 10 in order to avoid long page loading, consider using the search</i></p>")
 end
 	 %>
 <table width="1336">

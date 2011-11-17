@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 gem 'will_paginate'
 gem 'dalli', :git => 'git://github.com/mperham/dalli.git'
-
+gem 'newrelic_rpm'
 gem 'execjs'
 gem 'json'
 gem 'therubyracer', :platforms => :ruby
@@ -25,7 +25,6 @@ end
 
 group :production do
 
-  gem 'newrelic_rpm'
   gem 'pg'
 end
 

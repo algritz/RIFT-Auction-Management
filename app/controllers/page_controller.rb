@@ -45,7 +45,7 @@ class PageController < ApplicationController
         i+=1
         end
       end
-      if i==25 then
+      if i==10 then
       @had_to_limit = true
       break
       end
