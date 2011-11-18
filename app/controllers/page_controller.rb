@@ -122,7 +122,8 @@ class PageController < ApplicationController
       listing.listing_status_id = mailed_listing.first[:id]
       listing.save
     end
-    SalesListing.clear_all_cached(current_user[:id])
+    SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+
     redirect_to sales_listings_path
 
   end

@@ -188,8 +188,7 @@ module ApplicationHelper
           if last_sold_date != nil then
           @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, current_user.id, last_sold_date.updated_at)
           else
-          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, false, current_user.id)
-
+          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, current_user.id)
           end
           if @number_of_expired.modulo(5) == 0 then
           price = (expired_listing.price * 0.97).round
