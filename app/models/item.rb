@@ -3,9 +3,9 @@ class Item < ActiveRecord::Base
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
   validates_numericality_of :item_level, :allow_nil => true
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 10
   def self.search(search, page)
-    paginate :per_page => 20, :page => page,
+    paginate :per_page => 15, :page => page,
     :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey, rarity',
     :order => 'source_id, description',
     :conditions => ['description like ?', "%#{search}%"], :order => "description"

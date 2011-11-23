@@ -14,6 +14,8 @@ gem 'jquery-rails'
 
 gem 'closure-compiler'
 
+gem 'newrelic_rpm'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,7 +27,7 @@ end
 
 group :production do
 
-  gem 'newrelic_rpm'
+
   gem 'pg'
 end
 

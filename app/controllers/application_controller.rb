@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
   def init
     @start_time = Time.now
   end
+  
+  ## General Cache Handlers ##
+  
+  
+  
 end

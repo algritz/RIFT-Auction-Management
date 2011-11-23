@@ -4,12 +4,12 @@ SHELL = /bin/sh
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /c/Ruby192/include/ruby-1.9.1
-hdrdir = /c/Ruby192/include/ruby-1.9.1
-arch_hdrdir = c:/Ruby192/include/ruby-1.9.1/$(arch)
+topdir = /C/Ruby192/include/ruby-1.9.1
+hdrdir = /C/Ruby192/include/ruby-1.9.1
+arch_hdrdir = C:/Ruby192/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
 
-DESTDIR = c:
+DESTDIR = C:
 prefix = $(DESTDIR)/Ruby192
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
@@ -79,7 +79,7 @@ RUBY_SO_NAME = msvcrt-ruby191
 arch = i386-mingw32
 sitearch = i386-msvcrt
 ruby_version = 1.9.1
-ruby = c:/Ruby192/bin/ruby
+ruby = C:/Ruby192/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf

@@ -10,9 +10,9 @@ class CraftedItem < ActiveRecord::Base
   validates_uniqueness_of :component_item_id, :scope => :crafted_item_generated_id, :message => 'is already used for that pattern.'
 
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 10
   def self.search(search, page)
-    paginate :per_page => 20, :page => page,
+    paginate :per_page => 15, :page => page,
     :select => 'id, name, crafted_item_stacksize, component_item_quantity, required_skill, required_skill_point, crafted_item_generated_id, component_item_id',
     :order => 'required_skill, name',
     :conditions => ['name like ?', "%#{search}%"], :order => "name"
