@@ -1,12 +1,12 @@
 class PageController < ApplicationController
   before_filter :authenticate
   def items_to_craft
-    @source_list = Source.find(:all, :conditions => ["crafting_allowed = ?", true], :select => "id, description")
-    toons = Toon.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    @source_list = Source.cached_sources_crafting_allowed
+    toons = Toon.all_cached_toon_for_user(current_user[:id])
     toon_skills = ToonSkillLevel.find(:all, :conditions => ["toon_id in (?)", toons])
     @known_patterns = []
     toon_skills.each do |skill|
-      source = Source.find(:first, :conditions => ["id = ?", skill.source_id], :select => "id, description")
+      source = Source.cached_source(skill.source_id)
       item_keys = CraftedItem.find(:all, :conditions => ["required_skill = ? and required_skill_point <= ?", source.description, skill.skill_level], :select => "id, required_skill, required_skill_point, crafted_item_generated_id")
       item_keys.each do |key|
         item_id = Item.cached_item_by_itemkey(key[:crafted_item_generated_id])
@@ -27,7 +27,8 @@ class PageController < ApplicationController
       end
     else
       if params[:search] == nil then
-        item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
+        #item_ids = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
+        item_ids= Item.cached_items_without_listings(current_user[:id], ongoing_item_ids_list)
       else
         item_ids = Item.where(["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list]).search(params[:search], params[:page])
       end

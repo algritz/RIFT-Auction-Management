@@ -3,9 +3,9 @@ class Item < ActiveRecord::Base
   validates :description, :presence => true, :length => {:minimum=> 3, :maximum =>255}, :uniqueness => true
   validates_numericality_of :item_level, :allow_nil => true
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 10
   def self.search(search, page)
-    paginate :per_page => 20, :page => page,
+    paginate :per_page => 15, :page => page,
     :select => 'id, description, vendor_selling_price, vendor_buying_price, source_id, itemkey, rarity',
     :order => 'source_id, description',
     :conditions => ['description like ?', "%#{search}%"], :order => "description"
@@ -61,7 +61,16 @@ class Item < ActiveRecord::Base
     Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
     self.clear_all_cached
   end
-
+  
+  def self.cached_items_without_listings(user_id, ongoing_item_ids_list)
+    data = Rails.cache.fetch("Items.#{user_id}.cached_sold_count_for_item")
+    if data == nil then
+      data = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
+      Rails.cache.write("Items.#{user_id}.cached_items_without_listings", data)
+    end
+    return data
+  end
+  
   ## the reason why it is listed a second time is that I want to clear it from the cache for crafted item if its not needed
   def self.clear_cached_item_source_description(item_id)
     Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
@@ -75,7 +84,7 @@ class Item < ActiveRecord::Base
   def self.clear_cached_item_by_itemkey(itemkey)
     Rails.cache.clear("Item.#{itemkey}.cached_item_by_itemkey")
   end
-
+  
 end
 
 

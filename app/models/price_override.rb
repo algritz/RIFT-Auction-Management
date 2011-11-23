@@ -6,9 +6,9 @@ class PriceOverride < ActiveRecord::Base
   validates_uniqueness_of :item_id, :scope => [:user_id]
 
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 10
   def self.search(search, page)
-    paginate :per_page => 20, :page => page,
+    paginate :per_page => 15, :page => page,
     :joins => ("left join items on items.id = price_overrides.item_id"),
     :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description"
   end

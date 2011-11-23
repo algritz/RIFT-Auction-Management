@@ -14,7 +14,7 @@ class SalesListing < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
   def self.search(search, page)
-    paginate :per_page => 10, :page => page,
+    paginate :per_page => 15, :page => page,
     :joins => ("left join items on items.id = sales_listings.item_id"),
     :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
@@ -297,6 +297,7 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{user_id}.all_cached")
     Rails.cache.clear("SalesListings.#{user_id}.ongoing_listing_count_cached_for_user")
     Rails.cache.clear("SalesListings.#{user_id}.active_auctions_cached_for_user")
+    Rails.cache.clear("Items.#{user_id}.cached_sold_count_for_item")
     end
 
     if listing_id != nil then
@@ -334,7 +335,6 @@ class SalesListing < ActiveRecord::Base
   end
 
 end
-
 
 # == Schema Information
 #
