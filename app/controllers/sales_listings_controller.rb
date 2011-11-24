@@ -493,7 +493,7 @@ class SalesListingsController < ApplicationController
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
-      deposit_cost = SalesListing.cached_maximum_deposit_cost_for_item(item_id, current_user.id)
+      deposit_cost = SalesListing.cached_last_deposit_cost_for_item(item_id, current_user.id)
       if deposit_cost == nil then
       deposit_cost = 0
       end

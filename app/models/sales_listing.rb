@@ -272,11 +272,11 @@ class SalesListing < ActiveRecord::Base
     return data
   end
 
-  def self.cached_maximum_deposit_cost_for_item(item_id, user_id)
-    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_maximum_deposit_cost_for_item")
+  def self.cached_last_deposit_cost_for_item(item_id, user_id)
+    data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item")
     if data == nil then
-      data = SalesListing.maximum("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
-    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_maximum_deposit_cost_for_item", data)
+      data = SalesListing.last("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
+    Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item", data)
     end
     return data
   end
@@ -331,7 +331,7 @@ class SalesListing < ActiveRecord::Base
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_expired_and_undercut_count")
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_count")
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sales_listing_per_status_overall_count")
-    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_maximum_deposit_cost_for_item")
+    Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item")
     Rails.cache.clear("SalesListings.#{user_id}.#{item_id}.cached_sold_count_for_item")
     end
   end
