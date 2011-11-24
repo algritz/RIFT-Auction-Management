@@ -275,7 +275,7 @@ class SalesListing < ActiveRecord::Base
   def self.cached_last_deposit_cost_for_item(item_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item")
     if data == nil then
-      data = SalesListing.last("deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
+      data = SalesListing.find(:last, :select => "deposit_cost", :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
     Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item", data)
     end
     return data
