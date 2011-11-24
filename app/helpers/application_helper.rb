@@ -314,7 +314,7 @@ module ApplicationHelper
       if crafting_cost.class == String then
       return crafting_cost
       end
-      deposit_cost = SalesListing.cached_maximum_deposit_cost_for_item(item_id, current_user[:id])
+      deposit_cost = SalesListing.cached_last_deposit_cost_for_item(item_id, current_user[:id])
       if deposit_cost == nil then
       deposit_cost = 0
       end
