@@ -12,9 +12,9 @@ class SalesListing < ActiveRecord::Base
   validates_numericality_of :price, :allow_nil => true
 
   cattr_reader :per_page
-  @@per_page = 10
+  @@per_page = 20
   def self.search(search, page)
-    paginate :per_page => 15, :page => page,
+    paginate :per_page => 20, :page => page,
     :joins => ("left join items on items.id = sales_listings.item_id"),
     :conditions => ['items.description like ?', "%#{search}%"], :order => "items.description, sales_listings.updated_at desc"
   end
