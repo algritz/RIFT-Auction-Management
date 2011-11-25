@@ -278,7 +278,11 @@ class SalesListing < ActiveRecord::Base
       data = SalesListing.find(:last, :select => "deposit_cost, item_id, user_id", :conditions => ["item_id = ? and user_id = ?", item_id, user_id])
     Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_deposit_cost_for_item", data)
     end
-    return data.deposit_cost
+    if data != nil then
+      return data.deposit_cost
+    else
+      return data
+    end
   end
 
   def self.cached_sold_count_for_item(item_id, user_id)
