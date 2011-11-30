@@ -1,13 +1,14 @@
-<table>
+<table "item_list">
 	<tr>
 		<th>Item name</th>
+		<th>Sales_listing_id</th>
 		<th></th>
 	</tr>
 	<% @parsed_auctions.each do |parsed_auction| %>
 	<tr id="parsed_auction_<%= parsed_auction[:id] %>">
 		<td><%= parsed_auction.item_name %></td>
+		<td><%= parsed_auction.sales_listing_id %></td>
 		<td><%= link_to 'Destroy', parsed_auction, :remote => true,  confirm: 'Are you sure?', method: :delete %></td>
 	</tr>
 	<% end %>
 </table>
-<br />

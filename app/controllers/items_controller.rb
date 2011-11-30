@@ -70,6 +70,7 @@ class ItemsController < ApplicationController
     Item.clear_cached(params[:id])
     Item.clear_cached_item_source_description(params[:id])
     Item.clear_cached_item_by_itemkey(@item.itemkey)
+    Item.clear_cached_item_name(@item.description)
     Item.clear_all_cached
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -89,6 +90,7 @@ class ItemsController < ApplicationController
     @item = Item.cached_item(params[:id])
     Item.clear_cached(params[:id])
     Item.clear_cached_item_by_itemkey(@item.itemkey)
+    Item.clear_cached_item_name(@item.description)
     Item.clear_all_cached
     @item.destroy
     respond_to do |format|

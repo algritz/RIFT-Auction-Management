@@ -20,6 +20,15 @@ class Item < ActiveRecord::Base
     return data
   end
 
+  def self.cached_item_name(item_name)
+    data = Rails.cache.fetch("Item.#{item_name}.cached_item_name")
+    if data == nil then
+      data = Item.find(:first, :conditions => ["description = ?", item_name], :select => "id, description")
+    Rails.cache.write("Item.#{item_name}.cached_item_name", data)
+    end
+    return data
+  end
+
   def self.cached_item_by_itemkey(itemkey)
     data = Rails.cache.fetch("Item.#{itemkey}.cached_item_by_itemkey")
     if data == nil then
@@ -61,16 +70,16 @@ class Item < ActiveRecord::Base
     Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
     self.clear_all_cached
   end
-  
+
   def self.cached_items_without_listings(user_id, ongoing_item_ids_list)
     data = Rails.cache.fetch("Items.#{user_id}.cached_sold_count_for_item")
     if data == nil then
       data = Item.find(:all, :conditions => ["to_list = ? and is_crafted = ? and id not in (?)", true, true, ongoing_item_ids_list], :select => "id, description, source_id", :order => "source_id, description")
-      Rails.cache.write("Items.#{user_id}.cached_items_without_listings", data)
+    Rails.cache.write("Items.#{user_id}.cached_items_without_listings", data)
     end
     return data
   end
-  
+
   ## the reason why it is listed a second time is that I want to clear it from the cache for crafted item if its not needed
   def self.clear_cached_item_source_description(item_id)
     Rails.cache.clear("ItemToCraft.#{item_id}.cached_item_source_description")
@@ -84,9 +93,12 @@ class Item < ActiveRecord::Base
   def self.clear_cached_item_by_itemkey(itemkey)
     Rails.cache.clear("Item.#{itemkey}.cached_item_by_itemkey")
   end
-  
-end
 
+  def self.clear_cached_item_name(item_name)
+    Rails.cache.fetch("Item.#{item_name}.cached_item_name")
+  end
+
+end
 
 # == Schema Information
 #
