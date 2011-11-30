@@ -1,4 +1,6 @@
 RIFTAuctionManagement::Application.routes.draw do
+  resources :parsed_auctions
+
   resources :item_notes
 
   resources :wanted_items
@@ -44,7 +46,7 @@ RIFTAuctionManagement::Application.routes.draw do
   get 'page/old_listings'
   get 'page/all_mailed'
   get 'page/profit_per_day'
-
+  
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107133135) do
+ActiveRecord::Schema.define(:version => 20111130003754) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(:version => 20111107133135) do
   add_index "creation_codes", ["used"], :name => "index_creation_codes_on_used"
 
   create_table "item_notes", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "user_id"
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "user_id"
+    t.text      "note"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "items", :force => true do |t|
@@ -119,6 +119,13 @@ ActiveRecord::Schema.define(:version => 20111107133135) do
   add_index "listing_statuses", ["description"], :name => "index_listing_statuses_on_description"
   add_index "listing_statuses", ["id"], :name => "index_listing_statuses_on_id"
   add_index "listing_statuses", ["is_final"], :name => "index_listing_statuses_on_is_final"
+
+  create_table "parsed_auctions", :force => true do |t|
+    t.string   "item_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "price_overrides", :force => true do |t|
     t.integer   "item_id"

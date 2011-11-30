@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<th>Item name</th>
+		<th></th>
+	</tr>
+	<% @parsed_auctions.each do |parsed_auction| %>
+	<tr id="parsed_auction_<%= parsed_auction[:id] %>">
+		<td><%= parsed_auction.item_name %></td>
+		<td><%= link_to 'Destroy', parsed_auction, :remote => true,  confirm: 'Are you sure?', method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+<br />

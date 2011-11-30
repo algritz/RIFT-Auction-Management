@@ -1,0 +1,20 @@
+<%= form_for(@parsed_auction, :remote => true) do |f| %>
+<div id= "post_errors" style="display:none"></div>
+
+<p>
+	<div class="field">
+		<%= f.label :item_name %>
+		<br />
+		<%= f.text_field :item_name %>
+	</div>
+	<div class="field">
+		<%= f.label :user_id %>
+		<br />
+		<%= f.hidden_field(:user_id, :value => current_user.id) %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</p>
+<% end %>
+
