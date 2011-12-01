@@ -1,11 +1,14 @@
 ---
 Rift-ah_tutorial.docx: Rift-ah_tutorial-bee0f885aaae98855c597e2927207785.docx
 rails.png: rails-e4b51606cd77fda2615e7439907bfc92.png
-application.js: application-9796158ad0b87fc6c3bd01f044d67be8.js
+application.js: application-152b2f1eca47f03d4f3e3a3823098b2a.js
 item_notes.js: item_notes-663c918fc82d04b601e487fccc400928.js
+parsed_auctions.js: parsed_auctions-663c918fc82d04b601e487fccc400928.js
 sales_listings.js: sales_listings-3a170bae7984863a86f6d0844781b6ab.js
 users.js: users-663c918fc82d04b601e487fccc400928.js
 application.css: application-334898189cc518f3c076a84b527856bf.css
+jquery.iframe-transport.js: jquery.iframe-transport-5394949988044998ded78583f3546ae0.js
+jquery.remotipart.js: jquery.remotipart-edb48fa014ef7743cb69f135553daa96.js
 jquery-ui.js: jquery-ui-967afaa7aa6ee839e55a2a83c86c0bb8.js
 jquery-ui.min.js: jquery-ui.min-8fb875f8f78b7fed8135485401c69c19.js
 jquery.js: jquery-3b6ff35ff083380d9922e4fbb855a7de.js

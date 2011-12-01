@@ -113,6 +113,8 @@ class PageController < ApplicationController
     listing_status_id = ListingStatus.find(:all, :select => "id, description" ,:conditions => ["description = ?", "Ongoing"])
     @old_listings = SalesListing.find(:all, :conditions => ["updated_at < ? and listing_status_id = ? and user_id = ?", 5.days.ago, listing_status_id, current_user[:id]], :select => "id, item_id, stacksize, price, deposit_cost")
   end
+  
+  
 
   def all_mailed
     crafted_id = ListingStatus.find(:all, :select => 'id, description', :conditions => "description = 'Crafted'")

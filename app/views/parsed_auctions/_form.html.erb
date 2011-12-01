@@ -1,0 +1,15 @@
+<%= form_for(@parsed_auction,  :html => {:multipart => true, :remote => true}) do |f| %>
+<div id= "post_errors" style="display:none"></div>
+
+<p>
+	<div class="field">
+		<%= f.label :file %>
+		<br />
+		<%= f.file_field :item_name %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</p>
+<% end %>
+
