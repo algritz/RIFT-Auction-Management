@@ -46,7 +46,6 @@ group :development do
   gem 'watchr'
   gem 'webrat'
   gem 'term-ansicolor'
-  gem 'query_trace'
 
 end
 

@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(:version => 20111130214038) do
   add_index "creation_codes", ["used"], :name => "index_creation_codes_on_used"
 
   create_table "item_notes", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "user_id"
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "user_id"
+    t.text      "note"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "items", :force => true do |t|
@@ -122,10 +122,9 @@ ActiveRecord::Schema.define(:version => 20111130214038) do
 
   create_table "parsed_auctions", :force => true do |t|
     t.string   "item_name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "items_name"
-    t.integer  "user_id"
     t.integer  "sales_listing_id"
   end
 
