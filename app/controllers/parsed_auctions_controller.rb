@@ -60,7 +60,6 @@ class ParsedAuctionsController < ApplicationController
   end
 
   def batch_expire
-    p "expiring begins NOW"
     parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
     expired_listing_status = ListingStatus.cached_listing_status_from_description("Expired")
     inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
@@ -85,7 +84,6 @@ class ParsedAuctionsController < ApplicationController
       end
     end
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
-    respond_with @parsed_auctions, :location => parsed_auctions_url
   end
 
   # DELETE /parsed_auctions/1l
