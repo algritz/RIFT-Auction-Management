@@ -56,7 +56,7 @@ class ParsedAuctionsController < ApplicationController
     err
     end
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
-
+    redirect_to parsed_auctions_url
   end
 
   def batch_expire
@@ -84,6 +84,7 @@ class ParsedAuctionsController < ApplicationController
       end
     end
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    redirect_to parsed_auctions_url
   end
 
   # DELETE /parsed_auctions/1l
@@ -92,6 +93,7 @@ class ParsedAuctionsController < ApplicationController
     @parsed_auction = ParsedAuction.find(params[:id])
     @parsed_auction.destroy
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    redirect_to parsed_auctions_url
   end
 
   # this method is also present in application_helper, so any bug found
