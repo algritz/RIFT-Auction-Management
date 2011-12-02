@@ -17,7 +17,7 @@ class ParsedAuctionsController < ApplicationController
       file = params[:parsed_auction][:item_name].open
       substring = "You received:"
       crafted_substring = "You have successfully crafted"
-      @last_line_parsed = nil
+      @last_line_parsed = "Start of file process"
       ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
       while (line = file.gets)
         if line.index(substring) != nil and @last_line_parsed.index(crafted_substring) == nil then
@@ -36,7 +36,6 @@ class ParsedAuctionsController < ApplicationController
             if sales_listing != nil then
               # checks if it was already added to the expired list
               previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
-              p "do I get here ?"
               if previously_added == 0 then
               # creates a new Entry to be processed later on
               parsed_auction_line = ParsedAuction.new(:user_id => current_user[:id],:sales_listing_id => sales_listing[:id], :item_name => item_name)
@@ -48,7 +47,7 @@ class ParsedAuctionsController < ApplicationController
             end
           end
         end
-        p @last_line_parsed = line
+        @last_line_parsed = line
       end
 
       file.close
