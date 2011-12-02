@@ -19,9 +19,7 @@ class ParsedAuctionsController < ApplicationController
       crafted_substring = "You have successfully crafted"
       @last_line_parsed = nil
       ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
-
       while (line = file.gets)
-        should_save = false
         if line.index(substring) != nil and @last_line_parsed.index(crafted_substring) == nil then
           # This is either an expired auction or something crafted
           # deconstruct the line in order to get the actual item_name
@@ -38,15 +36,19 @@ class ParsedAuctionsController < ApplicationController
             if sales_listing != nil then
               # checks if it was already added to the expired list
               previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
+              p "do I get here ?"
               if previously_added == 0 then
               # creates a new Entry to be processed later on
               parsed_auction_line = ParsedAuction.new(:user_id => current_user[:id],:sales_listing_id => sales_listing[:id], :item_name => item_name)
               parsed_auction_line.save
+              SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+              SalesListing.clear_saleslisting_block(item_id, current_user[:id], nil)
+              SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
               end
             end
           end
         end
-        @last_line_parsed = line
+        p @last_line_parsed = line
       end
 
       file.close
@@ -81,6 +83,9 @@ class ParsedAuctionsController < ApplicationController
       sales_relisting.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
       end
     end
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
