@@ -1,6 +1,7 @@
 RIFTAuctionManagement::Application.routes.draw do
 
   match 'parsed_auctions/batch_expire', :to => 'parsed_auctions#batch_expire'
+  match 'parsed_auctions/export_data', :to => 'parsed_auctions#export_data'
   resources :parsed_auctions
 
   resources :item_notes

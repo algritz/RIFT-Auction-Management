@@ -91,6 +91,33 @@ class ParsedAuctionsController < ApplicationController
     redirect_to parsed_auctions_url
   end
 
+  def export_data
+    in_inventory = ListingStatus.first(:conditions => ["description = ?",  "In Inventory"])
+
+    items_in_inventory = SalesListing.joins("left join items on items.id = sales_listings.item_id").find(:all, :conditions => ["user_id = ? and listing_status_id = ?",  current_user[:id], in_inventory[:id]], :order => "items.description")
+    destfile = "prices.lua"
+    #if File.exists?(destfile) then
+    #File.delete(destfile)
+    #end
+    #myfile = File.new(destfile, "w")
+    #myfile.puts("item_prices = {{")
+    @myfilecontent = "item_prices = {{"
+    items_in_inventory.each do |listing|
+      item_id = listing[:item_id]
+      item_info = Item.first(:conditions => ["id = ?",  item_id])
+     # myfile.puts("{'#{item_info[:description]}', '#{formatPrice(listing[:price])}'},")
+      @myfilecontent += "{'#{item_info[:description]}', '#{formatPrice(listing[:price])}'},"
+    end
+    #myfile.puts("}}")
+    #myfile.close
+    @myfilecontent = @myfilecontent[0..@myfilecontent.length-2]
+     @myfilecontent += "}}" 
+    respond_to do |format|
+      format.html
+    end
+
+  end
+
   # DELETE /parsed_auctions/1l
   # DELETE /parsed_auctions/1.json
   def destroy
@@ -164,6 +191,24 @@ class ParsedAuctionsController < ApplicationController
           end
         end
       end
+    end
+  end
+
+  def formatPrice(price)
+    if price.class != String then
+      if price.to_i > 0 then
+        if price != nil then
+        plat = price / 10000
+        goldRemaining = price % 10000
+        gold = goldRemaining / 100
+        silver = goldRemaining % 100
+        return "#{plat}p #{gold}g #{silver}s"
+        else
+        return ""
+        end
+      end
+    else
+    return price
     end
   end
 
