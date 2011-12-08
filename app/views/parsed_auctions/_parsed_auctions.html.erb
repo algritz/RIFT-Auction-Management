@@ -1,16 +1,18 @@
-<%= link_to "Process all Expired Auctions", parsed_auctions_batch_expire_path,  confirm: 'Are you sure you want to process all these auctions?', method: :get %> ::
-<%= link_to "Export Auctions", parsed_auctions_export_data_path,  confirm: 'Are you sure you want to export your data?', method: :get %>
+<%= link_to "Process all Expired Auctions", parsed_auctions_batch_expire_path,  confirm: 'Are you sure you want to Expire all these auctions?', method: :get %> ::
+<%= link_to "Process all Auctions to Relist", parsed_auctions_batch_relist_path,  confirm: 'Are you sure you want to Relist all these auctions?', method: :get %>
 <br />
 <br />
 <table "item_list">
 	<tr>
 		<th>Item name</th>
 		<th>Sales_listing_id</th>
+		<th>Action</th>
 		<th></th>
 	</tr>
 	<% @parsed_auctions.each do |parsed_auction| %>
 	<tr id="parsed_auction_<%= parsed_auction[:id] %>">
 		<td><%= parsed_auction.item_name %></td>
+		<td><%= parsed_auction.action_name %></td>
 		<td><%= link_to parsed_auction.sales_listing_id, edit_sales_listing_path(parsed_auction.sales_listing_id) %></td>
 		<td><%= link_to 'Destroy', parsed_auction,  confirm: 'Are you sure?', method: :delete %></td>
 	</tr>

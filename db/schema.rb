@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130214038) do
+ActiveRecord::Schema.define(:version => 20111208185938) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20111130214038) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sales_listing_id"
+    t.string   "action_name"
   end
 
   create_table "price_overrides", :force => true do |t|
