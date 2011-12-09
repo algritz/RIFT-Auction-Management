@@ -121,12 +121,12 @@ ActiveRecord::Schema.define(:version => 20111208185938) do
   add_index "listing_statuses", ["is_final"], :name => "index_listing_statuses_on_is_final"
 
   create_table "parsed_auctions", :force => true do |t|
-    t.string   "item_name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "sales_listing_id"
-    t.string   "action_name"
+    t.string    "item_name"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "sales_listing_id"
+    t.string    "action_name"
   end
 
   create_table "price_overrides", :force => true do |t|
