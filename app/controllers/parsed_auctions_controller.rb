@@ -21,6 +21,8 @@ class ParsedAuctionsController < ApplicationController
       @last_line_parsed = "Start of file process"
       ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
       in_inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
+      mailed_listing_status = ListingStatus.cached_listing_status_from_description("Mailed")
+      crafted_listing_status = ListingStatus.cached_listing_status_from_description("Crafted")
       while (line = file.gets)
         if line.index(received_substring) != nil and @last_line_parsed.index(crafted_substring) == nil then
           # This is either an expired auction or something crafted
@@ -33,8 +35,8 @@ class ParsedAuctionsController < ApplicationController
             # fetch item_id from item_name
             item_id = Item.cached_item_name(item_name)
             # fetch if there is an active listings
-            sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", ongoing_listing_status[:id], item_id[:id], current_user[:id]])
-
+            sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", ongoing_listing_status[:id], item_id[:id], current_user[:id]], :select => "id, listing_status_id, item_id, user_id")
+            # this is an ongoing auction
             if sales_listing != nil then
               # checks if it was already added to the expired list
               previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
@@ -45,6 +47,36 @@ class ParsedAuctionsController < ApplicationController
               SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
               SalesListing.clear_saleslisting_block(item_id, current_user[:id], nil)
               SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+              end
+            else
+            # this is a mailed auction
+              sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", mailed_listing_status[:id], item_id[:id], current_user[:id]], :select => "id, listing_status_id, item_id, user_id")
+              if sales_listing != nil then
+                # checks if it was already added to the mailed list
+                previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
+                if previously_added == 0 then
+                # creates a new Entry to be processed later on
+                parsed_auction_line = ParsedAuction.new(:user_id => current_user[:id],:sales_listing_id => sales_listing[:id], :item_name => item_name, :action_name => "In Inventory")
+                parsed_auction_line.save
+                SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+                SalesListing.clear_saleslisting_block(item_id, current_user[:id], nil)
+                SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+                end
+              else
+              #this is a crafted auction
+                sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", crafted_listing_status[:id], item_id[:id], current_user[:id]], :select => "id, listing_status_id, item_id, user_id")
+                if sales_listing != nil then
+                  # checks if it was already added to the mailed list
+                  previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
+                  if previously_added == 0 then
+                  # creates a new Entry to be processed later on
+                  parsed_auction_line = ParsedAuction.new(:user_id => current_user[:id],:sales_listing_id => sales_listing[:id], :item_name => item_name, :action_name => "In Inventory")
+                  parsed_auction_line.save
+                  SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+                  SalesListing.clear_saleslisting_block(item_id, current_user[:id], nil)
+                  SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+                  end
+                end
               end
             end
           end
@@ -58,7 +90,7 @@ class ParsedAuctionsController < ApplicationController
               # fetch item_id from item_name
               item_id = Item.cached_item_name(item_name)
               # fetch if there is an active listings
-              sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", in_inventory_listing_status[:id], item_id[:id], current_user[:id]])
+              sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", in_inventory_listing_status[:id], item_id[:id], current_user[:id]], :select => "id, listing_status_id, item_id, user_id")
               if sales_listing != nil then
                 # checks if it was already added to the expired list
                 previously_added = ParsedAuction.count(:conditions => ["sales_listing_id = ?", sales_listing[:id]])
@@ -126,6 +158,25 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       sales_listing.listing_status_id = ongoing_listing_status[:id]
+      sales_listing.save
+      parsed_auction = ParsedAuction.find(auction[:id])
+      parsed_auction.destroy
+      SalesListing.clear_saleslisting_block(nil, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(sales_listing.item_id, current_user[:id], nil)
+      SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+    end
+    @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
+    redirect_to parsed_auctions_url
+  end
+  
+  
+  def batch_in_inventory
+    parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ? and action_name = ?", current_user[:id], "In Inventory"])
+    inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
+
+    parsed_auctions.each do |auction|
+      sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
+      sales_listing.listing_status_id = inventory_listing_status[:id]
       sales_listing.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
