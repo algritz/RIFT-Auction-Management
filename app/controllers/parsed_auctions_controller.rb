@@ -196,7 +196,7 @@ class ParsedAuctionsController < ApplicationController
     items_in_inventory.each do |listing|
       item_id = listing[:item_id]
       item_info = Item.first(:conditions => ["id = ?",  item_id])
-      @myfilecontent += "{'#{item_info[:description]}', '#{formatPrice(listing[:price])}'},"
+      @myfilecontent += '{"' + item_info[:description] + '", '+ "'#{formatPrice(listing[:price])}'},"
     end
     @myfilecontent = @myfilecontent[0..@myfilecontent.length-2]
     @myfilecontent += "}}"
