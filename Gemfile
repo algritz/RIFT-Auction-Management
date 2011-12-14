@@ -9,6 +9,8 @@ gem 'json'
 gem 'therubyracer', :platforms => :ruby
 gem 'eventmachine', '~>1.0.0.beta.4'
 gem 'thin'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 gem 'jquery-rails'
 
