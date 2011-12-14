@@ -17,6 +17,7 @@ class ParsedAuctionsController < ApplicationController
       file = params[:parsed_auction][:item_name].open
       received_substring = "You received:"
       auction_substring = "Auction Created for:"
+      auction_price_substring = ": You auctioned "
       crafted_substring = "You have successfully crafted"
       @last_line_parsed = "Start of file process"
       ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
@@ -24,6 +25,7 @@ class ParsedAuctionsController < ApplicationController
       mailed_listing_status = ListingStatus.cached_listing_status_from_description("Mailed")
       crafted_listing_status = ListingStatus.cached_listing_status_from_description("Crafted")
       while (line = file.gets)
+        
         if line.index(received_substring) != nil and @last_line_parsed.index(crafted_substring) == nil then
           # This is either an expired auction or something crafted
           # deconstruct the line in order to get the actual item_name
@@ -106,6 +108,8 @@ class ParsedAuctionsController < ApplicationController
             end
           end
         end
+        logger.info (line)
+        
         @last_line_parsed = line
       end
 
@@ -168,8 +172,7 @@ class ParsedAuctionsController < ApplicationController
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
     redirect_to parsed_auctions_url
   end
-  
-  
+
   def batch_in_inventory
     parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ? and action_name = ?", current_user[:id], "In Inventory"])
     inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
