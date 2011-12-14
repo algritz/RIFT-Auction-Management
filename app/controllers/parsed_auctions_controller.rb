@@ -117,14 +117,9 @@ class ParsedAuctionsController < ApplicationController
               full_name = full_name[1]
               full_name = full_name.split(" with ")
               full_name = full_name[0]
-              my_logger.info(full_name)
-
               full_amount = full_amount_array[1]
-              my_logger.info("Full: #{full_amount}" )
               if full_amount != nil then
                 amount_array = full_amount.split(" ")
-                my_logger.info(amount_array)
-                my_logger.info(amount_array.length)
                 silverpos = amount_array.length - 2
                 silver = amount_array[silverpos]
                 if silver.to_i < 10 then
@@ -141,17 +136,10 @@ class ParsedAuctionsController < ApplicationController
                 platinumpos = amount_array.length - 6
                 platinum = amount_array[platinumpos]
                 end
-
-                my_logger.info("platinum: #{platinum}")
-                my_logger.info("gold: #{gold}")
-                my_logger.info("silver: #{silver}")
-
                 full_price = "#{platinum}#{gold}#{silver}"
-
                 last_parsed_auction = ParsedAuction.all(:conditions => ["user_id = ? and item_name = ?", current_user[:id], full_name])
                 if last_parsed_auction != nil then
                   last_parsed_auction.each do |entry|
-                    my_logger.info(entry)
                     entry.deposit = full_price
                     entry.save
                   end
@@ -184,13 +172,14 @@ class ParsedAuctionsController < ApplicationController
       if sales_listing.relisted_status != true then
       sales_relisting = SalesListing.new(:item_id => sales_listing.item_id,
       :stacksize => sales_listing.stacksize,
-      :deposit_cost => sales_listing.deposit_cost,
+      :deposit_cost => auction.deposit,
       :listing_status_id => inventory_listing_status[:id],
       :price => lastSalesPrice(sales_listing.item_id),
       :is_undercut_price => lastIsUndercutPrice(sales_listing),
       :user_id => current_user[:id])
 
       sales_listing.listing_status_id = expired_listing_status[:id]
+      sales_listing.deposit_cost = auction.deposit
       sales_listing.relisted_status = true
       sales_listing.save
       sales_relisting.save
@@ -213,6 +202,7 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       sales_listing.listing_status_id = ongoing_listing_status[:id]
+      sales_listing.deposit_cost = auction.deposit
       sales_listing.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
@@ -231,6 +221,7 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       sales_listing.listing_status_id = inventory_listing_status[:id]
+      sales_listing.deposit_cost = auction.deposit
       sales_listing.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
@@ -358,10 +349,6 @@ class ParsedAuctionsController < ApplicationController
     ParsedAuction.all.each do |entry|
       entry.destroy
     end
-  end
-
-  def my_logger
-    @@my_logger ||= Logger.new("#{Rails.root}/log/my.log")
   end
 
 end

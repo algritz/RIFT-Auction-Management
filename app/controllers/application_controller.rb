@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   def init
     @start_time = Time.now
   end
-
+  
+  def my_logger
+    @@my_logger ||= Logger.new("#{Rails.root}/log/my.log")
+  end
 
 end
