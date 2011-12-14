@@ -170,16 +170,22 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       if sales_listing.relisted_status != true then
-      sales_relisting = SalesListing.new(:item_id => sales_listing.item_id,
-      :stacksize => sales_listing.stacksize,
-      :deposit_cost => auction.deposit,
-      :listing_status_id => inventory_listing_status[:id],
-      :price => lastSalesPrice(sales_listing.item_id),
-      :is_undercut_price => lastIsUndercutPrice(sales_listing),
-      :user_id => current_user[:id])
+        sales_relisting = SalesListing.new(:item_id => sales_listing.item_id,
+        :stacksize => sales_listing.stacksize,
+        :deposit_cost => if auction.deposit != nil then
+        auction.deposit
+        else
+        sales_listing.deposit_cost
+        end,
+        :listing_status_id => inventory_listing_status[:id],
+        :price => lastSalesPrice(sales_listing.item_id),
+        :is_undercut_price => lastIsUndercutPrice(sales_listing),
+        :user_id => current_user[:id])
 
-      sales_listing.listing_status_id = expired_listing_status[:id]
-      sales_listing.deposit_cost = auction.deposit
+        sales_listing.listing_status_id = expired_listing_status[:id]
+        if auction.deposit != nil then
+        sales_listing.deposit_cost = auction.deposit
+        end
       sales_listing.relisted_status = true
       sales_listing.save
       sales_relisting.save
@@ -202,7 +208,9 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       sales_listing.listing_status_id = ongoing_listing_status[:id]
+      if auction.deposit != nil then
       sales_listing.deposit_cost = auction.deposit
+      end
       sales_listing.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
@@ -221,7 +229,9 @@ class ParsedAuctionsController < ApplicationController
     parsed_auctions.each do |auction|
       sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
       sales_listing.listing_status_id = inventory_listing_status[:id]
+      if auction.deposit != nil then
       sales_listing.deposit_cost = auction.deposit
+      end
       sales_listing.save
       parsed_auction = ParsedAuction.find(auction[:id])
       parsed_auction.destroy
