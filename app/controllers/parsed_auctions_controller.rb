@@ -17,15 +17,18 @@ class ParsedAuctionsController < ApplicationController
       file = params[:parsed_auction][:item_name].open
       received_substring = "You received:"
       auction_substring = "Auction Created for:"
-      auction_price_substring = ": You auctioned "
+      auction_price_substring = " You auctioned "
+      a_deposit_substring = " for a deposit of "
       crafted_substring = "You have successfully crafted"
       @last_line_parsed = "Start of file process"
+
       ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
       in_inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
       mailed_listing_status = ListingStatus.cached_listing_status_from_description("Mailed")
       crafted_listing_status = ListingStatus.cached_listing_status_from_description("Crafted")
+      my_logger.info("##############")
       while (line = file.gets)
-        
+
         if line.index(received_substring) != nil and @last_line_parsed.index(crafted_substring) == nil then
           # This is either an expired auction or something crafted
           # deconstruct the line in order to get the actual item_name
@@ -106,14 +109,62 @@ class ParsedAuctionsController < ApplicationController
                 end
               end
             end
+          else
+            if line.index(auction_price_substring) != nil then
+              full_amount_array = line.split(a_deposit_substring)
+              full_name = full_amount_array[0]
+              full_name = full_name.split(auction_price_substring)
+              full_name = full_name[1]
+              full_name = full_name.split(" with ")
+              full_name = full_name[0]
+              my_logger.info(full_name)
+
+              full_amount = full_amount_array[1]
+              my_logger.info("Full: #{full_amount}" )
+              if full_amount != nil then
+                amount_array = full_amount.split(" ")
+                my_logger.info(amount_array)
+                my_logger.info(amount_array.length)
+                silverpos = amount_array.length - 2
+                silver = amount_array[silverpos]
+                if silver.to_i < 10 then
+                silver = "0" + silver
+                end
+                if amount_array.length >= 4 then
+                  goldpos = amount_array.length - 4
+                  gold = amount_array[goldpos]
+                  if gold.to_i < 10 then
+                  gold = "0" + gold
+                  end
+                end
+                if amount_array.length >= 6 then
+                platinumpos = amount_array.length - 6
+                platinum = amount_array[platinumpos]
+                end
+
+                my_logger.info("platinum: #{platinum}")
+                my_logger.info("gold: #{gold}")
+                my_logger.info("silver: #{silver}")
+
+                full_price = "#{platinum}#{gold}#{silver}"
+
+                last_parsed_auction = ParsedAuction.all(:conditions => ["user_id = ? and item_name = ?", current_user[:id], full_name])
+                if last_parsed_auction != nil then
+                  last_parsed_auction.each do |entry|
+                    my_logger.info(entry)
+                    entry.deposit = full_price
+                    entry.save
+                  end
+                end
+              end
+            end
           end
         end
-        logger.info (line)
-        
         @last_line_parsed = line
       end
 
       file.close
+      GC.start
 
     rescue => err
     puts "Exception: #{err}"
@@ -301,6 +352,16 @@ class ParsedAuctionsController < ApplicationController
     else
     return price
     end
+  end
+
+  def cleanup
+    ParsedAuction.all.each do |entry|
+      entry.destroy
+    end
+  end
+
+  def my_logger
+    @@my_logger ||= Logger.new("#{Rails.root}/log/my.log")
   end
 
 end
