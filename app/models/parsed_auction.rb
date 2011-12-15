@@ -4,6 +4,4 @@ class ParsedAuction < ActiveRecord::Base
   validates :item_name, :presence => true
   validates :user_id, :presence => true
   validates :action_name, :presence => true
-  
-   
 end

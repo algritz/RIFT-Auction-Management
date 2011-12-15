@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214205850) do
+ActiveRecord::Schema.define(:version => 20111215183518) do
 
   create_table "competitor_styles", :force => true do |t|
     t.string    "description"
@@ -135,6 +135,15 @@ ActiveRecord::Schema.define(:version => 20111214205850) do
   add_index "listing_statuses", ["description"], :name => "index_listing_statuses_on_description"
   add_index "listing_statuses", ["id"], :name => "index_listing_statuses_on_id"
   add_index "listing_statuses", ["is_final"], :name => "index_listing_statuses_on_is_final"
+
+  create_table "parse_queues", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parse_queues", ["user_id"], :name => "index_parse_queues_on_user_id"
 
   create_table "parsed_auctions", :force => true do |t|
     t.string    "item_name"

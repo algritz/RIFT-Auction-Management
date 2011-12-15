@@ -1,0 +1,2 @@
+class ParseQueueController < ApplicationController
+end

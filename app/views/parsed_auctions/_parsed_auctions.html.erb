@@ -3,6 +3,9 @@
 <%= link_to "Process all Auctions to put In Inventory", parsed_auctions_batch_in_inventory_path,  confirm: 'Are you sure you want to put back In Inventory all these auctions?', method: :get %>
 <br />
 <br />
+<% if @jobs_in_queue > 0 then %>
+<h3>Some data has yet to be processed</h3>
+<% end %>
 <table "item_list">
 	<tr>
 		<th>Item name</th>

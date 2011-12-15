@@ -414,12 +414,4 @@ class SalesListingsController < ApplicationController
     end
   end
 
-  ## -- start of private block -- ##
-  private
-
-  # this method is also present in application_helper, so any bug found
-  # in this block is likely to happen over there
- 
-
-## -- private block
 end
