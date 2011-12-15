@@ -459,7 +459,7 @@ class SalesListingsController < ApplicationController
 
   def lastDepositCost(item_id)
     if item_id != nil then
-      SalesListing.maximum('deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
+      SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
     end
   end
 

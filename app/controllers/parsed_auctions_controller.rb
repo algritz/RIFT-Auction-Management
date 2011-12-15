@@ -168,8 +168,7 @@ class ParsedAuctionsController < ApplicationController
     @parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ?", current_user[:id]])
     redirect_to parsed_auctions_url
   end
-  
-  
+
   def batch_in_inventory
     parsed_auctions = ParsedAuction.find(:all, :conditions => ["user_id = ? and action_name = ?", current_user[:id], "In Inventory"])
     inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
@@ -196,7 +195,7 @@ class ParsedAuctionsController < ApplicationController
     items_in_inventory.each do |listing|
       item_id = listing[:item_id]
       item_info = Item.first(:conditions => ["id = ?",  item_id])
-      @myfilecontent += '{"' + item_info[:description] + '", '+ "'#{formatPrice(listing[:price])}'},"
+      @myfilecontent += '{"' + item_info[:description] + '", '+ "'#{formatPrice(listing[:price])} / #{formatPrice(minimum_sales_price(listing[:item_id]))}'},"
     end
     @myfilecontent = @myfilecontent[0..@myfilecontent.length-2]
     @myfilecontent += "}}"
@@ -255,6 +254,12 @@ class ParsedAuctionsController < ApplicationController
     end
   end
 
+  def lastDepositCost(item_id)
+    if item_id != nil then
+      SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
+    end
+  end
+
   # this method is also present in the application helper, so any bug found there is likely to happen here
   def lastIsUndercutPrice(item_id)
     if item_id != nil then
@@ -279,6 +284,96 @@ class ParsedAuctionsController < ApplicationController
           end
         end
       end
+    end
+  end
+
+  def minimum_sales_price(item_id)
+    if item_id != nil then
+      crafting_cost = calculateCraftingCost(item_id)
+      deposit_cost = SalesListing.cached_last_deposit_cost_for_item(item_id, current_user.id)
+      if deposit_cost == nil then
+      deposit_cost = 0
+      end
+      ever_sold = SalesListing.cached_sold_count_for_item(item_id, current_user.id)
+      if ever_sold > 0 then
+        ## last_sold_date performs better without cache when called repeatedly
+        last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user[:id]], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, sales_listings.updated_at").last.updated_at
+        number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user[:id]])
+        if number_of_relists_since_last_sold > 0 then
+        minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
+        else
+        minimum_price = (deposit_cost + crafting_cost)
+        end
+      else
+        number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user[:id]])
+        if number_of_relists > 0 then
+        minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
+        else
+        minimum_price = (deposit_cost + crafting_cost)
+        end
+      end
+    end
+  end
+
+  def calculateCraftingCost(item_id)
+    if item_id != nil then
+      item = Item.cached_item(item_id)
+      if item.is_crafted then
+        if CraftedItem.cached_crafted_item_count(item.itemkey) > 0 then
+          crafting_materials = CraftedItem.cached_crafted_item_by_component_item_id(item.itemkey)
+          cost = 0
+          crafting_materials.each do |materials|
+            component = Item.cached_item_by_itemkey(materials.component_item_id)
+            material_cost = calculateCraftingCost(component[:id])
+            total_material_cost = (material_cost * materials.component_item_quantity)
+            if (material_cost.to_s != "no pattern defined yet for a sub-component") then
+            cost += total_material_cost
+            else
+            return "no pattern defined yet for a sub-component"
+            end
+          end
+        return cost
+        else
+        return "no pattern defined yet for a sub-component"
+        end
+      else
+      return calculateBuyingCost(item_id)
+      end
+    end
+  end
+
+  def calculateBuyingCost(item_id)
+    item = Item.cached_item(item_id)
+    selling_price = item.vendor_selling_price
+    buying_price = item.vendor_buying_price
+    override_price = PriceOverride.cached_price_override_for_item_for_user(@current_user.id, item_id)
+    if (override_price != nil) then
+    return override_price.price_per
+    else
+      if (selling_price != nil) then
+      return selling_price
+      else if (buying_price != nil) then
+        return buying_price
+        else
+        return "No price defined for item"
+
+        end
+      end
+    end
+  end
+
+  def calculateProfit(listing_id)
+    listing = SalesListing.cached_saleslisting(listing_id)
+    price_per = listing.price
+    stacksize = listing.stacksize
+
+    price = price_per * stacksize
+    if price > 0 then
+    ah_cut = (price * 0.05).to_i
+    deposit_cost = listing.deposit_cost
+    minimumCost = minimum_sales_price(SalesListing.cached_saleslisting(listing_id).item_id)
+    profit = ((price + deposit_cost) - (minimumCost + ah_cut))
+    return profit
     end
   end
 
