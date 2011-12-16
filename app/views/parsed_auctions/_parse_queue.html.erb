@@ -4,5 +4,21 @@ visible
 <% else%>
 none
 <%end%>">
-	<h3>Some data has yet to be processed</h3> (page will refresh every 30 seconds)
+	<h3>Parsing uploaded file</h3>
+</div>
+<div id="#auctions" style="display:
+<% if @parsed_auctions != [] then %>
+visible
+<% else%>
+none
+<%end%>">
+	<h3>Processing parsed auctions</h3>
+</div>
+<div id="#refresh" style="display:
+<% if @parsed_auctions != [] || @jobs_in_queue > 0 then %>
+visible
+<% else%>
+none
+<%end%>">
+	(Page will refresh every 30 seconds until all processing is done)
 </div>

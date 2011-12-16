@@ -48,7 +48,6 @@ group :development do
   gem 'watchr'
   gem 'webrat'
   gem 'term-ansicolor'
-
 end
 
 # Use unicorn as the web server

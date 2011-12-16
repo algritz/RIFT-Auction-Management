@@ -1,7 +1,6 @@
 class ParseQueue < ActiveRecord::Base
   attr_accessible :user_id, :content
   def create_delayed
-
     begin
       file = ParseQueue.first
       file_content = file[:content].split("\n")
@@ -143,7 +142,143 @@ class ParseQueue < ActiveRecord::Base
     err
     end
     file.destroy
+    process_parsed
   end
   handle_asynchronously :create_delayed
 
+  def process_parsed
+    # fetch possible status
+    expired_listing_status = ListingStatus.cached_listing_status_from_description("Expired")
+    inventory_listing_status = ListingStatus.cached_listing_status_from_description("In Inventory")
+    ongoing_listing_status = ListingStatus.cached_listing_status_from_description("Ongoing")
+
+    # fetch auctions to parse
+    parse_list = ParsedAuction.all(:order => "id")
+
+    # with every auctions to parse
+    parse_list.each do |auction|
+    # if they should expire
+      case auction[:action_name]
+      when "Expired"
+        sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
+        if sales_listing.relisted_status != true then
+        sales_relisting = SalesListing.new(:item_id => sales_listing.item_id,
+        :stacksize => sales_listing.stacksize,
+        :deposit_cost => sales_listing.deposit_cost,
+        :listing_status_id => inventory_listing_status[:id],
+        :price => lastSalesPrice(sales_listing.item_id, auction[:user_id]),
+        :is_undercut_price => lastIsUndercutPrice(sales_listing, auction[:user_id]),
+        :user_id => auction[:user_id])
+
+        sales_listing.listing_status_id = expired_listing_status[:id]
+        sales_listing.relisted_status = true
+        sales_listing.save
+        sales_relisting.save
+        parsed_auction = ParsedAuction.find(auction[:id])
+        parsed_auction.destroy
+        SalesListing.clear_saleslisting_block(nil, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(sales_listing.item_id, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+        end
+      # if they should be relisted
+      when "Relist"
+        sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
+        sales_listing.listing_status_id = ongoing_listing_status[:id]
+        sales_listing.save
+        parsed_auction = ParsedAuction.find(auction[:id])
+        parsed_auction.destroy
+        SalesListing.clear_saleslisting_block(nil, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(sales_listing.item_id, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+
+      when "In Inventory"
+        sales_listing = SalesListing.find(:first, :conditions => ["id = ?", auction[:sales_listing_id]], :select => "id, user_id, profit, listing_status_id, item_id, stacksize, deposit_cost, price, relisted_status")
+        sales_listing.listing_status_id = inventory_listing_status[:id]
+        sales_listing.save
+        parsed_auction = ParsedAuction.find(auction[:id])
+        parsed_auction.destroy
+        SalesListing.clear_saleslisting_block(nil, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(sales_listing.item_id, auction[:user_id], nil)
+        SalesListing.clear_saleslisting_block(nil, nil, sales_listing[:id])
+      end
+    # end of parse_list.each
+    end
+
+  # end of process_parsed
+  end
+
+
+  def lastSalesPrice(item_id, user_id)
+    if item_id != nil then
+      sold_status = ListingStatus.cached_listing_status_from_description('Sold')
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, user_id)
+      last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, user_id)
+      expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, user_id)
+
+      if sold != nil then
+        if (sold.updated_at == last_sold_date.updated_at) then
+        price = (sold.price * 1.1).round
+        else
+        price = sold.price
+        end
+      else if expired_listing != nil then
+          if last_sold_date != nil then
+          @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, user_id, last_sold_date.updated_at)
+          else
+          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, user_id)
+
+          end
+          if @number_of_expired.modulo(5) == 0 then
+          price = (expired_listing.price * 0.97).round
+          else
+          price = expired_listing.price
+          end
+        else
+          listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, user_id)
+          if listed_but_not_sold != nil then
+          price = listed_but_not_sold.price
+          else
+          price = 0
+          end
+        end
+      end
+    end
+  end
+
+  def lastDepositCost(item_id, user_id)
+    if item_id != nil then
+      SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, user_id]).to_i
+    end
+  end
+
+  # this method is also present in the application helper, so any bug found there is likely to happen here
+  def lastIsUndercutPrice(item_id, user_id)
+    if item_id != nil then
+      sold_status = ListingStatus.cached_listing_status_from_description("Sold")
+      expired_status = ListingStatus.cached_listing_status_from_description('Expired')
+      sold_not_undercut = SalesListing.cached_sold_not_undercut_count(item_id, user_id, sold_status[:id])
+      expired_not_undercut = SalesListing.cached_expired_not_undercut_count(item_id, user_id, expired_status[:id])
+      sold_and_undercut = SalesListing.cached_sold_and_undercut_count(item_id, user_id, sold_status[:id])
+      expired_and_undercut = SalesListing.cached_expired_and_undercut_count(item_id, user_id, expired_status[:id])
+
+      if sold_not_undercut > 0 then
+      is_undercut_price = false
+      else if expired_not_undercut > 0 then
+        is_undercut_price = false
+        else if sold_and_undercut > 0 then
+          is_undercut_price = true
+          else if expired_and_undercut > 0 then
+            is_undercut_price = true
+            else
+            is_undercut_price = false
+            end
+          end
+        end
+      end
+    end
+  end
+
+
+# end of model
 end
