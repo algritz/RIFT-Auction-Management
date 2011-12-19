@@ -149,7 +149,7 @@ class SalesListing < ActiveRecord::Base
   def self.cached_last_sold_auction(sold_status, item_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction")
     if data == nil then
-      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", sold_status, item_id, false, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", sold_status, item_id, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
     Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_last_sold_auction", data)
     end
     return data
@@ -167,7 +167,7 @@ class SalesListing < ActiveRecord::Base
   def self.cached_expired_listing(expired_status, item_id, user_id)
     data = Rails.cache.fetch("SalesListings.#{user_id}.#{item_id}.cached_expired_listing")
     if data == nil then
-      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and is_undercut_price = ? and user_id = ?", expired_status, item_id, false, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
+      data = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", expired_status, item_id, user_id], :select => "id, listing_status_id, item_id, is_undercut_price, user_id, price, updated_at")
     Rails.cache.write("SalesListings.#{user_id}.#{item_id}.cached_expired_listing", data)
     end
     return data
