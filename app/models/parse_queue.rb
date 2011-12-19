@@ -24,7 +24,7 @@ class ParseQueue < ActiveRecord::Base
             end_str_pos = item_name.index("]")
             item_name = item_name[2..end_str_pos-1]
             # fetch item_id from item_name
-            item_id = Item.cached_item_name(item_name)
+            item_id = Item.cached_item_name("#{item_name}")
             # fetch if there is an active listings
             sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", ongoing_listing_status[:id], item_id[:id], file[:user_id]], :select => "id, listing_status_id, item_id, user_id")
             # this is an ongoing auction
@@ -79,7 +79,7 @@ class ParseQueue < ActiveRecord::Base
               end_str_pos = item_name.index("]")
               item_name = item_name[2..end_str_pos-1]
               # fetch item_id from item_name
-              item_id = Item.cached_item_name(item_name)
+              item_id = Item.cached_item_name("#{item_name}")
               # fetch if there is an active listings
               sales_listing = SalesListing.find(:last, :conditions => ["listing_status_id = ? and item_id = ? and user_id = ?", in_inventory_listing_status[:id], item_id[:id], file[:user_id]], :select => "id, listing_status_id, item_id, user_id")
               if sales_listing != nil then
