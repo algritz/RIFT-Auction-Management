@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description('Sold')
       expired_status = ListingStatus.cached_listing_status_from_description('Expired')
-      sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, current_user.id)
-      last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user.id)
-      expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, current_user.id)
+      sold = SalesListing.cached_last_sold_auction(sold_status[:id], item_id, current_user[:id])
+      last_sold_date = SalesListing.cached_last_sold_date(sold_status[:id], item_id, current_user[:id])
+      expired_listing = SalesListing.cached_expired_listing(expired_status[:id], item_id, current_user[:id])
 
       if sold != nil then
         if (sold.updated_at == last_sold_date.updated_at) then
@@ -27,9 +27,9 @@ class ApplicationController < ActionController::Base
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
-          @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, current_user.id, last_sold_date.updated_at)
+          @number_of_expired = SalesListing.cached_expired_count(expired_status[:id], item_id, current_user[:id], last_sold_date.updated_at)
           else
-          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, current_user.id)
+          @number_of_expired = SalesListing.cached_expired_count_overall(expired_status[:id], item_id, current_user[:id])
 
           end
           if @number_of_expired.modulo(5) == 0 then
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
           price = expired_listing.price
           end
         else
-          listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, current_user.id)
+          listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, current_user[:id])
           if listed_but_not_sold != nil then
           price = listed_but_not_sold.price
           else
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   def lastDepositCost(item_id)
     if item_id != nil then
       cost = SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]])
-      cost = cost.deposit_cost.to_i
+    cost = cost.deposit_cost.to_i
     end
   end
 
@@ -61,10 +61,10 @@ class ApplicationController < ActionController::Base
     if item_id != nil then
       sold_status = ListingStatus.cached_listing_status_from_description("Sold")
       expired_status = ListingStatus.cached_listing_status_from_description('Expired')
-      sold_not_undercut = SalesListing.cached_sold_not_undercut_count(item_id, current_user.id, sold_status[:id])
-      expired_not_undercut = SalesListing.cached_expired_not_undercut_count(item_id, current_user.id, expired_status[:id])
-      sold_and_undercut = SalesListing.cached_sold_and_undercut_count(item_id, current_user.id, sold_status[:id])
-      expired_and_undercut = SalesListing.cached_expired_and_undercut_count(item_id, current_user.id, expired_status[:id])
+      sold_not_undercut = SalesListing.cached_sold_not_undercut_count(item_id, current_user[:id], sold_status[:id])
+      expired_not_undercut = SalesListing.cached_expired_not_undercut_count(item_id, current_user[:id], expired_status[:id])
+      sold_and_undercut = SalesListing.cached_sold_and_undercut_count(item_id, current_user[:id], sold_status[:id])
+      expired_and_undercut = SalesListing.cached_expired_and_undercut_count(item_id, current_user[:id], expired_status[:id])
 
       if sold_not_undercut > 0 then
       is_undercut_price = false
@@ -86,24 +86,26 @@ class ApplicationController < ActionController::Base
   def minimum_sales_price(item_id)
     if item_id != nil then
       crafting_cost = calculateCraftingCost(item_id)
-      deposit_cost = SalesListing.cached_last_deposit_cost_for_item(item_id, current_user.id)
+      deposit_cost = SalesListing.cached_last_deposit_cost_for_item(item_id, current_user[:id])
       if deposit_cost == nil then
       deposit_cost = 0
       end
-      ever_sold = SalesListing.cached_sold_count_for_item(item_id, current_user.id)
+      ever_sold = SalesListing.cached_sold_count_for_item(item_id, current_user[:id])
       if ever_sold > 0 then
         ## last_sold_date performs better without cache when called repeatedly
         last_sold_date = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").find(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Sold", current_user[:id]], :select => "sales_listings.id, item_id, listing_statuses.description, user_id, sales_listings.updated_at").last.updated_at
         number_of_relists_since_last_sold = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user[:id]])
         if number_of_relists_since_last_sold > 0 then
-        minimum_price = ((number_of_relists_since_last_sold * deposit_cost) + crafting_cost)
+        deposit_amount = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").sum(:deposit_cost, :conditions => ["item_id = ? and listing_statuses.description = ? and sales_listings.updated_at > ? and user_id = ?", item_id, "Expired", last_sold_date, current_user[:id]])
+        minimum_price = (deposit_amount + crafting_cost)
         else
         minimum_price = (deposit_cost + crafting_cost)
         end
       else
         number_of_relists = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").count(:all, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user[:id]])
         if number_of_relists > 0 then
-        minimum_price = ((number_of_relists * deposit_cost) + crafting_cost)
+          deposit_amount = SalesListing.joins("left join listing_statuses on Sales_listings.listing_status_id = listing_statuses.id").sum(:deposit_cost, :conditions => ["item_id = ? and listing_statuses.description = ? and user_id = ?", item_id, "Expired", current_user[:id]])
+        minimum_price = ((deposit_amount) + crafting_cost)
         else
         minimum_price = (deposit_cost + crafting_cost)
         end
@@ -142,7 +144,7 @@ class ApplicationController < ActionController::Base
     item = Item.cached_item(item_id)
     selling_price = item.vendor_selling_price
     buying_price = item.vendor_buying_price
-    override_price = PriceOverride.cached_price_override_for_item_for_user(@current_user.id, item_id)
+    override_price = PriceOverride.cached_price_override_for_item_for_user(@current_user[:id], item_id)
     if (override_price != nil) then
     return override_price.price_per
     else
