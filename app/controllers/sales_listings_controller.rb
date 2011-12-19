@@ -345,7 +345,7 @@ class SalesListingsController < ApplicationController
   def in_inventory
     @inventory_listing = ListingStatus.cached_listing_status_from_description('In Inventory')
     @in_bank = ListingStatus.cached_listing_status_from_description('In Bank')
-    @sales_listing = SalesListing.first(:select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price, item_id", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank])
+    @sales_listing = SalesListing.first(:select => "id, stacksize, listing_status_id, is_undercut_price, deposit_cost, price, item_id, is_tainted", :conditions => ["item_id = ? and user_id = ? and listing_status_id = ?", params[:id], @current_user[:id], @in_bank])
 
     if @sales_listing.stacksize == 1 then
     @sales_listing.listing_status_id = @inventory_listing[:id]

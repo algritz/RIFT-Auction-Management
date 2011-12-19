@@ -51,7 +51,8 @@ class ApplicationController < ActionController::Base
 
   def lastDepositCost(item_id)
     if item_id != nil then
-      SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]]).to_i
+      cost = SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]])
+      cost = cost.deposit_cost.to_i
     end
   end
 
