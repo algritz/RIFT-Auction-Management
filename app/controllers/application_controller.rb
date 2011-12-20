@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
 
       if sold != nil then
         if (sold[:id] == last_sold_date[:id]) then
-        price = (sold[:price] * 1.1).round
+        price = (sold.price * 1.1).round
         else
-        price = sold[:price]
+        price = sold.price
         end
       else if expired_listing != nil then
           if last_sold_date != nil then
@@ -33,14 +33,14 @@ class ApplicationController < ActionController::Base
 
           end
           if @number_of_expired.modulo(5) == 0 then
-          price = (expired_listing[:price] * 0.97).round
+          price = (expired_listing.price * 0.97).round
           else
-          price = expired_listing[:price]
+          price = expired_listing.price
           end
         else
           listed_but_not_sold = SalesListing.cached_listed_but_not_sold(expired_status[:id], item_id, current_user[:id])
           if listed_but_not_sold != nil then
-          price = listed_but_not_sold[:price]
+          price = listed_but_not_sold.price
           else
           price = 0
           end
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   def lastDepositCost(item_id)
     if item_id != nil then
       cost = SalesListing.last(:select => 'deposit_cost', :conditions => ["item_id = ? and user_id = ?", item_id, current_user[:id]])
-    cost = cost[:deposit_cost].to_i
+    cost = cost.deposit_cost.to_i
     end
   end
 
